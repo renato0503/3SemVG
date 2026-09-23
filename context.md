@@ -540,7 +540,18 @@ Todo botão e toda feature **têm que funcionar de verdade**. Nenhum botão mort
 
 ---
 
-## 15. Referência rápida — comandos
+## 16. Nota sobre o EDA — foco CBSD e inadimplência
+
+**Observação (professor Renato):** o grupo EDA deve aprofundar o foco em **CBSD (Compulsive Buying-Shopping Disorder)** e na relação entre compra compulsiva e inadimplência. O formulário e o referencial teórico já cobrem isso parcialmente, mas o centro da discussão deve ser:
+
+- **CBSD é transtorno de controle de impulsos** (critérios Müller et al., 2021) — não é "falta de educação financeira"
+- **A relação entre CBSD e inadimplência** é o fio condutor: a pessoa entra em dívida não por desconhecimento, mas por incapacidade de inibir o impulso no momento
+- **O formulário deve medir**: (1) frequência e intensidade dos episódios de compra impulsiva, (2) nível de dívidas/cheque especial, (3) vergonha/ocultação, (4) tentativas anteriores de parar
+- **O pitch deve deixar claro**: o EDA não ensina a cuidar do dinheiro — treina o autocontrole no momento do impulso; a diferença é crucial
+
+---
+
+## 17. Referência rápida — comandos
 
 ```powershell
 # Publicar no GitHub Pages (ativar)
