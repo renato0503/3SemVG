@@ -1,7 +1,7 @@
 const CACHE = 'quitaai-v1';
 const ASSETS = [
   './',
-  './index.html',
+  './index.html','./app.html',
   './manifest.json',
   '../assets/identidade/temas.css',
   '../assets/kit/kit.css',

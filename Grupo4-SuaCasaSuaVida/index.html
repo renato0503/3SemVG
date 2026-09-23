@@ -2,713 +2,204 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#047857">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<title>SuaCasaSuaVida — Encontre seu bairro e financie sua casa</title>
-<link rel="manifest" href="manifest.json">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SuaCasaSuaVida — Grupo 4 · Customer Discovery 3SemVG</title>
+<meta name="description" content="App que ajuda a comprar uma casa: análise de bairro, análise da situação financeira e simulador de financiamento.">
+<meta name="theme-color" content="#052e2b">
 <link rel="icon" type="image/png" sizes="192x192" href="../assets/logos/g4-192.png">
 <link rel="apple-touch-icon" href="../assets/logos/g4-192.png">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/identidade/temas.css">
-<link rel="stylesheet" href="../assets/kit/kit.css">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --accent:#047857;--accent-dark:#065f46;--accent-soft:#ecfdf5;
-  --accent2:#d97706;--tinta:#052e2b;--tinta2:#065f46;
-  --fonte:'Lato',Arial,sans-serif;--fonte-titulo:'Playfair Display',Georgia,serif;
-  --texto:#052e2b;--texto-suave:#047857;--linha:#d1fae5;--fundo:#f0fdf9;
-  --card:#ffffff;--ok:#16a34a;--alerta:#dc2626;--atencao:#d97706;
-  --nav-bg:#f0fdf9;--nav-icon-size:24px;--nav-radius:8px;
+  --acc:#047857; --acc2:#d97706; --tinta:#052e2b;
+  --surface:#fff; --surface-2:#f4f6fb; --ink:#0f172a; --ink-soft:#5b6478; --line:#e7e9f2;
+  --radius-lg:22px; --radius-md:16px;
+  --shadow-card:0 10px 30px -12px rgba(15,23,42,.18);
+  --shadow-hover:0 18px 40px -14px rgba(15,23,42,.28);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{height:100%}
-body{font-family:var(--fonte);background:var(--fundo);color:var(--texto);font-size:16px;overflow-x:hidden}
-.app{max-width:480px;margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;padding-bottom:80px}
-header.top{background:linear-gradient(135deg,var(--tinta) 0%,var(--tinta2) 100%);color:#fff;padding:14px 16px 44px;position:sticky;top:0;z-index:20}
-header.top .brand{display:flex;align-items:center;justify-content:space-between}
-header.top h1{font-size:17px;font-weight:700}
-header.top .sub{font-size:11px;opacity:.75;margin-top:2px}
-.badge-pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:11px;padding:3px 8px;border-radius:20px}
-main{flex:1;padding:0 16px}
-.screen{display:none;flex-direction:column;animation:fade .2s ease}
-.screen.active{display:flex}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.page-title{font-size:13px;font-weight:700;color:var(--texto-suave);text-transform:uppercase;letter-spacing:.07em;padding:16px 0 6px}
-.card{background:var(--card);border-radius:8px;box-shadow:0 1px 6px rgba(4,120,87,.08);border:1px solid #d1fae5;border-top:3px solid #047857}
-.card-title{font-family:'Playfair Display',Georgia,serif;font-size:17px;color:#052e2b}
-.card-sub{color:#047857}
-/* G4 distinctive: blueprint/real estate editorial */
-body{font-family:'Lato',Arial,sans-serif;background:#f7faf9;color:#052e2b}
-header.top{background:linear-gradient(135deg,#052e2b 0%,#064e3b 100%);border-bottom:3px solid #d97706}
-header.top h1{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:700}
-header.top .sub{color:#6ee7b7}
-.badge-pill{background:rgba(217,119,6,.15);border:1px solid rgba(217,119,6,.3);color:#d97706}
-.btn-primary{background:#047857;color:#fff;border-radius:6px}
-.btn-ghost{background:#fff;color:#047857;border:1.5px solid #047857;border-radius:6px}
-.btn-success{background:#16a34a;color:#fff;border-radius:6px}
-.nav-bottom{background:#f0fdf9;border-top:1px solid #d1fae5}
-.nav-item.active{color:#047857}
-.page-title{color:#047857;font-family:'Playfair Display',Georgia,serif;font-size:15px}
-.text-muted{color:#047857}
-header.top::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#047857 0%,#d97706 100%)}
-.btn{display:flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:12px;padding:14px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;transition:transform .05s;padding-top:calc(14px + env(safe-area-inset-top))}
-.btn:active{transform:scale(.975)}
-.btn-primary{background:var(--accent);color:#fff}
-.btn-primary:hover{background:var(--accent-dark)}
-.btn-ghost{background:#fff;color:var(--accent);border:1.5px solid var(--accent)}
-.btn-success{background:var(--ok);color:#fff}
-.btn-sm{padding:10px 14px;font-size:13px}
-.row{display:flex;gap:10px}
-.row>*{flex:1}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-.text-center{text-align:center}
-.text-muted{color:var(--texto-suave);font-size:13px}
-.mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mb-8{margin-bottom:8px}.mb-12{margin-bottom:12px}
-.flex-between{display:flex;align-items:center;justify-content:space-between}
-.kpi-big{text-align:center;padding:16px 0}
-.kpi-big .num{font-size:40px;font-weight:900;color:var(--accent);line-height:1}
-.kpi-big .label{font-size:12px;color:var(--texto-suave);margin-top:4px}
-.input-group{margin-bottom:12px}
-.input-group label{display:block;font-size:12px;font-weight:600;color:var(--texto-suave);margin-bottom:4px;letter-spacing:.04em}
-.form-input,.form-select,.form-textarea{width:100%;padding:12px 14px;border:1.5px solid var(--linha);border-radius:10px;font-size:15px;font-family:inherit;background:#fff;color:var(--texto);transition:border-color .15s}
-.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--accent)}
-select.form-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23047857' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
-input[type=range]{width:100%;accent-color:var(--accent)}
-.slider-val{font-size:13px;font-weight:700;color:var(--accent);text-align:right;margin-bottom:4px}
-.slider-wrap{margin-bottom:14px}
-.slider-wrap label{display:flex;justify-content:space-between;font-size:12px;color:var(--texto-suave);margin-bottom:6px}
-.sim-result{background:var(--accent-soft);border-radius:10px;padding:12px;text-align:center;margin-top:8px}
-.sim-result .val{font-size:26px;font-weight:900;color:var(--accent)}
-.sim-result .lbl{font-size:11px;color:var(--texto-suave)}
-.semaforo{display:flex;gap:4px;justify-content:center;margin:8px 0}
-.sem{width:24px;height:24px;border-radius:50%;border:2px solid #fff}
-.sem.red{background:#dc2626}
-.sem.yellow{background:#d97706}
-.sem.green{background:#16a34a}
-.nav-bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--linha);display:flex;z-index:30;padding-bottom:env(safe-area-inset-bottom)}
-.nav-bottom .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px;gap:3px;cursor:pointer;color:var(--texto-suave);transition:color .15s;border:none;background:none;font-size:11px;font-family:inherit}
-.nav-bottom .nav-item.active{color:var(--accent)}
-.nav-bottom .nav-icon{font-size:20px}
-.badge{background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px}
-.badge2{background:#fff7ed;color:var(--accent2);font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px}
-.alert-box{padding:12px 14px;border-radius:10px;font-size:13px;margin-bottom:10px}
-.alert-box.info{background:#eff6ff;color:#1d4ed8}
-.alert-box.ok{background:#f0fdf4;color:#166534}
-.alert-box.warn{background:#fffbeb;color:#92400e}
-.alert-box.danger{background:#fef2f2;color:#991b1b}
-.neighborhood-card{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;border:1.5px solid var(--linha)}
-.neighborhood-card.best{border-color:var(--accent);background:var(--accent-soft)}
-.nb-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.nb-name{font-size:15px;font-weight:700}
-.nb-score{font-size:20px;font-weight:900}
-.nb-score.good{color:var(--ok)}
-.nb-score.medium{color:var(--accent2)}
-.nb-score.bad{color:#dc2626}
-.score-bars{display:flex;flex-direction:column;gap:6px;margin-top:8px}
-.score-row{display:flex;align-items:center;gap:8px}
-.score-row .lbl{font-size:11px;color:var(--texto-suave);width:60px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.score-bar{flex:1;height:8px;background:var(--linha);border-radius:4px;overflow:hidden}
-.score-bar .fill{height:100%;border-radius:4px;transition:width .4s}
-.prop-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--linha)}
-.prop-item:last-child{border-bottom:none}
-.prop-item .icon{font-size:28px;flex-shrink:0}
-.prop-item .info{flex:1}
-.prop-item .name{font-size:14px;font-weight:600}
-.prop-item .meta{font-size:12px;color:var(--texto-suave)}
-.prop-item .price{font-size:15px;font-weight:700;color:var(--accent)}
-.toast-container{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);z-index:60;display:flex;flex-direction:column;gap:8px;pointer-events:none}
-.toast{background:var(--tinta);color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;animation:toastIn .25s ease}
-@keyframes toastIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.comparison-table{width:100%;border-collapse:collapse;font-size:13px}
-.comparison-table th{background:var(--accent-soft);color:var(--accent);padding:8px 10px;text-align:left;font-size:11px}
-.comparison-table td{padding:8px 10px;border-bottom:1px solid var(--linha);vertical-align:top}
-.comparison-table tr:last-child td{border-bottom:none}
-.best-cell{background:#dcfce7;color:#166534;font-weight:700}
-.brand{display:flex;align-items:center;gap:10px}
-.app-logo{width:38px;height:38px;border-radius:10px;object-fit:cover;box-shadow:0 2px 6px rgba(0,0,0,.25);flex-shrink:0}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--surface-2);color:var(--ink);min-height:100dvh}
+h1,h2{font-family:'Space Grotesk',system-ui,sans-serif}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:920px;margin:0 auto;padding:0 20px}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.92);backdrop-filter:blur(10px)}
+.nav .wrap{display:flex;align-items:center;gap:12px;padding:12px 20px;color:#fff}
+.nav-back{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#c7cee8;text-decoration:none;flex-shrink:0}
+.nav-back svg{width:16px;height:16px}
+.nav-back:hover{color:#fff}
+.nav-title{margin-left:auto;font-size:13px;font-weight:700;opacity:.85}
+
+.hero{
+  position:relative;color:#fff;padding:52px 0 74px;overflow:hidden;
+  background:linear-gradient(160deg,var(--tinta) 0%,#0b1220 100%);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(600px 320px at 85% 0%, color-mix(in srgb, var(--acc) 35%, transparent), transparent 60%);
+}
+.hero .wrap{position:relative;z-index:2}
+.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+.hero-logo{width:64px;height:64px;border-radius:16px;box-shadow:0 8px 22px rgba(0,0,0,.35);flex-shrink:0}
+.hero-group{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--acc2)}
+.hero h1{font-size:clamp(24px,4.2vw,34px);font-weight:700;letter-spacing:-.01em;margin-top:2px}
+.hero p.pitch{margin-top:14px;font-size:15px;line-height:1.6;color:#c7cee8;max-width:600px}
+.hero-meta{display:flex;gap:22px;margin-top:26px;flex-wrap:wrap;font-size:12.5px;color:#9aa5c3}
+.hero-meta b{color:#fff;display:block;font-size:13px;margin-bottom:2px}
+
+.cta-row{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.btn-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(90deg,var(--acc),var(--acc2));color:#0b1220;
+  font-weight:700;font-size:14.5px;padding:13px 22px;border-radius:100px;text-decoration:none;
+  box-shadow:0 10px 24px -8px color-mix(in srgb, var(--acc) 60%, transparent);
+  transition:transform .15s;
+}
+.btn-cta:hover{transform:translateY(-2px)}
+.btn-cta svg{width:16px;height:16px}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;
+  font-weight:600;font-size:13.5px;padding:12px 18px;border-radius:100px;text-decoration:none;
+}
+.btn-secondary:hover{background:rgba(255,255,255,.14)}
+.btn-secondary svg{width:14px;height:14px}
+
+section.block{padding:44px 0}
+.block-head{margin-bottom:22px}
+.block-head h2{font-size:19px;font-weight:700;display:flex;align-items:center;gap:9px;color:var(--ink)}
+.block-head h2 svg{width:20px;height:20px;color:var(--acc)}
+.block-head p{font-size:13px;color:var(--ink-soft);margin-top:4px}
+
+.doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.doc-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
+  padding:18px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:10px;
+  box-shadow:0 1px 3px rgba(15,23,42,.05);
+  transition:transform .15s,box-shadow .15s,border-color .15s;
+}
+.doc-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-card);border-color:var(--acc)}
+.doc-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  background:color-mix(in srgb, var(--acc) 14%, white);color:var(--acc)}
+.doc-icon svg{width:19px;height:19px}
+.doc-card b{font-size:14px;font-weight:700}
+.doc-card small{font-size:12px;color:var(--ink-soft);line-height:1.4}
+
+.team{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.team span{background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:100px;font-size:12.5px;font-weight:600}
+
+footer{background:var(--tinta);color:#cbd5f5;padding:32px 0;margin-top:20px}
+footer .wrap{display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center}
+footer a{color:#fff;text-decoration:none;font-weight:600}
+footer p{font-size:12px;opacity:.85}
 </style>
 </head>
-<body class="tema-g4">
-<div class="app">
-<header class="top">
-<div class="brand">
- <img class="app-logo" src="../assets/logos/g4-96.png" alt="Logo G4">
- <div>
-  <h1>SuaCasaSuaVida</h1>
-  <div class="sub" id="headerSub">Planeje sua casa própria</div>
- </div>
- <span class="badge-pill" id="headerBadge">Nível 1</span>
-</div>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="../index.html" class="nav-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+      Todos os projetos
+    </a>
+    <span class="nav-title">Grupo 4 · SuaCasaSuaVida</span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <img class="hero-logo" src="../assets/logos/g4-192.png" alt="Logo SuaCasaSuaVida">
+      <div>
+        <div class="hero-group">Grupo 4 · Customer Discovery</div>
+        <h1>SuaCasaSuaVida</h1>
+      </div>
+    </div>
+    <p class="pitch">App que ajuda a comprar uma casa: análise de bairro, análise da situação financeira e simulador de financiamento.</p>
+    <div class="hero-meta">
+      <div><b>Professor(a)</b>Prof. Pantaleão</div>
+      <div><b>Integrantes</b>Amanda Karoliny, Beatriz Cristina, Evander, Julimary</div>
+      <div><b>Código de campo</b>G4-&lt;nnn&gt;</div>
+    </div>
+    <div class="cta-row">
+      <a href="app.html" class="btn-cta">
+        Abrir o app
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="Slides-SuaCasaSuaVida.html" class="btn-secondary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        Ver slides de defesa
+      </a>
+    </div>
+  </div>
 </header>
 
 <main>
-<!-- HOME / DASHBOARD -->
-<section class="screen active" id="screenHome">
-<div class="page-title">Visão Geral</div>
-<div class="kpi-grid mb-12">
- <div class="kpi-item">
-  <div class="val" id="dispRenda" style="color:var(--accent)">R$ 0</div>
-  <div class="lbl">Renda mensal</div>
- </div>
- <div class="kpi-item">
-  <div class="val" id="dispParcela" style="color:var(--accent2)">R$ 0</div>
-  <div class="lbl">Parcela máx.</div>
- </div>
-</div>
-<div class="card">
- <div class="flex-between mb-8">
-  <div class="card-title" style="margin:0">Capacidade de Pagamento</div>
-  <div id="semaforoHome"></div>
- </div>
- <div class="card-sub" id="semText">Informe sua renda e despesas para saber quanto pode pagar de parcela.</div>
-</div>
-<div class="card mt-12">
- <div class="card-title mb-8">Bairros Salvos</div>
- <div id="savedNeighborhoods"></div>
-</div>
-<div class="card mt-12">
- <div class="card-title mb-8">Imóveis Salvos</div>
- <div id="savedProps"></div>
-</div>
-</section>
+  <section class="block">
+    <div class="wrap">
+      <div class="block-head">
+        <h2>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M15 3h6v6M10 14L21 3"/></svg>
+          Materiais do grupo
+        </h2>
+        <p>Toda a documentação produzida para a defesa e para a pesquisa de campo.</p>
+      </div>
 
-<!-- SIMULADOR -->
-<section class="screen" id="screenSimulador">
-<div class="page-title">Simulador de Financiamento</div>
-<div class="card">
- <div class="card-title">Quanto posso pagar?</div>
- <div class="slider-wrap">
-  <div class="slider-val" id="lblRenda">R$ 2.500</div>
-  <label>Renda mensal bruta</label>
-  <input type="range" id="slRenda" min="1000" max="30000" value="2500" step="100" oninput="updateSim()">
- </div>
- <div class="slider-wrap">
-  <div class="slider-val" id="lblDesp">R$ 800</div>
-  <label>Despesas fixas (aluguel, plano, outros)</label>
-  <input type="range" id="slDesp" min="0" max="15000" value="800" step="50" oninput="updateSim()">
- </div>
- <div class="slider-wrap">
-  <div class="slider-val" id="lblJuros">8% a.a.</div>
-  <label>Taxa de juros anual (%)</label>
-  <input type="range" id="slJuros" min="4" max="14" value="8" step="0.1" oninput="updateSim()">
- </div>
- <div class="slider-wrap">
-  <div class="slider-val" id="lblPrazo">30 anos</div>
-  <label>Prazo do financiamento</label>
-  <input type="range" id="slPrazo" min="5" max="35" value="30" step="1" oninput="updateSim()">
- </div>
- <div class="semaforo" id="semaforoSim"></div>
- <div class="alert-box ok mt-12" id="capMaxBox">
-  <strong>Parcela máxima (28% da renda):</strong><br>
-  <span style="font-size:20px;font-weight:900;color:var(--accent)" id="dispCapMax">R$ 0</span>
- </div>
-</div>
-<div class="card mt-12">
- <div class="card-title mb-8">Resultado da Simulação</div>
- <div class="grid-2">
-  <div>
-   <div class="card-title" style="font-size:13px">Price (parcela fixa)</div>
-   <div class="sim-result">
-    <div class="val" id="simPrice">—</div>
-    <div class="lbl">1ª parcela</div>
-   </div>
-   <div style="font-size:12px;color:var(--texto-suave);margin-top:6px">Total: <strong id="simPriceTotal">—</strong></div>
-  </div>
-  <div>
-   <div class="card-title" style="font-size:13px">SAC (parcela decrescente)</div>
-   <div class="sim-result">
-    <div class="val" id="simSAC">—</div>
-    <div class="lbl">1ª parcela</div>
-   </div>
-   <div style="font-size:12px;color:var(--texto-suave);margin-top:6px">Total: <strong id="simSACTotal">—</strong></div>
-  </div>
- </div>
- <div class="alert-box warn mt-12" style="font-size:12px">
-  <strong>Importante:</strong> Este é um simulador educativo. Os valores reais dependem de análise do banco, seguro MIP/DOE, FGTS e outros fatores. Procure um agente para oferta real.
- </div>
-</div>
-</section>
+      <div class="doc-grid">
+        <a href="README.md" class="doc-card">
+          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+          <b>README do grupo</b>
+          <small>Integrantes, hipótese, roteiro de campo e pitch</small>
+        </a>
 
-<!-- BAIRROS -->
-<section class="screen" id="screenBairros">
-<div class="page-title">Análise de Bairros</div>
-<div id="neighborhoodsList"></div>
-<div class="card mt-12">
- <div class="card-title">Adicionar Bairro</div>
- <div class="input-group">
-  <label>NOME DO BAIRRO</label>
-  <input class="form-input" id="inputNbName" placeholder="Ex.: Centro, Jardim das Flores, Alphaville" maxlength="40">
- </div>
- <div class="grid-2">
-  <div class="input-group">
-   <label>Segurança (1–5)</label>
-   <input class="form-input" id="inputNbSeg" type="number" min="1" max="5" placeholder="1 a 5">
-  </div>
-  <div class="input-group">
-   <label>Comércio (1–5)</label>
-   <input class="form-input" id="inputNbCom" type="number" min="1" max="5" placeholder="1 a 5">
-  </div>
-  <div class="input-group">
-   <label>Transporte (1–5)</label>
-   <input class="form-input" id="inputNbTrans" type="number" min="1" max="5" placeholder="1 a 5">
-  </div>
-  <div class="input-group">
-   <label>Valorização (1–5)</label>
-   <input class="form-input" id="inputNbVal" type="number" min="1" max="5" placeholder="1 a 5">
-  </div>
- </div>
- <button class="btn btn-primary" id="btnAddNb" onclick="addNeighborhood()">Adicionar Bairro</button>
-</div>
-</section>
+        <a href="formulario-app.md" class="doc-card">
+          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <b>Formulário de campo</b>
+          <small>20 perguntas em escala 1–5, código G4-&lt;nnn&gt;</small>
+        </a>
 
-<!-- COMPARAR -->
-<section class="screen" id="screenComparar">
-<div class="page-title">Comparar Imóveis</div>
-<div id="comparisonView"></div>
-<div class="card mt-12">
- <div class="card-title">Adicionar Imóvel</div>
- <div class="input-group">
-  <label>DESCRIÇÃO</label>
-  <input class="form-input" id="inputPropDesc" placeholder="Ex.: Casa 2q no Centro, 60m²" maxlength="60">
- </div>
- <div class="grid-2">
-  <div class="input-group">
-   <label>VALOR (R$)</label>
-   <input class="form-input" id="inputPropVal" type="number" step="1000" min="50000" placeholder="250000">
-  </div>
-  <div class="input-group">
-   <label>ENTRADA (R$)</label>
-   <input class="form-input" id="inputPropEntry" type="number" step="1000" min="0" placeholder="50000">
-  </div>
-  <div class="input-group">
-   <label>IPTU/MÊS (R$)</label>
-   <input class="form-input" id="inputPropIPTU" type="number" step="10" min="0" placeholder="200">
-  </div>
-  <div class="input-group">
-   <label>CONDOMÍNIO (R$)</label>
-   <input class="form-input" id="inputPropCond" type="number" step="10" min="0" placeholder="300">
-  </div>
- </div>
- <div class="input-group">
-  <label>BAIRRO</label>
-  <select class="form-input" id="inputPropNb">
-   <option value="">Selecione um bairro (ou "Novo")</option>
-  </select>
- </div>
- <button class="btn btn-primary" id="btnAddProp" onclick="addProperty()">Adicionar Imóvel</button>
-</div>
-</section>
+        <a href="ContextoApp.md" class="doc-card">
+          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg></div>
+          <b>Contexto do produto</b>
+          <small>Pitch, personas, jornada, MVP/v1/v2, KPIs e riscos</small>
+        </a>
 
-<!-- PERFIL -->
-<section class="screen" id="screenProfile">
-<div class="page-title">Meu Perfil</div>
-<div class="card" style="margin-bottom:12px;border-top-color:#d97706">
-  <div class="card-title">📋 Sobre o Trabalho Acadêmico</div>
-  <p style="font-size:13px;color:#047857;margin-bottom:12px;line-height:1.6">
-    O <strong>SuaCasaSuaVida</strong> faz parte da pesquisa de <strong>Customer Discovery</strong> da disciplina de Projeto Inovador (3º Semestre · Unifacc).
-    Os alunos foram a um shopping ouvir pessoas reais sobre a decisão de compra da casa própria.
-  </p>
-  <button class="btn btn-ghost btn-sm" id="btnSobreTrabalho" onclick="abrirSobreTrabalho()" style="border-color:#047857;color:#047857">
-    Ver contexto, formulário e referencial
-  </button>
-</div>
-<div class="card">
-  <div class="card-title">Como usar o SuaCasaSuaVida</div>
- <div class="alert-box info mb-8">
-  <strong>1. Simule</strong> — informe sua renda no Simulador para saber a parcela máxima.<br>
-  <strong>2. Analise bairros</strong> — adicione bairros e avalie por segurança, comércio, transporte e valorização.<br>
-  <strong>3. Compare imóveis</strong> — cadastre imóveis para comparar entrada, parcela e custo total.<br>
-  <strong>4. Planeje</strong> — saiba quanto guardar por mês para atingir a entrada ideal.
- </div>
-</div>
-<div class="card mt-12">
- <div class="card-title">Dicas</div>
- <ul style="font-size:13px;line-height:1.8;padding-left:16px">
-  <li>Parcela máxima = 28% da renda mensal (regra do BCB).</li>
-  <li>SAC tem parcela inicial maior, mas total de juros menor.</li>
-  <li>Entrada maior = parcela menor = menos juros totais.</li>
-  <li>Além da parcela, considere IPTU, condomínio, seguro e manutenção.</li>
- </ul>
-</div>
-<div class="card mt-12">
- <button class="btn btn-ghost" id="btnExportSCV" style="margin-bottom:8px">Exportar Dados 📤</button>
- <button class="btn btn-danger" id="btnResetSCV">Resetar Tudo 🗑️</button>
-</div>
-</section>
+        <a href="Pesquisa-Dados.md" class="doc-card">
+          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M15 3h6v6M10 14L21 3"/></svg></div>
+          <b>Pesquisa e dados</b>
+          <small>Dados oficiais + 12 artigos científicos com DOI</small>
+        </a>
+
+        <a href="Slides-SuaCasaSuaVida.pdf" class="doc-card">
+          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <b>Slides de defesa (PDF)</b>
+          <small>Versão para download e impressão</small>
+        </a>
+
+        <a href="Green%20Playful%20cartoon%20Financial%20Project%20Presentation.pdf" class="doc-card">
+          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M13 2v7h7"/></svg></div>
+          <b>PDF original da defesa</b>
+          <small>Material complementar do grupo</small>
+        </a>
+      </div>
+
+      <div class="team">
+        <span>Amanda Karoliny</span>
+        <span>Beatriz Cristina</span>
+        <span>Evander</span>
+        <span>Julimary</span>
+      </div>
+    </div>
+  </section>
 </main>
 
-<nav class="nav-bottom" id="bottomNav">
-<button class="nav-item active" data-screen="Home"><span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg></span><span>Home</span></button>
-<button class="nav-item" data-screen="Simulador"><span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h8M8 14h2M14 14h2M8 18h2M14 18h2"/></svg></span><span>Simular</span></button>
-<button class="nav-item" data-screen="Bairros"><span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span>Bairros</span></button>
-<button class="nav-item" data-screen="Comparar"><span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg></span><span>Comparar</span></button>
-<button class="nav-item" data-screen="Profile"><span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></span><span>Perfil</span></button>
-</nav>
-</div>
-<div class="toast-container" id="toastContainer"></div>
-
-<div class="modal-overlay" id="modalSobre" style="display:none">
-  <div class="modal-box" style="max-height:85dvh;overflow-y:auto;padding:20px">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-      <div style="font-size:16px;font-weight:700;color:#052e2b;font-family:'Playfair Display',Georgia,serif">Sobre o Trabalho</div>
-      <button onclick="fecharSobreTrabalho()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#047857">✕</button>
-    </div>
-    <div style="font-size:13px;line-height:1.7;color:#052e2b">
-      <div style="background:#ecfdf5;border-radius:10px;padding:12px;margin-bottom:14px;border-left:4px solid #047857">
-        <strong style="color:#047857">🏠 Contexto do Projeto</strong><br>
-        O <strong>SuaCasaSuaVida</strong> nasceu da defesa de projeto inovador sobre déficit habitacional e decisão de compra da casa própria. A ideia: um app que analisa o bairro (segurança, comércio, transporte, valorização) e simula o financiamento (Price/SAC) para ajudar o cidadão a entender quanto pode pagar antes de assinar. A pesquisa de campo aconteceu no shopping com formulário de 20 perguntas em escala 1–5.
-      </div>
-      <div style="background:#fffbeb;border-radius:10px;padding:12px;margin-bottom:14px;border-left:4px solid #d97706">
-        <strong style="color:#d97706">📊 Resultado do Formulário (Customer Discovery)</strong><br>
-        <span style="font-size:12px">A pesquisa de campo foi aplicada pelo grupo com apoio do app de coleta. As perguntas medem: percepção de capacidade financeira, interesse em comprar casa própria, conhecimento sobre financiamento e análise de bairro. Os códigos G4-<nnn> correlacionam cada resposta quantitativa com o áudio gravado no WhatsApp.</span>
-      </div>
-      <div style="background:#f0fdf4;border-radius:10px;padding:12px;margin-bottom:14px;border-left:4px solid #16a34a">
-        <strong style="color:#16a34a">📚 Referencial Teórico</strong><br>
-        <span style="font-size:12px">O trabalho tem base em 14 artigos peer-reviewed (2021–2026), incluindo: Fischer et al. (2024) sobre incerteza econômica; Szumilo & Vanino (2021) sobre acesso a crédito e affordability; Mathä et al. (2025) sobre transferências intergeracionais e homeownership; Sodini et al. (2023) sobre propriedade como investimento; Ha et al. (2021) sobre informação de bairro e decisão de compra. O arcabouço teórico inclui economia comportamental, teoria do prospecto e decisões sob incerteza.</span>
-      </div>
-      <div style="background:#ecfdf5;border-radius:10px;padding:12px;border-left:4px solid #047857">
-        <strong style="color:#047857">🎯 Hipótese de Campo</strong><br>
-        <span style="font-size:12px">A hipótese é que a maioria das pessoas não compra a casa própria por falta de clareza sobre quanto podem pagar e desconhecimento do bairro. O SuaCasaSuaVida resolve isso com simulação acessível e análise comparativa de bairros antes de comprometer-se com 30 anos de financiamento.</span>
-      </div>
-    </div>
-    <button class="btn btn-ghost btn-sm" onclick="fecharSobreTrabalho()" style="margin-top:14px;width:100%;border-color:#047857;color:#047857">Fechar</button>
+<footer>
+  <div class="wrap">
+    <a href="../index.html">← Voltar ao hub Customer Discovery</a>
+    <p>Grupo 4 · SuaCasaSuaVida · Cerrado Tech · Unifacc · 3º Semestre Tecnologia e Inovação, 2026</p>
   </div>
-</div>
-<script>
-function abrirSobreTrabalho(){document.getElementById('modalSobre').style.display='flex';document.body.style.overflow='hidden'}
-function fecharSobreTrabalho(){document.getElementById('modalSobre').style.display='none';document.body.style.overflow=''}
-document.getElementById('modalSobre').onclick=function(e){if(e.target===this)fecharSobreTrabalho()};
-</script>
+</footer>
 
-<script src="../assets/kit/kit.js" type="module"></script>
-<script type="module">
-import { fmtBRL, uid } from '../assets/kit/kit.js';
-
-const NS = 'suacasa';
-function _k(k) { return NS + ':' + k; }
-const s = {
-  get(k, f) { try { const v = localStorage.getItem(_k(k)); return v == null ? f : JSON.parse(v); } catch { return f; } },
-  set(k, v) { try { localStorage.setItem(_k(k), JSON.stringify(v)); return true; } catch { return false; } }
-};
-
-let state = s.get('state', {
-  neighborhoods: [],
-  properties: [],
-  renda: 2500,
-  despesas: 800,
-  saved: false
-});
-
-function toast(msg) {
-  const c = document.getElementById('toastContainer');
-  const el = document.createElement('div');
-  el.className = 'toast';
-  el.textContent = msg;
-  c.appendChild(el);
-  setTimeout(() => el.remove(), 2800);
-}
-
-function fmt(v) { return fmtBRL(v || 0); }
-
-function showScreen(name) {
-  document.querySelectorAll('.screen').forEach(x => x.classList.remove('active'));
-  document.getElementById('screen' + name).classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.screen === name));
-  if (name === 'Home') renderHome();
-  if (name === 'Simulador') updateSim();
-  if (name === 'Bairros') renderNeighborhoods();
-  if (name === 'Comparar') renderComparison();
-}
-
-function getCapMax() {
-  return Math.round(state.renda * 0.28);
-}
-
-function getSemaforo(capMax, parcela) {
-  if (!capMax || !parcela) return 'empty';
-  const ratio = parcela / capMax;
-  if (ratio <= 0.8) return 'green';
-  if (ratio <= 1.0) return 'yellow';
-  return 'red';
-}
-
-function renderSemaforo(containerId, tipo, capMax, parcela) {
-  const el = document.getElementById(containerId);
-  if (!el) return;
-  if (tipo === 'home') {
-    const cap = getCapMax();
-    const sem = getSemaforo(cap, cap);
-    el.innerHTML = `<div class="sem ${sem}"></div>`;
-    return;
-  }
-  const sem = getSemaforo(capMax, parcela);
-  el.innerHTML = `<div class="sem ${sem}"></div>`;
-}
-
-function renderHome() {
-  const capMax = getCapMax();
-  document.getElementById('dispRenda').textContent = fmt(state.renda);
-  document.getElementById('dispParcela').textContent = fmt(capMax);
-  renderSemaforo('semaforoHome', 'home');
-  document.getElementById('semText').textContent = 'Parcela máxima recomendada: ' + fmt(capMax) + ' (28% da renda)';
-
-  // Saved neighborhoods
-  const nbEl = document.getElementById('savedNeighborhoods');
-  if (!state.neighborhoods.length) {
-    nbEl.innerHTML = '<div class="text-muted" style="font-size:13px;text-align:center;padding:12px">Nenhum bairro salvo. Vá em Bairros para adicionar!</div>';
-  } else {
-    nbEl.innerHTML = state.neighborhoods.slice(0, 3).map(nb => {
-      const score = calcScore(nb);
-      const cls = score >= 4 ? 'good' : score >= 2.5 ? 'medium' : 'bad';
-      return `<div class="neighborhood-card ${score >= 4 ? 'best' : ''}" style="margin-bottom:8px;padding:12px">
-       <div class="flex-between">
-        <strong>${nb.name}</strong>
-        <span class="nb-score ${cls}">${score.toFixed(1)}</span>
-       </div>
-      </div>`;
-    }).join('');
-  }
-
-  // Saved properties
-  const propEl = document.getElementById('savedProps');
-  if (!state.properties.length) {
-    propEl.innerHTML = '<div class="text-muted" style="font-size:13px;text-align:center;padding:12px">Nenhum imóvel salvo. Vá em Comparar para adicionar!</div>';
-  } else {
-    propEl.innerHTML = state.properties.slice(0, 3).map(p => `<div class="prop-item">
-     <div class="icon">🏠</div>
-     <div class="info">
-      <div class="name">${p.desc}</div>
-      <div class="meta">${p.nb || 'Bairro não informado'}</div>
-     </div>
-     <div class="price">${fmt(p.valor)}</div>
-    </div>`).join('');
-  }
-}
-
-function calcScore(nb) {
-  return ((nb.seg || 3) + (nb.com || 3) + (nb.trans || 3) + (nb.val || 3)) / 4;
-}
-
-function updateSim() {
-  const renda = parseInt(document.getElementById('slRenda').value);
-  const desp = parseInt(document.getElementById('slDesp').value);
-  const juros = parseFloat(document.getElementById('slJuros').value);
-  const prazo = parseInt(document.getElementById('slPrazo').value);
-
-  document.getElementById('lblRenda').textContent = fmt(renda);
-  document.getElementById('lblDesp').textContent = fmt(desp);
-  document.getElementById('lblJuros').textContent = juros.toFixed(1) + '% a.a.';
-  document.getElementById('lblPrazo').textContent = prazo + ' anos';
-
-  state.renda = renda;
-  state.despesas = desp;
-  s.set('state', state);
-
-  const capMax = Math.round(renda * 0.28);
-  document.getElementById('dispCapMax').textContent = fmt(capMax);
-
-  const parcelaSugerida = Math.round(renda * 0.28);
-
-  const i = juros / 100 / 12;
-  const p = prazo * 12;
-
-  let priceParcela = 0, priceTotal = 0;
-  if (i > 0 && p > 0) {
-    priceParcela = parcelaSugerida * (i * Math.pow(1 + i, p)) / (Math.pow(1 + i, p) - 1);
-    priceTotal = priceParcela * p;
-  } else {
-    priceParcela = parcelaSugerida;
-    priceTotal = parcelaSugerida * p;
-  }
-
-  let sacParcela = 0, sacTotal = 0;
-  if (i > 0 && p > 0) {
-    const principal = parcelaSugerida * ((Math.pow(1 + i, p) - 1) / (i * Math.pow(1 + i, p)));
-    sacParcela = principal / p + principal * i;
-    sacTotal = principal * (1 + i * (p + 1) / 2);
-  } else {
-    sacParcela = parcelaSugerida;
-    sacTotal = parcelaSugerida * p;
-  }
-
-  document.getElementById('simPrice').textContent = fmt(priceParcela);
-  document.getElementById('simPriceTotal').textContent = fmt(priceTotal);
-  document.getElementById('simSAC').textContent = fmt(sacParcela);
-  document.getElementById('simSACTotal').textContent = fmt(sacTotal);
-
-  renderSemaforo('semaforoSim', 'sim', capMax, priceParcela);
-}
-
-function addNeighborhood() {
-  const name = document.getElementById('inputNbName').value.trim();
-  const seg = parseInt(document.getElementById('inputNbSeg').value) || 3;
-  const com = parseInt(document.getElementById('inputNbCom').value) || 3;
-  const trans = parseInt(document.getElementById('inputNbTrans').value) || 3;
-  const val = parseInt(document.getElementById('inputNbVal').value) || 3;
-  if (!name) { toast('Digite o nome do bairro!'); return; }
-  const nb = { id: uid(), name, seg, com, trans, val };
-  state.neighborhoods.push(nb);
-  s.set('state', state);
-  document.getElementById('inputNbName').value = '';
-  document.getElementById('inputNbSeg').value = '';
-  document.getElementById('inputNbCom').value = '';
-  document.getElementById('inputNbTrans').value = '';
-  document.getElementById('inputNbVal').value = '';
-  toast('Bairro adicionado!');
-  renderNeighborhoods();
-}
-
-function renderNeighborhoods() {
-  const el = document.getElementById('neighborhoodsList');
-  if (!state.neighborhoods.length) {
-    el.innerHTML = '<div class="card"><div class="text-muted text-center" style="padding:24px">Nenhum bairro cadastrado. Adicione o primeiro!</div></div>';
-    return;
-  }
-  const sorted = [...state.neighborhoods].sort((a, b) => calcScore(b) - calcScore(a));
-  el.innerHTML = sorted.map(nb => {
-    const score = calcScore(nb);
-    const cls = score >= 4 ? 'good' : score >= 2.5 ? 'medium' : 'bad';
-    const rows = [
-      ['🛡️ Segurança', nb.seg, '#dc2626'],
-      ['🛒 Comércio', nb.com, '#d97706'],
-      ['🚌 Transporte', nb.trans, '#047857'],
-      ['📈 Valorização', nb.val, '#7c3aed'],
-    ];
-    return `<div class="neighborhood-card ${score >= 4 ? 'best' : ''}">
-     <div class="nb-header">
-      <div class="nb-name">${nb.name}</div>
-      <div class="nb-score ${cls}">${score.toFixed(1)}</div>
-     </div>
-     <div class="score-bars">
-      ${rows.map(([label, val, color]) => `<div class="score-row">
-       <span class="score-row .lbl">${label}</span>
-       <div class="score-bar"><div class="fill" style="width:${(val/5*100)}%;background:${color}"></div></div>
-       <span style="font-size:11px;font-weight:700;width:16px;text-align:right">${val}</span>
-      </div>`).join('')}
-     </div>
-     <button class="btn btn-sm btn-ghost mt-8" onclick="remNb('${nb.id}')" style="width:100%">Remover</button>
-    </div>`;
-  }).join('');
-}
-
-window.remNb = function(id) {
-  if (!confirm('Remover este bairro?')) return;
-  state.neighborhoods = state.neighborhoods.filter(n => n.id !== id);
-  s.set('state', state);
-  renderNeighborhoods();
-  toast('Bairro removido');
-};
-
-function addProperty() {
-  const desc = document.getElementById('inputPropDesc').value.trim();
-  const valor = parseFloat(document.getElementById('inputPropVal').value) || 0;
-  const entrada = parseFloat(document.getElementById('inputPropEntry').value) || 0;
-  const iptu = parseFloat(document.getElementById('inputPropIPTU').value) || 0;
-  const cond = parseFloat(document.getElementById('inputPropCond').value) || 0;
-  const nb = document.getElementById('inputPropNb').value;
-  if (!desc || !valor) { toast('Preencha descrição e valor!'); return; }
-  const prop = { id: uid(), desc, valor, entrada, iptu, cond, nb };
-  state.properties.push(prop);
-  s.set('state', state);
-  document.getElementById('inputPropDesc').value = '';
-  document.getElementById('inputPropVal').value = '';
-  document.getElementById('inputPropEntry').value = '';
-  document.getElementById('inputPropIPTU').value = '';
-  document.getElementById('inputPropCond').value = '';
-  toast('Imóvel adicionado!');
-  renderComparison();
-}
-
-function renderComparison() {
-  // Update neighborhood dropdown
-  const nbSel = document.getElementById('inputPropNb');
-  nbSel.innerHTML = '<option value="">Novo / Não listado</option>' +
-    state.neighborhoods.map(n => `<option value="${n.name}">${n.name}</option>`).join('');
-
-  const el = document.getElementById('comparisonView');
-  if (!state.properties.length) {
-    el.innerHTML = '<div class="card"><div class="text-muted text-center" style="padding:24px">Nenhum imóvel salvo. Adicione o primeiro!</div></div>';
-    return;
-  }
-
-  // Build comparison table
-  const capMax = Math.round(state.renda * 0.28);
-  const juros = parseFloat(document.getElementById('slJuros').value || 8) / 100 / 12;
-  const prazo = parseInt(document.getElementById('slPrazo').value || 30) * 12;
-
-  el.innerHTML = `<div class="card" style="overflow-x:auto">
-   <table class="comparison-table">
-    <thead>
-     <tr>
-      <th>Imóvel</th>
-      <th>Valor</th>
-      <th>Entrada</th>
-      <th>Financiado</th>
-      <th>Parcela (Price)</th>
-      <th>IPTU+Cond</th>
-      <th>Custo Total</th>
-     </tr>
-    </thead>
-    <tbody>
-     ${state.properties.map(p => {
-       const financiado = p.valor - p.entrada;
-       let parcPrice = 0;
-       if (juros > 0 && prazo > 0 && financiado > 0) {
-         parcPrice = financiado * (juros * Math.pow(1 + juros, prazo)) / (Math.pow(1 + juros, prazo) - 1);
-       } else {
-         parcPrice = financiado / prazo;
-       }
-       const custoTotal = parcPrice * prazo + p.entrada + (p.iptu + p.cond) * prazo;
-       const parcTotal = parcPrice + p.iptu + p.cond;
-       const isAffordable = parcTotal <= capMax;
-       return `<tr>
-        <td><strong>${p.desc}</strong><br><small style="color:var(--texto-suave)">${p.nb || 'Bairro não informado'}</small></td>
-        <td>${fmt(p.valor)}</td>
-        <td>${fmt(p.entrada)}</td>
-        <td class="${isAffordable ? 'best-cell' : ''}">${fmt(financiado)}</td>
-        <td class="${isAffordable ? 'best-cell' : ''}">${fmt(parcPrice)}<br><small style="color:var(--texto-suave)">${fmt(parcTotal)} c/ taxas</small></td>
-        <td>${fmt(p.iptu + p.cond)}/mês</td>
-        <td>${fmt(custoTotal)}</td>
-       </tr>`;
-     }).join('')}
-    </tbody>
-   </table>
-  </div>`;
-}
-
-document.getElementById('btnAddProp').onclick = addProperty;
-
-document.getElementById('btnExportSCV').onclick = () => {
-  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
-  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-  a.download = 'suacasa_dados.json'; a.click();
-  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-};
-
-document.getElementById('btnResetSCV').onclick = () => {
-  if (confirm('Apagar TODOS os dados?')) {
-    localStorage.clear();
-    state = { neighborhoods: [], properties: [], renda: 2500, despesas: 800, saved: true };
-    s.set('state', state);
-    toast('Dados resetados.');
-    showScreen('Home');
-  }
-};
-
-document.querySelectorAll('.nav-item').forEach(n => { n.onclick = () => showScreen(n.dataset.screen); });
-
-// Init
-document.getElementById('slRenda').value = state.renda;
-document.getElementById('slDesp').value = state.despesas;
-
-renderHome();
-updateSim();
-
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
-}
-</script>
 </body>
 </html>

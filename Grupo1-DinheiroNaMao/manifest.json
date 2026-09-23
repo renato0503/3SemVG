@@ -2,7 +2,7 @@
   "name": "Dinheiro na Mão",
   "short_name": "Dinheiro na Mão",
   "description": "Orientação financeira presencial + tecnologia para prevenir o superendividamento.",
-  "start_url": "/Grupo1-DinheiroNaMao/",
+  "start_url": "app.html",
   "display": "standalone",
   "background_color": "#083344",
   "theme_color": "#0e7490",

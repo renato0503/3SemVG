@@ -2,7 +2,7 @@
   "name": "Quita.AI",
   "short_name": "Quita.AI",
   "description": "Controle financeiro em família — resista a gastos por impulso e ganhe pontos!",
-  "start_url": "/Grupo3-QuitaAI/",
+  "start_url": "app.html",
   "display": "standalone",
   "background_color": "#1e1b4b",
   "theme_color": "#7c3aed",

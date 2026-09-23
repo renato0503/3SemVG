@@ -2,7 +2,7 @@
   "name": "LifePath",
   "short_name": "LifePath",
   "description": "Seu mentor de carreira e finanças — trilhas profissionais, missões e simulação financeira",
-  "start_url": "/Grupo2-LifePath/index.html",
+  "start_url": "app.html",
   "display": "standalone",
   "background_color": "#fffbf7",
   "theme_color": "#ff6b35",

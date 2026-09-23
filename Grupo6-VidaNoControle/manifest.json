@@ -2,7 +2,7 @@
   "name": "Vida no Controle",
   "short_name": "Vida no Controle",
   "description": "Organize a renda familiar, encontre oportunidades de economia e controle seus gastos.",
-  "start_url": "/Grupo6-VidaNoControle/",
+  "start_url": "app.html",
   "display": "standalone",
   "background_color": "#431407",
   "theme_color": "#ea580c",

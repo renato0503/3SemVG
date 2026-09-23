@@ -1,7 +1,7 @@
 const CACHE = 'scv-v1';
 const PRE = [
   './',
-  './index.html',
+  './index.html','./app.html',
   '../assets/identidade/temas.css',
   '../assets/kit/kit.css',
   '../assets/kit/kit.js',

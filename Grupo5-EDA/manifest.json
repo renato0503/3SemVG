@@ -2,7 +2,7 @@
   "name": "EDA — Endividados Anônimos",
   "short_name": "EDA",
   "description": "Espaço de acolhimento anônimo entre pares para quem perde o controle dos gastos.",
-  "start_url": "/Grupo5-EDA/",
+  "start_url": "app.html",
   "display": "standalone",
   "background_color": "#1e2235",
   "theme_color": "#4f5bd5",

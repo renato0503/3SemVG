@@ -591,22 +591,30 @@ Get-ChildItem -LiteralPath "D:\Dev\UnifaccApps\3SemVG" -Directory | Select-Objec
 | 9 | **Sincronização automática opcional (Google Sheets)** | Campo pra colar a URL de um Google Apps Script (`doPost`) — cada resposta salva tenta subir sozinha pra uma planilha Google (fetch com `text/plain` pra evitar preflight CORS). Sem internet, fica "pendente" e sincroniza no reconectar (`online` event) ou no botão "Sincronizar pendentes agora". Script completo (`doPost`) e passo a passo documentados em `App/README.md`. |
 | 10 | **Pergunta de e-mail opcional (TCLE)** | Ao final das 20 perguntas, nova tela `scr-email` pergunta se a pessoa quer deixar o e-mail pra receber o **TCLE** e saber o resultado da pesquisa. Campo opcional (`reg.email`), não conta como pergunta de escala. Incluído no CSV (`email_contato`), no JSON, e no payload de sincronização com o Sheets. |
 
-### 19.2 Pendente ❌ (próxima sessão)
+### 19.2 Landing page por grupo — ✅ concluído (mesma sessão, depois)
+
+Implementado o plano da seção antiga: para cada `GrupoN-Nome/`:
+- O app antigo (`index.html`) virou **`app.html`** (`git mv`, preserva histórico).
+- `index.html` novo é uma **landing page**: hero com logo grande + pitch + integrantes + professor(a),
+  botão "Abrir o app" + "Ver slides de defesa", e grid de cards (README, formulário, ContextoApp,
+  Pesquisa-Dados, Slides PDF, material extra do grupo) — mesmo estilo visual (ícones SVG, cores do
+  grupo) do hub raiz. Gerado via script único (`gen_landings.py`, não versionado) pra manter os 6
+  consistentes.
+- `manifest.json` de cada grupo: `start_url` agora aponta pra `"app.html"`.
+- `sw.js` de cada grupo: `app.html` adicionado à lista de precache (`ASSETS`); corrigido um bug que o
+  replace automático causou no fallback offline (`caches.match(...)` ficou com 2 argumentos por engano
+  — corrigido de volta pra 1 argumento).
+- Hub raiz: os cards de MVP que apontavam pra `GrupoN-Nome/` **não precisaram mudar de link** — como
+  apontam pra pasta, agora caem automaticamente na landing (era o comportamento pedido). O texto do
+  botão nesses cards mudou de "Abrir app" pra **"Ver projeto"**, já que agora leva pra landing, não
+  direto pro app.
+
+### 19.3 Pendente ❌ (próxima sessão)
 
 | # | Item | Detalhe |
 |---|---|---|
-| A | **Landing page por grupo** | Pedido do usuário: `GrupoN/index.html` deveria ser uma **landing page** (logo, pitch, cards para README/ContextoApp/Pesquisa-Dados/formulário/Slides) e o **app deveria virar `app.html`** (ou subpasta), com o hub e a landing linkando pro app. **Ainda não implementado** — só foi planejado (ver seção 19.3). Precisa: mover cada `index.html` atual → `app.html`, criar `index.html` novo como landing, atualizar `manifest.json` (`start_url` → `app.html`) e o link "Abrir app" na própria landing. |
 | B | **Testar sincronização com Google Sheets de ponta a ponta** | O código está pronto mas ninguém testou com uma planilha real ainda — falta criar uma planilha de teste, colar a URL no app e validar que as linhas chegam certas (inclusive com e-mail). |
 | C | Botão "Voltar" na tela de e-mail (`scr-email`) | Hoje não tem botão de voltar nessa tela nova — se quiser mudar uma resposta antes de finalizar, precisa ir até o fim e usar "Nova coleta" de novo. Ajuste pequeno, não crítico. |
 | D | Ida ao shopping, tabulação quanti + leitura quali dos áudios, sprints 3–5 por grupo | Itens de longo prazo já registrados nas seções anteriores — sem mudança. |
 | E | Re-sincronizar `_pesquisa/INDICE-PESQUISA.md` | Ainda diverge dos `Pesquisa-Dados.md` por grupo (autores/títulos trocados) — não mexido nesta sessão. |
-
-### 19.3 Plano já desenhado para o item A (landing pages)
-
-Para cada `GrupoN-Nome/`:
-1. Renomear o app atual (`index.html`) → `app.html` (manter `manifest.json`/`sw.js` funcionando, ajustar `start_url`).
-2. Criar `index.html` novo = landing: logo grande, pitch de uma linha, botão grande "Abrir App", e cards
-   linkando pra `README.md`, `formulario-app.md`, `ContextoApp.md`, `Pesquisa-Dados.md`,
-   `Slides-<Grupo>.html`/`.pdf` — usando o mesmo estilo de card com ícones SVG do hub raiz.
-3. Conferir que os links do hub (`Grupo1-DinheiroNaMao/` etc.) continuam funcionando — como apontam pra pasta,
-   vão cair automaticamente na nova landing (comportamento desejado pelo usuário).
+| F | Landing pages: os links pra `.md` (README, ContextoApp, Pesquisa-Dados, formulario-app) abrem o Markdown cru no navegador (sem renderizar) — mesmo comportamento que já existia no hub raiz pro índice de pesquisa. Se quiser, dá pra trocar por versões `.html` renderizadas depois. | Cosmético, não bloqueia uso. |

@@ -2,7 +2,7 @@
   "name": "SuaCasaSuaVida",
   "short_name": "SuaCasaSuaVida",
   "description": "Encontre seu bairro e financie sua casa — simulador + análise de bairro",
-  "start_url": "/Grupo4-SuaCasaSuaVida/index.html",
+  "start_url": "app.html",
   "display": "standalone",
   "background_color": "#f0fdf9",
   "theme_color": "#047857",

@@ -2,622 +2,205 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#4f5bd5">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>EDA — Endividados Anônimos</title>
-<link rel="manifest" href="manifest.json">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EDA — Endividados Anônimos — Grupo 5 · Customer Discovery 3SemVG</title>
+<meta name="description" content="Espaço de acolhimento anônimo entre pares para quem perde o controle das compras (CBSD) — não é tratamento, é treino de autocontrole.">
+<meta name="theme-color" content="#1e2235">
 <link rel="icon" type="image/png" sizes="192x192" href="../assets/logos/g5-192.png">
 <link rel="apple-touch-icon" href="../assets/logos/g5-192.png">
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/identidade/temas.css">
-<link rel="stylesheet" href="../assets/kit/kit.css">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --accent:#4f5bd5;--accent-dark:#3b45a8;--accent-soft:#eef2ff;
-  --accent2:#93c5fd;--tinta:#1e2235;--tinta2:#3730a3;
-  --fonte:'Quicksand',Arial,sans-serif;--fonte-titulo:'Quicksand',Arial,sans-serif;
-  --texto:#1e2235;--texto-suave:#6366f1;--linha:#e0e7ff;--fundo:#f8f7ff;
-  --card:#ffffff;--ok:#22c55e;--alerta:#f43f5e;--atencao:#f59e0b;
-  --nav-bg:#f8f7ff;--nav-icon-size:26px;--nav-radius:50px;
+  --acc:#4f5bd5; --acc2:#93c5fd; --tinta:#1e2235;
+  --surface:#fff; --surface-2:#f4f6fb; --ink:#0f172a; --ink-soft:#5b6478; --line:#e7e9f2;
+  --radius-lg:22px; --radius-md:16px;
+  --shadow-card:0 10px 30px -12px rgba(15,23,42,.18);
+  --shadow-hover:0 18px 40px -14px rgba(15,23,42,.28);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{height:100%}
-body{font-family:var(--fonte);background:var(--fundo);color:var(--texto);font-size:16px;overflow-x:hidden}
-.app{max-width:480px;margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;padding-bottom:80px}
-header.top{background:linear-gradient(135deg,var(--tinta) 0%,var(--tinta2) 100%);color:#fff;padding:14px 16px 40px;position:sticky;top:0;z-index:20}
-header.top .brand{display:flex;align-items:center;justify-content:space-between}
-header.top h1{font-size:17px;font-weight:700;font-family:var(--fonte-titulo)}
-header.top .sub{font-size:11px;opacity:.75;margin-top:2px}
-.badge-pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:11px;padding:3px 8px;border-radius:20px}
-.progress-bar{height:4px;background:rgba(255,255,255,.2);border-radius:4px;margin-top:10px;overflow:hidden}
-.progress-bar i{display:block;height:100%;width:0;background:var(--accent2);transition:width .3s}
-main{flex:1;padding:0 16px}
-.screen{display:none;flex-direction:column;animation:fade .2s ease}
-.screen.active{display:flex}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.page-title{font-size:13px;font-weight:700;color:var(--texto-suave);text-transform:uppercase;letter-spacing:.07em;padding:16px 0 6px}
-.card{background:#fff;border-radius:20px;box-shadow:0 2px 12px rgba(79,91,213,.08);border:1px solid #e0e7ff}
-.card-title{font-family:'Quicksand',Arial,sans-serif;font-weight:700;color:#1e2235}
-.card-sub{color:#6366f1}
-/* G5 distinctive: soft, calm, safe, non-judgmental */
-body{font-family:'Quicksand',Arial,sans-serif;background:#f8f7ff;color:#1e2235}
-header.top{background:linear-gradient(135deg,#1e2235 0%,#3730a3 100%);border-bottom:3px solid #93c5fd}
-header.top h1{font-family:'Quicksand',Arial,sans-serif;font-weight:700;font-size:17px;color:#f8f7ff}
-header.top .sub{color:#c7d2fe}
-.badge-pill{background:rgba(147,197,253,.2);border:1px solid rgba(147,197,253,.4);color:#93c5fd}
-.btn{border-radius:50px;font-family:'Quicksand',Arial,sans-serif;font-weight:600}
-.btn-primary{background:linear-gradient(135deg,#4f5bd5,#6366f1);color:#fff;border-radius:50px;box-shadow:0 4px 14px rgba(79,91,213,.3)}
-.btn-ghost{background:#fff;color:#4f5bd5;border:2px solid #e0e7ff;border-radius:50px}
-.btn-success{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;border-radius:50px;box-shadow:0 4px 14px rgba(34,197,94,.2)}
-.nav-bottom{background:#f8f7ff;border-top:1px solid #e0e7ff;padding:8px 16px}
-.nav-item.active{color:#4f5bd5}
-.nav-item{color:#6366f1;border-radius:50px;padding:8px 12px}
-.page-title{color:#4f5bd5;font-weight:700;font-size:14px;letter-spacing:.05em}
-.text-muted{color:#6366f1}
-header.top::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(147,197,253,.1) 0%,transparent 60%)}
-.btn{display:flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:12px;padding:14px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;transition:transform .05s,background .15s;padding-top:calc(14px + env(safe-area-inset-top))}
-.btn:active{transform:scale(.975)}
-.btn-primary{background:var(--accent);color:#fff}
-.btn-primary:hover{background:var(--accent-dark)}
-.btn-ghost{background:#fff;color:var(--accent);border:1.5px solid var(--accent)}
-.btn-success{background:var(--ok);color:#fff}
-.btn-danger{background:#fff;color:var(--alerta);border:1.5px solid #fca5a5}
-.btn-sm{padding:10px 14px;font-size:13px}
-.row{display:flex;gap:10px}
-.row>*{flex:1}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.text-center{text-align:center}
-.text-muted{color:var(--texto-suave);font-size:13px}
-.mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mb-8{margin-bottom:8px}.mb-12{margin-bottom:12px}
-.flex-between{display:flex;align-items:center;justify-content:space-between}
-.kpi-big{text-align:center;padding:16px 0}
-.kpi-big .num{font-size:48px;font-weight:900;color:var(--accent);line-height:1;font-family:var(--fonte-titulo)}
-.kpi-big .label{font-size:12px;color:var(--texto-suave);margin-top:4px;letter-spacing:.04em}
-.emoji-big{font-size:64px;text-align:center;margin-bottom:8px}
-.input-group{margin-bottom:12px}
-.input-group label{display:block;font-size:12px;font-weight:600;color:var(--texto-suave);margin-bottom:4px;letter-spacing:.04em}
-.form-input,.form-select,.form-textarea{width:100%;padding:12px 14px;border:1.5px solid var(--linha);border-radius:10px;font-size:15px;font-family:inherit;background:#fff;color:var(--texto);transition:border-color .15s}
-.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--accent)}
-.empty-state{text-align:center;padding:40px 20px;color:var(--texto-suave)}
-.empty-state .icon{font-size:48px;margin-bottom:12px}
-.empty-state .msg{font-size:15px;font-weight:600;color:var(--texto)}
-.empty-state .sub{font-size:13px}
-.nav-bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--linha);display:flex;z-index:30;padding-bottom:env(safe-area-inset-bottom)}
-.nav-bottom .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px;gap:3px;cursor:pointer;color:var(--texto-suave);transition:color .15s;border:none;background:none;font-size:11px;font-family:inherit}
-.nav-bottom .nav-item.active{color:var(--accent)}
-.nav-bottom .nav-item .nav-icon{font-size:20px}
-.badge{background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px}
-.alert-box{padding:12px 14px;border-radius:10px;font-size:13px;margin-bottom:10px}
-.alert-box.info{background:#eff6ff;color:#1d4ed8}
-.alert-box.warn{background:#fffbeb;color:#92400e}
-.alert-box.ok{background:#f0fdf4;color:#166534}
-.alert-box.emergency{background:#fef2f2;color:#991b1b;border-left:4px solid #dc2626}
-.msg-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--linha)}
-.msg-item .avatar{width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0}
-.msg-item .bubble{flex:1;background:var(--accent-soft);border-radius:12px;padding:10px 12px}
-.msg-item .name{font-size:12px;font-weight:700;color:var(--accent);margin-bottom:2px}
-.msg-item .text{font-size:14px;line-height:1.45;color:var(--texto)}
-.msg-item .time{font-size:11px;color:var(--texto-suave);margin-top:4px}
-.humor-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:12px}
-.humor-btn{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 4px;border:1.5px solid var(--linha);border-radius:12px;background:#fff;cursor:pointer;font-size:11px;color:var(--texto-suave);transition:all .15s}
-.humor-btn.selected{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
-.humor-btn .emo{font-size:28px}
-.breathing-circle{width:120px;height:120px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin:20px auto;transition:transform 4s ease-in-out}
-.breathing-circle .inner{font-size:16px;font-weight:600;color:var(--accent);text-align:center}
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;display:none;align-items:center;justify-content:center;padding:16px}
-.modal-overlay.open{display:flex}
-.modal-box{background:#fff;border-radius:16px;width:100%;max-width:400px;max-height:90dvh;overflow-y:auto;padding:20px}
-.modal-title{font-size:18px;font-weight:700;margin-bottom:12px}
-.modal-close{float:right;background:none;border:none;font-size:22px;cursor:pointer;color:var(--texto-suave);padding:4px}
-.toast-container{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);z-index:60;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none}
-.toast{background:var(--tinta);color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;animation:toastIn .25s ease;white-space:nowrap}
-@keyframes toastIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.truncate{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.section-title{font-size:12px;font-weight:700;color:var(--texto-suave);text-transform:uppercase;letter-spacing:.06em;margin:16px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--linha)}
-.brand{display:flex;align-items:center;gap:10px}
-.app-logo{width:38px;height:38px;border-radius:10px;object-fit:cover;box-shadow:0 2px 6px rgba(0,0,0,.25);flex-shrink:0}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--surface-2);color:var(--ink);min-height:100dvh}
+h1,h2{font-family:'Space Grotesk',system-ui,sans-serif}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:920px;margin:0 auto;padding:0 20px}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.92);backdrop-filter:blur(10px)}
+.nav .wrap{display:flex;align-items:center;gap:12px;padding:12px 20px;color:#fff}
+.nav-back{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#c7cee8;text-decoration:none;flex-shrink:0}
+.nav-back svg{width:16px;height:16px}
+.nav-back:hover{color:#fff}
+.nav-title{margin-left:auto;font-size:13px;font-weight:700;opacity:.85}
+
+.hero{
+  position:relative;color:#fff;padding:52px 0 74px;overflow:hidden;
+  background:linear-gradient(160deg,var(--tinta) 0%,#0b1220 100%);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(600px 320px at 85% 0%, color-mix(in srgb, var(--acc) 35%, transparent), transparent 60%);
+}
+.hero .wrap{position:relative;z-index:2}
+.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+.hero-logo{width:64px;height:64px;border-radius:16px;box-shadow:0 8px 22px rgba(0,0,0,.35);flex-shrink:0}
+.hero-group{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--acc2)}
+.hero h1{font-size:clamp(24px,4.2vw,34px);font-weight:700;letter-spacing:-.01em;margin-top:2px}
+.hero p.pitch{margin-top:14px;font-size:15px;line-height:1.6;color:#c7cee8;max-width:600px}
+.hero-meta{display:flex;gap:22px;margin-top:26px;flex-wrap:wrap;font-size:12.5px;color:#9aa5c3}
+.hero-meta b{color:#fff;display:block;font-size:13px;margin-bottom:2px}
+
+.cta-row{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.btn-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(90deg,var(--acc),var(--acc2));color:#0b1220;
+  font-weight:700;font-size:14.5px;padding:13px 22px;border-radius:100px;text-decoration:none;
+  box-shadow:0 10px 24px -8px color-mix(in srgb, var(--acc) 60%, transparent);
+  transition:transform .15s;
+}
+.btn-cta:hover{transform:translateY(-2px)}
+.btn-cta svg{width:16px;height:16px}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;
+  font-weight:600;font-size:13.5px;padding:12px 18px;border-radius:100px;text-decoration:none;
+}
+.btn-secondary:hover{background:rgba(255,255,255,.14)}
+.btn-secondary svg{width:14px;height:14px}
+
+section.block{padding:44px 0}
+.block-head{margin-bottom:22px}
+.block-head h2{font-size:19px;font-weight:700;display:flex;align-items:center;gap:9px;color:var(--ink)}
+.block-head h2 svg{width:20px;height:20px;color:var(--acc)}
+.block-head p{font-size:13px;color:var(--ink-soft);margin-top:4px}
+
+.doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.doc-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
+  padding:18px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:10px;
+  box-shadow:0 1px 3px rgba(15,23,42,.05);
+  transition:transform .15s,box-shadow .15s,border-color .15s;
+}
+.doc-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-card);border-color:var(--acc)}
+.doc-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  background:color-mix(in srgb, var(--acc) 14%, white);color:var(--acc)}
+.doc-icon svg{width:19px;height:19px}
+.doc-card b{font-size:14px;font-weight:700}
+.doc-card small{font-size:12px;color:var(--ink-soft);line-height:1.4}
+
+.team{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.team span{background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:100px;font-size:12.5px;font-weight:600}
+
+footer{background:var(--tinta);color:#cbd5f5;padding:32px 0;margin-top:20px}
+footer .wrap{display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center}
+footer a{color:#fff;text-decoration:none;font-weight:600}
+footer p{font-size:12px;opacity:.85}
 </style>
 </head>
-<body class="tema-g5">
-<div class="app">
-<header class="top">
-<div class="brand">
- <img class="app-logo" src="../assets/logos/g5-96.png" alt="Logo G5">
- <div>
-  <h1>EDA</h1>
-  <div class="sub" id="dispNick">Crie seu perfil</div>
- </div>
- <span class="badge-pill" id="dispStreak">0 dias</span>
-</div>
-<div class="progress-bar"><i id="levelProgress" style="width:0%"></i></div>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="../index.html" class="nav-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+      Todos os projetos
+    </a>
+    <span class="nav-title">Grupo 5 · EDA — Endividados Anônimos</span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <img class="hero-logo" src="../assets/logos/g5-192.png" alt="Logo EDA — Endividados Anônimos">
+      <div>
+        <div class="hero-group">Grupo 5 · Customer Discovery</div>
+        <h1>EDA — Endividados Anônimos</h1>
+      </div>
+    </div>
+    <p class="pitch">Espaço de acolhimento anônimo entre pares para quem perde o controle das compras (CBSD) — não é tratamento, é treino de autocontrole.</p>
+    <div class="hero-meta">
+      <div><b>Professor(a)</b>Prof. Renato</div>
+      <div><b>Integrantes</b>Cássia Nóbrega, Sarah, Sabrina, Beatriz B., Denner</div>
+      <div><b>Código de campo</b>G5-&lt;nnn&gt;</div>
+    </div>
+    <div class="cta-row">
+      <a href="app.html" class="btn-cta">
+        Abrir o app
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="Slides-EDA.html" class="btn-secondary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        Ver slides de defesa
+      </a>
+    </div>
+  </div>
 </header>
 
 <main>
-<!-- TELA: Boas-vindas -->
-<section class="screen active" id="screenWelcome">
-<div class="page-title">Bem-vindos ao EDA</div>
-<div id="noProfile">
- <div class="card">
-  <div class="emoji-big">🤝</div>
-   <div class="card-title" style="text-align:center;font-size:20px">Endividados Anônimos</div>
-   <div class="card-sub text-center mb-12">Um espaço de acolhimento para pessoas que perdem o controle dos gastos — o que a medicina chama de <strong>Compra Compulsiva (CBSD)</strong>.</div>
-   <div class="alert-box info mb-12">
-    <strong>Como funciona?</strong><br>
-    <span style="font-size:12px">A compra compulsiva é um transtorno reconhecido de controle de impulsos — não é falta de caráter nem de educação financeira. O EDA oferece apoio entre pares, inspirado nos grupos AA. Você escolhe um apelido, registra seus episódios e encontra pessoas que entendem o que você está passando. Não é terapia nem tratamento médico.</span>
-   </div>
-  <div class="input-group">
-   <label>SEU APELIDO (escolha um nome qualquer)</label>
-   <input class="form-input" id="inputNick" placeholder="Ex.: Marquinhos, Luz, Esperanza" maxlength="20">
-  </div>
-  <button class="btn btn-primary" id="btnCreateProfile">Entrar no EDA</button>
- </div>
- <div class="alert-box warn mt-12">
-  <strong>⚠️ Não é tratamento médico</strong><br>
-  <span style="font-size:12px">O EDA é apoio entre pares. Se você estiver em crise, procure o <strong>CVV 188</strong>, <strong>CAPS</strong> ou <strong>UBS</strong> mais próxima.</span>
- </div>
-</div>
-<div id="hasProfile" style="display:none">
- <div class="emoji-big">🤝</div>
- <div class="card-title text-center" style="font-size:18px" id="welcomeMsg">Bem-vindo de volta!</div>
- <div class="card-sub text-center mb-12">Você está no espaço seguro do EDA — apoio entre pares para compra compulsiva (CBSD) e dívidas. O que gostaria de fazer hoje?</div>
- <button class="btn btn-primary" onclick="showScreen('Checkin')">Fazer Check-in ✅</button>
- <button class="btn btn-ghost mt-8" onclick="showScreen('Roda')">Roda de Apoio 💬</button>
- <button class="btn btn-ghost mt-8" onclick="showScreen('Ajuda')">Preciso de Ajuda 🆘</button>
- <button class="btn btn-ghost mt-8" onclick="showScreen('Respirar')">Respirar 🧘</button>
-</div>
-</section>
+  <section class="block">
+    <div class="wrap">
+      <div class="block-head">
+        <h2>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M15 3h6v6M10 14L21 3"/></svg>
+          Materiais do grupo
+        </h2>
+        <p>Toda a documentação produzida para a defesa e para a pesquisa de campo.</p>
+      </div>
 
-<!-- TELA: Check-in -->
-<section class="screen" id="screenCheckin">
-<div class="page-title">Check-in de Hoje</div>
-<div class="card">
- <div class="card-title">Episódio de compra compulsiva hoje?</div>
- <div class="card-sub mb-12">Responda com sinceridade — nada aqui é julgado.</div>
- <div class="humor-grid" id="humorGrid">
-  <button class="humor-btn" data-humor="resisti" onclick="selectHumor('resisti')">
-   <span class="emo">🏆</span>
-   <span>Resisti</span>
-  </button>
-  <button class="humor-btn" data-humor="quase" onclick="selectHumor('quase')">
-   <span class="emo">😬</span>
-   <span>Quase comprei</span>
-  </button>
-  <button class="humor-btn" data-humor="comprei" onclick="selectHumor('comprei')">
-   <span class="emo">😔</span>
-   <span>Comprei por impulso</span>
-  </button>
-  <button class="humor-btn" data-humor="dificeis" onclick="selectHumor('dificeis')">
-   <span class="emo">😢</span>
-   <span>Difícil hoje</span>
-  </button>
- </div>
- <div class="input-group">
-  <label>O QUE DISPAROU O IMPULSO? (opcional)</label>
-  <input class="form-input" id="inputGatilho" placeholder="Ex.: Vi uma promoção no app, stress no trabalho, recebi uma notificação..." maxlength="100">
- </div>
- <div class="input-group">
-  <label>NÍVEL DE DÍVIDA HOJE (1 = nenhuma, 5 = muito alta)</label>
-  <div class="humor-grid" style="grid-template-columns:1fr 1fr 1fr 1fr 1fr">
-   <button class="humor-btn" onclick="selectNota(1)">1</button>
-   <button class="humor-btn" onclick="selectNota(2)">2</button>
-   <button class="humor-btn" onclick="selectNota(3)">3</button>
-   <button class="humor-btn" onclick="selectNota(4)">4</button>
-   <button class="humor-btn" onclick="selectNota(5)">5</button>
-  </div>
-  <div class="flex-between text-muted mt-8">
-   <span>Nenhuma</span><span>Muito alta</span>
-  </div>
- </div>
- <button class="btn btn-success" id="btnSaveCheckin" onclick="saveCheckin()">Salvar Check-in ✅</button>
-</div>
-<div class="card mt-12">
- <div class="card-title">Histórico de Check-ins</div>
- <div id="checkinHistory"></div>
-</div>
-</section>
+      <div class="doc-grid">
+        <a href="README.md" class="doc-card">
+          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+          <b>README do grupo</b>
+          <small>Integrantes, hipótese, roteiro de campo e pitch</small>
+        </a>
 
-<!-- TELA: Roda de Apoio -->
-<section class="screen" id="screenRoda">
-<div class="page-title">Roda de Apoio</div>
-<div class="alert-box ok mb-12">
- <strong>💬 O que é dito aqui fica aqui.</strong><br>
- <span style="font-size:12px">Este é um espaço seguro. Respeite o silêncio de cada um e não julgue. Sem nomes, sem exposição.</span>
-</div>
-<div class="card">
- <div class="card-title">Mensagens da Roda</div>
- <div id="messagesList"></div>
-</div>
-<div class="card mt-12">
- <div class="input-group">
-  <label>SUA MENSAGEM (opcional)</label>
-  <textarea class="form-textarea" id="inputMessage" placeholder="Compartilhe algo, se quiser... ou apenas leia o que outros escreveram." rows="3" maxlength="300"></textarea>
- </div>
- <button class="btn btn-primary" id="btnSendMessage" onclick="sendMessage()">Enviar para a Roda ✉️</button>
-</div>
-</section>
+        <a href="formulario-app.md" class="doc-card">
+          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <b>Formulário de campo</b>
+          <small>20 perguntas em escala 1–5, código G5-&lt;nnn&gt;</small>
+        </a>
 
-<!-- TELA: Ajuda -->
-<section class="screen" id="screenAjuda">
-<div class="page-title">Preciso de Ajuda</div>
-<div class="card">
- <div class="emoji-big">🆘</div>
- <div class="card-title text-center" style="font-size:18px">Você não está sozinho(a)</div>
- <div class="card-sub text-center mb-12">Esses serviços estão disponíveis 24 horas para ouvir você.</div>
-</div>
-<div class="card emergency">
- <div class="card-title" style="color:#991b1b">Emergência — Crise aguda</div>
- <div class="flex-between mt-8">
-  <span style="font-size:15px;font-weight:600">CVV — Centro de Valorização da Vida</span>
-  <span style="font-size:18px;font-weight:900;color:#991b1b">188</span>
- </div>
- <div class="text-muted mt-4" style="font-size:12px">Ligação e chat 24h. Gratuito e sigiloso.</div>
- <button class="btn btn-danger mt-8" onclick="window.open('tel:188')">Ligar agora 📞</button>
-</div>
-<div class="card mt-12">
- <div class="card-title">UBS — Unidade Básica de Saúde</div>
- <div class="card-sub mb-8">Busque a UBS mais próxima da sua casa. O acolhimento inicial é feito sem custo.</div>
- <button class="btn btn-ghost" onclick="toast('Procure a UBS mais próxima de você!')">Encontrar UBS 🏥</button>
-</div>
-<div class="card mt-12">
- <div class="card-title">CAPS — Centro de Atenção Psicossocial</div>
- <div class="card-sub mb-8">Para acompanhamento de saúde mental. Encaminhamento via UBS ou direto.</div>
- <button class="btn btn-ghost" onclick="toast('Procure o CAPS mais próximo!')">Encontrar CAPS 🧠</button>
-</div>
-<div class="card mt-12">
- <div class="card-title">Aplicativo de Crédito Consciente</div>
- <div class="card-sub mb-8">Para apoio com organização de dívidas e renegociação.</div>
- <button class="btn btn-ghost" onclick="toast('Procure o programa Desenrola Brasil ou a biblioteca local!')">Saber mais 💡</button>
-</div>
-</section>
+        <a href="ContextoApp.md" class="doc-card">
+          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg></div>
+          <b>Contexto do produto</b>
+          <small>Pitch, personas, jornada, MVP/v1/v2, KPIs e riscos</small>
+        </a>
 
-<!-- TELA: Respirar -->
-<section class="screen" id="screenRespirar">
-<div class="page-title">Respirar</div>
-<div class="card">
- <div class="card-title text-center">Técnica 4-7-8</div>
- <div class="card-sub text-center mb-12">Uma respiração que acalma o sistema nervoso. Repita 3 a 4 ciclos.</div>
- <div style="text-align:center">
-  <div class="breathing-circle" id="breathCircle">
-   <div class="inner" id="breathText">Toque para começar</div>
-  </div>
-  <button class="btn btn-primary mt-12" id="btnBreath" onclick="startBreathing()">Iniciar Ciclo 🟢</button>
-  <button class="btn btn-ghost mt-8" onclick="stopBreathing()">Parar ⏹</button>
- </div>
- <div class="card-sub mt-12" style="font-size:12px;line-height:1.6">
-  <strong>Como funciona:</strong><br>
-  1. <strong>Inspire</strong> pelo nariz por <strong>4 segundos</strong><br>
-  2. <strong>Segure</strong> a respiração por <strong>7 segundos</strong><br>
-  3. <strong>Expire</strong> pela boca por <strong>8 segundos</strong><br>
-  4. Repita 3 a 4 vezes.
- </div>
-</div>
-</section>
+        <a href="Pesquisa-Dados.md" class="doc-card">
+          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M15 3h6v6M10 14L21 3"/></svg></div>
+          <b>Pesquisa e dados</b>
+          <small>Dados oficiais + 12 artigos científicos com DOI</small>
+        </a>
 
-<!-- TELA: Perfil -->
-<section class="screen" id="screenProfile">
-<div class="page-title">Meu Perfil</div>
-<div class="card" style="margin-bottom:12px">
-  <div class="card-title">📋 Sobre o Trabalho Acadêmico</div>
-  <p style="font-size:13px;color:#6366f1;margin-bottom:12px;line-height:1.6">
-    O <strong>EDA — Endividados Anônimos</strong> faz parte da pesquisa de <strong>Customer Discovery</strong> da disciplina de Projeto Inovador (3º Semestre · Unifacc).
-    Os alunos foram a um shopping ouvir pessoas reais sobre gastos por impulso, dívidas e apoio entre pares.
-  </p>
-  <button class="btn btn-primary btn-sm" id="btnSobreTrabalho" onclick="abrirSobreTrabalho()">
-    Ver contexto, formulário e referencial
-  </button>
-</div>
-<div class="card">
-  <div class="card-title">Meu Apelido</div>
- <div id="profileNick"></div>
-</div>
-<div class="card mt-12">
- <div class="card-title">Estatísticas</div>
- <div id="profileStats"></div>
-</div>
-<div class="card mt-12">
- <div class="alert-box info mb-8">
-  <strong>💡 O que é o EDA?</strong><br>
-  <span style="font-size:12px">O EDA é um espaço de apoio entre pares para pessoas com <strong>Compra Compulsiva (CBSD)</strong> — um transtorno reconhecido de controle de impulsos. A relação entre CBSD e inadimplência é o foco central: a pessoa não entra em dívida por falta de conhecimento, mas por incapacidade de inibir o impulso no momento. O EDA não é tratamento médico nem terapia — é acolhimento entre pessoas que vivem o mesmo ciclo.</span>
- </div>
-</div>
-<div class="card mt-12">
- <button class="btn btn-ghost" id="btnExportEDA" style="margin-bottom:8px">Exportar Dados 📤</button>
- <button class="btn btn-danger" id="btnResetEDA">Apagar Todos os Dados 🗑️</button>
-</div>
-</section>
+        <a href="Slides-EDA.pdf" class="doc-card">
+          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <b>Slides de defesa (PDF)</b>
+          <small>Versão para download e impressão</small>
+        </a>
+
+        <a href="Portfolio_EDA_Caso_Suzana_Rediagramado%20(3).pdf" class="doc-card">
+          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M13 2v7h7"/></svg></div>
+          <b>Portfólio do caso (PDF)</b>
+          <small>Material complementar do grupo</small>
+        </a>
+      </div>
+
+      <div class="team">
+        <span>Cássia Nóbrega</span>
+        <span>Sarah</span>
+        <span>Sabrina</span>
+        <span>Beatriz B.</span>
+        <span>Denner</span>
+      </div>
+    </div>
+  </section>
 </main>
 
-<nav class="nav-bottom" id="bottomNav" style="display:none">
-<button class="nav-item active" data-screen="Welcome">
- <span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="13" r="10"/><path d="M9 13l3 3 5-5"/></svg></span><span>Início</span>
-</button>
-<button class="nav-item" data-screen="Checkin">
- <span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3c-5.5 0-10 4.5-10 10 0 4 2.5 7.5 6 9v2a1 1 0 001 1h6a1 1 0 001-1v-2c3.5-1.5 6-5 6-9 0-5.5-4.5-10-10-10z"/><path d="M9 9l8 8"/></svg></span><span>Check-in</span>
-</button>
-<button class="nav-item" data-screen="Roda">
- <span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="13" r="10"/><circle cx="13" cy="13" r="4"/><path d="M13 3v4M13 19v4M3 13h4M19 13h4"/></svg></span><span>Roda</span>
-</button>
-<button class="nav-item" data-screen="Ajuda">
- <span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 21C13 21 4 14 4 8.5a4.5 4.5 0 018.5-3.5C13 5 13 21 13 21z"/></svg></span><span>Ajuda</span>
-</button>
-<button class="nav-item" data-screen="Profile">
- <span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="10" r="5"/><path d="M4 22c0-5 4-9 9-9s9 4 9 9"/></svg></span><span>Perfil</span>
-</button>
-</nav>
-</div>
-
-<div class="toast-container" id="toastContainer"></div>
-
-<div class="modal-overlay" id="modalSobre" style="display:none">
-  <div class="modal-box" style="max-height:85dvh;overflow-y:auto;padding:20px;border-radius:24px">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-      <div style="font-size:16px;font-weight:700;color:#1e2235">Sobre o Trabalho</div>
-      <button onclick="fecharSobreTrabalho()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#6366f1">✕</button>
-    </div>
-    <div style="font-size:13px;line-height:1.7;color:#1e2235">
-      <div style="background:#eef2ff;border-radius:16px;padding:14px;margin-bottom:14px;border-left:4px solid #4f5bd5">
-        <strong style="color:#4f5bd5">💙 Contexto do Projeto</strong><br>
-        O <strong>EDA — Endividados Anônimos</strong> nasceu da defesa de projeto inovador sobre <strong>CBSD (Compulsive Buying-Shopping Disorder)</strong> e sua relação com a inadimplência. A tese central: a pessoa não entra em dívida por falta de educação financeira, mas por <strong>incapacidade de inibir o impulso no momento da compra</strong> — o que a medicina chama de transtorno de controle de impulsos. O EDA testa se um espaço de acolhimento entre pares pode quebrar esse ciclo. A pesquisa de campo aconteceu no shopping com formulário de 20 perguntas sobre episódios de compra impulsiva, nível de dívidas, vergonha/ocultação e tentativas de parar.
-      </div>
-      <div style="background:#f0fdf4;border-radius:16px;padding:14px;margin-bottom:14px;border-left:4px solid #22c55e">
-        <strong style="color:#22c55e">📊 Resultado do Formulário (Customer Discovery)</strong><br>
-        <span style="font-size:12px">A pesquisa de campo testou 4 dimensões: (1) frequência e intensidade dos episódios de compra impulsiva, (2) nível de dívidas/cheque especial, (3) vergonha/ocultação de gastos, (4) tentativas anteriores de parar. As perguntas usam escala 1–5 sem valores de renda. Os códigos G5-<nnn> correlacionam cada resposta com o áudio gravado no WhatsApp — o que permite cruzar dado quantitativo com o relato qualitativo da pessoa.</span>
-      </div>
-      <div style="background:#fffbeb;border-radius:16px;padding:14px;margin-bottom:14px;border-left:4px solid #f59e0b">
-        <strong style="color:#f59e0b">📚 Referencial Teórico</strong><br>
-        <span style="font-size:12px">O trabalho tem base em 14 artigos peer-reviewed (2021–2026), centrados em CBSD e inadimplência: Müller et al. (2021) — critérios diagnósticos consensus de CBSD por 138 experts; Grant & Chamberlain (2024) — CBSD como transtorno com base neuropsiquiátrica; Maraz et al. (2022) — prevalência de 4,9% da população adulta; ten Have et al. (2021) — relação bidirecional dívida↔saúde mental; Bu et al. (2021) — treinamento de auto-regulação reduz borrowing mais que literacy sozinha; Moon et al. (2024) — dívida médica bloqueia acesso a tratamento de saúde mental. O arcabouço: CBSD como transtorno de controle de impulsos, modelo AA adaptado, ciclo dívida↔saúde mental.</span>
-      </div>
-      <div style="background:#eef2ff;border-radius:16px;padding:14px;border-left:4px solid #6366f1">
-        <strong style="color:#6366f1">🎯 Hipótese de Campo</strong><br>
-        <span style="font-size:12px">A hipótese testada é que <strong>CBSD e inadimplência estão diretamente conectados</strong>: a pessoa não entra em crise financeira por desconhecimento, mas por incapacidade de inibir o impulso no momento. O formulário mede se quem tem mais episódios de compra impulsiva também tem mais nível de dívidas e mais vergonha/ocultação. Se a correlação se confirmar, o EDA justifica-se como ambiente de treino de autocontrole — não como programa de educação financeira.</span>
-      </div>
-    </div>
-    <button class="btn btn-ghost btn-sm" onclick="fecharSobreTrabalho()" style="margin-top:14px;width:100%;border-color:#4f5bd5;color:#4f5bd5">Fechar</button>
+<footer>
+  <div class="wrap">
+    <a href="../index.html">← Voltar ao hub Customer Discovery</a>
+    <p>Grupo 5 · EDA — Endividados Anônimos · Cerrado Tech · Unifacc · 3º Semestre Tecnologia e Inovação, 2026</p>
   </div>
-</div>
-<script>
-function abrirSobreTrabalho(){document.getElementById('modalSobre').style.display='flex';document.body.style.overflow='hidden'}
-function fecharSobreTrabalho(){document.getElementById('modalSobre').style.display='none';document.body.style.overflow=''}
-document.getElementById('modalSobre').onclick=function(e){if(e.target===this)fecharSobreTrabalho()};
-</script>
+</footer>
 
-<script src="../assets/kit/kit.js" type="module"></script>
-<script type="module">
-import { uid } from '../assets/kit/kit.js';
-
-const NS = 'eda';
-function _k(k) { return NS + ':' + k; }
-const s = {
-  get(k, f) { try { const v = localStorage.getItem(_k(k)); return v == null ? f : JSON.parse(v); } catch { return f; } },
-  set(k, v) { try { localStorage.setItem(_k(k), JSON.stringify(v)); return true; } catch { return false; } }
-};
-
-let state = s.get('state', { nick: null, checkins: [], messages: [], streak: 0, lastCheckin: null });
-let selectedHumor = null;
-let selectedNota = null;
-let breathingTimer = null;
-let breathPhase = 0;
-
-function toast(msg) {
-  const c = document.getElementById('toastContainer');
-  const el = document.createElement('div');
-  el.className = 'toast';
-  el.textContent = msg;
-  c.appendChild(el);
-  setTimeout(() => el.remove(), 2800);
-}
-
-function showScreen(name) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById('screen' + name).classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.screen === name));
-  if (name === 'Roda') renderMessages();
-  if (name === 'Checkin') renderCheckinHistory();
-  if (name === 'Profile') renderProfile();
-}
-
-function save() { s.set('state', state); }
-
-function render() {
-  const hasNick = !!state.nick;
-  document.getElementById('noProfile').style.display = hasNick ? 'none' : 'block';
-  document.getElementById('hasProfile').style.display = hasNick ? 'block' : 'none';
-  document.getElementById('bottomNav').style.display = hasNick ? 'flex' : 'none';
-  if (hasNick) {
-    document.getElementById('dispNick').textContent = state.nick;
-    document.getElementById('welcomeMsg').textContent = 'Bem-vindo de volta, ' + state.nick + '!';
-    const streak = calcStreak();
-    document.getElementById('dispStreak').textContent = streak + ' dia' + (streak !== 1 ? 's' : '');
-  }
-}
-
-function calcStreak() {
-  if (!state.lastCheckin) return 0;
-  const now = new Date();
-  const last = new Date(state.lastCheckin);
-  const diff = Math.floor((now - last) / 86400000);
-  return diff <= 1 ? (state.streak || 0) : 0;
-}
-
-function selectHumor(h) {
-  selectedHumor = h;
-  document.querySelectorAll('.humor-btn').forEach(b => b.classList.remove('selected'));
-  document.querySelector('[data-humor="' + h + '"]').classList.add('selected');
-}
-
-function selectNota(n) {
-  selectedNota = n;
-  document.querySelectorAll('.humor-btn').forEach(b => b.classList.remove('selected'));
-}
-
-function saveCheckin() {
-  if (!selectedHumor && !selectedNota) { toast('Escolha pelo menos um emoji ou uma nota!'); return; }
-  const checkin = {
-    id: uid(),
-    humor: selectedHumor,
-    nota: selectedNota,
-    gatilho: document.getElementById('inputGatilho').value.trim(),
-    ts: new Date().toISOString()
-  };
-  state.checkins.push(checkin);
-  const now = new Date();
-  const last = state.lastCheckin ? new Date(state.lastCheckin) : null;
-  if (last) {
-    const diff = Math.floor((now - last) / 86400000);
-    if (diff <= 1) state.streak = (state.streak || 0) + 1;
-    else state.streak = 1;
-  } else { state.streak = 1; }
-  state.lastCheckin = now.toISOString();
-  save();
-  selectedHumor = null;
-  selectedNota = null;
-  document.getElementById('inputGatilho').value = '';
-  document.querySelectorAll('.humor-btn').forEach(b => b.classList.remove('selected'));
-  toast('Check-in salvo! Cuide-se hoje. 💜');
-  renderCheckinHistory();
-}
-
-function renderCheckinHistory() {
-  const el = document.getElementById('checkinHistory');
-  if (!state.checkins.length) {
-    el.innerHTML = '<div class="text-muted" style="font-size:13px">Nenhum check-in ainda. Este é um bom momento para o primeiro!</div>';
-    return;
-  }
-  const humorEmo = { otimo: '😄', ok: '🙂', receio: '😟', difícil: '😢' };
-  el.innerHTML = state.checkins.slice(-7).reverse().map(c => {
-    const d = new Date(c.ts);
-    const emo = humorEmo[c.humor] || '📝';
-    return `<div class="msg-item">
-     <div class="avatar">${emo}</div>
-     <div class="bubble">
-      <div class="name">${state.nick} · Nota ${c.nota || '?'}/5</div>
-      ${c.gatilho ? '<div class="text" style="font-size:13px;color:var(--texto)">' + c.gatilho + '</div>' : ''}
-      <div class="time">${d.toLocaleDateString('pt-BR')} ${d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}</div>
-     </div>
-    </div>`;
-  }).join('');
-}
-
-function sendMessage() {
-  const text = document.getElementById('inputMessage').value.trim();
-  if (!text) { toast('Digite uma mensagem primeiro!'); return; }
-  const msg = { id: uid(), nick: state.nick || 'Anônimo', text, ts: new Date().toISOString() };
-  state.messages.push(msg);
-  save();
-  document.getElementById('inputMessage').value = '';
-  toast('Mensagem enviada para a roda! 💜');
-  renderMessages();
-}
-
-function renderMessages() {
-  const el = document.getElementById('messagesList');
-  if (!state.messages.length) {
-    el.innerHTML = '<div class="text-muted" style="font-size:13px">A roda está silenciosa. Seja o primeiro a compartilhar algo. 💜</div>';
-    return;
-  }
-  const randomColors = ['#4f5bd5','#7c3aed','#16a34a','#d97706','#dc2626','#0891b2'];
-  el.innerHTML = state.messages.slice(-20).reverse().map((m, i) => {
-    const d = new Date(m.ts);
-    const color = randomColors[m.id.charCodeAt(0) % randomColors.length];
-    return `<div class="msg-item">
-     <div class="avatar" style="background:${color}">${m.nick.charAt(0).toUpperCase()}</div>
-     <div class="bubble">
-      <div class="name">${m.nick}</div>
-      <div class="text">${m.text}</div>
-      <div class="time">${d.toLocaleDateString('pt-BR')} ${d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}</div>
-     </div>
-    </div>`;
-  }).join('');
-}
-
-function renderProfile() {
-  document.getElementById('profileNick').innerHTML = `<div class="flex-between" style="padding:8px 0">
-   <span style="font-size:15px;font-weight:600">${state.nick || 'Anônimo'}</span>
-   <span class="badge">${calcStreak()} dias de streak</span>
-  </div>`;
-  document.getElementById('profileStats').innerHTML = `<div class="grid-2">
-   <div class="kpi-big"><div class="num" style="font-size:32px">${state.checkins.length}</div><div class="label">check-ins</div></div>
-   <div class="kpi-big"><div class="num" style="font-size:32px">${state.messages.length}</div><div class="label">mensagens</div></div>
-  </div>`;
-}
-
-// Breathing exercise
-function startBreathing() {
-  if (breathingTimer) return;
-  const circle = document.getElementById('breathCircle');
-  const text = document.getElementById('breathText');
-  let phase = 0; // 0=inhale, 1=hold, 2=exhale
-  let count = 4;
-  breathPhase = 0;
-
-  function tick() {
-    if (phase === 0) {
-      circle.style.transform = 'scale(1.3)';
-      text.textContent = 'Inspire 4s';
-      count--;
-      if (count === 0) { phase = 1; count = 7; }
-    } else if (phase === 1) {
-      text.textContent = 'Segure 7s';
-      count--;
-      if (count === 0) { phase = 2; count = 8; }
-    } else {
-      circle.style.transform = 'scale(1)';
-      text.textContent = 'Expire 8s';
-      count--;
-      if (count === 0) {
-        count = 4; phase = 0;
-        toast('Ciclo completo! Como você se sente? 💜');
-        stopBreathing();
-        return;
-      }
-    }
-    breathingTimer = setTimeout(tick, 1000);
-  }
-  tick();
-}
-
-function stopBreathing() {
-  if (breathingTimer) { clearTimeout(breathingTimer); breathingTimer = null; }
-  document.getElementById('breathCircle').style.transform = 'scale(1)';
-  document.getElementById('breathText').textContent = 'Toque para começar';
-}
-
-// Actions
-document.getElementById('btnCreateProfile').onclick = () => {
-  const nick = document.getElementById('inputNick').value.trim();
-  if (!nick) { toast('Escolha um apelido para entrar!'); return; }
-  state.nick = nick;
-  save();
-  toast('Bem-vindo(a), ' + nick + '! 💜');
-  render();
-};
-
-document.getElementById('btnExportEDA').onclick = () => {
-  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
-  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-  a.download = 'eda_dados.json'; a.click();
-  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-};
-
-document.getElementById('btnResetEDA').onclick = () => {
-  if (confirm('Tem certeza? Isso apaga todos os seus dados do EDA permanentemente.')) {
-    localStorage.clear();
-    state = { nick: null, checkins: [], messages: [], streak: 0, lastCheckin: null };
-    toast('Dados apagados.');
-    render();
-  }
-};
-
-document.querySelectorAll('.nav-item').forEach(n => { n.onclick = () => showScreen(n.dataset.screen); });
-
-render();
-
-// Register SW
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
-}
-</script>
 </body>
 </html>
