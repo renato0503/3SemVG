@@ -4,7 +4,7 @@
 
 **Grupo:** 5 · EDA · **Professor:** Renato · **Integrantes:** Cássia Nóbrega, Sarah, Sabrina, Beatriz B., Denner · **Código:** G5-<nnn> · **Meta:** 15–20
 
-**Hipótese de campo:** Muitas pessoas gastam por impulso, escondem dívidas por vergonha, sentem culpa e não encontram apoio — o que faz o ciclo do endividamento se repetir. Um espaço anônimo de acolhimento entre pares (modelo AA adaptado a finanças) pode reduzir o isolamento e ajudar a buscar ajuda.
+**Hipótese de campo:** CBSD (Compra Compulsiva) e inadimplência estão diretamente conectados: a pessoa não entra em crise financeira por falta de conhecimento, mas por incapacidade de inibir o impulso no momento da compra. A pesquisa de campo testa se quem tem mais episódios de compra impulsiva tem também mais nível de dívidas, mais vergonha/ocultação e mais tentativas fracassadas de parar. O EDA é o espaço de treino de autocontrole — não é programa de educação financeira.
 
 ---
 
@@ -142,7 +142,7 @@ A literatura dos últimos cinco anos confirma o diagnóstico: compra compulsiva 
 
 11. **Contexto brasileiro confirmado (paper 14).** Venda et al. (2024) mostram que vulnerabilidade financeira + compra compulsiva é um ciclo que se replica no Brasil.
 
-12. **Hipótese de campo testável.** As 20 perguntas em escala 1 a 5 medem: frequência de compra por impulso, sentimentos de vergonha/culpa, nível de isolamento, e disposição para participar de um grupo de apoio anônimo. Os papers e dados acima são o "chão" para comparar o que a pesquisa de campo encontrar.
+12. **Hipótese de campo testável.** As 20 perguntas em escala 1 a 5 medem: (1) frequência e intensidade dos episódios de compra impulsiva, (2) nível de dívidas/cheque especial, (3) vergonha/ocultação de gastos, (4) tentativas anteriores de parar. Se bloco 1 correlacionar com bloco 2, a hipótese de que CBSD causa inadimplência se confirma — e o EDA justifica-se como treino de autocontrole, não como programa de educação financeira.
 
 ---
 

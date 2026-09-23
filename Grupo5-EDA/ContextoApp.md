@@ -7,26 +7,21 @@ Código de coleta: `G5-<nnn>` · Formulário: 20 perguntas · Meta: 15–20 resp
 
 ## 1. Pitch em uma frase
 
-O EDA é um espaço anônimo de acolhimento entre pessoas que perdem o controle dos gastos, inspirado no modelo dos Alcoólicos Anônimos: sem julgamento, sem exposição, com escuta ativa e steps de autorregulação — para quebrar o ciclo do endividamento antes que ele destrua a saúde mental e as relações.
+O EDA é um espaço anônimo de acolhimento para pessoas com **Compra Compulsiva (CBSD — Compulsive Buying-Shopping Disorder)**, transtorno reconhecido de controle de impulsos: sem julgamento, sem exposição, com escuta ativa e steps de autorregulação — para quebrar o ciclo entre compra compulsiva e inadimplência antes que ele destrua a saúde mental e as relações.
 
 ---
 
 ## 2. O problema e a oportunidade (por que agora)
 
-O Brasil tem 78% das famílias endividadas (BCB, 2024) e 76,2 milhões de inadimplentes (Serasa, 2024). Por trás dos números há sofrimento. A pesquisa dos últimos cinco anos confirma o que clínicos e educadores financeiros já sabem:
+O Brasil tem 78% das famílias endividadas (BCB, 2024) e 76,2 milhões de inadimplentes (Serasa, 2024). Nem todos são CBSD — mas uma parte significativa é. A pesquisa dos últimos cinco anos confirma:
 
-- Compra compulsiva afeta cerca de 5% da população adulta (Maraz et al., 2022), um transtorno de controle de impulsos com alto custo psicológico e financeiro.
-- A relação entre dívida e saúde mental é **bidirecional**: quem está endividado tem mais ansiedade e depressão; quem tem transtornos mentais tem mais dificuldade de sair das dívidas (ten Have et al., 2021).
-- Stress é gatilho direto para episódios de compra compulsiva (Thomas et al., 2024); o ciclo se auto-reforça — gasta-se para se sentir melhor, depois sente-se pior por ter gastado.
-- A vergonha é barreira para pedir ajuda: a maioria das pessoas que sofre em silêncio nunca procura CAPS, CVV ou qualquer serviço formal de apoio.
+- **CBSD é transtorno reconhecido** (Müller et al., 2021): critérios consensus de 138 experts de 35 países. Afeta ~5% da população adulta (Maraz et al., 2022). Não é "falta de força de vontade" — tem base neuropsiquiátrica (Grant & Chamberlain, 2024).
+- **CBSD causa inadimplência**: a pessoa compra por impulso, não consegue pagar, entra em dívida. O problema não é falta de educação financeira — é incapacidade de inibir o impulso no momento.
+- **A relação é bidirecional**: dívida agrava ansiedade e depressão; transtornos mentais dificultam sair das dívidas (ten Have et al., 2021). O ciclo se auto-reforça.
+- **Stress é gatilho direto** (Thomas et al., 2024): crise econômica, desemprego, pandemia — momentos de tensão disparam episódios de compra compulsiva.
+- **O EDA treina autocontrole, não ensina finanças**: Bu et al. (2021) mostram que treinamento de auto-regulação reduz borrowing mais que literacy sozinha. O modelo AA já provou que grupos de pares funcionam para mudar comportamentos aditivos.
 
-**Pesquisa que sustenta o problema:**
-- Müller et al. (2021): critérios diagnósticos consensus internacionais para transtorno de compra-compulsiva (CBSD), 138 experts de 35 países.
-- Grant & Chamberlain (2024): CBSD tem feições adictivas, impulsivas e obsessivo-compulsivas com alta comorbididade — não é "falta de força de vontade".
-- Bu et al. (2021): treinamento de auto-regulação funciona melhor que educação financeira sozinha — auto-regulação pode ser aprendida.
-- Du Plessis et al. (2024): satisfazer necessidades psicológicas (pertencimento, autonomia, competência) fortalece o auto-controle de gastos.
-
-**Hipótese de campo do grupo:** muitas pessoas gastam por impulso, escondem dívidas por vergonha, sentem culpa e não encontram apoio. Um espaço anônimo de acolhimento entre pares (modelo AA) pode quebrar o isolamento e ser porta de entrada para ajuda profissional.
+**Hipótese de campo do grupo:** CBSD (Compra Compulsiva) e inadimplência estão diretamente conectados: a pessoa não entra em dívida por falta de conhecimento financeiro, mas por incapacidade de inibir o impulso no momento da compra. A pesquisa testa se quem tem mais episódios de compra impulsiva também tem mais nível de dívidas e mais vergonha/ocultação. Um espaço anônimo de acolhimento entre pares (modelo AA) pode quebrar esse ciclo — treinando autocontrole no momento do impulso, não ensinando finanças.
 
 **Por que agora.** Três movimentos tornam esse momento propício:
 

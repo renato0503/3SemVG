@@ -136,12 +136,12 @@ header.top::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;ba
 <div id="noProfile">
  <div class="card">
   <div class="emoji-big">🤝</div>
-  <div class="card-title" style="text-align:center;font-size:20px">Endividados Anônimos</div>
-  <div class="card-sub text-center mb-12">Um espaço de acolhimento anônimo entre pessoas que passam pelas mesmas dificuldades com dinheiro.</div>
-  <div class="alert-box info mb-12">
-   <strong>Como funciona?</strong><br>
-   <span style="font-size:12px">Aqui ninguém julga. Você escolhe um apelido, compartilha se quiser, e encontra pessoas que entendem o que você está passando. Não é terapia — é apoio entre pares.</span>
-  </div>
+   <div class="card-title" style="text-align:center;font-size:20px">Endividados Anônimos</div>
+   <div class="card-sub text-center mb-12">Um espaço de acolhimento para pessoas que perdem o controle dos gastos — o que a medicina chama de <strong>Compra Compulsiva (CBSD)</strong>.</div>
+   <div class="alert-box info mb-12">
+    <strong>Como funciona?</strong><br>
+    <span style="font-size:12px">A compra compulsiva é um transtorno reconhecido de controle de impulsos — não é falta de caráter nem de educação financeira. O EDA oferece apoio entre pares, inspirado nos grupos AA. Você escolhe um apelido, registra seus episódios e encontra pessoas que entendem o que você está passando. Não é terapia nem tratamento médico.</span>
+   </div>
   <div class="input-group">
    <label>SEU APELIDO (escolha um nome qualquer)</label>
    <input class="form-input" id="inputNick" placeholder="Ex.: Marquinhos, Luz, Esperanza" maxlength="20">
@@ -156,7 +156,7 @@ header.top::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;ba
 <div id="hasProfile" style="display:none">
  <div class="emoji-big">🤝</div>
  <div class="card-title text-center" style="font-size:18px" id="welcomeMsg">Bem-vindo de volta!</div>
- <div class="card-sub text-center mb-12">Você está no espaço seguro do EDA. O que gostaria de fazer hoje?</div>
+ <div class="card-sub text-center mb-12">Você está no espaço seguro do EDA — apoio entre pares para compra compulsiva (CBSD) e dívidas. O que gostaria de fazer hoje?</div>
  <button class="btn btn-primary" onclick="showScreen('Checkin')">Fazer Check-in ✅</button>
  <button class="btn btn-ghost mt-8" onclick="showScreen('Roda')">Roda de Apoio 💬</button>
  <button class="btn btn-ghost mt-8" onclick="showScreen('Ajuda')">Preciso de Ajuda 🆘</button>
@@ -168,32 +168,32 @@ header.top::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;ba
 <section class="screen" id="screenCheckin">
 <div class="page-title">Check-in de Hoje</div>
 <div class="card">
- <div class="card-title">Como você está se sentindo hoje?</div>
- <div class="card-sub mb-12">Escolha o emoji que mais representa seu estado atual.</div>
+ <div class="card-title">Episódio de compra compulsiva hoje?</div>
+ <div class="card-sub mb-12">Responda com sinceridade — nada aqui é julgado.</div>
  <div class="humor-grid" id="humorGrid">
-  <button class="humor-btn" data-humor="otimo" onclick="selectHumor('otimo')">
-   <span class="emo">😄</span>
-   <span>Ótimo</span>
+  <button class="humor-btn" data-humor="resisti" onclick="selectHumor('resisti')">
+   <span class="emo">🏆</span>
+   <span>Resisti</span>
   </button>
-  <button class="humor-btn" data-humor="ok" onclick="selectHumor('ok')">
-   <span class="emo">🙂</span>
-   <span>Ok</span>
+  <button class="humor-btn" data-humor="quase" onclick="selectHumor('quase')">
+   <span class="emo">😬</span>
+   <span>Quase comprei</span>
   </button>
-  <button class="humor-btn" data-humor="receio" onclick="selectHumor('receio')">
-   <span class="emo">😟</span>
-   <span>Com receio</span>
+  <button class="humor-btn" data-humor="comprei" onclick="selectHumor('comprei')">
+   <span class="emo">😔</span>
+   <span>Comprei por impulso</span>
   </button>
-  <button class="humor-btn" data-humor="difícil" onclick="selectHumor('difícil')">
+  <button class="humor-btn" data-humor="dificeis" onclick="selectHumor('dificeis')">
    <span class="emo">😢</span>
-   <span>Difícil</span>
+   <span>Difícil hoje</span>
   </button>
  </div>
  <div class="input-group">
-  <label>DESCRIva um gatilho de HOJE (opcional, sem valores)</label>
-  <input class="form-input" id="inputGatilho" placeholder="Ex.: Vi uma promoção no app e quase comprei..." maxlength="100">
+  <label>O QUE DISPAROU O IMPULSO? (opcional)</label>
+  <input class="form-input" id="inputGatilho" placeholder="Ex.: Vi uma promoção no app, stress no trabalho, recebi uma notificação..." maxlength="100">
  </div>
  <div class="input-group">
-  <label>NOTA DO DIA (1 a 5)</label>
+  <label>NÍVEL DE DÍVIDA HOJE (1 = nenhuma, 5 = muito alta)</label>
   <div class="humor-grid" style="grid-template-columns:1fr 1fr 1fr 1fr 1fr">
    <button class="humor-btn" onclick="selectNota(1)">1</button>
    <button class="humor-btn" onclick="selectNota(2)">2</button>
@@ -202,7 +202,7 @@ header.top::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;ba
    <button class="humor-btn" onclick="selectNota(5)">5</button>
   </div>
   <div class="flex-between text-muted mt-8">
-   <span>Difícil</span><span>Ótimo</span>
+   <span>Nenhuma</span><span>Muito alta</span>
   </div>
  </div>
  <button class="btn btn-success" id="btnSaveCheckin" onclick="saveCheckin()">Salvar Check-in ✅</button>
@@ -314,7 +314,7 @@ header.top::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;ba
 <div class="card mt-12">
  <div class="alert-box info mb-8">
   <strong>💡 O que é o EDA?</strong><br>
-  <span style="font-size:12px">O Endividados Anônimos é um espaço de acolhimento anônimo. Não é terapia nem tratamento médico. É apoio entre pessoas que passam pelas mesmas dificuldades.</span>
+  <span style="font-size:12px">O EDA é um espaço de apoio entre pares para pessoas com <strong>Compra Compulsiva (CBSD)</strong> — um transtorno reconhecido de controle de impulsos. A relação entre CBSD e inadimplência é o foco central: a pessoa não entra em dívida por falta de conhecimento, mas por incapacidade de inibir o impulso no momento. O EDA não é tratamento médico nem terapia — é acolhimento entre pessoas que vivem o mesmo ciclo.</span>
  </div>
 </div>
 <div class="card mt-12">
@@ -354,19 +354,19 @@ header.top::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;ba
     <div style="font-size:13px;line-height:1.7;color:#1e2235">
       <div style="background:#eef2ff;border-radius:16px;padding:14px;margin-bottom:14px;border-left:4px solid #4f5bd5">
         <strong style="color:#4f5bd5">💙 Contexto do Projeto</strong><br>
-        O <strong>EDA — Endividados Anônimos</strong> nasceu da defesa de projeto inovador sobre gastança compulsiva e saúde mental. A ideia: um espaço anônimo de acolhimento entre pares inspirado no modelo de Alcoólicos Anônimos, adaptado a finanças. A pesquisa de campo aconteceu no shopping com formulário de 20 perguntas sobre impulso, gatilhos, vergonha e interesse em apoio. Este é um tema sensível — o app acolhe sem julgar.
+        O <strong>EDA — Endividados Anônimos</strong> nasceu da defesa de projeto inovador sobre <strong>CBSD (Compulsive Buying-Shopping Disorder)</strong> e sua relação com a inadimplência. A tese central: a pessoa não entra em dívida por falta de educação financeira, mas por <strong>incapacidade de inibir o impulso no momento da compra</strong> — o que a medicina chama de transtorno de controle de impulsos. O EDA testa se um espaço de acolhimento entre pares pode quebrar esse ciclo. A pesquisa de campo aconteceu no shopping com formulário de 20 perguntas sobre episódios de compra impulsiva, nível de dívidas, vergonha/ocultação e tentativas de parar.
       </div>
       <div style="background:#f0fdf4;border-radius:16px;padding:14px;margin-bottom:14px;border-left:4px solid #22c55e">
         <strong style="color:#22c55e">📊 Resultado do Formulário (Customer Discovery)</strong><br>
-        <span style="font-size:12px">A pesquisa de campo foi aplicada pelo grupo com apoio do app de coleta. As perguntas medem: frequência de compras por impulso, intensidade do desejo de gastar, vontade de esconder gastos, sentimento de culpa, e interesse em um espaço de apoio anônimo. Os códigos G5-<nnn> correlacionam cada resposta com o áudio gravado no WhatsApp.</span>
+        <span style="font-size:12px">A pesquisa de campo testou 4 dimensões: (1) frequência e intensidade dos episódios de compra impulsiva, (2) nível de dívidas/cheque especial, (3) vergonha/ocultação de gastos, (4) tentativas anteriores de parar. As perguntas usam escala 1–5 sem valores de renda. Os códigos G5-<nnn> correlacionam cada resposta com o áudio gravado no WhatsApp — o que permite cruzar dado quantitativo com o relato qualitativo da pessoa.</span>
       </div>
       <div style="background:#fffbeb;border-radius:16px;padding:14px;margin-bottom:14px;border-left:4px solid #f59e0b">
         <strong style="color:#f59e0b">📚 Referencial Teórico</strong><br>
-        <span style="font-size:12px">O trabalho tem base em 14 artigos peer-reviewed (2021–2026), incluindo: Grant & Chamberlain (2024) sobre compra compulsiva como transtorno; Müller et al. (2021) sobre eficácia dos grupos AA; ten Have et al. (2021) sobre ciclo bidirecional dívida-saúde mental; Bu et al. (2021) sobre autorregulação financeira; Nigatu et al. (2022) sobre impacto da pandemia na saúde mental e dívidas. O arcabouço teórico inclui o modelo AA, Terapia Cognitivo-Comportamental e economía comportamental.</span>
+        <span style="font-size:12px">O trabalho tem base em 14 artigos peer-reviewed (2021–2026), centrados em CBSD e inadimplência: Müller et al. (2021) — critérios diagnósticos consensus de CBSD por 138 experts; Grant & Chamberlain (2024) — CBSD como transtorno com base neuropsiquiátrica; Maraz et al. (2022) — prevalência de 4,9% da população adulta; ten Have et al. (2021) — relação bidirecional dívida↔saúde mental; Bu et al. (2021) — treinamento de auto-regulação reduz borrowing mais que literacy sozinha; Moon et al. (2024) — dívida médica bloqueia acesso a tratamento de saúde mental. O arcabouço: CBSD como transtorno de controle de impulsos, modelo AA adaptado, ciclo dívida↔saúde mental.</span>
       </div>
       <div style="background:#eef2ff;border-radius:16px;padding:14px;border-left:4px solid #6366f1">
         <strong style="color:#6366f1">🎯 Hipótese de Campo</strong><br>
-        <span style="font-size:12px">A hipótese é que muitas pessoas gastam por impulso e escondem dívidas por vergonha — e que um espaço anônimo de acolhimento entre pares pode quebrar esse isolamento. O EDA não é tratamento médico: é o primeiro passo para que a pessoa busque ajuda profissional. O encaminhamento para CVV 188 e CAPS é parte do desenho.</span>
+        <span style="font-size:12px">A hipótese testada é que <strong>CBSD e inadimplência estão diretamente conectados</strong>: a pessoa não entra em crise financeira por desconhecimento, mas por incapacidade de inibir o impulso no momento. O formulário mede se quem tem mais episódios de compra impulsiva também tem mais nível de dívidas e mais vergonha/ocultação. Se a correlação se confirmar, o EDA justifica-se como ambiente de treino de autocontrole — não como programa de educação financeira.</span>
       </div>
     </div>
     <button class="btn btn-ghost btn-sm" onclick="fecharSobreTrabalho()" style="margin-top:14px;width:100%;border-color:#4f5bd5;color:#4f5bd5">Fechar</button>
