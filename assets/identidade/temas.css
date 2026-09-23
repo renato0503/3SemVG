@@ -5,6 +5,13 @@
    Uso nos MVPs/hub: idem, e as variáveis ficam disponíveis para todo o CSS.
    ========================================================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Merriweather:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Lora:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Space+Mono:wght@400&display=swap');
+
 :root{
   /* identidade padrão (turma Cerrado Tech) */
   --accent:#e94560;
@@ -29,8 +36,11 @@
 body.tema-g1, .tema-g1{
   --accent:#0e7490; --accent-dark:#0b5568; --accent-soft:#ecfeff; --accent-rgb:14,116,144;
   --accent2:#22d3ee; --tinta:#083344; --tinta2:#0e7490;
-  --fonte:"Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
-  --fonte-titulo:"Segoe UI Semibold", "Segoe UI", system-ui, Roboto, Arial, sans-serif;
+  --fonte:"Nunito", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  --fonte-titulo:"Merriweather", Georgia, serif;
+  --icon-style:'rounded';
+  --card-style:'clean';
+  --border-radius-card:16px;
 }
 
 /* ---------------------------------------------------------------- G3 · Quita.AI
@@ -39,8 +49,11 @@ body.tema-g1, .tema-g1{
 body.tema-g3, .tema-g3{
   --accent:#7c3aed; --accent-dark:#5b21b6; --accent-soft:#f5f3ff; --accent-rgb:124,58,237;
   --accent2:#facc15; --tinta:#1e1b4b; --tinta2:#4c1d95;
-  --fonte:"Trebuchet MS", "Verdana", system-ui, Arial, sans-serif;
-  --fonte-titulo:"Trebuchet MS", "Verdana", system-ui, Arial, sans-serif;
+  --fonte:"Nunito", "Trebuchet MS", "Verdana", system-ui, Arial, sans-serif;
+  --fonte-titulo:"Press Start 2P", monospace;
+  --icon-style:'pixel';
+  --card-style:'neon';
+  --border-radius-card:12px;
 }
 
 /* ---------------------------------------------------------------- G4 · SuaCasaSuaVida
@@ -51,6 +64,9 @@ body.tema-g4, .tema-g4{
   --accent2:#d97706; --tinta:#052e2b; --tinta2:#065f46;
   --fonte:"Segoe UI", "Helvetica Neue", system-ui, Arial, sans-serif;
   --fonte-titulo:"Segoe UI Semibold", "Helvetica Neue", system-ui, Arial, sans-serif;
+  --icon-style:'geometric';
+  --card-style:'blueprint';
+  --border-radius-card:8px;
 }
 
 /* ---------------------------------------------------------------- G5 · EDA
@@ -61,6 +77,9 @@ body.tema-g5, .tema-g5{
   --accent2:#93c5fd; --tinta:#1e2235; --tinta2:#3730a3;
   --fonte:"Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
   --fonte-titulo:"Cambria", "Georgia", "Segoe UI", serif;
+  --icon-style:'soft';
+  --card-style:'calm';
+  --border-radius-card:20px;
 }
 
 /* ---------------------------------------------------------------- G2 · LifePath (Simulador da Vida Real)
@@ -69,8 +88,11 @@ body.tema-g5, .tema-g5{
 body.tema-g2, .tema-g2{
   --accent:#ff6b35; --accent-dark:#d4521e; --accent-soft:#fff4f0; --accent-rgb:255,107,53;
   --accent2:#7b2ff7; --tinta:#1a0e2e; --tinta2:#4a1080;
-  --fonte:"Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
-  --fonte-titulo:"Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  --fonte:"Space Grotesk", "Inter", system-ui, Arial, sans-serif;
+  --fonte-titulo:"Space Grotesk", system-ui, Arial, sans-serif;
+  --icon-style:'sharp';
+  --card-style:'fintech';
+  --border-radius-card:10px;
 }
 
 /* ---------------------------------------------------------------- G6 · Vida no Controle
@@ -79,8 +101,11 @@ body.tema-g2, .tema-g2{
 body.tema-g6, .tema-g6{
   --accent:#ea580c; --accent-dark:#9a3412; --accent-soft:#fff7ed; --accent-rgb:234,88,12;
   --accent2:#16a34a; --tinta:#431407; --tinta2:#9a3412;
-  --fonte:"Tahoma", "Segoe UI", system-ui, Arial, sans-serif;
-  --fonte-titulo:"Trebuchet MS", "Tahoma", system-ui, Arial, sans-serif;
+  --fonte:"Poppins", Arial, sans-serif;
+  --fonte-titulo:"Poppins", Arial, sans-serif;
+  --icon-style:'bold';
+  --card-style:'market';
+  --border-radius-card:14px;
 }
 
 /* faixa de identidade no topo de cada slide (não interfere no layout) */

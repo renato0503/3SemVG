@@ -7,15 +7,17 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>SuaCasaSuaVida — Encontre seu bairro e financie sua casa</title>
 <link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/identidade/temas.css">
 <link rel="stylesheet" href="../assets/kit/kit.css">
 <style>
 :root{
   --accent:#047857;--accent-dark:#065f46;--accent-soft:#ecfdf5;
-  --accent2:#d97706;--tinta:#052e2b;--tinta2:#064e3b;
-  --fonte:'Segoe UI',Arial,sans-serif;--fonte-titulo:'Segoe UI Semibold',Arial;
+  --accent2:#d97706;--tinta:#052e2b;--tinta2:#065f46;
+  --fonte:'Lato',Arial,sans-serif;--fonte-titulo:'Playfair Display',Georgia,serif;
   --texto:#052e2b;--texto-suave:#047857;--linha:#d1fae5;--fundo:#f0fdf9;
   --card:#ffffff;--ok:#16a34a;--alerta:#dc2626;--atencao:#d97706;
+  --nav-bg:#f0fdf9;--nav-icon-size:24px;--nav-radius:8px;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
@@ -31,9 +33,23 @@ main{flex:1;padding:0 16px}
 .screen.active{display:flex}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .page-title{font-size:13px;font-weight:700;color:var(--texto-suave);text-transform:uppercase;letter-spacing:.07em;padding:16px 0 6px}
-.card{background:var(--card);border-radius:16px;padding:16px;box-shadow:0 1px 4px rgba(4,120,87,.08);margin-bottom:12px}
-.card-title{font-size:16px;font-weight:700;margin-bottom:6px;color:var(--tinta)}
-.card-sub{font-size:13px;color:var(--texto-suave)}
+.card{background:var(--card);border-radius:8px;box-shadow:0 1px 6px rgba(4,120,87,.08);border:1px solid #d1fae5;border-top:3px solid #047857}
+.card-title{font-family:'Playfair Display',Georgia,serif;font-size:17px;color:#052e2b}
+.card-sub{color:#047857}
+/* G4 distinctive: blueprint/real estate editorial */
+body{font-family:'Lato',Arial,sans-serif;background:#f7faf9;color:#052e2b}
+header.top{background:linear-gradient(135deg,#052e2b 0%,#064e3b 100%);border-bottom:3px solid #d97706}
+header.top h1{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:700}
+header.top .sub{color:#6ee7b7}
+.badge-pill{background:rgba(217,119,6,.15);border:1px solid rgba(217,119,6,.3);color:#d97706}
+.btn-primary{background:#047857;color:#fff;border-radius:6px}
+.btn-ghost{background:#fff;color:#047857;border:1.5px solid #047857;border-radius:6px}
+.btn-success{background:#16a34a;color:#fff;border-radius:6px}
+.nav-bottom{background:#f0fdf9;border-top:1px solid #d1fae5}
+.nav-item.active{color:#047857}
+.page-title{color:#047857;font-family:'Playfair Display',Georgia,serif;font-size:15px}
+.text-muted{color:#047857}
+header.top::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#047857 0%,#d97706 100%)}
 .btn{display:flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:12px;padding:14px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;transition:transform .05s;padding-top:calc(14px + env(safe-area-inset-top))}
 .btn:active{transform:scale(.975)}
 .btn-primary{background:var(--accent);color:#fff}
@@ -283,8 +299,18 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 <!-- PERFIL -->
 <section class="screen" id="screenProfile">
 <div class="page-title">Meu Perfil</div>
+<div class="card" style="margin-bottom:12px;border-top-color:#d97706">
+  <div class="card-title">📋 Sobre o Trabalho Acadêmico</div>
+  <p style="font-size:13px;color:#047857;margin-bottom:12px;line-height:1.6">
+    O <strong>SuaCasaSuaVida</strong> faz parte da pesquisa de <strong>Customer Discovery</strong> da disciplina de Projeto Inovador (3º Semestre · Unifacc).
+    Os alunos foram a um shopping ouvir pessoas reais sobre a decisão de compra da casa própria.
+  </p>
+  <button class="btn btn-ghost btn-sm" id="btnSobreTrabalho" onclick="abrirSobreTrabalho()" style="border-color:#047857;color:#047857">
+    Ver contexto, formulário e referencial
+  </button>
+</div>
 <div class="card">
- <div class="card-title">Como usar o SuaCasaSuaVida</div>
+  <div class="card-title">Como usar o SuaCasaSuaVida</div>
  <div class="alert-box info mb-8">
   <strong>1. Simule</strong> — informe sua renda no Simulador para saber a parcela máxima.<br>
   <strong>2. Analise bairros</strong> — adicione bairros e avalie por segurança, comércio, transporte e valorização.<br>
@@ -309,14 +335,47 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 </main>
 
 <nav class="nav-bottom" id="bottomNav">
-<button class="nav-item active" data-screen="Home"><span class="nav-icon">🏠</span><span>Home</span></button>
-<button class="nav-item" data-screen="Simulador"><span class="nav-icon">🔢</span><span>Simular</span></button>
-<button class="nav-item" data-screen="Bairros"><span class="nav-icon">📍</span><span>Bairros</span></button>
-<button class="nav-item" data-screen="Comparar"><span class="nav-icon">⚖️</span><span>Comparar</span></button>
-<button class="nav-item" data-screen="Profile"><span class="nav-icon">⚙️</span><span>Perfil</span></button>
+<button class="nav-item active" data-screen="Home"><span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg></span><span>Home</span></button>
+<button class="nav-item" data-screen="Simulador"><span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h8M8 14h2M14 14h2M8 18h2M14 18h2"/></svg></span><span>Simular</span></button>
+<button class="nav-item" data-screen="Bairros"><span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span>Bairros</span></button>
+<button class="nav-item" data-screen="Comparar"><span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg></span><span>Comparar</span></button>
+<button class="nav-item" data-screen="Profile"><span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></span><span>Perfil</span></button>
 </nav>
 </div>
 <div class="toast-container" id="toastContainer"></div>
+
+<div class="modal-overlay" id="modalSobre" style="display:none">
+  <div class="modal-box" style="max-height:85dvh;overflow-y:auto;padding:20px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+      <div style="font-size:16px;font-weight:700;color:#052e2b;font-family:'Playfair Display',Georgia,serif">Sobre o Trabalho</div>
+      <button onclick="fecharSobreTrabalho()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#047857">✕</button>
+    </div>
+    <div style="font-size:13px;line-height:1.7;color:#052e2b">
+      <div style="background:#ecfdf5;border-radius:10px;padding:12px;margin-bottom:14px;border-left:4px solid #047857">
+        <strong style="color:#047857">🏠 Contexto do Projeto</strong><br>
+        O <strong>SuaCasaSuaVida</strong> nasceu da defesa de projeto inovador sobre déficit habitacional e decisão de compra da casa própria. A ideia: um app que analisa o bairro (segurança, comércio, transporte, valorização) e simula o financiamento (Price/SAC) para ajudar o cidadão a entender quanto pode pagar antes de assinar. A pesquisa de campo aconteceu no shopping com formulário de 20 perguntas em escala 1–5.
+      </div>
+      <div style="background:#fffbeb;border-radius:10px;padding:12px;margin-bottom:14px;border-left:4px solid #d97706">
+        <strong style="color:#d97706">📊 Resultado do Formulário (Customer Discovery)</strong><br>
+        <span style="font-size:12px">A pesquisa de campo foi aplicada pelo grupo com apoio do app de coleta. As perguntas medem: percepção de capacidade financeira, interesse em comprar casa própria, conhecimento sobre financiamento e análise de bairro. Os códigos G4-<nnn> correlacionam cada resposta quantitativa com o áudio gravado no WhatsApp.</span>
+      </div>
+      <div style="background:#f0fdf4;border-radius:10px;padding:12px;margin-bottom:14px;border-left:4px solid #16a34a">
+        <strong style="color:#16a34a">📚 Referencial Teórico</strong><br>
+        <span style="font-size:12px">O trabalho tem base em 14 artigos peer-reviewed (2021–2026), incluindo: Fischer et al. (2024) sobre incerteza econômica; Szumilo & Vanino (2021) sobre acesso a crédito e affordability; Mathä et al. (2025) sobre transferências intergeracionais e homeownership; Sodini et al. (2023) sobre propriedade como investimento; Ha et al. (2021) sobre informação de bairro e decisão de compra. O arcabouço teórico inclui economia comportamental, teoria do prospecto e decisões sob incerteza.</span>
+      </div>
+      <div style="background:#ecfdf5;border-radius:10px;padding:12px;border-left:4px solid #047857">
+        <strong style="color:#047857">🎯 Hipótese de Campo</strong><br>
+        <span style="font-size:12px">A hipótese é que a maioria das pessoas não compra a casa própria por falta de clareza sobre quanto podem pagar e desconhecimento do bairro. O SuaCasaSuaVida resolve isso com simulação acessível e análise comparativa de bairros antes de comprometer-se com 30 anos de financiamento.</span>
+      </div>
+    </div>
+    <button class="btn btn-ghost btn-sm" onclick="fecharSobreTrabalho()" style="margin-top:14px;width:100%;border-color:#047857;color:#047857">Fechar</button>
+  </div>
+</div>
+<script>
+function abrirSobreTrabalho(){document.getElementById('modalSobre').style.display='flex';document.body.style.overflow='hidden'}
+function fecharSobreTrabalho(){document.getElementById('modalSobre').style.display='none';document.body.style.overflow=''}
+document.getElementById('modalSobre').onclick=function(e){if(e.target===this)fecharSobreTrabalho()};
+</script>
 
 <script src="../assets/kit/kit.js" type="module"></script>
 <script type="module">

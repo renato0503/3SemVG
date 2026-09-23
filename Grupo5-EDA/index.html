@@ -8,15 +8,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>EDA — Endividados Anônimos</title>
 <link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/identidade/temas.css">
 <link rel="stylesheet" href="../assets/kit/kit.css">
 <style>
 :root{
-  --accent:#4f5bd5;--accent-dark:#3730a3;--accent-soft:#eef2ff;
-  --accent2:#93c5fd;--tinta:#1e2235;--tinta2:#312e81;
-  --fonte:'Segoe UI',Arial,sans-serif;--fonte-titulo:Georgia,serif;
-  --texto:#1e2235;--texto-suave:#6b7280;--linha:#e5e7eb;--fundo:#f8f7ff;
-  --card:#ffffff;--ok:#16a34a;--alerta:#dc2626;--atencao:#d97706;
+  --accent:#4f5bd5;--accent-dark:#3b45a8;--accent-soft:#eef2ff;
+  --accent2:#93c5fd;--tinta:#1e2235;--tinta2:#3730a3;
+  --fonte:'Quicksand',Arial,sans-serif;--fonte-titulo:'Quicksand',Arial,sans-serif;
+  --texto:#1e2235;--texto-suave:#6366f1;--linha:#e0e7ff;--fundo:#f8f7ff;
+  --card:#ffffff;--ok:#22c55e;--alerta:#f43f5e;--atencao:#f59e0b;
+  --nav-bg:#f8f7ff;--nav-icon-size:26px;--nav-radius:50px;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
@@ -34,9 +36,25 @@ main{flex:1;padding:0 16px}
 .screen.active{display:flex}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .page-title{font-size:13px;font-weight:700;color:var(--texto-suave);text-transform:uppercase;letter-spacing:.07em;padding:16px 0 6px}
-.card{background:var(--card);border-radius:16px;padding:16px;box-shadow:0 1px 4px rgba(79,91,213,.08);margin-bottom:12px}
-.card-title{font-size:16px;font-weight:700;margin-bottom:6px;color:var(--tinta);font-family:var(--fonte-titulo)}
-.card-sub{font-size:13px;color:var(--texto-suave)}
+.card{background:#fff;border-radius:20px;box-shadow:0 2px 12px rgba(79,91,213,.08);border:1px solid #e0e7ff}
+.card-title{font-family:'Quicksand',Arial,sans-serif;font-weight:700;color:#1e2235}
+.card-sub{color:#6366f1}
+/* G5 distinctive: soft, calm, safe, non-judgmental */
+body{font-family:'Quicksand',Arial,sans-serif;background:#f8f7ff;color:#1e2235}
+header.top{background:linear-gradient(135deg,#1e2235 0%,#3730a3 100%);border-bottom:3px solid #93c5fd}
+header.top h1{font-family:'Quicksand',Arial,sans-serif;font-weight:700;font-size:17px;color:#f8f7ff}
+header.top .sub{color:#c7d2fe}
+.badge-pill{background:rgba(147,197,253,.2);border:1px solid rgba(147,197,253,.4);color:#93c5fd}
+.btn{border-radius:50px;font-family:'Quicksand',Arial,sans-serif;font-weight:600}
+.btn-primary{background:linear-gradient(135deg,#4f5bd5,#6366f1);color:#fff;border-radius:50px;box-shadow:0 4px 14px rgba(79,91,213,.3)}
+.btn-ghost{background:#fff;color:#4f5bd5;border:2px solid #e0e7ff;border-radius:50px}
+.btn-success{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;border-radius:50px;box-shadow:0 4px 14px rgba(34,197,94,.2)}
+.nav-bottom{background:#f8f7ff;border-top:1px solid #e0e7ff;padding:8px 16px}
+.nav-item.active{color:#4f5bd5}
+.nav-item{color:#6366f1;border-radius:50px;padding:8px 12px}
+.page-title{color:#4f5bd5;font-weight:700;font-size:14px;letter-spacing:.05em}
+.text-muted{color:#6366f1}
+header.top::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(147,197,253,.1) 0%,transparent 60%)}
 .btn{display:flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:12px;padding:14px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;transition:transform .05s,background .15s;padding-top:calc(14px + env(safe-area-inset-top))}
 .btn:active{transform:scale(.975)}
 .btn-primary{background:var(--accent);color:#fff}
@@ -275,8 +293,18 @@ main{flex:1;padding:0 16px}
 <!-- TELA: Perfil -->
 <section class="screen" id="screenProfile">
 <div class="page-title">Meu Perfil</div>
+<div class="card" style="margin-bottom:12px">
+  <div class="card-title">📋 Sobre o Trabalho Acadêmico</div>
+  <p style="font-size:13px;color:#6366f1;margin-bottom:12px;line-height:1.6">
+    O <strong>EDA — Endividados Anônimos</strong> faz parte da pesquisa de <strong>Customer Discovery</strong> da disciplina de Projeto Inovador (3º Semestre · Unifacc).
+    Os alunos foram a um shopping ouvir pessoas reais sobre gastos por impulso, dívidas e apoio entre pares.
+  </p>
+  <button class="btn btn-primary btn-sm" id="btnSobreTrabalho" onclick="abrirSobreTrabalho()">
+    Ver contexto, formulário e referencial
+  </button>
+</div>
 <div class="card">
- <div class="card-title">Meu Apelido</div>
+  <div class="card-title">Meu Apelido</div>
  <div id="profileNick"></div>
 </div>
 <div class="card mt-12">
@@ -298,24 +326,57 @@ main{flex:1;padding:0 16px}
 
 <nav class="nav-bottom" id="bottomNav" style="display:none">
 <button class="nav-item active" data-screen="Welcome">
- <span class="nav-icon">🏠</span><span>Início</span>
+ <span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="13" r="10"/><path d="M9 13l3 3 5-5"/></svg></span><span>Início</span>
 </button>
 <button class="nav-item" data-screen="Checkin">
- <span class="nav-icon">📝</span><span>Check-in</span>
+ <span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3c-5.5 0-10 4.5-10 10 0 4 2.5 7.5 6 9v2a1 1 0 001 1h6a1 1 0 001-1v-2c3.5-1.5 6-5 6-9 0-5.5-4.5-10-10-10z"/><path d="M9 9l8 8"/></svg></span><span>Check-in</span>
 </button>
 <button class="nav-item" data-screen="Roda">
- <span class="nav-icon">💬</span><span>Roda</span>
+ <span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="13" r="10"/><circle cx="13" cy="13" r="4"/><path d="M13 3v4M13 19v4M3 13h4M19 13h4"/></svg></span><span>Roda</span>
 </button>
 <button class="nav-item" data-screen="Ajuda">
- <span class="nav-icon">🆘</span><span>Ajuda</span>
+ <span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 21C13 21 4 14 4 8.5a4.5 4.5 0 018.5-3.5C13 5 13 21 13 21z"/></svg></span><span>Ajuda</span>
 </button>
 <button class="nav-item" data-screen="Profile">
- <span class="nav-icon">⚙️</span><span>Perfil</span>
+ <span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="10" r="5"/><path d="M4 22c0-5 4-9 9-9s9 4 9 9"/></svg></span><span>Perfil</span>
 </button>
 </nav>
 </div>
 
 <div class="toast-container" id="toastContainer"></div>
+
+<div class="modal-overlay" id="modalSobre" style="display:none">
+  <div class="modal-box" style="max-height:85dvh;overflow-y:auto;padding:20px;border-radius:24px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+      <div style="font-size:16px;font-weight:700;color:#1e2235">Sobre o Trabalho</div>
+      <button onclick="fecharSobreTrabalho()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#6366f1">✕</button>
+    </div>
+    <div style="font-size:13px;line-height:1.7;color:#1e2235">
+      <div style="background:#eef2ff;border-radius:16px;padding:14px;margin-bottom:14px;border-left:4px solid #4f5bd5">
+        <strong style="color:#4f5bd5">💙 Contexto do Projeto</strong><br>
+        O <strong>EDA — Endividados Anônimos</strong> nasceu da defesa de projeto inovador sobre gastança compulsiva e saúde mental. A ideia: um espaço anônimo de acolhimento entre pares inspirado no modelo de Alcoólicos Anônimos, adaptado a finanças. A pesquisa de campo aconteceu no shopping com formulário de 20 perguntas sobre impulso, gatilhos, vergonha e interesse em apoio. Este é um tema sensível — o app acolhe sem julgar.
+      </div>
+      <div style="background:#f0fdf4;border-radius:16px;padding:14px;margin-bottom:14px;border-left:4px solid #22c55e">
+        <strong style="color:#22c55e">📊 Resultado do Formulário (Customer Discovery)</strong><br>
+        <span style="font-size:12px">A pesquisa de campo foi aplicada pelo grupo com apoio do app de coleta. As perguntas medem: frequência de compras por impulso, intensidade do desejo de gastar, vontade de esconder gastos, sentimento de culpa, e interesse em um espaço de apoio anônimo. Os códigos G5-<nnn> correlacionam cada resposta com o áudio gravado no WhatsApp.</span>
+      </div>
+      <div style="background:#fffbeb;border-radius:16px;padding:14px;margin-bottom:14px;border-left:4px solid #f59e0b">
+        <strong style="color:#f59e0b">📚 Referencial Teórico</strong><br>
+        <span style="font-size:12px">O trabalho tem base em 14 artigos peer-reviewed (2021–2026), incluindo: Grant & Chamberlain (2024) sobre compra compulsiva como transtorno; Müller et al. (2021) sobre eficácia dos grupos AA; ten Have et al. (2021) sobre ciclo bidirecional dívida-saúde mental; Bu et al. (2021) sobre autorregulação financeira; Nigatu et al. (2022) sobre impacto da pandemia na saúde mental e dívidas. O arcabouço teórico inclui o modelo AA, Terapia Cognitivo-Comportamental e economía comportamental.</span>
+      </div>
+      <div style="background:#eef2ff;border-radius:16px;padding:14px;border-left:4px solid #6366f1">
+        <strong style="color:#6366f1">🎯 Hipótese de Campo</strong><br>
+        <span style="font-size:12px">A hipótese é que muitas pessoas gastam por impulso e escondem dívidas por vergonha — e que um espaço anônimo de acolhimento entre pares pode quebrar esse isolamento. O EDA não é tratamento médico: é o primeiro passo para que a pessoa busque ajuda profissional. O encaminhamento para CVV 188 e CAPS é parte do desenho.</span>
+      </div>
+    </div>
+    <button class="btn btn-ghost btn-sm" onclick="fecharSobreTrabalho()" style="margin-top:14px;width:100%;border-color:#4f5bd5;color:#4f5bd5">Fechar</button>
+  </div>
+</div>
+<script>
+function abrirSobreTrabalho(){document.getElementById('modalSobre').style.display='flex';document.body.style.overflow='hidden'}
+function fecharSobreTrabalho(){document.getElementById('modalSobre').style.display='none';document.body.style.overflow=''}
+document.getElementById('modalSobre').onclick=function(e){if(e.target===this)fecharSobreTrabalho()};
+</script>
 
 <script src="../assets/kit/kit.js" type="module"></script>
 <script type="module">

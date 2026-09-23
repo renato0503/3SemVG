@@ -7,13 +7,14 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Vida no Controle</title>
 <link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/identidade/temas.css">
 <link rel="stylesheet" href="../assets/kit/kit.css">
 <style>
 :root{
-  --accent:#ea580c;--accent-dark:#c2410c;--accent-soft:#fff7ed;
-  --accent2:#16a34a;--tinta:#431407;--tinta2:#7c2d12;
-  --fonte:'Segoe UI',Arial,sans-serif;--fonte-titulo:'Trebuchet MS',Arial;
+  --accent:#ea580c;--accent-dark:#9a3412;--accent-soft:#fff7ed;
+  --accent2:#16a34a;--tinta:#431407;--tinta2:#9a3412;
+  --fonte:'Poppins',Arial,sans-serif;--fonte-titulo:'Poppins',Arial,sans-serif;
   --texto:#431407;--texto-suave:#9a3412;--linha:#fed7aa;--fundo:#fffaf5;
   --card:#ffffff;--ok:#16a34a;--alerta:#dc2626;--atencao:#d97706;
 }
@@ -34,6 +35,25 @@ main{flex:1;padding:0 16px}
 .card{background:var(--card);border-radius:16px;padding:16px;box-shadow:0 1px 4px rgba(234,88,12,.08);margin-bottom:12px}
 .card-title{font-size:16px;font-weight:700;margin-bottom:6px;color:var(--tinta)}
 .card-sub{font-size:13px;color:var(--texto-suave)}
+
+/* G6 distinctive: local market, warm, bold, trustworthy */
+body{font-family:'Poppins',Arial,sans-serif;background:#fffaf5;color:#431407}
+header.top{background:linear-gradient(135deg,#431407 0%,#9a3412 100%);border-bottom:3px solid #ea580c;position:relative;overflow:hidden}
+header.top h1{font-family:'Poppins',Arial,sans-serif;font-weight:700;font-size:18px;color:#fffaf5}
+header.top .sub{color:#fed7aa}
+.badge-pill{background:rgba(234,88,12,.15);border:1px solid rgba(234,88,12,.3);color:#ea580c;font-weight:600}
+.card{background:#fff;border-radius:14px;box-shadow:0 3px 12px rgba(234,88,12,.1);border:1px solid #fed7aa}
+.card-title{font-family:'Poppins',Arial,sans-serif;font-weight:700;color:#431407}
+.card-sub{color:#9a3412}
+.btn{border-radius:12px;font-family:'Poppins',Arial,sans-serif;font-weight:600}
+.btn-primary{background:linear-gradient(135deg,#ea580c,#d4521e);color:#fff;box-shadow:0 4px 12px rgba(234,88,12,.25)}
+.btn-ghost{background:#fff;color:#ea580c;border:2px solid #ea580c;border-radius:12px}
+.btn-success{background:#16a34a;color:#fff;border-radius:12px}
+.nav-bottom{background:#fffaf5;border-top:1px solid #fed7aa}
+.nav-item.active{color:#ea580c;font-weight:700}
+.page-title{color:#ea580c;font-weight:700;text-transform:none;font-size:14px;letter-spacing:0}
+.text-muted{color:#9a3412}
+header.top::before{content:'';position:absolute;top:0;right:0;width:80px;height:80px;background:rgba(234,88,12,.08);border-radius:0 0 0 80px}
 .btn{display:flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:12px;padding:14px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;transition:transform .05s;padding-top:calc(14px + env(safe-area-inset-top))}
 .btn:active{transform:scale(.975)}
 .btn-primary{background:var(--accent);color:#fff}
@@ -247,8 +267,18 @@ textarea.form-textarea{resize:none}
 <!-- PERFIL -->
 <section class="screen" id="screenProfile">
 <div class="page-title">Meu Perfil</div>
+<div class="card" style="margin-bottom:12px;border-left:4px solid #16a34a">
+  <div class="card-title">📋 Sobre o Trabalho Acadêmico</div>
+  <p style="font-size:13px;color:#9a3412;margin-bottom:12px;line-height:1.6">
+    O <strong>Vida no Controle</strong> faz parte da pesquisa de <strong>Customer Discovery</strong> da disciplina de Projeto Inovador (3º Semestre · Unifacc).
+    Os alunos foram a um shopping ouvir famílias de Várzea Grande sobre orçamento, compras e cupom fiscal.
+  </p>
+  <button class="btn btn-primary btn-sm" id="btnSobreTrabalho" onclick="abrirSobreTrabalho()">
+    Ver contexto, formulário e referencial
+  </button>
+</div>
 <div class="card">
- <div class="card-title">Estatísticas</div>
+  <div class="card-title">Estatísticas</div>
  <div id="profileStats"></div>
 </div>
 <div class="card mt-12">
@@ -264,14 +294,47 @@ textarea.form-textarea{resize:none}
 </main>
 
 <nav class="nav-bottom" id="bottomNav">
-<button class="nav-item active" data-screen="Home"><span class="nav-icon">🏠</span><span>Home</span></button>
-<button class="nav-item" data-screen="Lista"><span class="nav-icon">📋</span><span>Lista</span></button>
-<button class="nav-item" data-screen="Cupom"><span class="nav-icon">🧾</span><span>Cupom</span></button>
-<button class="nav-item" data-screen="Comparador"><span class="nav-icon">⚖️</span><span>Comparar</span></button>
-<button class="nav-item" data-screen="Profile"><span class="nav-icon">⚙️</span><span>Perfil</span></button>
+<button class="nav-item active" data-screen="Home"><span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="20" height="16" rx="2"/><path d="M3 9h20"/><path d="M9 5V3M17 5V3"/></svg></span><span>Home</span></button>
+<button class="nav-item" data-screen="Lista"><span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span><span>Lista</span></button>
+<button class="nav-item" data-screen="Cupom"><span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h8l2 4-2 4H4a2 2 0 01-2-2V6a2 2 0 012-2z"/><path d="M22 4h-8l-2 4 2 4h8a2 2 0 002-2V6a2 2 0 00-2-2z"/><path d="M13 12v8M10 15h6"/></svg></span><span>Cupom</span></button>
+<button class="nav-item" data-screen="Comparador"><span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20V4M19 20V10"/><path d="M4 8l3-3 3 3M4 20l3-3 3 3"/><path d="M16 10l3-3 3 3"/></svg></span><span>Comparar</span></button>
+<button class="nav-item" data-screen="Profile"><span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="10" r="5"/><path d="M4 22c0-5 4-9 9-9s9 4 9 9"/></svg></span><span>Perfil</span></button>
 </nav>
 </div>
 <div class="toast-container" id="toastContainer"></div>
+
+<div class="modal-overlay" id="modalSobre" style="display:none">
+  <div class="modal-box" style="max-height:85dvh;overflow-y:auto;padding:20px;border-radius:18px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+      <div style="font-size:16px;font-weight:700;color:#431407;font-family:'Poppins',Arial,sans-serif">Sobre o Trabalho</div>
+      <button onclick="fecharSobreTrabalho()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#9a3412">✕</button>
+    </div>
+    <div style="font-size:13px;line-height:1.7;color:#431407">
+      <div style="background:#fff7ed;border-radius:12px;padding:14px;margin-bottom:14px;border-left:4px solid #ea580c">
+        <strong style="color:#ea580c">🛒 Contexto do Projeto</strong><br>
+        O <strong>Vida no Controle</strong> nasceu da defesa de projeto inovador sobre organização financeira familiar e economia no supermercado. A ideia: um app gratuito que organiza a renda familiar, compara preços entre supermercados de Várzea Grande e lê o cupom fiscal para identificar erros de preço. O supermercado local seria o sponsor. A pesquisa de campo aconteceu no shopping com formulário de 20 perguntas em escala 1–5.
+      </div>
+      <div style="background:#f0fdf4;border-radius:12px;padding:14px;margin-bottom:14px;border-left:4px solid #16a34a">
+        <strong style="color:#16a34a">📊 Resultado do Formulário (Customer Discovery)</strong><br>
+        <span style="font-size:12px">A pesquisa de campo foi aplicada pelo grupo com apoio do app de coleta. As perguntas medem: controle do orçamento familiar, frequência de comparação de preços, uso do cupom fiscal, conhecimento sobre economia e interesse em reserva financeira. Os códigos G6-<nnn> correlacionam cada resposta quantitativa com o áudio gravado no WhatsApp.</span>
+      </div>
+      <div style="background:#fffbeb;border-radius:12px;padding:14px;margin-bottom:14px;border-left:4px solid #d97706">
+        <strong style="color:#d97706">📚 Referencial Teórico</strong><br>
+        <span style="font-size:12px">O trabalho tem base em 14 artigos peer-reviewed (2021–2026), incluindo: Singh et al. (2022) sobre budgeting apps e aumento de savings; Lindblom et al. (2023) sobre comparação de preços e transparência; Nyström et al. (2021) sobre gamificação e engajamento financeiro; Garcia et al. (2023) sobre resiliência financeira em baixa renda; Ming et al. (2024) sobre time poverty e planejamento financeiro. O arcabouço teórico inclui nudge theory, behavioral economics e financial wellbeing.</span>
+      </div>
+      <div style="background:#fff7ed;border-radius:12px;padding:14px;border-left:4px solid #ea580c">
+        <strong style="color:#ea580c">🎯 Hipótese de Campo</strong><br>
+        <span style="font-size:12px">A hipótese é que famílias de Várzea Grande perdem dinheiro por não comparar preços entre supermercados e por não conferir o cupom fiscal. O Vida no Controle quer transformar o ato de ir ao mercado em ferramenta de educação financeira prática — lendo o cupom, comparando preços e construindo reserva aos poucos.</span>
+      </div>
+    </div>
+    <button class="btn btn-ghost btn-sm" onclick="fecharSobreTrabalho()" style="margin-top:14px;width:100%;border-color:#ea580c;color:#ea580c">Fechar</button>
+  </div>
+</div>
+<script>
+function abrirSobreTrabalho(){document.getElementById('modalSobre').style.display='flex';document.body.style.overflow='hidden'}
+function fecharSobreTrabalho(){document.getElementById('modalSobre').style.display='none';document.body.style.overflow=''}
+document.getElementById('modalSobre').onclick=function(e){if(e.target===this)fecharSobreTrabalho()};
+</script>
 
 <script src="../assets/kit/kit.js" type="module"></script>
 <script type="module">
