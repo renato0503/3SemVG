@@ -1,6 +1,6 @@
 # Formulário do App — Grupo 6 · Vida no Controle
 
-**Professor:** Prof. Renato · **Meta:** 15–20 respostas · **Código:** `G6-<nnn>` · **Total:** 20 perguntas
+**Professor:** Renato · **Meta:** 15–20 respostas · **Código:** `G6-<nnn>` · **Total:** 20 perguntas
 
 > **Lógica de marcação (vale para todos os grupos)**
 > 1. **Bloco 0 — Perfil:** é a **exceção** — o entrevistador **marca por observação** (categórico, não é escala).
@@ -19,65 +19,71 @@
 | Classe social (estimada) | A/B · C · D/E · Não sei estimar |
 | Raça/cor (estimada) | Branca · Preta · Parda · Amarela · Indígena · Não sei estimar |
 
-> **Nunca pergunte raça ou renda.** Se houver dúvida na estimativa, marque **"Não sei estimar"**.
-> Se quiser confirmar o recorte geográfico do projeto, isso entra aqui como **triagem categórica** (exceção): **Mora em Várzea Grande?** Sim / Não / Não sei.
+---
+
+## Bloco 1 — Controle do orçamento familiar (Q1–Q5)
+
+| # | Perguntar (aberto) | 1 = | 5 = |
+|---|---|---|---|
+| Q1 | Quanto você consegue entender no final do mês se sobrou ou se faltou dinheiro | Entendo perfeitamente | Não entendo nada |
+| Q2 | Com que frequência você sabe exatamente quanto gastou no supermercado no mês | Sempre sei | Nunca sei |
+| Q3 | Intensidade do controle sobre para onde o dinheiro da família vai | Controle total | Nenhum controle |
+| Q4 | Com que frequência você anota ou registra os gastos da família | Sempre registro | Nunca registro |
+| Q5 | Quanto o dinheiro总能 acaba antes do esperado | Sempre sobra | Sempre falta |
 
 ---
 
-## Bloco 1 — Renda e orçamento familiar (Q1–Q5)
+## Bloco 2 — Supermercado e cupom fiscal (Q6–Q10)
 
-| # | Perguntar (aberto) | 1 = | 5 = | Anotar |
-|---|---|---|---|---|
-| Q1 | Com que frequência você planeja o orçamento da família antes de gastar | Nunca | Sempre | 1 2 3 4 5 |
-| Q2 | O quanto você tem clareza de quanto a família ganha e quanto gasta por mês | Nenhuma clareza | Total clareza | 1 2 3 4 5 |
-| Q3 | Como a renda da família costuma se comportar até o fim do mês | Sobra dinheiro | Falta muito | 1 2 3 4 5 |
-| Q4 | Com que frequência o mês "fecha no vermelho" | Nunca | Sempre | 1 2 3 4 5 |
-| Q5 | O quanto você organiza e acompanha as contas da casa | Nenhum controle | Controle total | 1 2 3 4 5 |
+| # | Perguntar (aberto) | 1 = | 5 = |
+|---|---|---|---|
+| Q6 | Você compara preços do supermercado entre um lugar e outro? | Sempre comparo | Nunca comparo |
+| Q7 | Com que frequência você confere o cupom fiscal para ver se o preço cobrado está certo | Sempre confiro | Nunca confiro |
+| Q8 | Você já encontrou alguma vez um preço diferente do que estava anunciado no supermercado? | Nunca encontrei | Encontrei várias vezes |
+| Q9 | Quanto tempo você gasta por semana pensando em onde fazer as compras do mercado | Gasta tempo demais | Não gasto tempo nenhum |
+| Q10 | Quanto você acredita que poderia economizar por mês se comparasse preços de supermercado | Nenhuma economia | Muita economia |
 
-## Bloco 2 — Compras, preços e economia (Q6–Q10)
+---
 
-| # | Perguntar (aberto) | 1 = | 5 = | Anotar |
-|---|---|---|---|---|
-| Q6 | Com que frequência você compara preços antes de comprar itens da casa | Nunca | Sempre | 1 2 3 4 5 |
-| Q7 | Com que frequência você pesquisa ofertas e encartes do mercado | Nunca | Sempre | 1 2 3 4 5 |
-| Q8 | Com que frequência você troca de mercado por causa do preço mais baixo | Nunca | Sempre | 1 2 3 4 5 |
-| Q9 | Facilidade de saber onde o produto da casa está mais barato | Muito difícil | Muito fácil | 1 2 3 4 5 |
-| Q10 | O quanto uma economia pequena no mercado faz diferença no mês da família | Nenhuma | Muita | 1 2 3 4 5 |
+## Bloco 3 — Renda e reserva financeira (Q11–Q15)
 
-## Bloco 3 — Reserva, imprevistos e cupom fiscal (Q11–Q15)
+| # | Perguntar (aberto) | 1 = | 5 = |
+|---|---|---|---|
+| Q11 | A renda da família é fixada (salário) ou varia de mês a mês | É fixa | Varia muito |
+| Q12 | Com que frequência a família consegue guardar dinheiro para emergencies | Sempre consegue | Nunca consegue |
+| Q13 | Quanto você tem de reserva financeira para emergencies (meses de despesas cobertas) | Muita reserva (6+ meses) | Nenhuma reserva |
+| Q14 | Intensidade do medo de passar aperto financeiro no próximo mês | Nenhum medo | Muito medo |
+| Q15 | Quanto você já deixou de comprar algo essencial por falta de dinheiro | Nunca deixei | Várias vezes |
 
-| # | Perguntar (aberto) | 1 = | 5 = | Anotar |
-|---|---|---|---|---|
-| Q11 | Com que frequência você consegue guardar dinheiro por mês | Nunca | Sempre | 1 2 3 4 5 |
-| Q12 | O quanto a família tem de reserva guardada para imprevistos | Nada | Muita | 1 2 3 4 5 |
-| Q13 | O quanto um imprevisto (doença, conserto, conta extra) desorganiza as contas | Nada | Muito | 1 2 3 4 5 |
-| Q14 | Com que frequência você guarda ou confere o cupom fiscal das compras | Nunca | Sempre | 1 2 3 4 5 |
-| Q15 | O quanto você confere no cupom se os preços cobrados estão corretos | Nunca | Sempre | 1 2 3 4 5 |
+---
 
-## Bloco 4 — Plataforma, patrocínio e confiança (Q16–Q20)
+## Bloco 4 — App, informação e supermercado local (Q16–Q20)
 
-| # | Perguntar (aberto) | 1 = | 5 = | Anotar |
-|---|---|---|---|---|
-| Q16 | Utilidade de um app **gratuito** que organiza a renda da família | Nada útil | Muito útil | 1 2 3 4 5 |
-| Q17 | Utilidade de o app encontrar **oportunidades de economia** e ofertas do mercado regional | Nada útil | Muito útil | 1 2 3 4 5 |
-| Q18 | Utilidade de o app **ler o cupom fiscal** e mostrar os gastos da família | Nada útil | Muito útil | 1 2 3 4 5 |
-| Q19 | Confiança em usar um app gratuito **patrocinado pelo mercado local** | Nenhuma | Total | 1 2 3 4 5 |
-| Q20 | O quanto você se sentiria à vontade em compartilhar seus **dados de compra** em troca do app gratuito | Nada à vontade | Muito à vontade | 1 2 3 4 5 |
+| # | Perguntar (aberto) | 1 = | 5 = |
+|---|---|---|---|
+| Q16 | Utilidade de um app que ajuda a controlar o orçamento da família | Nada útil | Muito útil |
+| Q17 | Utilidade de um app que lê o cupom fiscal do supermercado e compara preços | Nada útil | Muito útil |
+| Q18 | Interesse em um app gratuito com supermercado local como sponsor (que mostra ofertas reais sem interferir na impartialidade) | Nenhum interesse | Muito interesse |
+| Q19 | Quanto a falta de tempo atrapalha você a controlar as finanças da família | Não atrapalha nada | Atrapalha muito |
+| Q20 | Disposição para mudar seus hábitos de compra se soubesse exatamente onde está perdendo dinheiro | Nenhuma disposição | Muita disposição |
 
 ---
 
 ## Regras de campo
 
-- **Não pergunte o perfil** — observe e marque; na dúvida, "Não sei estimar". Nunca pergunte raça nem renda.
-- Pergunte **aberto**; só depois marque a nota **1–5** (1 = dimensão A, 5 = dimensão B).
-- **Sem campo de texto no app.** As falas, justificativas e histórias vão no **áudio** com o código.
-- **Nunca peça valores exatos de renda ou de gasto** — foque em percepção e comportamento de compra.
-- O celular fica com o **entrevistador**.
+- **Não pergunte o perfil** — observe e marque; na dúvida, "Não sei estimar".
+- **Nunca pergunte valores de renda, despesas ou patrimônio.** Foque em **percepção, comportamento e comparação**.
+- As perguntas de supermercado (Q6–Q10) são especialmente importantes para validar a premissa do cupom fiscal.
+- O áudio é fundamental para registrar percepções sobre supermarkets locais e hábitos de compra.
 
 ## Áudio do WhatsApp (modelo)
 
-"Código **G6-___**. Principais pontos: [2–3 ideias]. Frase marcante: '[...]'." — 20 a 40 segundos.
+"Código **G6-___**. Principais pontos: [2–3 ideias]. Frase marcante: '[...]'. Supermercado mais frequente: [nome, se mencionado]." — 20 a 40 segundos.
 
 ## Checklist rápido
 
-- [ ] Bloco 0 (perfil) por observação · [ ] **20 perguntas** em escala 1–5 com polos rotulados · [ ] código `G6-<nnn>` na tela · [ ] teste no celular · [ ] ensaio do áudio
+- [ ] Bloco 0 (perfil) por observação
+- [ ] **20 perguntas** em escala 1–5 com polos rotulados
+- [ ] código `G6-<nnn>` na tela
+- [ ] teste no celular
+- [ ] ensaio do áudio com código

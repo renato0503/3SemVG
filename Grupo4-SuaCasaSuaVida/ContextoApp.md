@@ -9,6 +9,8 @@ Código de coleta: `G4-<nnn>` · Formulário: 20 perguntas · Meta: 15–20 resp
 
 O SuaCasaSuaVida ajuda quem paga aluguel a decidir **onde** e **quando** comprar sua casa, reunindo a **análise do bairro** (localização, segurança, serviços, valorização) e a **análise da própria situação financeira** — para que a compra do imóvel seja uma decisão informada, e não um salto no escuro.
 
+---
+
 ## 2. O problema e a oportunidade (por que agora)
 
 Comprar a primeira casa é, para a maioria das famílias, a maior decisão financeira da vida — e é tomada com pouquíssima informação confiável. Quem sai do aluguel enfrenta duas incertezas ao mesmo tempo:
@@ -16,15 +18,25 @@ Comprar a primeira casa é, para a maioria das famílias, a maior decisão finan
 - **Incerteza sobre o lugar.** O bairro é seguro? Tem escola, posto de saúde e mercado perto? O imóvel tende a valorizar ou a desvalorizar? A informação existe de forma fragmentada: em anúncios que só querem vender, em conversas de vizinhos e em visitas rápidas que não mostram a rotina real do local.
 - **Incerteza sobre o próprio bolso.** Quanto sobra por mês depois de todas as contas? Qual entrada é realmente possível juntar? O que significa uma parcela de financiamento em 30 anos? Muitas pessoas sabem que "cabe no papel", mas não sabem se cabe na vida.
 
+**Pesquisa que sustenta o problema:**
+- Mais de 8 milhões de famílias em déficit habitacional (Fundação João Dourado, 2023)
+- Taxa de homeownership ~77% (IBGE, 2022) — o brasileiro quer ser proprietário
+- Taxas de financiamento de 0,9% a 2,5% ao mês (8% a 30%+ ao ano) — as mais altas do mundo
+- Lepinteur et al. (2026): insegurança no emprego reduz significativamente a probabilidade de homeownership
+- Ha, Hilber & Schöni (2021): compradores com pouca informação sobre o bairro têm probabilidade 5,5 pontos percentuais menor de serem proprietários
+- Oliveira et al. (2025): affordability habitacional está associada a stress financeiro significativo
+
 **Hipótese de campo do grupo:** a maior dor não é o preço do imóvel em si, mas a **falta de clareza sobre o bairro e sobre a própria capacidade de pagamento** — o que leva as pessoas a adiar a compra por medo de assumir uma dívida longa.
 
 **Por que agora.** Três movimentos tornam esse momento propício:
 
 1. **Digitalização do setor imobiliário** — anúncios, portais, financiamento e documentos já circulam online, mas espalhados em vários sistemas e sem linguagem para o comprador comum.
 2. **Cultura de dados abertos e mapas públicos** — informações de infraestrutura urbana, serviços, transporte e segurança estão cada vez mais disponíveis, ainda que quase nunca organizadas na perspectiva de quem vai morar no local.
-3. **Financas pessoais na conversa pública** — educação financeira, orçamento familiar e saída do endividamento viraram tema recorrente, o que reduz a vergonha de falar sobre dinheiro e abre espaço para ferramentas de planejamento.
+3. **Finanças pessoais na conversa pública** — educação financeira, orçamento familiar e saída do endividamento viraram tema recorrente, o que reduz a vergonha de falar sobre dinheiro e abre espaço para ferramentas de planejamento.
 
 A oportunidade não é substituir o corretor nem o banco — é **preparar o comprador** para chegar a essas conversas sabendo o que quer, quanto pode e quais perguntas fazer.
+
+---
 
 ## 3. Público e personas
 
@@ -36,6 +48,8 @@ Mora com a família num apartamento alugado e quer se mudar para uma casa em bai
 
 **Persona 3 — Juliana, 26 anos, primeira compradora, solteira**
 Trabalha em escritório e quer sair do aluguel antes dos 30. É digital, pesquisa tudo na internet, mas se perde entre anúncios, juros e siglas do financiamento. Dor: não sabe diferenciar "o que o vendedor quer mostrar" do que realmente importa — e tem receio de ser enganada. O que ela quer: um **passo a passo** que transforme o desejo em plano concreto.
+
+---
 
 ## 4. Proposta de valor (mini canvas)
 
@@ -49,6 +63,8 @@ Trabalha em escritório e quer sair do aluguel antes dos 30. É digital, pesquis
 | **Proposta de valor** | "Antes de comprar, entenda o bairro e o seu bolso." |
 | **Alternativa atual** | Portais de imóveis, grupos de WhatsApp de bairro, corretores, banco, boca a boca, planilha própria. |
 
+---
+
 ## 5. Jornada do usuário
 
 **Sonhar e entender.** O usuário informa que quer sair do aluguel e conta, de forma simples, como é sua rotina financeira (sem digitar renda exata: responde como o aluguel pesa, quanto consegue guardar, o que é essencial). O app devolve uma **faixa realista de parcela** e uma noção de quanto tempo levaria para juntar a entrada.
@@ -58,6 +74,8 @@ Trabalha em escritório e quer sair do aluguel antes dos 30. É digital, pesquis
 **Comparar e amadurecer a decisão.** O usuário salva imóveis e bairros, simula cenários de financiamento (entrada maior x parcela menor; prazo curto x longo) e entende o que cada escolha significa no orçamento mensal. O app ajuda a formular as **perguntas certas** para levar ao corretor e ao banco.
 
 **Decidir e acompanhar.** Escolhido o caminho, o app organiza o plano: quanto guardar por mês, documentos necessários, próximos passos. Mesmo após a compra, ele pode registrar se a expectativa de bairro e de parcela se confirmou, alimentando o sistema para futuros compradores.
+
+---
 
 ## 6. Funcionalidades — MVP | v1 | v2
 
@@ -72,6 +90,8 @@ Trabalha em escritório e quer sair do aluguel antes dos 30. É digital, pesquis
 | Compartilhamento | Salvar/compartilhar análise | Análise em família (cônjuge) | Corretor/banca com permissão do usuário |
 | Avisos | Não | Lembrete de meta de entrada | Alertas de novos imóveis compatíveis |
 
+---
+
 ## 7. Diferenciais e alternativas
 
 | Alternativa | Limitação | Diferencial do SuaCasaSuaVida |
@@ -83,6 +103,8 @@ Trabalha em escritório e quer sair do aluguel antes dos 30. É digital, pesquis
 | Planilha própria | Trabalhosa e sem contexto de bairro | Junta as duas dimensões (bolso + lugar) num só lugar |
 
 **Diferencial central:** o app fica **do lado do comprador**. Ele não vende imóvel nem crédito — organiza informação para que a pessoa **não compre no escuro** e não assuma uma dívida que não consiga sustentar.
+
+---
 
 ## 8. Dados, governo e LGPD
 
@@ -99,6 +121,8 @@ Trabalha em escritório e quer sair do aluguel antes dos 30. É digital, pesquis
 
 O app **não é uma instituição financeira**, não concede crédito e deixa claro que as simulações são **estimativas** e não uma proposta oficial.
 
+---
+
 ## 9. Impacto e sustentabilidade
 
 **Impacto.** Menos compras por impulso ou por pressão; decisões mais conscientes sobre bairro e orçamento; famílias menos expostas a dívidas impagáveis; educação financeira aplicada a um objetivo concreto; bairros comparados com informação, e não só por aparência.
@@ -111,6 +135,8 @@ O app **não é uma instituição financeira**, não concede crédito e deixa cl
 - serviços opcionais de consultoria/planejamento, com o app básico sempre gratuito.
 
 O modelo não deve punir quem tem menos renda: a função central precisa continuar **acessível e gratuita**.
+
+---
 
 ## 10. Métricas de sucesso (KPIs)
 
@@ -125,6 +151,10 @@ O modelo não deve punir quem tem menos renda: a função central precisa contin
 | Retenção (retorno ao longo dos meses) | Relevância contínua |
 | NPS / recomendação a amigos e família | Satisfação geral |
 
+**Referências:** Ha, Hilber & Schöni (2021) informação de bairro e homeownership; Lepinteur et al. (2026) insegurança no emprego; Szumilo & Vanino (2021) affordability e empreendedorismo.
+
+---
+
 ## 11. Riscos e mitigação
 
 | Risco | Impacto | Mitigação |
@@ -137,6 +167,8 @@ O modelo não deve punir quem tem menos renda: a função central precisa contin
 | Baixa confiança em app novo | Médio | Transparência, vínculo com universidade e fontes abertas |
 | Dependência de parceria institucional | Baixo | Piloto independente antes de escalar |
 
+---
+
 ## 12. Roadmap de sprints
 
 | Sprint | Nome | Entregáveis |
@@ -147,6 +179,8 @@ O modelo não deve punir quem tem menos renda: a função central precisa contin
 | 3 | Campo + correlação | Coleta em campo (meta de 15–20 respostas) e leitura de correlações |
 | 4 | Análise | Cruzamento dos blocos, leitura da hipótese e dos áudios |
 | 5 | Refino final | Ajustes, consolidação e apresentação do resultado |
+
+---
 
 ## 13. Como o formulário valida a hipótese (blocos + áudio)
 
@@ -159,14 +193,16 @@ O modelo não deve punir quem tem menos renda: a função central precisa contin
 
 **Blocos das 20 perguntas**
 
-| Bloco | Perguntas | O que investiga |
-| --- | --- | --- |
-| 1 | Q1–Q5 | Moradia atual e desejo da casa própria |
-| 2 | Q6–Q10 | Análise do bairro e localização |
-| 3 | Q11–Q15 | Situação financeira e financiamento |
-| 4 | Q16–Q20 | App, informação e confiança |
+| Bloco | Perguntas | O que investiga | Base na pesquisa |
+| --- | --- | --- | --- |
+| 1 | Q1–Q5 | Moradia atual e desejo da casa própria | Lepinteur et al. (2026); IBGE déficit habitacional |
+| 2 | Q6–Q10 | Análise do bairro e localização | Ha, Hilber & Schöni (2021) informação de bairro |
+| 3 | Q11–Q15 | Situação financeira e financiamento | Szumilo & Vanino (2021); Hembre & Dantas (2022) |
+| 4 | Q16–Q20 | App, informação e confiança | Oliveira et al. (2025) affordability e stress |
 
 **Como isso valida a hipótese.** A hipótese é: *a maior dor não é o preço do imóvel, mas a falta de clareza sobre o bairro e sobre a própria capacidade de pagamento.* O bloco 1 mostra o peso do aluguel e a força do desejo. O bloco 2 mede quanto a **localização e o bairro** pesam na decisão. O bloco 3 mede a **insegurança financeira** — clareza sobre o quanto pagar, dificuldade da entrada, entendimento de financiamento e medo da dívida. Se o bloco 3 aparecer como o ponto mais crítico, a hipótese se confirma; se o bairro dominar, o foco do produto muda para a análise de localização. O bloco 4 indica qual funcionalidade o entrevistado prioriza (bairro, situação financeira, simulação ou confiança geral). O áudio com o código `G4-<nnn>` dá o contexto humano que a escala 1–5 não captura — o medo real, a história por trás do aluguel e o motivo de adiar a compra.
+
+---
 
 ## 14. Pitch de 30 segundos
 

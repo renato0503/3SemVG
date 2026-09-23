@@ -9,6 +9,8 @@ Código de coleta: `G1-<nnn>` · Formulário: 20 perguntas · Meta: 15–20 resp
 
 O Dinheiro na Mão é um **programa público de atendimento presencial** em que profissionais ajudam famílias a organizar contas e datas, apoiadas por um **sistema inteligente** e por uma **bolsa-incentivo** para quem coloca a vida financeira em ordem.
 
+---
+
 ## 2. O problema e a oportunidade (por que agora)
 
 Milhões de famílias brasileiras vivem com o orçamento apertado e sem qualquer organização formal das contas. Isso não é apenas falta de dinheiro: é também **falta de método, de informação e de apoio**. No dia a dia, os sinais são conhecidos:
@@ -19,16 +21,26 @@ Milhões de famílias brasileiras vivem com o orçamento apertado e sem qualquer
 - vergonha e desconforto para falar de dívidas, o que afasta a pessoa de buscar ajuda;
 - desconfiança de "consultoria financeira", vista como coisa de banco ou de quem tem dinheiro.
 
+**Pesquisa que sustenta o problema:**
+
+- 78% das famílias brasileiras estão endividadas (BCB, 2024)
+- 76% de inadimplência entre consumidores (SPC Brasil, 2025)
+- 40,6 milhões de famílias no CadÚnico e 20,5 milhões no Bolsa Família
+- Bruhn et al. (2025) provam que educação financiera no ensino médio reduz endividamento a longo prazo
+- Kaiser et al. (2022) meta-análise de 40 estudos confirma: educação financiera muda comportamento
+
 **Hipótese de campo do grupo:** a maior dor é a **desorganização das contas e o aperto do orçamento**; as pessoas já deixaram de pagar ou adiaram algo por não saber organizar datas, e **buscariam ajuda** se ela fosse oferecida de forma presencial, gratuita e confiável.
 
 **Por que agora.** Quatro movimentos se encontram:
 
 1. **Educação financeira entrou na agenda pública** — o tema é tratado como política de proteção ao consumidor e de combate ao superendividamento, não apenas como assunto individual.
-2. **Desigualdade digital ainda é real** — boa parte do público-alvo não resolve a vida financeira por aplicativo. O atendimento **presencial** continua sendo o canal de confiança de quem tem menos letramento digital.
+2. **Desigualdade digital ainda é real** — boa parte do público-alvo não resolve a vida financeira por aplicativo. O atendimento **presencial** continua sendo o canal de confiança de quem tem menos letramento digital (TIC Domicílios 2024: 29 milhões sem internet, 16 milhões nas classes DE).
 3. **Programas sociais já são conhecidos** — o público-alvo reconhece a lógica de um cadastro, de um posto de atendimento e de um benefício condicionado a um comportamento. Isso reduz a barreira de adoção.
 4. **Ferramentas de organização ficaram baratas** — lembretes, calendários e categorização de gastos são recursos simples, que podem apoiar o trabalho do profissional no balcão.
 
 A oportunidade **não é dar dinheiro** para resolver a dívida. É dar **método, acompanhamento e um empurrão** para que a própria família organize contas e decisões de consumo — com um profissional do lado e uma tecnologia que sustenta o processo.
+
+---
 
 ## 3. Público e personas
 
@@ -40,6 +52,8 @@ Renda irregular e muitas contas pequenas espalhadas. Já tentou planilha no celu
 
 **Persona 3 — Cida, 47 anos, comerciária, mãe de dois**
 Ganha um salário fixo modesto e sustenta a casa. Já fez um empréstimo para "equilibrar" e hoje paga parcelas que apertam o orçamento. Sente **vergonha** de falar de dívida e evita conversar sobre dinheiro em casa. Dor: não sabe a quem recorrer sem ser julgada. O que ela quer: um lugar **acolhedor** e um pequeno incentivo que reconheça o esforço de organizar as finanças.
+
+---
 
 ## 4. Proposta de valor (mini canvas)
 
@@ -53,6 +67,8 @@ Ganha um salário fixo modesto e sustenta a casa. Já fez um empréstimo para "e
 | **Proposta de valor** | "Organize suas contas com ajuda de gente de verdade — e ganhe um empurrão para continuar." |
 | **Alternativa atual** | Fazer "de cabeça", caderno, planilha abandonada, pedir ajuda a parentes, consultoria paga. |
 
+---
+
 ## 5. Jornada do usuário
 
 **Primeiro contato.** A pessoa fica sabendo do programa pela divulgação no posto, por agentes comunitários, pelo CRAS ou por um vizinho. A entrada é simples e sem julgamento: ela é recebida, não avaliada.
@@ -64,6 +80,8 @@ Ganha um salário fixo modesto e sustenta a casa. Já fez um empréstimo para "e
 **Acompanhamento e bolsa-incentivo.** A cada ciclo, se a pessoa cumpriu o combinado (contas registradas e pagas em dia), ela recebe ou mantém a **bolsa-incentivo**. O benefício é o empurrão e, ao mesmo tempo, o reconhecimento de que o esforço valeu a pena.
 
 **Depois.** A pessoa passa a usar o calendário e os lembretes no dia a dia, ganha previsibilidade e, se surgir uma nova dívida, já sabe onde buscar ajuda antes que vire bola de neve.
+
+---
 
 ## 6. Funcionalidades — MVP | v1 | v2
 
@@ -77,6 +95,8 @@ Ganha um salário fixo modesto e sustenta a casa. Já fez um empréstimo para "e
 | Bolsa-incentivo | Regras simples e cadastro | Ciclos com metas | Regras ajustadas ao perfil da família |
 | Acompanhamento | Lista de presença | Histórico de ciclos | Painel de evolução da família |
 
+---
+
 ## 7. Diferenciais e alternativas
 
 | Alternativa | Limitação | Diferencial do Dinheiro na Mão |
@@ -88,6 +108,8 @@ Ganha um salário fixo modesto e sustenta a casa. Já fez um empréstimo para "e
 | Empréstimo para "equilibrar" | Aumenta a dívida e agrava o problema | Organização e prevenção, sem criar nova dívida |
 
 **Diferencial central:** o programa não cobra a solução, não julga e não empresta — ele **ensina e acompanha**. O presencial é a porta, o sistema é a muleta do dia a dia e a bolsa é o empurrão.
+
+---
 
 ## 8. Dados, governo e LGPD
 
@@ -104,6 +126,8 @@ Ganha um salário fixo modesto e sustenta a casa. Já fez um empréstimo para "e
 
 O programa **não paga dívidas**, não substitui o atendimento do órgão de proteção ao consumidor e deixa claro que a bolsa é um **incentivo de organização**, não uma renda permanente.
 
+---
+
 ## 9. Impacto público e sustentabilidade
 
 **Impacto público.** Menos contas atrasadas e menos juros pagos por esquecimento; famílias com orçamento mais previsível; redução do endividamento por impulso; inclusão financeira de quem tem pouco letramento digital; e um espaço acolhedor para falar de dinheiro sem vergonha. No médio prazo, a organização familiar reduz a pressão sobre serviços de proteção ao consumidor e sobre programas emergenciais.
@@ -116,6 +140,8 @@ O programa **não paga dívidas**, não substitui o atendimento do órgão de pr
 - apoio de programas de inovação e de educação financeira como piloto e prova de conceito.
 
 O modelo precisa ser **de interesse público**, gratuito para a família e sem qualquer monetização sobre a vulnerabilidade de quem participa.
+
+---
 
 ## 10. Métricas de sucesso (KPIs)
 
@@ -131,6 +157,10 @@ O modelo precisa ser **de interesse público**, gratuito para a família e sem q
 | Reclamações sobre julgamento/constrangimento | Qualidade do acolhimento |
 | Custo médio por família atendida | Eficiência do programa |
 
+**Referências de meta:** Kaiser et al. (2022) meta-análise; Bruhn et al. (2025) RCT Brasil.
+
+---
+
 ## 11. Riscos e mitigação
 
 | Risco | Impacto | Mitigação |
@@ -143,6 +173,8 @@ O modelo precisa ser **de interesse público**, gratuito para a família e sem q
 | Confusão com "empréstimo" ou "pagar dívida" | Médio | Posicionamento explícito: organizar, não financiar |
 | Dependência de orçamento público | Médio | Piloto enxuto, métricas e institucionalização por lei/programa |
 
+---
+
 ## 12. Roadmap de sprints
 
 | Sprint | Nome | Entregáveis |
@@ -153,6 +185,8 @@ O modelo precisa ser **de interesse público**, gratuito para a família e sem q
 | 3 | Campo + correlação | Coleta em campo (meta de 15–20 respostas) e leitura de correlações |
 | 4 | Análise | Cruzamento dos blocos, leitura da hipótese e dos áudios |
 | 5 | Refino final | Ajustes, consolidação e apresentação do resultado |
+
+---
 
 ## 13. Como o formulário valida a hipótese (blocos + áudio)
 
@@ -165,14 +199,16 @@ O modelo precisa ser **de interesse público**, gratuito para a família e sem q
 
 **Blocos das 20 perguntas**
 
-| Bloco | Perguntas | O que investiga |
-| --- | --- | --- |
-| 1 | Q1–Q5 | Situação financeira e contas: aperto, atrasos, esquecimento de datas, renda vs. despesas |
-| 2 | Q6–Q10 | Organização e comportamento: planejamento, conhecimento das datas, impulso, conversa em família |
-| 3 | Q11–Q15 | Ajuda, informação e confiança: busca de ajuda, acesso a orientação, confiança, vergonha |
-| 4 | Q16–Q20 | Programa presencial, sistema e bolsa-incentivo: utilidade de cada peça e confiança no governo |
+| Bloco | Perguntas | O que investiga | Base na pesquisa |
+| --- | --- | --- | --- |
+| 1 | Q1–Q5 | Situação financeira e contas: aperto, atrasos, esquecimento de datas, renda vs. despesas | Dor principal documentada |
+| 2 | Q6–Q10 | Comportamento financeiro: planejamento, conhecimento das datas, impulso, autoeficácia | Literacia e autoeficácia (Lone & Bhat, 2022; Palmer et al., 2021) |
+| 3 | Q11–Q15 | Ajuda e confiança: busca de ajuda, acesso a orientação, confiança, vergonha | Financial counseling (Chong et al., 2021; Fan et al., 2021) |
+| 4 | Q16–Q20 | Programa: utilidade do presencial, sistema, bolsa-incentivo, confiança no governo | Proposta de valor do app |
 
 **Como isso valida a hipótese.** A hipótese é: *a maior dor é a desorganização das contas e o aperto do orçamento; as pessoas já adiaram pagamentos por não saber organizar datas, e buscariam ajuda presencial e confiável.* O **Bloco 1** mede o aperto e a frequência de atrasos e esquecimentos — é o termômetro da dor. O **Bloco 2** mostra o comportamento: quem não anota, não sabe as datas de cabeça e compra por impulso tende a sofrer mais no Bloco 1. O **Bloco 3** testa a disposição e a barreira para buscar ajuda (incluindo vergonha e confiança), o que define se o **presencial** é realmente necessário. O **Bloco 4** mede a utilidade percebida de cada peça da ideia — atendimento presencial, sistema inteligente e bolsa-incentivo — e a confiança em um programa do governo. Se os Blocos 1 e 2 apontarem desorganização frequente e o Bloco 4 indicar utilidade alta para o presencial e o sistema, a hipótese se confirma e a ideia tem base. O **áudio com o código `G1-<nnn>`** dá o contexto humano (a história por trás da nota) que a escala 1–5 não captura.
+
+---
 
 ## 14. Pitch de 30 segundos
 

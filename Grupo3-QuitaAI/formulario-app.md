@@ -39,7 +39,7 @@
 |---|---|---|---|
 | Q6 | Com que frequência a **família conversa junto** sobre gastos, contas e orçamento? | Nunca | Sempre |
 | Q7 | Qual o nível de organização financeira da sua família hoje? | Nenhuma | Totalmente organizada |
-| Q8 | O quanto a **escola** poderia ajudar sua família a melhorar as finanças (se o aluno aprendesse e ensinasse em casa)? | Nada | Muito |
+| Q8 | O quanto a **família** poderia ajudar a resistir a compras por impulso? | Nada | Muito |
 | Q9 | Você já utiliza ou já pensou em usar algum app ou planilha para acompanhar gastos? | Nunca | Uso sempre |
 | Q10 | O quanto compartilhar dados financeiros com um app (com seu consentimento) seria seguro e útil para organizar o orçamento? | Nada seguro/útil | Totalmente seguro/útil |
 
@@ -79,7 +79,7 @@
 
 ## Áudio do WhatsApp (modelo)
 
-> "Código **G3-___**. Principais pontos: [2–3 ideias]. Frase marcante: '[...]'." — 20 a 40 segundos.
+"Código **G3-___**. Principais pontos: [2–3 ideias]. Frase marcante: '[...]'." — 20 a 40 segundos.
 
 ## Checklist rápido
 

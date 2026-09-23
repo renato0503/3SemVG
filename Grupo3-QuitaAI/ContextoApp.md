@@ -9,9 +9,18 @@ Código de coleta: `G3-<nnn>` · Formulário: 20 perguntas · Meta: 15–20 resp
 
 O Quita.AI transforma o controle dos gastos da família em um **jogo colaborativo**, em que todos jogam juntos e ganham **bônus por segurar as compras por impulso** — para que organizar a vida financeira deixe de ser sacrifício solitário e vire uma conquista em equipe.
 
+---
+
 ## 2. O problema e a oportunidade (por que agora)
 
 Grande parte das famílias brasileiras não tem um problema de falta de informação financeira, e sim de **comportamento**: sabe que gastar por impulso atrapalha, mas compra mesmo assim. A compra por impulso acontece no momento de maior cansaço, estresse ou exposição a estímulos — promoção na vitrine, notificação de aplicativo, influência de redes sociais, vontade imediata. É um ato emocional, quase automático, difícil de conter apenas com planilha e boa intenção.
+
+**Pesquisa que sustenta o problema:**
+- 71,3 milhões de brasileiros endividados (CNC/SPC Brasil, 2024)
+- 68% da população não consegue economizar
+- 67% dos jovens de 18–24 anos já tiveram compras por impulso (Boa Vista SCPC)
+- Kimiagari & Malafe (2021, 277 citações): o gap está na resposta cognitiva e afetiva no momento do estímulo, não no conhecimento
+- Darrat et al. (2022): intervenções que treinam autocontrole são mais eficazes que educação financeira pura
 
 **A arquitetura do hiperconsumismo no Brasil** — três forças que sustentam o comportamento:
 
@@ -21,18 +30,18 @@ Grande parte das famílias brasileiras não tem um problema de falta de informa�
 
 **No ambiente digital**, três mecanismos amplificam: algoritmos e FOMO mapeiam vulnerabilidades; compra em 1 clique reduz a barreira; a arquitetura comercial (luz, notificações, escassez) prolonga o estímulo.
 
-**Hipótese de campo do grupo:** os gastos por impulso desorganizam o orçamento familiar e as pessoas se motivam mais quando o controle vira um **jogo com metas e recompensas**, jogado por toda a família.
-
 **Marco legal: Lei 14.181/2021.** A Lei do Superendividamento estabelece diretrizes para prevenção e tratamento do superendividamento consumerista, incluindo educação financeira e práticas de crédito responsável. O Open Finance do Banco Central permite integração segura de dados financeiros com consentimento do usuário.
 
 **Por que agora.** Quatro movimentos se encontram:
 
 1. **Gamificação consolidada** — mecânicas de fases, pontos, streaks e recompensas já provaram que mudam hábitos em saúde, educação e produtividade; nas finanças pessoais ainda são pouco exploradas em família.
 2. **Open Finance e dados reais** — o Pix e os apps bancários deixaram um rastro de dados que permite ao Quita.AI organizar dívidas, gastos e metas em tempo real — com consentimento.
-3. **Pressão das famílias endividadas** — 43,9% dos brasileiros adultos negativados (BCB, dez/2025); 71,3 milhões de endividados (CNC/SPC); o orçamento doméstico aperta e a busca por controle cresce.
+3. **Pressão das famílias endividadas** — 78% das famílias brasileiras endividadas (BCB, 2024); o orçamento doméstico aperta e a busca por controle cresce.
 4. **Editais de financiamento tecnológico** — programas de fomento à inovação e à educação financeira abrem caminho para um produto de interesse público testado antes de virar negócio.
 
 A oportunidade não é criar mais um app de orçamento, e sim **mudar o incentivo**: em vez de punir o gasto, **premiar a resistência ao impulso**. O jogo dá à família um motivo imediato e coletivo para não gastar agora.
+
+---
 
 ## 3. Público e personas
 
@@ -45,6 +54,8 @@ Mora sozinha, salário previsível, mas o cartão estoura todo mês com compras 
 **Persona 3 — Seu Antônio e Dona Cida, 60+, casal aposentado**
 Renda fixa, sem dívida grande, mas preocupados em não comprometer o orçamento com gastos por impulso dos netos ou do dia a dia. Têm pouca familiaridade com apps complexos, mas usam WhatsApp e jogos simples no celular. Dor: achar que "controlar gasto é coisa de gente nova". O que querem: **algo fácil, em família, com regras claras e prêmio visível**.
 
+---
+
 ## 4. Proposta de valor (mini canvas)
 
 | Bloco | Conteúdo |
@@ -56,6 +67,8 @@ Renda fixa, sem dívida grande, mas preocupados em não comprometer o orçamento
 | **Canais** | App mobile (principal), WhatsApp para lembretes; parceria com editais e instituições. |
 | **Proposta de valor** | "Controlar os gastos da família virou um jogo — e resistir ao impulso vale prêmio." |
 | **Alternativa atual** | Planilhas, apps de orçamento, anotar no papel, bloqueio do cartão, "não gastar" na força de vontade. |
+
+---
 
 ## 5. Jornada do usuário
 
@@ -83,8 +96,7 @@ Ao cumprir um conjunto de metas, a família sobe de fase e desbloqueia **bônus 
 **Depois**
 O histórico mostra a evolução do comportamento, não só do saldo. A família percebe quais gatilhos disparam o impulso e ajusta as metas. Quanto mais jogam, mais o controle vira hábito e menos parece sacrifício.
 
-**Depois**
-O histórico mostra a evolução do comportamento, não só do saldo. A família percebe quais gatilhos disparam o impulso e ajusta as metas. Quanto mais jogam, mais o controle vira hábito e menos parece sacrifício.
+---
 
 ## 6. Funcionalidades — MVP | v1 | v2
 
@@ -99,6 +111,8 @@ O histórico mostra a evolução do comportamento, não só do saldo. A família
 | Privacidade | Sem valores de dívida/renda | Controles de visibilidade | Dados agregados e anonimizados |
 | Canal | App mobile | + WhatsApp | + integração com bancos/parceiros |
 
+---
+
 ## 7. Diferenciais e alternativas
 
 | Alternativa | Limitação | Diferencial do Quita.AI |
@@ -110,6 +124,8 @@ O histórico mostra a evolução do comportamento, não só do saldo. A família
 | Bloqueio do cartão / "freeze" | Medida drástica e solitária | Recompensa positiva e leve |
 
 **Diferencial central:** o Quita.AI não é um app de orçamento com tema de jogo — é um **jogo cujo resultado é o orçamento melhor**. O comportamento coletivo e o reforço positivo são o produto.
+
+---
 
 ## 8. Dados, governo e LGPD
 
@@ -128,6 +144,8 @@ O histórico mostra a evolução do comportamento, não só do saldo. A família
 
 O Quita.AI é uma ferramenta de apoio ao comportamento — **não substitui aconselhamento financeiro profissional** e deixa explícito que as recompensas externas são hipóteses.
 
+---
+
 ## 9. Impacto e sustentabilidade
 
 **Impacto social.** Redução do gasto por impulso e do endividamento doméstico; menos conflito familiar sobre dinheiro; educação financeira prática e acessível; inclusão de idosos via linguagem de jogo simples; melhora do bem-estar emocional ligado às finanças.
@@ -144,13 +162,7 @@ O Quita.AI é uma ferramenta de apoio ao comportamento — **não substitui acon
 - **Corporate Venture Capital (CVC)** — fundos de inovação de empresas do setor financeiro e varejo;
 - **projeto de extensão acadêmica** como prova de conceito, evoluindo para produto.
 
-**Quatro camadas de transparência** (sempre explícitas no app e na comunicação):
-1. **O que já existe e possui evidência** — dados de endividamento, pesquisa científica, infraestrutura digital.
-2. **O que é proposta do Quita.AI** — o jogo, as missões, o formato família, a IA como assistente.
-3. **O que é resultado esperado e ainda precisa ser validado** — que a gamificação motiva, que família aumenta engajamento, que pontos viram comportamento.
-4. **O que depende de futuras parcerias ou alterações legais** — benefícios de parceiros empresariais, incentivos fiscais (IPTU, taxas), integração com saúde pública.
-
-O modelo deve ser **de interesse público** e nunca monetizar a vulnerabilidade de quem está endividado — nada de vender crédito ou empréstimo a quem o jogo deveria proteger.
+---
 
 ## 10. Métricas de sucesso (KPIs)
 
@@ -165,6 +177,10 @@ O modelo deve ser **de interesse público** e nunca monetizar a vulnerabilidade 
 | Motivação percebida com recompensas | Validação das hipóteses de prêmio |
 | NPS / satisfação da família | Percepção geral |
 
+**Referências:** Bitrián et al. (2021) gamificação e retenção; Artadita & Firmialy (2024) autocontrole e jogo; Darrat et al. (2022) treinamento de autocontrole.
+
+---
+
 ## 11. Riscos e mitigação
 
 | Risco | Impacto | Mitigação |
@@ -177,6 +193,8 @@ O modelo deve ser **de interesse público** e nunca monetizar a vulnerabilidade 
 | Dificuldade de financiamento (editais) | Médio | Prova de conceito acadêmica antes de escalar |
 | Uso indevido de dados pessoais | Alto | LGPD desde o MVP: consentimento, agregação, segurança |
 | Percepção de "app para endividado" e estigma | Médio | Linguagem positiva e de conquista, não de culpa |
+
+---
 
 ## 12. Roadmap de sprints
 
@@ -200,6 +218,8 @@ O modelo deve ser **de interesse público** e nunca monetizar a vulnerabilidade 
 
 **Piloto sugerido:** 1 bairro/território · 20–50 famílias · medir 90 dias · ajustar · ampliar.
 
+---
+
 ## 13. Como o formulário valida a hipótese (blocos + áudio)
 
 **Regras do app de coleta**
@@ -211,15 +231,17 @@ O modelo deve ser **de interesse público** e nunca monetizar a vulnerabilidade 
 
 **Blocos das 20 perguntas**
 
-| Bloco | Perguntas | O que investiga |
-| --- | --- | --- |
-| 1 | Q1–Q5 | Gastos por impulso: frequência, decisão, peso no orçamento, arrependimento |
-| 2 | Q6–Q10 | Controle e metas da família: diálogo, organização, cumprimento de metas |
-| 3 | Q11–Q15 | Jogo, recompensa e motivação: adesão à gamificação e ao jogo em família |
-| 4 | Q16–Q20 | Confiança, prêmios e adoção: desconto/isenção como hipótese, confiança e uso |
+| Bloco | Perguntas | O que investiga | Base na pesquisa |
+| --- | --- | --- | --- |
+| 1 | Q1–Q5 | Gastos por impulso: frequência, decisão, peso no orçamento, arrependimento | Kimiagari & Malafe (2021); Nyrhinen et al. (2023) |
+| 2 | Q6–Q10 | Controle e metas da família: diálogo, organização, cumprimento de metas | Darrat et al. (2022); Madeira et al. (2024) |
+| 3 | Q11–Q15 | Jogo, recompensa e motivação: adesão à gamificação e ao jogo em família | Bitrián et al. (2021); Pal et al. (2021); Artadita & Firmialy (2024) |
+| 4 | Q16–Q20 | Confiança, prêmios e adoção: desconto/isenção como hipótese, confiança e uso | Benner et al. (2022); Kakkar et al. (2022) |
 
-**Como isso valida a hipótese.** A hipótese é: *os gastos por impulso desorganizam o orçamento da família e as pessoas se motivam mais quando o controle vira um jogo com metas e recompensas, jogado em família.* O bloco 1 mede a **intensidade do problema** (frequência e peso das compras por impulso); o bloco 2 mostra se a família já **conversa e cumpre metas** — ou seja, se há terreno para o jogo; o bloco 3 testa diretamente a **adesão à gamificação** e ao formato família; o bloco 4 mede se **recompensas e prêmios** (incluindo as hipóteses de desconto e isenção) motivam e se a pessoa confiaria no app. Se os blocos 1 e 2 indicarem problema relevante e o bloco 3 indicar alta motivação, a hipótese se confirma. O áudio com o código `G3-<nnn>` dá o contexto humano — a frase que explica **por que** a pessoa compra por impulso — que a escala 1–5 não captura.
+**Como isso valida a hipótese.** A hipótese é: *os gastos por impulso desorganizam o orçamento da família e as pessoas se motivam mais quando o controle vira um jogo com metas e recompensas, jogado em família.* O bloco 1 mede a **intensidade do problema** (frequência e peso das compras por impulso). O bloco 2 mostra se a família já **conversa e cumpre metas** — ou seja, se há terreno para o jogo. O bloco 3 testa diretamente a **adesão à gamificação** e ao formato família. O bloco 4 mede se **recompensas e prêmios** (incluindo as hipóteses de desconto e isenção) motivam e se a pessoa confiaria no app. Se os blocos 1 e 2 indicarem problema relevante e o bloco 3 indicar alta motivação, a hipótese se confirma. O áudio com o código `G3-<nnn>` dá o contexto humano — a frase que explica **por que** a pessoa compra por impulso — que a escala 1–5 não captura.
+
+---
 
 ## 14. Pitch de 30 segundos
 
-"Todo mundo já comprou por impulso e só percebeu quando a fatura chegou. O Quita.AI muda isso transformando o controle dos gastos num **jogo da família**: cada vez que alguém segura um gasto desnecessário, o time ganha pontos; as metas do mês viram fases, e cada fase cumprida vira bônus. Em vez de sermão e culpa, a família joga junto e comemora junto. É educação financeira na prática, com reforço positivo, feita para caber no dia a dia de quem mais precisa controlar o orçamento."
+"Todo mundo já comprou por impulso e só percebeu quando a fatura chegou. O Quita.AI muda isso transformando o controle dos gastos num **jogo da família**: cada vez que alguém segura um gasto desnecessário, o time ganha pontos; as metas do mês viram fases, e cada fase cumprida vira bônus. Em vez de sermão e culpa, a família joga junto e comemorajunto. É educação financeira na prática, com reforço positivo, feita para caber no dia a dia de quem mais precisa controlar o orçamento."
