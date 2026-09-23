@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vida no Controle | Várzea Grande</title>
+<style>
+:root{--bg:#f6f8fb;--card:#fff;--text:#182230;--muted:#64748b;--primary:#126e51;--primary2:#0d5942;--accent:#ea580c;--danger:#c94b4b;--line:#e6ebf0}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text)}
+header{background:linear-gradient(135deg,#0d5942,#16805e);color:white;padding:20px 6%;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-weight:800;font-size:22px}.logo span{color:#ffd46a}
+nav a{color:white;text-decoration:none;margin-left:20px;font-size:14px}
+.hero{padding:58px 6%;background:white;display:grid;grid-template-columns:1.25fr .75fr;gap:35px;align-items:center}
+.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.02;margin:0 0 18px}.hero p{font-size:18px;color:var(--muted);max-width:680px}
+.btn{border:0;border-radius:12px;padding:13px 18px;font-weight:700;cursor:pointer}.primary{background:var(--primary);color:white}.secondary{background:#edf5f1;color:var(--primary)}
+.hero-card{background:#f2f8f5;border:1px solid #dcece5;border-radius:20px;padding:25px}.hero-card .big{font-size:42px;font-weight:800;color:var(--primary)}
+.container{width:min(1120px,88%);margin:35px auto}.section-title{margin-bottom:18px}.section-title h2{margin:0 0 6px}.section-title p{margin:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 6px 20px #17203308}
+.card h3{margin:8px 0}.muted{color:var(--muted);font-size:14px}
+.dashboard{display:grid;grid-template-columns:1fr 1fr;gap:18px}.full{grid-column:1/-1}
+.metric{font-size:30px;font-weight:800;margin:8px 0}.progress{height:10px;background:#e9eef1;border-radius:20px;overflow:hidden}.bar{height:100%;width:34%;background:var(--primary)}
+.good{color:var(--primary)}.warn{color:#b47710}.bad{color:var(--danger)}
+.expenses{width:100%;border-collapse:collapse}.expenses th,.expenses td{padding:11px 8px;border-bottom:1px solid var(--line);text-align:left;font-size:14px}
+.ad{background:#fff8e8;border:1px solid #f3dfad}.ad strong{color:#8a5d00}
+.cashback{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.badge{background:#e9f6ef;color:var(--primary);padding:5px 9px;border-radius:999px;font-size:12px;font-weight:700}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form input,.form select{width:100%;padding:12px;border:1px solid #d7dee5;border-radius:10px;background:white}
+.form .wide{grid-column:1/-1}
+.notice{padding:14px;border-radius:12px;background:#fff7e8;border:1px solid #f1dfb5;color:#75520e;font-size:14px}
+footer{background:#13231e;color:#dbe7e2;padding:35px 6%;margin-top:50px;font-size:14px}
+@media(max-width:800px){.hero,.dashboard{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.form{grid-template-columns:1fr}.hero{padding-top:38px}nav{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Vida <span>no Controle</span></div>
+  <nav><a href="#orcamento">Orçamento</a><a href="#cashback">Cashback</a><a href="#reserva">Reserva</a><a href="#credito">Crédito</a><a href="index.html" style="background:var(--accent);padding:6px 14px;border-radius:8px;font-weight:700">Abrir App</a></nav>
+</header>
+
+<section class="hero">
+  <div>
+    <div class="badge">Projeto regional • Várzea Grande - MT</div>
+    <h1>Seu dinheiro, sua cidade, seu controle.</h1>
+    <p>Uma plataforma gratuita para organizar a renda familiar, acompanhar cada gasto, encontrar oportunidades de economia e construir uma reserva financeira.</p>
+    <button class="btn primary" onclick="document.querySelector('#orcamento').scrollIntoView({behavior:'smooth'})">Começar meu planejamento</button>
+    <button class="btn secondary" onclick="location.href='index.html'" style="margin-left:10px">Usar o App Completo →</button>
+  </div>
+  <div class="hero-card">
+    <div class="muted">Comprometimento familiar</div>
+    <div class="big" id="heroPercent">34%</div>
+    <div class="progress"><div class="bar" id="heroBar"></div></div>
+    <p class="muted">Meta de segurança do projeto: manter parcelas de crédito em até 40% da renda familiar.</p>
+  </div>
+</section>
+
+<main class="container">
+<section id="orcamento">
+  <div class="section-title"><h2>📊 Meu orçamento familiar</h2><p>Cadastre a renda de todas as pessoas da casa e acompanhe o mês.</p></div>
+  <div class="dashboard">
+    <div class="card">
+      <div class="muted">Renda familiar</div>
+      <div class="metric" id="income">R$ 5.000,00</div>
+      <div class="muted">Exemplo editável</div>
+    </div>
+    <div class="card">
+      <div class="muted">Parcelas e dívidas</div>
+      <div class="metric" id="debt">R$ 1.700,00</div>
+      <div class="muted">Comprometimento: <strong id="percent">34%</strong></div>
+    </div>
+    <div class="card full">
+      <h3>Adicionar gasto</h3>
+      <div class="form">
+        <input id="desc" placeholder="Ex.: Conta de luz">
+        <input id="value" type="number" step="0.01" placeholder="Valor em R$">
+        <select id="cat">
+          <option>Casa</option><option>Alimentação</option><option>Saúde</option><option>Transporte</option><option>Educação</option><option>Lazer</option><option>Dívidas</option><option>Outros</option>
+        </select>
+        <button class="btn primary" onclick="addExpense()">Adicionar gasto</button>
+      </div>
+    </div>
+    <div class="card full">
+      <h3>Gastos do mês</h3>
+      <table class="expenses"><thead><tr><th>Gasto</th><th>Categoria</th><th>Valor</th></tr></thead><tbody id="expenseBody">
+        <tr><td>Mercado</td><td>Alimentação</td><td>R$ 620,00</td></tr>
+        <tr><td>Água e luz</td><td>Casa</td><td>R$ 380,00</td></tr>
+        <tr><td>Farmácia</td><td>Saúde</td><td>R$ 120,00</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</section>
+
+<section style="margin-top:40px">
+  <div class="section-title"><h2>🧾 Cupom fiscal</h2><p>Registre compras mesmo quando o cupom não estiver vinculado ao CPF.</p></div>
+  <div class="grid">
+    <div class="card">
+      <h3>📸 Fotografar cupom</h3><p class="muted">No produto real, OCR/IA poderia ler estabelecimento, data, itens e valor.</p>
+      <button class="btn secondary" onclick="alert('Protótipo: aqui entraria a câmera/leitor do cupom.')">Ler cupom</button>
+    </div>
+    <div class="card">
+      <h3>🤖 Categorização</h3><p class="muted">Os itens seriam classificados automaticamente em alimentação, saúde, casa, transporte etc.</p>
+    </div>
+    <div class="card">
+      <h3>✂️ Onde economizar?</h3><p class="muted">A plataforma compara seu histórico e mostra categorias que estão acima do orçamento planejado.</p>
+    </div>
+  </div>
+</section>
+
+<section id="cashback" style="margin-top:40px">
+  <div class="section-title"><h2>🎁 Cashback local</h2><p>Empresas de Várzea Grande pagam para divulgar ofertas e podem devolver parte das compras ao consumidor.</p></div>
+  <div class="grid">
+    <div class="card ad"><div class="badge">Publicidade local</div><h3>Mercado Parceiro VG</h3><p class="muted">Oferta patrocinada • 5% de cashback</p><button class="btn secondary">Ver oferta</button></div>
+    <div class="card ad"><div class="badge">Publicidade local</div><h3>Farmácia Parceira</h3><p class="muted">Oferta patrocinada • 3% de cashback</p><button class="btn secondary">Ver oferta</button></div>
+    <div class="card ad"><div class="badge">Publicidade local</div><h3>Serviços da Região</h3><p class="muted">Empresas locais podem anunciar para consumidores próximos.</p><button class="btn secondary">Conhecer</button></div>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <div class="cashback"><span>Cashback acumulado</span><strong class="good">R$ 86,40</strong></div>
+    <div class="cashback"><span>Próximo objetivo</span><strong>R$ 100,00</strong></div>
+    <p class="muted">No modelo real, regras de acúmulo, resgate e financiamento do cashback seriam definidas com as empresas parceiras.</p>
+  </div>
+</section>
+
+<section id="reserva" style="margin-top:40px">
+  <div class="section-title"><h2>💰 Reserva financeira</h2><p>Uma área para guardar dinheiro e acompanhar a evolução de uma meta.</p></div>
+  <div class="grid">
+    <div class="card"><div class="muted">Reserva atual</div><div class="metric">R$ 1.850,00</div><div class="progress"><div class="bar" style="width:37%"></div></div><p class="muted">37% de uma meta de R$ 5.000</p></div>
+    <div class="card"><h3>12 meses</h3><p class="muted">O projeto pode oferecer uma modalidade de reserva programada de 12 meses, com rendimento definido pelo produto financeiro parceiro.</p><div class="notice">Importante: a plataforma não seria, por si só, uma conta bancária. O dinheiro ficaria em instituição financeira parceira e seguiria as regras do produto contratado.</div></div>
+    <div class="card"><h3>🎯 Objetivos</h3><p class="muted">Emergência • Casa • Estudos • Viagem • Veículo • Outros</p><button class="btn secondary">Criar objetivo</button></div>
+  </div>
+</section>
+
+<section id="credito" style="margin-top:40px">
+  <div class="section-title"><h2>🔐 Proteção inteligente de crédito</h2><p>O sistema verifica o impacto de uma nova parcela sobre a renda familiar.</p></div>
+  <div class="card">
+    <div class="notice"><strong>Simulação:</strong> sua renda familiar é R$ 5.000 e as parcelas atuais somam R$ 1.700 (34%). Uma nova parcela de R$ 400 levaria o comprometimento a 42%.</div>
+    <p><strong>Acima de 40%:</strong> a plataforma exibiria um alerta e, em integrações com instituições parceiras, poderia impedir preventivamente a contratação ou oferecer alternativas como renegociação e redução do crédito.</p>
+    <button class="btn primary" onclick="alert('Simulação: crédito preventivamente sinalizado. O usuário receberia alternativas antes de contratar.')">Simular novo crédito</button>
+  </div>
+</section>
+</main>
+
+<footer>
+  <strong>Vida no Controle</strong><br><br>
+  Plataforma regional gratuita de educação, planejamento financeiro e prevenção ao superendividamento.<br>
+  Projeto conceitual — Várzea Grande, Mato Grosso.<br><br>
+  <a href="index.html" style="color:#fff;text-decoration:underline">→ Abrir App Completo de Orçamento e Cupom Fiscal</a>
+</footer>
+
+<script>
+let expenses=[
+  {d:'Mercado',c:'Alimentação',v:620},{d:'Água e luz',c:'Casa',v:380},{d:'Farmácia',c:'Saúde',v:120}
+];
+function money(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});}
+function addExpense(){
+ const d=document.getElementById('desc').value.trim(), v=parseFloat(document.getElementById('value').value), c=document.getElementById('cat').value;
+ if(!d||!v||v<=0){alert('Informe descrição e valor.');return}
+ expenses.push({d,c,v});
+ document.getElementById('desc').value='';document.getElementById('value').value='';
+ render();
+}
+function render(){
+ document.getElementById('expenseBody').innerHTML=expenses.map(x=>`<tr><td>${x.d}</td><td>${x.c}</td><td>${money(x.v)}</td></tr>`).join('');
+}
+render();
+</script>
+</body>
+</html>
