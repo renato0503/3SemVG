@@ -515,16 +515,17 @@ Todo botão e toda feature **têm que funcionar de verdade**. Nenhum botão mort
 
 | # | Item | Detalhe |
 |---|---|---|
-| 23 | Sistema de identidade visual | `assets/identidade/temas.css` — 5 temas (G1, G3, G4, G5, G6) com CSS vars, faixa de identidade nos slides ✅ |
+| 23 | Sistema de identidade visual | `assets/identidade/temas.css` — 6 temas (G1, G2, G3, G4, G5, G6) com CSS vars, faixa de identidade nos slides ✅ |
 | 24 | `assets/identidade/identidade.md` | Documentação das identidades (paleta, tom, símbolo/mascote, fonte por grupo) ✅ |
 | 25 | `SPRINTS-MVP.md` | Plano completo de sprints dos MVPs (M0–M6, features por sprint, DoD, limitações Pages) ✅ |
 | 26 | Pasta `assets/kit/` | `kit.css` + `kit.js` + `demo.html` — componentes reutilizáveis ✅ |
 | 27 | Hub + PWA raiz | `index.html` (landing com links para todos os MVPs) + `manifest.json` + `sw.js` ✅ |
-| 28 | MVP piloto G3 Quita.AI | `g3-quita-ai/index.html` completo — criar sala, adicionar membros, registrar impulso, fases, ranking, histórico, export/import, PWA ✅ |
-| 29 | MVP G1 Dinheiro na Mão | `g1-dinheiro-na-mao/index.html` — contas, calendários, bolsa-incentivo, níveis, export/import ✅ |
-| 30 | MVP G4 SuaCasaSuaVida | `g4-sua-casa-sua-vida/index.html` — simulador, análise financeira, comparação de bairros, relatório ✅ |
-| 31 | MVP G5 EDA | `g5-eda/index.html` — check-in, humor, roda de apoio, ajuda, respiração, sobre o trabalho ✅ |
-| 32 | MVP G6 Vida no Controle | `g6-vida-no-controle/index.html` + site `vida_no_controle_vg.html` integrados ✅ |
+| 28 | MVP G2 LifePath | `Grupo2-LifePath/index.html` — simulador de vida real com 3 trilhas, decisões financeiras, missões, export/import, PWA ✅ |
+| 29 | MVP piloto G3 Quita.AI | `g3-quita-ai/index.html` completo — criar sala, adicionar membros, registrar impulso, fases, ranking, histórico, export/import, PWA ✅ |
+| 30 | MVP G1 Dinheiro na Mão | `g1-dinheiro-na-mao/index.html` — contas, calendários, bolsa-incentivo, níveis, export/import ✅ |
+| 31 | MVP G4 SuaCasaSuaVida | `g4-sua-casa-sua-vida/index.html` — simulador, análise financeira, comparação de bairros, relatório ✅ |
+| 32 | MVP G5 EDA | `g5-eda/index.html` — check-in, humor, roda de apoio, ajuda, respiração, sobre o trabalho ✅ |
+| 33 | MVP G6 Vida no Controle | `g6-vida-no-controle/index.html` + site `vida_no_controle_vg.html` integrados ✅ |
 | 33 | Revisão de português | 11 arquivos com hanzi/cirílico/inglês em conteúdo PT corrigidos (G1–G6) ✅ |
 | 34 | EDA — foco CBSD | Check-in com episódio de compra compulsiva + nível de dívida; onboarding com CBSD como transtorno de controle de impulsos; modal com tese CBSD→inadimplência ✅ |
 | 35 | GitHub Pages ativo | `https://renato0503.github.io/3SemVG/` no ar com todos os MVPs ✅ |
