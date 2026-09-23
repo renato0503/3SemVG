@@ -18,18 +18,22 @@ retry com backoff no HTTP 429.
 | Grupo | App | Prof. | Pesquisa | Slides | Papers | Buscas brutas |
 |---|---|---|---|---|---|---|
 | 1 | Dinheiro na Mão | Olivia | `Grupo1-DinheiroNaMao/Pesquisa-Dados.md` | `Slides-DinheiroNaMao.html` / pdf (14 pág.) | 12 | `saidas/G1_*` |
-| 2 | A Definir | Olivia | pendente | — | — | — |
+| 2 | LifePath | Olivia | `Grupo2-LifePath/Pesquisa-Dados.md` | `Slides-Lifepath.html` / pdf | 14 | — (pesquisa feita fora do lote `openalex_busca.py`) |
 | 3 | Quita.AI | Péricles | `Grupo3-QuitaAI/Pesquisa-Dados.md` | `Slides-QuitaAI.html` / pdf (13 pág.) | 12 | `saidas/G3_*` |
 | 4 | SuaCasaSuaVida | Pantaleão | `Grupo4-SuaCasaSuaVida/Pesquisa-Dados.md` | `Slides-SuaCasaSuaVida.html` / pdf (14 pág.) | 12 | `saidas/G4_*` |
 | 5 | EDA | Renato | `Grupo5-EDA/Pesquisa-Dados.md` | `Slides-EDA.html` / pdf (17 pág.) | 12 | `saidas/G5_*` |
 | 6 | Vida no Controle | Renato | `Grupo6-VidaNoControle/Pesquisa-Dados.md` | `Slides-VidaNoControle.html` / pdf (12 pág.) | 12 | `saidas/G6_*` |
 
-Total: **60 artigos** (peer-reviewed, 2021–2026) e **5 apresentações** de 12 slides cada (G2 pendente).
+Total: **74 artigos** (peer-reviewed, 2008–2026) e **6 apresentações** de defesa.
 
 > ✅ **Re-sincronizado em 22/09/2026** a partir dos autores/títulos reais dos
 > `Grupo<N>/Pesquisa-Dados.md` (metadados da API OpenAlex/Crossref). As listas abaixo agora batem
 > com os arquivos de grupo (antes os nomes de autores/títulos estavam trocados, embora os DOIs
 > estivessem certos).
+>
+> ✅ **G2 · LifePath adicionado em 22/09/2026** — a ideia foi definida com a Profa. Olivia depois do
+> primeiro levantamento (por isso ficou de fora do lote `openalex_busca.py`); a pesquisa de 14 artigos
+> já existia em `Grupo2-LifePath/Pesquisa-Dados.md` mas nunca tinha entrado neste índice mestre.
 
 ---
 
@@ -50,6 +54,32 @@ Total: **60 artigos** (peer-reviewed, 2021–2026) e **5 apresentações** de 12
 10. Palmer; Richardson; Goetz; Futris et al. (2021). Financial Self-Efficacy: Mediating the Association Between Self-Regulation and Financial Management Behaviors. *Journal of Financial Counseling and Planning*. DOI: 10.1891/jfcp-19-00092 · Citações: 19
 11. Mancone; Tosti; Corrado; Spica et al. (2024). Youth, money, and behavior: the impact of financial literacy programs. *Frontiers in Education*. DOI: 10.3389/feduc.2024.1397060 · Citações: 52
 12. Vieira; Matheis; Rosenblum (2023). Financial preparation for retirement: multidimensional analysis of the perception of Brazilians. *Revista Contabilidade & Finanças*. DOI: 10.1590/1808-057x20221705.en · Citações: 12
+
+---
+
+## G2 · LifePath (Prof. Olivia)
+
+**Hipótese:** jovens de 18–34 anos se engajam com um mentor IA de carreira e finanças que combina três trilhas (Vocacional, Acadêmica, Empreendedora) e gamificação, especialmente quando integrado ao banco digital.
+**Dados de destaque:** 19% dos jovens de 18–34 anos em inadimplência grave (2025); 93% têm smartphone e 70% usam banco digital (2024); gamificação em apps de finanças pessoais aumenta retenção em 41% (Statista 2023); 78,9% das famílias brasileiras endividadas (CNC 2024).
+
+1. Bitrián; Buil; Catalán (2021). The role of gamification in trust and loyalty building in personal finance apps. *International Journal of Bank Marketing*. DOI: 10.1108/IJBM-02-2021-0074 · Citações: 88
+2. Pal; Indapurkar; Gupta (2021). Gamification of financial applications and financial behavior of young investors. *Young Consumers*. DOI: 10.1108/YC-10-2020-1240 · Citações: 27
+3. Lai; Langley (2023). Playful finance: Gamification and intermediation in FinTech economies. *Geoforum*. DOI: 10.1016/j.geoforum.2023.103848 · Citações: 50
+4. van der Heide; Želinský (2021). 'Level up your money game': gamification discourse in financial services. *Journal of Cultural Economy*. DOI: 10.1080/17530350.2021.1882537 · Citações: 51
+5. Kimiagari; Malafe (2021). The role of cognitive and affective responses in online impulse buying. *Journal of Retailing and Consumer Services*. DOI: 10.1016/j.jretconser.2021.102567 · Citações: 277
+6. Nyrhinen; Sirola; Koskelainen; Munnukka et al. (2023). Online antecedents for young consumers' impulse buying behavior. *Computers in Human Behavior*. DOI: 10.1016/j.chb.2023.108129 · Citações: 105
+7. Chen; Zhi; Chen (2022). How active and passive social media use affects impulse buying. *Frontiers in Psychology*. DOI: 10.3389/fpsyg.2022.1011337 · Citações: 42
+8. Darrat; Darrat; Darrat (2022). Does wanting more lead to losing control? Exploring the mediating role of self-control between materialistic values and compulsive buying. *Young Consumers*. DOI: 10.1108/YC-01-2022-1453 · Citações: 26
+9. Benner; Schöbel; Janson; Leimeister (2022). How to Achieve Ethical Persuasive Design: 14 Propositions. *AIS Transactions on Human-Computer Interaction*. DOI: 10.17705/1thci.00179 · Citações: 31
+10. Thaler; Sunstein (2008). Nudge: Improving Decisions About Health, Wealth, and Happiness. Yale University Press · Citações: 15.000+
+11. Kakkar; Dugar; Gupta (2022). Decoding the sustainable consumer: What yoga psychology tells us about self-control. *South Asian Journal of Business Studies*. DOI: 10.1108/SAJBS-03-2020-0083 · Citações: 9
+12. Artadita; Firmialy (2024). How Does Self-Control Moderate Shopping Enjoyment and Impulse Buying Among Generation Z Online Gamers? *Binus Business Review*. DOI: 10.21512/bbr.v15i2.10697 · Citações: 1
+13. Arioglio; Campos; Ferreira (2023). Career decision-making self-efficacy and emotional intelligence in Brazilian university students. *Psicologia: Reflexão e Crítica*. DOI: 10.1186/s41155-023-00258-4 · Citações: 8
+14. Santos; Costa (2024). Financial behavior of Generation Z in Brazil: The role of parental socialization and digital financial literacy. *Revista de Administração Contemporânea*. DOI: 10.1590/1982-7849rac2024 · Citações: 3
+
+> Nota: essa pesquisa não passou pelo lote `openalex_busca.py` (G2 teve a ideia definida depois do
+> primeiro levantamento) — por isso não há arquivos brutos em `_pesquisa/saidas/G2_*`. Os metadados
+> foram levantados diretamente em OpenAlex/Crossref e estão só em `Grupo2-LifePath/Pesquisa-Dados.md`.
 
 ---
 

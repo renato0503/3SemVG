@@ -609,12 +609,80 @@ Implementado o plano da seção antiga: para cada `GrupoN-Nome/`:
   botão nesses cards mudou de "Abrir app" pra **"Ver projeto"**, já que agora leva pra landing, não
   direto pro app.
 
-### 19.3 Pendente ❌ (próxima sessão)
+### 19.3 Continuação — 22/09/2026 (noite): bugfixes, viewer de MD, e achado grave na pesquisa
+
+#### ✅ Concluído nesta continuação
 
 | # | Item | Detalhe |
 |---|---|---|
-| B | **Testar sincronização com Google Sheets de ponta a ponta** | O código está pronto mas ninguém testou com uma planilha real ainda — falta criar uma planilha de teste, colar a URL no app e validar que as linhas chegam certas (inclusive com e-mail). |
-| C | Botão "Voltar" na tela de e-mail (`scr-email`) | Hoje não tem botão de voltar nessa tela nova — se quiser mudar uma resposta antes de finalizar, precisa ir até o fim e usar "Nova coleta" de novo. Ajuste pequeno, não crítico. |
+| C | **Bug real corrigido**: `$(...).forEach is not a function` | `$` é `document.querySelector` (retorna 1 elemento), mas o código do Bloco 0 chamava `.forEach` nele. Trocado por `document.querySelectorAll(...)` em `App/index.html` linha ~654. Sincronizado em `coleta/index.html`. Reportado pelo usuário via console (`coleta/:650`). |
+| C | **Botão "Voltar" na tela de e-mail** (`scr-email`) | Adicionado (`btn-email-voltar`) — volta pra última pergunta (`idx = totalPerguntas()-1`). Sincronizado em `coleta/`. |
+| F | **Viewer de Markdown** (`assets/md-viewer.html`) | Página genérica que busca um `.md` via `fetch()` e renderiza com `marked.js` (CDN), estilo visual igual ao hub/landing. As 6 landing pages foram regeradas pra usar `assets/md-viewer.html?src=...&voltar=./` nos links de README/formulário/ContextoApp/Pesquisa-Dados, e o hub raiz também no link do índice de pesquisa. **Atenção:** `fetch()` de arquivo local não funciona ao abrir `file:///` direto no disco (bloqueio do navegador) — só funciona hospedado em http(s), ou seja, **funciona no GitHub Pages, mas não em teste local sem servidor**. |
+| B | **Sincronização com Google Sheets — validada via mock local** | Criei um servidor mock local (`mock_sheets_server.py`, não versionado) simulando o `doPost` do Apps Script. Testei com `curl` reproduzindo exatamente o payload/headers que `tentarSincronizar()` envia (`Content-Type: text/plain`, JSON no body, com e sem e-mail) — resposta `200 OK` / `{"ok":true}` nos dois casos. **Isso confirma que o código do cliente está correto**, mas o teste 100% real (com uma planilha Google de verdade) ainda não foi feito — só o usuário pode, com a própria conta Google. |
+| E (parcial) | **G2 adicionado ao `_pesquisa/INDICE-PESQUISA.md`** | O índice nunca tinha o Grupo 2 (tabela mostrava "A Definir/pendente" e não havia seção `## G2`), mesmo o grupo já tendo 14 papers reais em `Grupo2-LifePath/Pesquisa-Dados.md`. Adicionei a seção `## G2 · LifePath` com os 14 papers e atualizei a tabela de visão geral (total foi pra 74 papers, mas ver nota abaixo — esse número vai mudar de novo quando G1/G5/G6 forem corrigidos). |
+
+#### 🚨 Achado grave — NÃO CORRIGIDO AINDA, precisa decisão/continuação
+
+Ao investigar o item E (ressincronizar `_pesquisa/INDICE-PESQUISA.md`), descobri que o problema é
+**mais sério que nomes trocados** — tem **citações científicas fabricadas** em pelo menos um grupo.
+
+**Método de verificação:** comparei os DOIs citados em cada `Grupo<N>/Pesquisa-Dados.md` contra os
+DOIs que realmente aparecem nos resultados brutos da API salvos em `_pesquisa/saidas/G<N>_*.json`
+(saída real do `openalex_busca.py` rodado em 21/09). Um DOI que não existe nos brutos da API não veio
+de uma busca real — foi inventado (por IA, na sessão de geração desses arquivos).
+
+**Resultado da varredura (feita com um script Python, não salvo em disco):**
+
+| Grupo | Papers no `Pesquisa-Dados.md` | Confirmados reais (existem nos brutos da API) | Suspeitos/fabricados |
+|---|---|---|---|
+| G1 — Dinheiro na Mão | 14 | 12 | **2** (posições #4 Kaiser;Lusardi;Mudrazaris e #14 Fonseca;Matray) |
+| G2 — LifePath | 14 | não verificado ainda (não tem `saidas/G2_*` pra comparar — pesquisa foi feita fora do lote, ver nota já adicionada ao índice) | — |
+| G3 — Quita.AI | 14 | 14 (os 12 do índice batem; os 2 extras não foram checados individualmente mas nenhum foi sinalizado como suspeito) | 0 sinalizados |
+| G4 — SuaCasaSuaVida | 14 | 14 (mesma situação do G3) | 0 sinalizados |
+| G5 — EDA | 14 | 12 | **2** (posições #3 Maraz;Griffith;Potenza e #13 Darrat;Darrat;Darrat — **nota:** esse "Darrat" pode ser coincidência de nome real reaproveitado, mas o DOI específico não bate com nenhum resultado bruto salvo) |
+| **G6 — Vida no Controle** | 14 | **0** | **14 — TODAS fabricadas** |
+
+**G6 é o caso crítico:** nenhuma das 14 referências do `Pesquisa-Dados.md` existe nos dados brutos da
+API. Evidências de fabricação no próprio texto: um autor listado como `Singh; Al-Mosawi; fake (2022)`
+(a palavra "fake" está literal no nome), outro como `Doe; Lee` (placeholder clássico), periódico
+inexistente "Journal of Financial Behavior". Em contraste, os **12 papers do G6 no índice mestre são
+100% reais** (bati os 12 DOIs contra `_pesquisa/saidas/G6_*.json` e todos existem lá).
+
+**Por que isso importa:** o `Pesquisa-Dados.md` do G6 já foi usado na defesa apresentada em 15/09 e
+está linkado na landing page nova. Citação inventada em material acadêmico é grave — não é só um
+typo pra corrigir de qualquer jeito.
+
+**Decisão do usuário (pedida via pergunta, respondida antes de eu terminar a varredura):**
+> "faça um merge entre todos os pappers" — juntar/consolidar os papers **reais** entre o índice mestre
+> e o `Pesquisa-Dados.md` de cada grupo, em vez de só substituir o G6.
+
+**Onde parei:** tinha acabado de rodar a varredura acima (que já confirmou G1 e G5 também têm 2
+suspeitos cada, além do G6 com 14/14 fabricados) quando o usuário pediu pra registrar tudo em
+`context.md` antes de continuar. **Nada foi alterado ainda nos arquivos de pesquisa** — só o
+`_pesquisa/INDICE-PESQUISA.md` recebeu a seção nova do G2 (essa parte, sim, já foi commitada/enviada
+— ver 19.4). O merge/correção dos papers ainda não começou a ser escrito em nenhum arquivo.
+
+#### Plano para continuar (próxima sessão)
+
+1. **G3 e G4** — conferir individualmente os 2 papers "extras" de cada (além dos 12 já no índice)
+   contra os brutos da API antes de assumir que estão limpos (a varredura automática não os sinalizou,
+   mas vale checar DOI por DOI pra ter certeza, já que o G6 mostrou que fabricação acontece).
+2. **G1 e G5** — decidir o que fazer com os 2 papers suspeitos de cada: substituir por outro paper real
+   da mesma busca bruta (`_pesquisa/saidas/G1_*.json` / `G5_*.json`, que têm mais candidatos do que os
+   12 usados) ou remover e deixar só os 12 confirmados.
+3. **G6 (prioridade)** — reescrever a seção de referências do `Pesquisa-Dados.md` inteira com papers
+   reais: os 12 já confirmados do índice + escolher mais 2 candidatos legítimos dos brutos
+   (`_pesquisa/saidas/G6_*.json`, que tem 25+ resultados brutos por busca, sobra material) pra manter
+   os 14 por grupo. Depois, **reescrever a prosa** (síntese, blocos temáticos, argumentos prontos para
+   defesa) que hoje cita os autores fabricados por nome — não dá só pra trocar a lista numerada e
+   deixar o texto corrido referenciando gente que não existe.
+4. **Depois de corrigir os arquivos**, atualizar `_pesquisa/INDICE-PESQUISA.md` pra 14 papers por grupo
+   (hoje lista só 12), refletindo o merge combinado.
+5. Considerar avisar o Prof. Renato/grupo sobre o achado do G6, já que o material já foi apresentado —
+   isso é uma decisão de vocês, não uma ação técnica.
+
+### 19.4 Outras pendências (sem mudança)
+
+| # | Item | Detalhe |
+|---|---|---|
 | D | Ida ao shopping, tabulação quanti + leitura quali dos áudios, sprints 3–5 por grupo | Itens de longo prazo já registrados nas seções anteriores — sem mudança. |
-| E | Re-sincronizar `_pesquisa/INDICE-PESQUISA.md` | Ainda diverge dos `Pesquisa-Dados.md` por grupo (autores/títulos trocados) — não mexido nesta sessão. |
-| F | Landing pages: os links pra `.md` (README, ContextoApp, Pesquisa-Dados, formulario-app) abrem o Markdown cru no navegador (sem renderizar) — mesmo comportamento que já existia no hub raiz pro índice de pesquisa. Se quiser, dá pra trocar por versões `.html` renderizadas depois. | Cosmético, não bloqueia uso. |
