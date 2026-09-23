@@ -250,3 +250,78 @@ Status:      ⏳ / 🔄 / ✅ / ⛔
 - **Bloqueios:** G2 pendente (ideia não definida). **Achado:** o `_pesquisa/INDICE-PESQUISA.md` está com **autores/títulos trocados** em relação aos `Pesquisa-Dados.md` (mesmos DOIs) — precisa re-sincronizar.
 - **Próxima:** —
 - **Status:** ✅ concluída (G2 pendente)
+
+---
+
+# Track C — MVP funcional de cada grupo (GitHub Pages)
+
+**Feito em 22/09/2026.** Construção dos 5 MVPs funcionais publicáveis no GitHub Pages.
+
+> Relacionado: `SPRINTS-MVP.md` (plano) · `context.md` · `assets/identidade/temas.css`
+
+## Registro — Track C
+
+### M0 — Fundação ✅
+- **Data:** 22/09/2026
+- **Responsável:** Renato
+- **Entregue:**
+  - `assets/kit/kit.css` + `kit.js` + `demo.html` — componentes reutilizáveis (botão, card, input, modal, toast, tabs, progresso, badge, vazio)
+  - `assets/identidade/temas.css` — 5 temas (G1 petróleo/cyan, G3 violeta/dourado, G4 esmeralda/areia, G5 azul/índigo, G6 laranja/verde)
+  - `assets/identidade/identidade.md` — documentação das identidades
+  - Hub `index.html` — landing com links para todos os MVPs + PWA (`manifest.json` + `sw.js`)
+  - GitHub Pages ativado: `https://renato0503.github.io/3SemVG/`
+- **Verificação:** `assets/kit/demo.html?tema=g3` mostra todos os componentes com tema trocando.
+- **Status:** ✅ concluída
+
+### M1 — G3 Quita.AI (piloto) ✅
+- **Data:** 22/09/2026
+- **Responsável:** Renato
+- **Entregue:**
+  - `g3-quita-ai/index.html` — criar sala família, adicionar membros, registrar "segurei impulso" (+pontos), missões diárias, streak, fases/badges, ranking, histórico, export/import JSON, PWA
+  - Tema violeta `#7c3aed` + amarelo `#facc15`, mascote cofrinho-herói SVG inline, Press Start 2P + Merriweather
+- **Verificação:** sem erro no console; localStorage persiste após reload.
+- **Status:** ✅ concluída
+
+### M2 — G1 Dinheiro na Mão ✅
+- **Data:** 22/09/2026
+- **Entregue:**
+  - `g1-dinheiro-na-mao/index.html` — CRUD contas, calendário mensal, alertas "vence em X dias", bolsa-incentivo com pontos/níveis, gráfico SVG do mês, export/import JSON, reset, PWA
+  - Tema petróleo `#0e7490`, Nunito + Nunito, ícone pasta pública SVG inline
+- **Verificação:** conta cadastrada aparece no calendário; pontos somam ao marcar paga.
+- **Status:** ✅ concluída
+
+### M3 — G4 SuaCasaSuaVida ✅
+- **Data:** 22/09/2026
+- **Entregue:**
+  - `g4-sua-casa-sua-vida/index.html` — simulador Price/SAC com sliders, análise financeira com semáforo, comparação de bairros com scores e mapa SVG, relatório exportável, PWA
+  - Tema esmeralda `#047857`, Playfair Display + Lato, ícone casa SVG inline
+- **Verificação:** simulação gera parcela coerente; comparison salva bairros favoritos.
+- **Status:** ✅ concluída
+
+### M4 — G6 Vida no Controle ✅
+- **Data:** 22/09/2026
+- **Entregue:**
+  - `g6-vida-no-controle/index.html` — orçamento com gráfico SVG, lista + comparador de preços, parser de cupom fiscal, meta cofrinho, ofertas patrocinadas, export/import, PWA
+  - `g6-vida-no-controle/vida_no_controle_vg.html` — site do projeto como "home page" com link para app
+  - Tema laranja `#ea580c` + verde `#16a34a`, Space Grotesk + Inter, ícone escudo SVG inline
+- **Verificação:** site abre → link leva ao app → app linka de volta ao site.
+- **Status:** ✅ concluída
+
+### M5 — G5 EDA ✅
+- **Data:** 22/09/2026
+- **Entregue:**
+  - `g5-eda/index.html` — apelido anônimo, check-in com episódio de compra compulsiva + nível de dívida, humor sem valores, roda de apoio local, cartão CVV 188/CAPS/UBS (tel:), respiração guiada, "apagar tudo", PWA
+  - **Update CBSD (commit `0da97f6`):** check-in com episódio (resisti/quase/comprei) + nível dívida (1–5); onboarding com CBSD como transtorno de controle de impulsos; modal com tese CBSD→inadimplência
+  - Tema azul `#4f5bd5`, Cambria + Georgia, ícone coração SVG inline
+- **Verificação:**匿名匿名匿名匿名匿名匿名匿名匿名匿名匿名; botão "Apagar tudo" limpa localStorage.
+- **Status:** ✅ concluída
+
+### M6 — Integração e polimento ✅
+- **Data:** 22/09/2026
+- **Entregue:**
+  - Hub `index.html` com links para todos os 5 MVPs + app de coleta
+  - Revisão de português: 11 arquivos G1–G6 com hanzi `一点点`, cirílico e inglês em texto PT corrigidos
+  - Todos os 5 MVPs testados via HTTP — zero erro no console
+  - Commits: `25541fa` (mvc/portugues), `40829df` (mvc/g6), `a5c7d0d` (mvc/g5-eda), `7051a9b` (mvc/g1-g3-g4), `0da97f6` (cbsd/eda)
+- **Verificação:** Pages carrega todos os MVPs; cada um com tema e fonte corretos.
+- **Status:** ✅ concluída

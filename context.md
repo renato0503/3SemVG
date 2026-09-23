@@ -515,39 +515,44 @@ Todo botão e toda feature **têm que funcionar de verdade**. Nenhum botão mort
 
 | # | Item | Detalhe |
 |---|---|---|
-| 23 | Sistema de identidade visual | `assets/identidade/temas.css` — 5 temas (G1, G3, G4, G5, G6) com CSS vars, faixa de identidade nos slides |
-| 24 | `assets/identidade/identidade.md` | Documentação das identidades (paleta, tom, símbolo/mascote, fonte por grupo) |
-| 25 | `SPRINTS-MVP.md` | Plano completo de sprints dos MVPs (M0–M6, features por sprint, DoD, limitações Pages) |
-| 26 | Pasta `assets/kit/` | `kit.css` + `kit.js` + `demo.html` — componentes reutilizáveis (pending: construir) |
-| 27 | Estrutura de pastas para MVPs | Pastas `g1-dinheiro-na-mao/`, `g3-quita-ai/`, `g4-sua-casa-sua-vida/`, `g5-eda/`, `g6-vida-no-controle/` criadas vazias; hub `index.html` pending |
+| 23 | Sistema de identidade visual | `assets/identidade/temas.css` — 5 temas (G1, G3, G4, G5, G6) com CSS vars, faixa de identidade nos slides ✅ |
+| 24 | `assets/identidade/identidade.md` | Documentação das identidades (paleta, tom, símbolo/mascote, fonte por grupo) ✅ |
+| 25 | `SPRINTS-MVP.md` | Plano completo de sprints dos MVPs (M0–M6, features por sprint, DoD, limitações Pages) ✅ |
+| 26 | Pasta `assets/kit/` | `kit.css` + `kit.js` + `demo.html` — componentes reutilizáveis ✅ |
+| 27 | Hub + PWA raiz | `index.html` (landing com links para todos os MVPs) + `manifest.json` + `sw.js` ✅ |
+| 28 | MVP piloto G3 Quita.AI | `g3-quita-ai/index.html` completo — criar sala, adicionar membros, registrar impulso, fases, ranking, histórico, export/import, PWA ✅ |
+| 29 | MVP G1 Dinheiro na Mão | `g1-dinheiro-na-mao/index.html` — contas, calendários, bolsa-incentivo, níveis, export/import ✅ |
+| 30 | MVP G4 SuaCasaSuaVida | `g4-sua-casa-sua-vida/index.html` — simulador, análise financeira, comparação de bairros, relatório ✅ |
+| 31 | MVP G5 EDA | `g5-eda/index.html` — check-in, humor, roda de apoio, ajuda, respiração, sobre o trabalho ✅ |
+| 32 | MVP G6 Vida no Controle | `g6-vida-no-controle/index.html` + site `vida_no_controle_vg.html` integrados ✅ |
+| 33 | Revisão de português | 11 arquivos com hanzi/cirílico/inglês em conteúdo PT corrigidos (G1–G6) ✅ |
+| 34 | EDA — foco CBSD | Check-in com episódio de compra compulsiva + nível de dívida; onboarding com CBSD como transtorno de controle de impulsos; modal com tese CBSD→inadimplência ✅ |
+| 35 | GitHub Pages ativo | `https://renato0503.github.io/3SemVG/` no ar com todos os MVPs ✅ |
 
 ### 14.2 Pendências atualizadas
 
 | # | Item | Responsável |
 |---|---|---|
 | A | Definir ideia do Grupo 2 + criar `formulario-app.md` + `ContextoApp.md` + `Pesquisa-Dados.md` + slides | Profa. Olivia + grupo |
-| B | **M0 — Fundação** — criar `assets/kit/` + hub `index.html` + ativar GitHub Pages | a fazer |
-| C | **M1 — MVP piloto G3 Quita.AI** | a fazer |
-| D | **M2 — MVP G1 Dinheiro na Mão** | a fazer |
-| E | **M3 — MVP G4 SuaCasaSuaVida** | a fazer |
-| F | **M4 — MVP G6 Vida no Controle** | a fazer |
-| G | **M5 — MVP G5 EDA** | a fazer |
-| H | **M6 — Integração hub + polimento** | a fazer |
-| E | **Sprint 3** — coleta no shopping + correlação áudio/formulário | grupo |
-| F | **Sprint 4** — tabulação quanti + leitura quali | grupo |
-| G | **Sprint 5** — app pronto + relatório de achados | grupo |
-| J | Re-sincronizar `_pesquisa/INDICE-PESQUISA.md` (autores/títulos divergentes dos `Pesquisa-Dados.md`) | a fazer |
+| K | **Sprint 3** — coleta no shopping + correlação áudio/formulário | grupo |
+| L | **Sprint 4** — tabulação quanti + leitura quali dos áudios | grupo |
+| M | **Sprint 5** — app pronto + relatório de achados por grupo | grupo |
+| N | Re-sincronizar `_pesquisa/INDICE-PESQUISA.md` (autores/títulos divergem dos `Pesquisa-Dados.md`) | a fazer |
 
 ---
 
 ## 16. Nota sobre o EDA — foco CBSD e inadimplência
 
-**Observação (professor Renato):** o grupo EDA deve aprofundar o foco em **CBSD (Compulsive Buying-Shopping Disorder)** e na relação entre compra compulsiva e inadimplência. O formulário e o referencial teórico já cobrem isso parcialmente, mas o centro da discussão deve ser:
+**Status: ✅ implementado em 22/09/2026 (commit `0da97f6`)**
+
+O grupo EDA já foi atualizado com foco em **CBSD (Compulsive Buying-Shopping Disorder)** e na relação entre compra compulsiva e inadimplência:
 
 - **CBSD é transtorno de controle de impulsos** (critérios Müller et al., 2021) — não é "falta de educação financeira"
 - **A relação entre CBSD e inadimplência** é o fio condutor: a pessoa entra em dívida não por desconhecimento, mas por incapacidade de inibir o impulso no momento
-- **O formulário deve medir**: (1) frequência e intensidade dos episódios de compra impulsiva, (2) nível de dívidas/cheque especial, (3) vergonha/ocultação, (4) tentativas anteriores de parar
-- **O pitch deve deixar claro**: o EDA não ensina a cuidar do dinheiro — treina o autocontrole no momento do impulso; a diferença é crucial
+- **O formulário mede**: (1) frequência e intensidade dos episódios de compra impulsiva, (2) nível de dívidas/cheque especial, (3) vergonha/ocultação, (4) tentativas anteriores de parar
+- **O pitch deixa claro**: o EDA não ensina a cuidar do dinheiro — treina o autocontrole no momento do impulso; a diferença é crucial
+- **Check-in** agora pergunta: episódio de compra compulsiva (resisti / quase comprei / comprei por impulso) + nível de dívida (1–5)
+- **Hipótese reescrita**: CBSD causa inadimplência — o EDA é treino de autocontrole, não programa de educação financeira
 
 ---
 

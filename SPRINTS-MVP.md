@@ -44,13 +44,13 @@ Uma pasta `assets/kit/` reutilizada por todos, para não reescrever tudo 5 vezes
 
 | Sprint | Objetivo | Entrega | Status |
 |---|---|---|---|
-| **M0** | Fundação compartilhada | `assets/kit/` + `temas.css` + hub `index.html` + Pages no ar | 🔄 em andamento |
-| **M1** | **MVP piloto G3 Quita.AI** | `g3-quita-ai/` funcional com identidade gamer | ⏳ a fazer |
-| **M2** | G1 Dinheiro na Mão | `g1-dinheiro-na-mao/` (sistema de contas + bolsa) | ⏳ a fazer |
-| **M3** | G4 SuaCasaSuaVida | `g4-sua-casa-sua-vida/` (simulador + bairro) | ⏳ a fazer |
-| **M4** | G6 Vida no Controle | `g6-vida-no-controle/` (orçamento + economia + cupom) | ⏳ a fazer |
-| **M5** | G5 EDA | `g5-eda/` (acolhimento anônimo) — tema sensível | ⏳ a fazer |
-| **M6** | Integração + polimento | Hub ligado aos 5 MVPs, PWA, revisão de botões | ⏳ a fazer |
+| **M0** | Fundação compartilhada | `assets/kit/` + `temas.css` + hub `index.html` + Pages no ar | ✅ concluída |
+| **M1** | **MVP piloto G3 Quita.AI** | `g3-quita-ai/` funcional com identidade gamer | ✅ concluída |
+| **M2** | G1 Dinheiro na Mão | `g1-dinheiro-na-mao/` (sistema de contas + bolsa) | ✅ concluída |
+| **M3** | G4 SuaCasaSuaVida | `g4-sua-casa-sua-vida/` (simulador + bairro) | ✅ concluída |
+| **M4** | G6 Vida no Controle | `g6-vida-no-controle/` (orçamento + economia + cupom) | ✅ concluída |
+| **M5** | G5 EDA | `g5-eda/` (acolhimento anônimo) — tema sensível | ✅ concluída |
+| **M6** | Integração + polimento | Hub ligado aos 5 MVPs, PWA, revisão de botões | ✅ concluída |
 
 > **Ordem:** o piloto **G3** valida o padrão (identidade + kit + persistência). Depois replicamos G1 → G4 → G6 → G5. **G5 por último** (exige mais cuidado de linguagem e privacidade).
 
@@ -182,3 +182,65 @@ Um MVP só fecha quando:
 - **Mapas/OCR/pagamentos** → sempre **simulados e rotulados**, nunca prometidos como reais.
 - **Paths no Pages** → usar sempre caminhos **relativos** e nomes de pasta **sem espaço** para os MVPs.
 - **PDFs dos slides** continuam gerados via `Regenerar-PDFs.ps1` (só `file://`); no Pages os slides abrem em modo apresentação.
+
+---
+
+## 8. Execução — log do que foi feito
+
+> **22/09/2026** — Tudo concluído em um dia de trabalho.
+
+### M0 — Fundação ✅
+- `assets/kit/kit.css` + `kit.js` + `demo.html` — componentes reutilizáveis (botão, card, input, modal, toast, tabs, progresso)
+- `assets/identidade/temas.css` — 5 temas com CSS vars (G1 petrol/cyan, G3 violeta/dourado, G4 esmeralda/areia, G5 azul/índigo, G6 laranja/verde)
+- `assets/identidade/identidade.md` — documentação das identidades
+- Hub `index.html` — landing com links para todos os MVPs + PWA (`manifest.json` + `sw.js`)
+- GitHub Pages ativado: `https://renato0503.github.io/3SemVG/`
+
+### M1 — G3 Quita.AI (piloto) ✅
+- `g3-quita-ai/index.html` — criar sala, adicionar membros, registrar impulso segurado, fases, ranking, badges, histórico, export/import JSON, PWA
+- Tema violeta + amarelo neon, mascote cofrinho-herói SVG inline
+
+### M2 — G1 Dinheiro na Mão ✅
+- `g1-dinheiro-na-mao/index.html` — CRUD de contas, calendário mensal, alertas "vence em X dias", bolsa-incentivo com pontos/níveis, gráfico SVG, export/import
+- Tema petróleo/cyan, ícone pasta pública SVG inline
+
+### M3 — G4 SuaCasaSuaVida ✅
+- `g4-sua-casa-sua-vida/index.html` — simulador Price/SAC com sliders, análise financeira com semáforo, comparação de bairros com scores e mapa SVG, relatório exportável
+- Tema esmeralda/areia, ícone casa SVG inline
+
+### M4 — G6 Vida no Controle ✅
+- `g6-vida-no-controle/index.html` — orçamento com gráfico SVG, lista de compras + comparador de preços, parser de cupom fiscal, meta cofrinho, ofertas patrocinadas
+- `g6-vida-no-controle/vida_no_controle_vg.html` — site do projeto como "home page" com link para o app
+- Tema laranja-mercado/verde
+
+### M5 — G5 EDA (tema sensível) ✅
+- `g5-eda/index.html` — apelido anônimo, check-in com episódio de compra compulsiva + nível de dívida, humor sem valores, roda de apoio local, cartão CVV 188/CAPS/UBS, respiração guiada, "apagar tudo"
+- **Update 22/09:** CBSD como transtorno de controle de impulsos, hipótese CBSD→inadimplência
+- Tema azul/índigo suave
+
+### M6 — Integração e polimento ✅
+- Todos os 5 MVPs integrados no hub
+- Revisão de português: 11 arquivos corrigidos (hanzi `一点点`, cirílico, inglês em texto PT)
+- Todos os MVPs testados via HTTP sem erro no console
+- Commits: `25541fa`, `40829df`, `a5c7d0d`, `7051a9b`, `0da97f6`
+
+### Detalhe por MVP — design e fontes
+
+| Grupo | Fonte título | Fonte corpo | Ícones | Estilo |
+|---|---|---|---|---|
+| G1 | Nunito | Nunito | SVG pasta pública | Institucional |
+| G3 | Press Start 2P | Merriweather | SVG cofrinho | Gamer 8-bit |
+| G4 | Playfair Display | Lato | SVG casa | Imobiliário premium |
+| G5 | Cambria | Georgia | SVG coração | Acolhedor editorial |
+| G6 | Space Grotesk | Inter | SVG escudo | Tech local |
+
+### DoD verificado (22/09/2026)
+
+- [x] Nenhum botão morto — cada botão executa ação visível
+- [x]Persistência — localStorage mantido após reload com reset
+- [x] Export/import JSON funciona
+- [x] Sem erro no console em todas as telas (teste HTTP)
+- [x] Responsivo (mobile-first, 44×44px alvos)
+- [x] Identidade aplicada — tema do grupo sem cor genérica
+- [x] Dados simulados/hipótese rotulados
+- [x] Contraste acessível, aria-label em botões de ícone
