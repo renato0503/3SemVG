@@ -2,240 +2,472 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Customer Discovery · 3 Semestre VG — FACC/Unifacc</title>
-<meta name="description" content="Materiais e MVPs da pesquisa de campo Customer Discovery do 3º semestre de Tecnologia e Inovação.">
-<meta name="theme-color" content="#0e7490">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Discovery · 3º Semestre VG — FACC/Unifacc</title>
+<meta name="description" content="6 ideias, 6 MVPs funcionais — pesquisa de campo Customer Discovery do 3º semestre de Tecnologia e Inovação, FACC/Unifacc.">
+<meta name="theme-color" content="#0b1220">
 <link rel="manifest" href="manifest.json">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
-<link rel="stylesheet" href="assets/identidade/temas.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2338bdf8' stroke-width='2'><path d='M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z'/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--turma-accent:#0e7490;--turma-tinta:#0b2b2a;--turma-bg:#f0fafc;}
-body{font-family:"Segoe UI",system-ui,-apple-system,sans-serif;background:var(--turma-bg, #f0fafc);color:#1a202c;margin:0;min-height:100dvh}
-.page-header{
+:root{
+  --bg:#0b1220;
+  --bg-soft:#0f1830;
+  --surface:#ffffff;
+  --surface-2:#f4f6fb;
+  --ink:#0f172a;
+  --ink-soft:#5b6478;
+  --line:#e7e9f2;
+  --brand:#38bdf8;
+  --brand-2:#a78bfa;
+  --radius-lg:22px;
+  --radius-md:16px;
+  --radius-sm:10px;
+  --shadow-card:0 10px 30px -12px rgba(15,23,42,.18);
+  --shadow-hover:0 18px 40px -14px rgba(15,23,42,.28);
+
+  --g1:#0e7490; --g1b:#083344; --g1c:#22d3ee;
+  --g2:#ff6b35; --g2b:#1a0e2e; --g2c:#7b2ff7;
+  --g3:#7c3aed; --g3b:#1e1b4b; --g3c:#facc15;
+  --g4:#047857; --g4b:#052e2b; --g4c:#d97706;
+  --g5:#4f5bd5; --g5b:#1e2235; --g5c:#93c5fd;
+  --g6:#ea580c; --g6b:#431407; --g6c:#16a34a;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:var(--surface-2);
+  color:var(--ink);
+  min-height:100dvh;
+  overflow-x:hidden;
+}
+h1,h2,h3{font-family:'Space Grotesk',system-ui,sans-serif}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+/* ---------- Nav ---------- */
+.nav{
   position:sticky;top:0;z-index:100;
-  background:var(--turma-accent,#0e7490);color:#fff;
-  padding:16px 16px 16px;display:flex;align-items:center;gap:12px;
-  padding-top:calc(16px + env(safe-area-inset-top,0));
-  box-shadow:0 2px 8px rgba(0,0,0,.15);
+  background:rgba(11,18,32,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
-.page-header h1{font-size:20px;font-weight:700;flex:1;line-height:1.2}
-.page-body{padding:16px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0));max-width:640px;margin:0 auto}
+.nav .wrap{display:flex;align-items:center;gap:12px;padding:12px 20px;color:#fff}
+.nav-mark{width:34px;height:34px;flex-shrink:0;color:var(--brand)}
+.nav-title{font-size:14px;font-weight:700;line-height:1.15}
+.nav-title small{display:block;font-size:11px;font-weight:500;color:#9aa5c3;font-family:'Inter',sans-serif}
+.nav-links{margin-left:auto;display:flex;gap:18px;font-size:13px;font-weight:600}
+.nav-links a{text-decoration:none;color:#c7cee8;transition:color .15s}
+.nav-links a:hover{color:#fff}
+@media(max-width:640px){.nav-links{display:none}}
 
+/* ---------- Hero ---------- */
 .hero{
-  background:linear-gradient(135deg,var(--turma-accent,#0e7490),#22d3ee);
-  color:#fff;border-radius:20px;padding:28px 20px;margin-bottom:20px;text-align:center;
+  position:relative;
+  background:
+    radial-gradient(900px 420px at 12% -10%, rgba(56,189,248,.35), transparent 60%),
+    radial-gradient(900px 480px at 92% 0%, rgba(167,139,250,.30), transparent 55%),
+    linear-gradient(180deg,var(--bg) 0%,var(--bg-soft) 100%);
+  color:#fff;padding:64px 0 84px;overflow:hidden;
 }
-.hero h2{font-size:22px;margin-bottom:8px}
-.hero p{font-size:14px;opacity:.9;line-height:1.5;margin-bottom:0}
-.hero .badge-turma{display:inline-block;background:rgba(255,255,255,.2);padding:4px 12px;border-radius:100px;font-size:12px;font-weight:600;margin-bottom:12px}
+.hero .wrap{position:relative;z-index:2}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
+  padding:6px 14px;border-radius:100px;font-size:12px;font-weight:600;
+  letter-spacing:.02em;color:#dbe3ff;margin-bottom:22px;
+}
+.eyebrow svg{width:14px;height:14px}
+.hero h1{font-size:clamp(28px,5vw,46px);font-weight:700;line-height:1.12;max-width:720px;letter-spacing:-.02em}
+.hero h1 span{background:linear-gradient(90deg,#38bdf8,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{margin-top:16px;font-size:16px;line-height:1.6;color:#aab4d4;max-width:600px}
+.hero-stats{display:flex;gap:28px;margin-top:36px;flex-wrap:wrap}
+.hero-stat b{display:block;font-size:28px;font-family:'Space Grotesk',sans-serif;font-weight:700}
+.hero-stat span{font-size:12px;color:#9aa5c3}
 
-.section-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#666;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid #e2e8f0}
+/* logo strip inside hero */
+.logo-strip{display:flex;gap:10px;margin-top:40px;flex-wrap:wrap}
+.logo-strip img{width:44px;height:44px;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.35);border:1.5px solid rgba(255,255,255,.15)}
 
-.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
-@media(max-width:400px){.card-grid{grid-template-columns:1fr}}
+/* ---------- Section shell ---------- */
+section.block{padding:56px 0}
+.block-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:26px;flex-wrap:wrap}
+.block-head h2{font-size:22px;font-weight:700;display:flex;align-items:center;gap:10px}
+.block-head h2 svg{width:22px;height:22px;color:var(--brand)}
+.block-head p{font-size:13px;color:var(--ink-soft);margin-top:4px}
+.block-tag{font-size:12px;font-weight:700;color:#7c3aed;background:#efe9ff;padding:4px 12px;border-radius:100px}
 
+/* ---------- MVP cards ---------- */
+.mvp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
 .mvp-card{
-  background:#fff;border-radius:16px;padding:16px;
-  border:2px solid transparent;
-  text-decoration:none;color:inherit;
-  display:flex;flex-direction:column;gap:8px;
-  min-height:120px;
-  box-shadow:0 1px 4px rgba(0,0,0,.08);
-  transition:transform .15s,box-shadow .15s,border-color .15s;
+  position:relative;
+  background:var(--surface);border-radius:var(--radius-lg);
+  padding:22px 20px 20px;text-decoration:none;color:inherit;
+  box-shadow:var(--shadow-card);
+  border:1px solid var(--line);
+  display:flex;flex-direction:column;gap:14px;
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
   overflow:hidden;
 }
-.mvp-card:active{transform:scale(.97)}
-.mvp-card:hover{border-color:var(--card-accent);box-shadow:0 4px 16px rgba(0,0,0,.12)}
-.card-color-bar{height:6px;background:linear-gradient(90deg,var(--card-accent),var(--card-accent2));border-radius:0}
-.card-icon{font-size:28px;line-height:1}
-.card-name{font-size:15px;font-weight:700;color:var(--card-tinta);line-height:1.2}
-.card-desc{font-size:12px;color:#666;line-height:1.4;flex:1}
-.card-status{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:3px 8px;border-radius:100px}
-.status-ok{background:#c6f6d5;color:#276749}
-.status-dev{background:#fef3c7;color:#92400e}
-.status-pend{background:#fee2e2;color:#991b1b}
-
-.materials{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
-.mat-card{
-  background:#fff;border-radius:14px;padding:14px;
-  display:flex;flex-direction:column;align-items:center;gap:8px;
-  text-decoration:none;color:#2d3748;font-size:13px;font-weight:600;
-  text-align:center;min-height:90px;
-  box-shadow:0 1px 4px rgba(0,0,0,.07);
-  border:1px solid #e2e8f0;
-  transition:transform .15s;
+.mvp-card::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:5px;
+  background:linear-gradient(90deg,var(--acc),var(--acc2));
 }
-.mat-card:active{transform:scale(.96)}
-.mat-card .mat-icon{font-size:32px}
-.mat-card span{line-height:1.2}
+.mvp-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:transparent}
+.mvp-top{display:flex;align-items:center;gap:12px}
+.mvp-logo{width:52px;height:52px;border-radius:14px;flex-shrink:0;box-shadow:0 4px 12px rgba(0,0,0,.18)}
+.mvp-name{font-size:16px;font-weight:700;line-height:1.2;color:var(--ink)}
+.mvp-group{font-size:11px;font-weight:700;letter-spacing:.05em;color:var(--acc);text-transform:uppercase;margin-top:2px}
+.mvp-desc{font-size:13px;color:var(--ink-soft);line-height:1.5;flex:1}
+.mvp-foot{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
+.status-chip{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;background:#e7f8ec;color:#1a7d3c}
+.status-chip svg{width:12px;height:12px}
+.open-cta{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--acc)}
+.open-cta svg{width:14px;height:14px;transition:transform .15s}
+.mvp-card:hover .open-cta svg{transform:translateX(3px)}
 
-.footer-note{text-align:center;font-size:12px;color:#999;margin-top:24px;line-height:1.6}
+.mvp-card.g1{--acc:var(--g1);--acc2:var(--g1c)}
+.mvp-card.g2{--acc:var(--g2);--acc2:var(--g2c)}
+.mvp-card.g3{--acc:var(--g3);--acc2:var(--g3c)}
+.mvp-card.g4{--acc:var(--g4);--acc2:var(--g4c)}
+.mvp-card.g5{--acc:var(--g5);--acc2:var(--g5c)}
+.mvp-card.g6{--acc:var(--g6);--acc2:var(--g6c)}
+
+/* ---------- Utility cards (materials/notebooks) ---------- */
+.util-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.util-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
+  padding:18px;text-decoration:none;color:inherit;
+  display:flex;flex-direction:column;gap:10px;
+  box-shadow:0 1px 3px rgba(15,23,42,.05);
+  transition:transform .15s,box-shadow .15s,border-color .15s;
+}
+.util-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-card);border-color:var(--brand)}
+.util-icon{
+  width:38px;height:38px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#eef2ff,#e0e7ff);color:#4f46e5;
+}
+.util-icon svg{width:19px;height:19px}
+.util-card b{font-size:14px;font-weight:700}
+.util-card small{font-size:12px;color:var(--ink-soft)}
+
+/* ---------- Defesa grid ---------- */
+.defesa-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.defesa-card{
+  display:flex;align-items:center;gap:12px;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
+  padding:12px 14px;text-decoration:none;color:inherit;
+  transition:border-color .15s,transform .15s;
+}
+.defesa-card:hover{transform:translateY(-2px);border-color:var(--acc)}
+.defesa-logo{width:34px;height:34px;border-radius:9px;flex-shrink:0}
+.defesa-card b{font-size:13px;font-weight:700;display:block}
+.defesa-card span{font-size:11px;color:var(--ink-soft)}
+.defesa-card.g1{--acc:var(--g1)} .defesa-card.g2{--acc:var(--g2)} .defesa-card.g3{--acc:var(--g3)}
+.defesa-card.g4{--acc:var(--g4)} .defesa-card.g5{--acc:var(--g5)} .defesa-card.g6{--acc:var(--g6)}
+
+/* ---------- Footer ---------- */
+footer{background:var(--bg);color:#9aa5c3;padding:44px 0 32px;margin-top:20px}
+footer .wrap{display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center}
+footer .foot-mark{display:flex;align-items:center;gap:8px;color:#fff;font-weight:700;font-size:14px;margin-bottom:6px}
+footer .foot-mark svg{width:18px;height:18px;color:var(--brand)}
+footer p{font-size:12.5px;line-height:1.7;max-width:520px}
+footer .foot-links{display:flex;gap:16px;margin-top:12px;font-size:12px}
+footer .foot-links a{color:#c7cee8;text-decoration:none}
+footer .foot-links a:hover{color:#fff}
 </style>
 </head>
-<body class="tema-g1">
+<body>
 
-<div class="page-header">
-  <h1>📱 Customer Discovery</h1>
-</div>
-
-<div class="page-body">
-
-  <!-- Hero -->
-  <div class="hero">
-    <span class="badge-turma">3º Semestre · Tecnologia e Inovação</span>
-     <h2>6 ideias, 6 MVPs funcionais</h2>
-     <p>Pesquisa de campo no shopping — todos os materiais, formulários e apps prontos para teste.</p>
+<nav class="nav">
+  <div class="wrap">
+    <svg class="nav-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>
+    <div class="nav-title">Customer Discovery<small>3º Semestre · Tecnologia e Inovação</small></div>
+    <div class="nav-links">
+      <a href="#mvps">MVPs</a>
+      <a href="#materiais">Materiais</a>
+      <a href="#cadernos">Cadernos</a>
+      <a href="#defesa">Defesa</a>
+    </div>
   </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>
+      Pesquisa de campo · FACC/Unifacc
+    </span>
+    <h1>6 ideias, <span>6 MVPs funcionais</span><br>prontos para o campo</h1>
+    <p>Do dinheiro na mão à casa própria: seis times validaram dor, dado e solução em sala — agora testam apps reais com entrevistas no shopping, cruzando respostas quantitativas com áudio qualitativo.</p>
+
+    <div class="hero-stats">
+      <div class="hero-stat"><b>6</b><span>MVPs publicados</span></div>
+      <div class="hero-stat"><b>120</b><span>Perguntas de campo</span></div>
+      <div class="hero-stat"><b>60</b><span>Papers de embasamento</span></div>
+      <div class="hero-stat"><b>100%</b><span>PWA offline-first</span></div>
+    </div>
+
+    <div class="logo-strip">
+      <img src="assets/logos/g1-96.png" alt="Logo Dinheiro na Mão">
+      <img src="assets/logos/g2-96.png" alt="Logo LifePath">
+      <img src="assets/logos/g3-96.png" alt="Logo Quita.AI">
+      <img src="assets/logos/g4-96.png" alt="Logo SuaCasaSuaVida">
+      <img src="assets/logos/g5-96.png" alt="Logo EDA">
+      <img src="assets/logos/g6-96.png" alt="Logo Vida no Controle">
+    </div>
+  </div>
+</header>
+
+<main>
 
   <!-- MVPs -->
-  <div class="section-title">🎯 MVPs — Apps funcionais</div>
-  <div class="card-grid">
+  <section class="block" id="mvps">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <h2>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+            MVPs — apps funcionais
+          </h2>
+          <p>Toda tela responde de verdade: dados persistem, export/import funciona, nada é "em breve".</p>
+        </div>
+        <span class="block-tag">100% localStorage · sem backend</span>
+      </div>
 
-    <!-- G1 -->
-    <a href="Grupo1-DinheiroNaMao/" class="mvp-card" style="--card-accent:#0e7490;--card-accent2:#22d3ee;--card-tinta:#0b2b2a">
-      <div class="card-color-bar"></div>
-      <div class="card-icon">💼</div>
-      <div class="card-name">Dinheiro na Mão</div>
-      <div class="card-desc">Sistema de contas + bolsa-incentivo</div>
-      <div class="card-status status-ok">✅ Funcional</div>
-    </a>
+      <div class="mvp-grid">
 
-    <!-- G2 -->
-    <a href="Grupo2-LifePath/" class="mvp-card" style="--card-accent:#ff6b35;--card-accent2:#9333ea;--card-tinta:#2d1b00">
-      <div class="card-color-bar"></div>
-      <div class="card-icon">🧭</div>
-      <div class="card-name">LifePath</div>
-      <div class="card-desc">Mentor IA + Trilhas profissionais + Simulação temporal</div>
-      <div class="card-status status-ok">✅ Funcional</div>
-    </a>
+        <a href="Grupo1-DinheiroNaMao/" class="mvp-card g1">
+          <div class="mvp-top">
+            <img class="mvp-logo" src="assets/logos/g1-96.png" alt="Logo Dinheiro na Mão">
+            <div>
+              <div class="mvp-name">Dinheiro na Mão</div>
+              <div class="mvp-group">Grupo 1</div>
+            </div>
+          </div>
+          <div class="mvp-desc">Contas organizadas, calendário de vencimentos e bolsa-incentivo para quem paga em dia.</div>
+          <div class="mvp-foot">
+            <span class="status-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Funcional</span>
+            <span class="open-cta">Abrir app <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
 
-    <!-- G3 -->
-    <a href="Grupo3-QuitaAI/" class="mvp-card" style="--card-accent:#7c3aed;--card-accent2:#facc15;--card-tinta:#1e1b4b">
-      <div class="card-color-bar"></div>
-      <div class="card-icon">🎮</div>
-      <div class="card-name">Quita.AI</div>
-      <div class="card-desc">Jogo familiar anti-impulso</div>
-      <div class="card-status status-ok">✅ Funcional</div>
-    </a>
+        <a href="Grupo2-LifePath/" class="mvp-card g2">
+          <div class="mvp-top">
+            <img class="mvp-logo" src="assets/logos/g2-96.png" alt="Logo LifePath">
+            <div>
+              <div class="mvp-name">LifePath</div>
+              <div class="mvp-group">Grupo 2</div>
+            </div>
+          </div>
+          <div class="mvp-desc">Mentor de carreira e finanças com três trilhas e simulação de decisões ao longo do tempo.</div>
+          <div class="mvp-foot">
+            <span class="status-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Funcional</span>
+            <span class="open-cta">Abrir app <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
 
-    <!-- G4 -->
-    <a href="Grupo4-SuaCasaSuaVida/" class="mvp-card" style="--card-accent:#047857;--card-accent2:#d97706;--card-tinta:#052e2b">
-      <div class="card-color-bar"></div>
-      <div class="card-icon">🏠</div>
-      <div class="card-name">SuaCasaSuaVida</div>
-      <div class="card-desc">Simulador + análise de bairro</div>
-      <div class="card-status status-ok">✅ Funcional</div>
-    </a>
+        <a href="Grupo3-QuitaAI/" class="mvp-card g3">
+          <div class="mvp-top">
+            <img class="mvp-logo" src="assets/logos/g3-96.png" alt="Logo Quita.AI">
+            <div>
+              <div class="mvp-name">Quita.AI</div>
+              <div class="mvp-group">Grupo 3 · Piloto</div>
+            </div>
+          </div>
+          <div class="mvp-desc">Jogo em família que premia resistir a gastos por impulso — fases, ranking e badges.</div>
+          <div class="mvp-foot">
+            <span class="status-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Funcional</span>
+            <span class="open-cta">Abrir app <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
 
-    <!-- G5 -->
-    <a href="Grupo5-EDA/" class="mvp-card" style="--card-accent:#4f5bd5;--card-accent2:#93c5fd;--card-tinta:#1e2235">
-      <div class="card-color-bar"></div>
-      <div class="card-icon">🤝</div>
-      <div class="card-name">EDA</div>
-      <div class="card-desc">Acolhimento anônimo entre pares</div>
-      <div class="card-status status-ok">✅ Funcional</div>
-    </a>
+        <a href="Grupo4-SuaCasaSuaVida/" class="mvp-card g4">
+          <div class="mvp-top">
+            <img class="mvp-logo" src="assets/logos/g4-96.png" alt="Logo SuaCasaSuaVida">
+            <div>
+              <div class="mvp-name">SuaCasaSuaVida</div>
+              <div class="mvp-group">Grupo 4</div>
+            </div>
+          </div>
+          <div class="mvp-desc">Simulador de financiamento, quanto você pode pagar e comparação de bairros.</div>
+          <div class="mvp-foot">
+            <span class="status-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Funcional</span>
+            <span class="open-cta">Abrir app <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
 
-    <!-- G6 -->
-    <a href="Grupo6-VidaNoControle/" class="mvp-card" style="--card-accent:#ea580c;--card-accent2:#16a34a;--card-tinta:#431407">
-      <div class="card-color-bar"></div>
-      <div class="card-icon">🛒</div>
-      <div class="card-name">Vida no Controle</div>
-      <div class="card-desc">Orçamento + cupom fiscal</div>
-      <div class="card-status status-ok">✅ Funcional</div>
-    </a>
+        <a href="Grupo5-EDA/" class="mvp-card g5">
+          <div class="mvp-top">
+            <img class="mvp-logo" src="assets/logos/g5-96.png" alt="Logo EDA">
+            <div>
+              <div class="mvp-name">EDA</div>
+              <div class="mvp-group">Grupo 5 · Endividados Anônimos</div>
+            </div>
+          </div>
+          <div class="mvp-desc">Acolhimento anônimo entre pares para compra compulsiva (CBSD) — check-in, roda de apoio, ajuda.</div>
+          <div class="mvp-foot">
+            <span class="status-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Funcional</span>
+            <span class="open-cta">Abrir app <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
 
-  </div>
+        <a href="Grupo6-VidaNoControle/" class="mvp-card g6">
+          <div class="mvp-top">
+            <img class="mvp-logo" src="assets/logos/g6-96.png" alt="Logo Vida no Controle">
+            <div>
+              <div class="mvp-name">Vida no Controle</div>
+              <div class="mvp-group">Grupo 6</div>
+            </div>
+          </div>
+          <div class="mvp-desc">Orçamento familiar, comparador de preços e leitor de cupom fiscal do mercado local.</div>
+          <div class="mvp-foot">
+            <span class="status-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Funcional</span>
+            <span class="open-cta">Abrir app <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
 
-  <!-- Coleta + Materiais -->
-  <div class="section-title">📋 Materiais da pesquisa</div>
-  <div class="materials">
+      </div>
+    </div>
+  </section>
 
-    <a href="coleta/" class="mat-card" style="border-color:#0e7490">
-      <div class="mat-icon">📝</div>
-      <span>App de Coleta<br><small style="font-weight:400;color:#888">20 perguntas por grupo</small></span>
-    </a>
+  <!-- Materiais -->
+  <section class="block" id="materiais" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <h2>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 4v14"/></svg>
+            Materiais da pesquisa
+          </h2>
+          <p>App de coleta de campo e os slides usados em cada etapa da atividade.</p>
+        </div>
+      </div>
 
-    <a href="Parte%201/Slides-Shopping.html" class="mat-card">
-      <div class="mat-icon">📽️</div>
-      <span>Slides — Parte 1<br><small style="font-weight:400;color:#888">Preparação</small></span>
-    </a>
-
-    <a href="Parte%202/Slides-Shopping-Parte2.html" class="mat-card">
-      <div class="mat-icon">📽️</div>
-      <span>Slides — Parte 2<br><small style="font-weight:400;color:#888">Validação</small></span>
-    </a>
-
-    <a href="Parte%203/Slides-Shopping-Parte3.html" class="mat-card">
-      <div class="mat-icon">📽️</div>
-      <span>Slides — Parte 3<br><small style="font-weight:400;color:#888">Ida ao shopping</small></span>
-    </a>
-
-  </div>
+      <div class="util-grid">
+        <a href="coleta/" class="util-card">
+          <div class="util-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <b>App de coleta</b>
+          <small>20 perguntas por grupo, código G&lt;n&gt;-nnn</small>
+        </a>
+        <a href="Parte%201/Slides-Shopping.html" class="util-card">
+          <div class="util-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <b>Slides — Parte 1</b>
+          <small>Preparação da defesa</small>
+        </a>
+        <a href="Parte%202/Slides-Shopping-Parte2.html" class="util-card">
+          <div class="util-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <b>Slides — Parte 2</b>
+          <small>Validação dos formulários</small>
+        </a>
+        <a href="Parte%203/Slides-Shopping-Parte3.html" class="util-card">
+          <div class="util-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <b>Slides — Parte 3</b>
+          <small>Ida ao shopping</small>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- Cadernos -->
-  <div class="section-title">📓 Cadernos de apoio</div>
-  <div class="materials">
+  <section class="block" id="cadernos">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <h2>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+            Cadernos de apoio
+          </h2>
+          <p>Registro detalhado de cada etapa, mais o índice mestre da pesquisa científica.</p>
+        </div>
+      </div>
 
-    <a href="Parte%201/caderno-shopping.html" class="mat-card">
-      <div class="mat-icon">📓</div>
-      <span>Caderno P1<br><small style="font-weight:400;color:#888">Preparação</small></span>
-    </a>
+      <div class="util-grid">
+        <a href="Parte%201/caderno-shopping.html" class="util-card">
+          <div class="util-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+          <b>Caderno P1</b>
+          <small>Preparação</small>
+        </a>
+        <a href="Parte%202/caderno-shopping-parte2.html" class="util-card">
+          <div class="util-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+          <b>Caderno P2</b>
+          <small>Validação</small>
+        </a>
+        <a href="Parte%203/caderno-shopping-parte3.html" class="util-card">
+          <div class="util-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+          <b>Caderno P3</b>
+          <small>Execução</small>
+        </a>
+        <a href="_pesquisa/INDICE-PESQUISA.md" class="util-card">
+          <div class="util-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M15 3h6v6M10 14L21 3"/></svg></div>
+          <b>Índice de pesquisa</b>
+          <small>60 papers + dados oficiais</small>
+        </a>
+      </div>
+    </div>
+  </section>
 
-    <a href="Parte%202/caderno-shopping-parte2.html" class="mat-card">
-      <div class="mat-icon">📓</div>
-      <span>Caderno P2<br><small style="font-weight:400;color:#888">Validação</small></span>
-    </a>
+  <!-- Defesa -->
+  <section class="block" id="defesa" style="background:var(--surface);border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <h2>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>
+            Slides de defesa por grupo
+          </h2>
+          <p>Dor com dados, panorama de mídia, referencial científico e solução — apresentados em 15/09.</p>
+        </div>
+      </div>
 
-    <a href="Parte%203/caderno-shopping-parte3.html" class="mat-card">
-      <div class="mat-icon">📓</div>
-      <span>Caderno P3<br><small style="font-weight:400;color:#888">Execução</small></span>
-    </a>
+      <div class="defesa-grid">
+        <a href="Grupo1-DinheiroNaMao/Slides-DinheiroNaMao.html" class="defesa-card g1">
+          <img class="defesa-logo" src="assets/logos/g1-96.png" alt="">
+          <div><b>Dinheiro na Mão</b><span>Grupo 1</span></div>
+        </a>
+        <a href="Grupo2-LifePath/Slides-Lifepath.html" class="defesa-card g2">
+          <img class="defesa-logo" src="assets/logos/g2-96.png" alt="">
+          <div><b>LifePath</b><span>Grupo 2</span></div>
+        </a>
+        <a href="Grupo3-QuitaAI/Slides-QuitaAI.html" class="defesa-card g3">
+          <img class="defesa-logo" src="assets/logos/g3-96.png" alt="">
+          <div><b>Quita.AI</b><span>Grupo 3</span></div>
+        </a>
+        <a href="Grupo4-SuaCasaSuaVida/Slides-SuaCasaSuaVida.html" class="defesa-card g4">
+          <img class="defesa-logo" src="assets/logos/g4-96.png" alt="">
+          <div><b>SuaCasaSuaVida</b><span>Grupo 4</span></div>
+        </a>
+        <a href="Grupo5-EDA/Slides-EDA.html" class="defesa-card g5">
+          <img class="defesa-logo" src="assets/logos/g5-96.png" alt="">
+          <div><b>EDA</b><span>Grupo 5</span></div>
+        </a>
+        <a href="Grupo6-VidaNoControle/Slides-VidaNoControle.html" class="defesa-card g6">
+          <img class="defesa-logo" src="assets/logos/g6-96.png" alt="">
+          <div><b>Vida no Controle</b><span>Grupo 6</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
 
-    <a href="_pesquisa/INDICE-PESQUISA.md" class="mat-card">
-      <div class="mat-icon">🔬</div>
-      <span>Pesquisa<br><small style="font-weight:400;color:#888">60 papers</small></span>
-    </a>
+</main>
 
+<footer>
+  <div class="wrap">
+    <div class="foot-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>
+      Cerrado Tech · Unifacc
+    </div>
+    <p>3º Semestre · Tecnologia e Inovação (VG) · FACC/Unifacc — Professor Renato Rosa, 2026.<br>
+    Os MVPs são funcionais: teste cada app no navegador ou instale como PWA no celular.</p>
+    <div class="foot-links">
+      <a href="https://github.com/renato0503/3SemVG" target="_blank" rel="noopener">Repositório</a>
+      <a href="coleta/">App de coleta</a>
+      <a href="#mvps">Voltar ao topo</a>
+    </div>
   </div>
-
-  <!-- Grupos -->
-  <div class="section-title">👥 Slides de defesa por grupo</div>
-  <div class="card-grid">
-    <a href="Grupo1-DinheiroNaMao/Slides-DinheiroNaMao.html" class="mvp-card" style="--card-accent:#0e7490;--card-accent2:#22d3ee;--card-tinta:#0b2b2a">
-      <div class="card-color-bar"></div>
-      <div class="card-name">G1 — Dinheiro na Mão</div>
-    </a>
-    <a href="Grupo2-LifePath/Slides-Lifepath.html" class="mvp-card" style="--card-accent:#ff6b35;--card-accent2:#9333ea;--card-tinta:#2d1b00">
-      <div class="card-color-bar"></div>
-      <div class="card-name">G2 — LifePath</div>
-    </a>
-    <a href="Grupo3-QuitaAI/Slides-QuitaAI.html" class="mvp-card" style="--card-accent:#7c3aed;--card-accent2:#facc15;--card-tinta:#1e1b4b">
-      <div class="card-color-bar"></div>
-      <div class="card-name">G3 — Quita.AI</div>
-    </a>
-    <a href="Grupo4-SuaCasaSuaVida/Slides-SuaCasaSuaVida.html" class="mvp-card" style="--card-accent:#047857;--card-accent2:#d97706;--card-tinta:#052e2b">
-      <div class="card-color-bar"></div>
-      <div class="card-name">G4 — SuaCasaSuaVida</div>
-    </a>
-    <a href="Grupo5-EDA/Slides-EDA.html" class="mvp-card" style="--card-accent:#4f5bd5;--card-accent2:#93c5fd;--card-tinta:#1e2235">
-      <div class="card-color-bar"></div>
-      <div class="card-name">G5 — EDA</div>
-    </a>
-    <a href="Grupo6-VidaNoControle/Slides-VidaNoControle.html" class="mvp-card" style="--card-accent:#ea580c;--card-accent2:#16a34a;--card-tinta:#431407">
-      <div class="card-color-bar"></div>
-      <div class="card-name">G6 — Vida no Controle</div>
-    </a>
-  </div>
-
-  <div class="footer-note">
-    Cerrado Tech · Unifacc · 3º Semestre Tecnologia e Inovação<br>
-    Professor Renato Rosa · 2026<br>
-    Os MVPs são <strong>funcionais</strong> — teste cada app diretamente no navegador ou instale como PWA no celular.
-  </div>
-
-</div>
+</footer>
 
 <script>
 if('serviceWorker' in navigator){

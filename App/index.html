@@ -191,6 +191,23 @@ footer{padding:14px 16px 22px;text-align:center;color:var(--muted);font-size:11.
       </div>
     </section>
 
+    <!-- E-MAIL (opcional, ao final do formulário) -->
+    <section class="screen" id="scr-email">
+      <div class="card">
+        <h2 style="font-size:18px">Quase lá!</h2>
+        <p class="small" style="margin-top:6px">
+          Pergunte: <b>"Você gostaria de deixar seu e-mail para receber o Termo de Consentimento
+          Livre e Esclarecido (TCLE) e ficar sabendo do resultado desta pesquisa?"</b>
+        </p>
+        <p class="small" style="opacity:.7;margin-top:6px">É opcional e não entra nas notas 1–5 — fica guardado
+        à parte, só para contato.</p>
+        <input type="email" id="input-email-contato" class="small" placeholder="nome@email.com (opcional)"
+          style="width:100%;padding:12px;border-radius:8px;border:1px solid #ccc;margin-top:12px;box-sizing:border-box">
+      </div>
+      <button class="btn green" id="btn-email-salvar">Salvar e finalizar</button>
+      <button class="btn ghost" id="btn-email-pular">Pular (não quis deixar e-mail)</button>
+    </section>
+
     <!-- RESULTADO -->
     <section class="screen" id="scr-fim">
       <div class="card center">
@@ -231,10 +248,30 @@ footer{padding:14px 16px 22px;text-align:center;color:var(--muted);font-size:11.
       </div>
       <button class="btn" id="btn-csv">Baixar CSV (Excel)</button>
       <button class="btn ghost" id="btn-json">Baixar JSON (backup)</button>
+      <button class="btn ghost" id="btn-compartilhar">Enviar por WhatsApp / Drive</button>
       <button class="btn ghost" id="btn-copiar-dados">Copiar JSON (backup rápido)</button>
       <div class="callout info">
         O código liga <b>quanti × quali</b>: a planilha guarda as notas 1–5 e o áudio guarda as falas.
       </div>
+      <div class="card" style="margin-top:16px">
+        <p class="small"><b>Consolidar dados de várias duplas:</b> no celular que vai juntar tudo, importe o JSON
+        exportado por cada dupla. O app soma pelo código — nada se duplica ou se perde.</p>
+      </div>
+      <button class="btn ghost" id="btn-importar">Importar / mesclar JSON de outra dupla</button>
+      <input type="file" id="input-importar" accept="application/json" style="display:none">
+
+      <div class="card" style="margin-top:16px">
+        <p class="small"><b>Sincronização automática (opcional):</b> cole aqui a URL do Google Apps Script
+        (veja <code>App/README.md</code> → "Backup automático") para que cada resposta salva tente ir sozinha
+        para uma planilha Google, sem depender de exportar/enviar manualmente. Precisa de internet no momento
+        do salvamento — sem internet, fica marcada como pendente e sincroniza depois.</p>
+        <input type="text" id="input-sheet-url" class="small" placeholder="https://script.google.com/macros/s/.../exec"
+          style="width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;margin-top:8px;box-sizing:border-box">
+      </div>
+      <button class="btn ghost" id="btn-salvar-url">Salvar URL de sincronização</button>
+      <button class="btn ghost" id="btn-sync-agora">Sincronizar pendentes agora</button>
+      <div class="small" id="sync-status" style="opacity:.75;text-align:center;margin-top:4px"></div>
+
       <button class="btn danger" id="btn-limpar">Apagar TODAS as respostas</button>
     </section>
   </main>
@@ -298,9 +335,37 @@ const GRUPOS = {
     ]
   },
   2: {
-    nome:"A Definir", prof:"Profa. Olivia", pendente:true,
-    motivo:"Ideia ainda a definir com a Profa. Olivia. Formulário será inserido depois.",
-    blocos:[]
+    nome:"LifePath", prof:"Profa. Olivia",
+    blocos:[
+      { titulo:"Carreira e orientação profissional", perguntas:[
+        {q:"Quanto a pessoa sabe sobre as opções de carreira que existem (técnico, universidade, empreendedorismo)?", a:"Não sabe nada", b:"Sabe bastante"},
+        {q:"Quanto já pensou sobre qual trilha profissional seguir (vocacional, acadêmica, empreendedora)?", a:"Nunca pensou", b:"Já sabe exatamente o que quer"},
+        {q:"Quanto ter um mentor ou guia ajudaria a tomar decisões de carreira?", a:"Não ajudaria nada", b:"Ajudaria muito"},
+        {q:"Quanto se sente preparado(a) para tomar decisões sobre a vida profissional?", a:"Nada preparado(a)", b:"Totalmente preparado(a)"},
+        {q:"Quanto já recebeu orientação profissional na escola ou em casa?", a:"Nada", b:"Muita orientação"},
+      ]},
+      { titulo:"Finanças pessoais e primeiro salário", perguntas:[
+        {q:"Quanto já recebeu orientação sobre como lidar com dinheiro (orçamento, poupar, investir)?", a:"Nunca recebeu", b:"Recebeu muita orientação"},
+        {q:"Quanto se sente preparado(a) para planejar o uso do primeiro salário?", a:"Nada preparado(a)", b:"Totalmente preparado(a)"},
+        {q:"Quanto entende sobre o custo de vida real (aluguel, comida, transporte, contas)?", a:"Não entende nada", b:"Entende perfeitamente"},
+        {q:"O quanto guardar dinheiro é difícil para a pessoa hoje?", a:"Muito difícil", b:"Muito fácil"},
+        {q:"Quanto já tem o hábito de anotar gastos ou controlar para onde o dinheiro vai?", a:"Nunca anota", b:"Sempre anota e planeja"},
+      ]},
+      { titulo:"Tecnologia e apps de carreira/finanças", perguntas:[
+        {q:"Quanto usa o celular como principal forma de gerenciar o dinheiro?", a:"Não usa para isso", b:"Usa muito para gerenciar"},
+        {q:"Quanto usaria um app personalizado para a carreira e fase de vida?", a:"Não usaria", b:"Usaria com certeza"},
+        {q:"Quanto confia em bancos digitais (Nubank, Inter, etc.)?", a:"Não confia nada", b:"Confia totalmente"},
+        {q:"Quanto acha que um app deveria orientar sobre carreira E finanças juntos?", a:"Não deveria", b:"Deveria muito"},
+        {q:"Quanto gamificação (missões, XP, níveis, desafios) motivaria a aprender sobre finanças e carreira?", a:"Não motiva nada", b:"Motivaria muito"},
+      ]},
+      { titulo:"Trilhas profissionais e impacto financeiro", perguntas:[
+        {q:"Quanto já pensou em como a escolha da carreira afeta a vida financeira a longo prazo?", a:"Nunca pensou", b:"Já pensou bastante"},
+        {q:"Quanto uma simulação (experimentar decisões no app antes da vida real) ajudaria a reduzir o medo de errar?", a:"Não ajudaria nada", b:"Ajudaria muito"},
+        {q:"Quanto acha importante saber quanto profissionais da área ganham antes de escolher uma carreira?", a:"Nada importante", b:"Muito importante"},
+        {q:"Quanto um mentor que guia passo a passo (com missões semanais) ajudaria a se sentir mais confiante sobre o futuro?", a:"Não ajudaria nada", b:"Ajudaria muito"},
+        {q:"Quanto acredita ser possível melhorar a vida financeira tomando melhores decisões de carreira?", a:"Impossível", b:"Totalmente possível"},
+      ]},
+    ]
   },
   3: {
     nome:"Quita.AI", prof:"Prof. Péricles",
@@ -446,6 +511,7 @@ const LS = {
   respostas:"cd3semvg_respostas",
   seq:"cd3semvg_seq",
   grupo:"cd3semvg_grupo",
+  sheetUrl:"cd3semvg_sheet_url",
 };
 let storageOK = true;
 function lsGet(k, def){
@@ -542,7 +608,11 @@ function selecionarGrupo(g){
 }
 $("#btn-nova").onclick = ()=>{ if(grupoAtual) iniciarColeta(grupoAtual); };
 $("#btn-respostas").onclick = ()=> renderRespostas();
-$("#btn-dados").onclick = ()=> mostrar("#scr-dados");
+$("#btn-dados").onclick = ()=>{
+  $("#input-sheet-url").value = getSheetUrl();
+  atualizarSyncStatus();
+  mostrar("#scr-dados");
+};
 
 /* ============================================================
    COLETA — PERFIL
@@ -611,9 +681,14 @@ function responder(i, n){
   opts.forEach((o,k)=> o.classList.toggle("sel", (k+1)===n));
   setTimeout(()=>{
     if(i < totalPerguntas()-1){ idx = i+1; renderPergunta(); }
-    else { finalizarColeta(); }
+    else { $("#input-email-contato").value = ""; mostrar("#scr-email"); }
   }, 180);
 }
+$("#btn-email-salvar").onclick = ()=>{
+  const email = $("#input-email-contato").value.trim();
+  finalizarColeta(email || null);
+};
+$("#btn-email-pular").onclick = ()=> finalizarColeta(null);
 $("#btn-perg-voltar").onclick = ()=>{
   if(idx===0){ mostrar("#scr-perfil"); }
   else { idx--; renderPergunta(); }
@@ -622,17 +697,19 @@ $("#btn-perg-voltar").onclick = ()=>{
 /* ============================================================
    COLETA — FINALIZAR / CÓDIGO
    ============================================================ */
-function finalizarColeta(){
+function finalizarColeta(emailContato){
   const g = coleta.grupo;
   const codigo = proxCodigo(g);
   const reg = {
     id: "r" + Date.now() + "-" + Math.random().toString(36).slice(2,7),
     grupo: g, codigo, criadoEm: new Date().toISOString(),
     perfil: coleta.perfil, respostas: coleta.respostas,
+    email: emailContato || null,
   };
   respostas.push(reg);
   seq[g] = (seq[g]||0) + 1;
   lsSet(LS.respostas, respostas); lsSet(LS.seq, seq);
+  tentarSincronizar(reg);
 
   const preenchidas = Object.keys(reg.respostas).length;
   $("#fim-cod").textContent = codigo;
@@ -709,12 +786,14 @@ function gerarCSV(){
   const maxPerg = 20;
   const cab = ["codigo","grupo","grupo_nome","data",
     ...PERFIL.map(p=>p.id),
-    ...Array.from({length:maxPerg},(_,i)=>"Q"+(i+1))];
+    ...Array.from({length:maxPerg},(_,i)=>"Q"+(i+1)),
+    "email_contato"];
   const linhas = [cab.map(csvEscape).join(";")];
   [...respostas].sort((a,b)=>a.codigo.localeCompare(b.codigo)).forEach(r=>{
     const cols = [r.codigo, r.grupo, GRUPOS[r.grupo].nome, new Date(r.criadoEm).toLocaleString("pt-BR")];
     PERFIL.forEach(p=> cols.push(r.perfil[p.id]||""));
     for(let i=0;i<maxPerg;i++) cols.push(r.respostas[i]!=null ? r.respostas[i] : "");
+    cols.push(r.email||"");
     linhas.push(cols.map(csvEscape).join(";"));
   });
   return "\uFEFF" + linhas.join("\r\n");
@@ -733,6 +812,119 @@ $("#btn-copiar-dados").onclick = async ()=>{
   const txt = JSON.stringify({respostas}, null, 2);
   try{ await navigator.clipboard.writeText(txt); toast("JSON copiado (" + respostas.length + " respostas)."); }
   catch(e){ toast("Não deu para copiar. Use Baixar JSON."); }
+};
+
+/* ============================================================
+   SINCRONIZAÇÃO AUTOMÁTICA (opcional) — Google Apps Script
+   Cada resposta tenta ir sozinha para uma planilha Google.
+   Sem URL configurada, isso é um no-op silencioso.
+   ============================================================ */
+function getSheetUrl(){ return (lsGet(LS.sheetUrl, "") || "").trim(); }
+function atualizarSyncStatus(){
+  const pendentes = respostas.filter(r=>!r.sincronizado).length;
+  const el = $("#sync-status");
+  if(!el) return;
+  const url = getSheetUrl();
+  el.textContent = !url
+    ? "Sem URL configurada — sincronização automática desligada."
+    : (pendentes ? pendentes + " resposta(s) pendente(s) de sincronizar." : "Tudo sincronizado. ✅");
+}
+async function tentarSincronizar(reg){
+  const url = getSheetUrl();
+  if(!url) return;
+  try{
+    const res = await fetch(url, {
+      method:"POST",
+      headers:{"Content-Type":"text/plain;charset=utf-8"}, // evita preflight CORS no Apps Script
+      body: JSON.stringify({
+        codigo:reg.codigo, grupo:reg.grupo, grupoNome:(GRUPOS[reg.grupo]||{}).nome||"",
+        criadoEm:reg.criadoEm, perfil:reg.perfil, respostas:reg.respostas,
+        email:reg.email||"",
+      }),
+    });
+    if(res.ok){
+      reg.sincronizado = true;
+      lsSet(LS.respostas, respostas);
+    }
+  }catch(e){ /* offline ou URL errada — fica pendente, tenta de novo depois */ }
+  atualizarSyncStatus();
+}
+async function sincronizarPendentes(){
+  const url = getSheetUrl();
+  if(!url){ toast("Configure a URL de sincronização primeiro."); return; }
+  const pendentes = respostas.filter(r=>!r.sincronizado);
+  if(!pendentes.length){ toast("Nada pendente."); return; }
+  toast("Sincronizando " + pendentes.length + "...");
+  for(const r of pendentes) await tentarSincronizar(r);
+  atualizarSyncStatus();
+  toast("Sincronização concluída.");
+}
+$("#btn-salvar-url").onclick = ()=>{
+  const url = $("#input-sheet-url").value.trim();
+  lsSet(LS.sheetUrl, url);
+  toast(url ? "URL salva." : "URL removida — sincronização desligada.");
+  atualizarSyncStatus();
+};
+$("#btn-sync-agora").onclick = sincronizarPendentes;
+window.addEventListener("online", sincronizarPendentes);
+
+/* ============================================================
+   COMPARTILHAR (Web Share API — manda o arquivo direto pro
+   WhatsApp/Drive/E-mail, sem precisar transferir o celular)
+   ============================================================ */
+$("#btn-compartilhar").onclick = async ()=>{
+  if(!respostas.length){ toast("Nenhuma resposta para enviar."); return; }
+  const nomeArq = "coleta-3semvg-" + (grupoAtual ? "G"+grupoAtual+"-" : "") + Date.now() + ".json";
+  const conteudo = JSON.stringify({app:"3SemVG coleta v1", exportadoEm:new Date().toISOString(), respostas}, null, 2);
+  const arquivo = new File([conteudo], nomeArq, {type:"application/json"});
+  if(navigator.canShare && navigator.canShare({files:[arquivo]})){
+    try{
+      await navigator.share({
+        files:[arquivo],
+        title:"Coleta 3SemVG",
+        text:"Respostas de campo (" + respostas.length + ") — código no início de cada áudio."
+      });
+      toast("Enviado!");
+      return;
+    }catch(e){ /* usuário cancelou ou não suportado — cai no fallback */ }
+  }
+  baixar(nomeArq, conteudo, "application/json");
+  toast("Sem compartilhamento direto neste navegador — arquivo baixado, envie manualmente.");
+};
+
+/* ============================================================
+   IMPORTAR / MESCLAR — junta o JSON de outra dupla no aparelho
+   que vai consolidar tudo. Mescla por código (nunca duplica).
+   ============================================================ */
+$("#btn-importar").onclick = ()=> $("#input-importar").click();
+$("#input-importar").onchange = (ev)=>{
+  const arquivo = ev.target.files[0];
+  if(!arquivo) return;
+  const leitor = new FileReader();
+  leitor.onload = (e)=>{
+    try{
+      const dados = JSON.parse(e.target.result);
+      const novas = Array.isArray(dados) ? dados : dados.respostas;
+      if(!Array.isArray(novas)) throw new Error("formato inválido");
+      const existentes = new Set(respostas.map(r=>r.codigo));
+      let adicionadas = 0, duplicadas = 0;
+      novas.forEach(r=>{
+        if(!r || !r.codigo) return;
+        if(existentes.has(r.codigo)){ duplicadas++; return; }
+        respostas.push(r); existentes.add(r.codigo); adicionadas++;
+        // mantém o contador (seq) de cada grupo em dia após a mesclagem
+        const m = /^G(\d+)-(\d+)$/.exec(r.codigo);
+        if(m){ const g = +m[1], n = +m[2]; seq[g] = Math.max(seq[g]||0, n); }
+      });
+      lsSet(LS.respostas, respostas); lsSet(LS.seq, seq);
+      renderHome();
+      toast(adicionadas + " nova(s) mesclada(s)" + (duplicadas ? " · " + duplicadas + " já existiam" : "") + ".");
+    }catch(err){
+      toast("Arquivo inválido. Use um JSON exportado pelo próprio app.");
+    }
+    ev.target.value = "";
+  };
+  leitor.readAsText(arquivo);
 };
 
 /* ============================================================

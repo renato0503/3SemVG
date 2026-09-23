@@ -571,3 +571,42 @@ Start-Process "https://renato0503.github.io/3SemVG/"
 # Verificar estrutura do projeto
 Get-ChildItem -LiteralPath "D:\Dev\UnifaccApps\3SemVG" -Directory | Select-Object Name
 ```
+
+---
+
+## 19. Sessão 22/09/2026 (tarde/noite) — logos, hub redesenhado, app de coleta
+
+### 19.1 Concluído ✅
+
+| # | Item | Detalhe |
+|---|---|---|
+| 1 | **Logos reais dos 6 grupos** | Cada grupo subiu `logo_gN.png` (2048×2048) nas suas pastas. Gerei versões otimizadas em `assets/logos/gN-{512,192,96,32}.png` (pasta central compartilhada). |
+| 2 | **Manifests com logo real** | `Grupo1..6/manifest.json` + `manifest.json` raiz — ícones PWA trocados de emoji/SVG genérico para as logos reais (`gN-192.png`, `gN-512.png`). Corrigido `start_url` quebrado do G3 (apontava pra pasta antiga `/g3-quita-ai/`). |
+| 3 | **Logo no header de cada MVP** | Cada `GrupoN/index.html` (o app) ganhou favicon próprio + a logo ao lado do `<h1>` no cabeçalho (`.app-logo`, 38px, sombra). |
+| 4 | **Hub raiz redesenhado** (`index.html`) | Reconstruído do zero: nav sticky, hero com gradiente + stats, faixa com as 6 logos, cards de MVP com logo/cor/CTA por grupo, seções de Materiais/Cadernos/Defesa com ícones SVG inline (sem emoji), footer escuro. Responsivo mobile+desktop. |
+| 5 | **Hub sem logo de grupo específico** | Correção pedida pelo usuário: nav/favicon/manifest do hub **não usam mais** a logo do G3 (estava errado usar uma logo de MVP como marca do projeto) — agora é um ícone SVG neutro (estrela genérica). |
+| 6 | **Grupo 2 (LifePath) no app de coleta** | `formulario-app.md` do G2 já tinha as 20 perguntas prontas; adicionei o bloco `GRUPOS[2]` em `App/index.html` (estava `pendente:true`, virou funcional). Sincronizado em `coleta/index.html` (cópia idêntica, é a pasta publicada). |
+| 7 | **Compartilhar direto (Web Share API)** | Botão "Enviar por WhatsApp/Drive" no app de coleta — manda o JSON exportado direto pro app escolhido no celular (fallback: baixa o arquivo se o navegador não suportar). |
+| 8 | **Importar/Mesclar respostas** | Botão para importar o JSON exportado por outra dupla e mesclar no celular "central" — dedup por código `G<n>-<nnn>`, mantém o contador de sequência (`seq`) em dia. |
+| 9 | **Sincronização automática opcional (Google Sheets)** | Campo pra colar a URL de um Google Apps Script (`doPost`) — cada resposta salva tenta subir sozinha pra uma planilha Google (fetch com `text/plain` pra evitar preflight CORS). Sem internet, fica "pendente" e sincroniza no reconectar (`online` event) ou no botão "Sincronizar pendentes agora". Script completo (`doPost`) e passo a passo documentados em `App/README.md`. |
+| 10 | **Pergunta de e-mail opcional (TCLE)** | Ao final das 20 perguntas, nova tela `scr-email` pergunta se a pessoa quer deixar o e-mail pra receber o **TCLE** e saber o resultado da pesquisa. Campo opcional (`reg.email`), não conta como pergunta de escala. Incluído no CSV (`email_contato`), no JSON, e no payload de sincronização com o Sheets. |
+
+### 19.2 Pendente ❌ (próxima sessão)
+
+| # | Item | Detalhe |
+|---|---|---|
+| A | **Landing page por grupo** | Pedido do usuário: `GrupoN/index.html` deveria ser uma **landing page** (logo, pitch, cards para README/ContextoApp/Pesquisa-Dados/formulário/Slides) e o **app deveria virar `app.html`** (ou subpasta), com o hub e a landing linkando pro app. **Ainda não implementado** — só foi planejado (ver seção 19.3). Precisa: mover cada `index.html` atual → `app.html`, criar `index.html` novo como landing, atualizar `manifest.json` (`start_url` → `app.html`) e o link "Abrir app" na própria landing. |
+| B | **Testar sincronização com Google Sheets de ponta a ponta** | O código está pronto mas ninguém testou com uma planilha real ainda — falta criar uma planilha de teste, colar a URL no app e validar que as linhas chegam certas (inclusive com e-mail). |
+| C | Botão "Voltar" na tela de e-mail (`scr-email`) | Hoje não tem botão de voltar nessa tela nova — se quiser mudar uma resposta antes de finalizar, precisa ir até o fim e usar "Nova coleta" de novo. Ajuste pequeno, não crítico. |
+| D | Ida ao shopping, tabulação quanti + leitura quali dos áudios, sprints 3–5 por grupo | Itens de longo prazo já registrados nas seções anteriores — sem mudança. |
+| E | Re-sincronizar `_pesquisa/INDICE-PESQUISA.md` | Ainda diverge dos `Pesquisa-Dados.md` por grupo (autores/títulos trocados) — não mexido nesta sessão. |
+
+### 19.3 Plano já desenhado para o item A (landing pages)
+
+Para cada `GrupoN-Nome/`:
+1. Renomear o app atual (`index.html`) → `app.html` (manter `manifest.json`/`sw.js` funcionando, ajustar `start_url`).
+2. Criar `index.html` novo = landing: logo grande, pitch de uma linha, botão grande "Abrir App", e cards
+   linkando pra `README.md`, `formulario-app.md`, `ContextoApp.md`, `Pesquisa-Dados.md`,
+   `Slides-<Grupo>.html`/`.pdf` — usando o mesmo estilo de card com ícones SVG do hub raiz.
+3. Conferir que os links do hub (`Grupo1-DinheiroNaMao/` etc.) continuam funcionando — como apontam pra pasta,
+   vão cair automaticamente na nova landing (comportamento desejado pelo usuário).

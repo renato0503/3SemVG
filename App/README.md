@@ -12,7 +12,10 @@ Formulário de campo **offline** em arquivo único (`index.html`), usado na **Pa
 4. Toque em **Iniciar nova coleta** → marque o **Bloco 0 (perfil) por observação** →
    responda as **20 perguntas** (escala 1–5).
 5. Ao salvar, aparece o **CÓDIGO** (`G<n>-<nnn>`). **Leia o código no início do áudio do WhatsApp.**
-6. No fim do dia, use **Exportar dados** → **CSV** (Excel) ou **JSON** (backup/correlação).
+6. Ao final das 20 perguntas, pergunte se a pessoa quer **deixar o e-mail** para receber o
+   **TCLE** (Termo de Consentimento Livre e Esclarecido) e saber o resultado da pesquisa —
+   campo opcional, não entra nas notas.
+7. No fim do dia, use **Exportar dados** → **CSV** (Excel) ou **JSON** (backup/correlação).
 
 ## Protocolo (fixo, vale para todos os grupos)
 
@@ -55,9 +58,79 @@ Formulário de campo **offline** em arquivo único (`index.html`), usado na **Pa
 Edite o objeto do grupo em `GRUPOS`. Cada grupo **precisa ter exatamente 20 perguntas**
 com os dois polos (`a` e `b`) — o app não aceita meia pergunta.
 
+## Onde os dados ficam salvos (importante)
+
+O app **não tem backend** — é só HTML/JS local. Os dados moram em duas camadas:
+
+1. **`localStorage` do navegador** daquele celular específico — automático, mas preso àquele
+   aparelho. Se limpar dados do navegador ou trocar de celular, perde o que não foi exportado.
+2. **Arquivo exportado** (CSV/JSON) — só existe quando alguém clica em exportar/compartilhar.
+
+Para consolidar as respostas de várias duplas em um só lugar, use (na ordem de menor pra maior esforço):
+
+- **Compartilhar + Importar/Mesclar** (já pronto no app): cada dupla manda seu JSON por WhatsApp
+  pro celular "central"; nesse celular, usa **Importar/mesclar JSON** — junta tudo sem duplicar
+  (mescla pelo código `G<n>-<nnn>`).
+- **Backup automático (Google Sheets)** — abaixo, para quem quer que cada resposta vá sozinha
+  pra nuvem no momento em que é salva, sem depender de ninguém lembrar de exportar.
+
+## Backup automático — Google Apps Script + Google Sheets (opcional, grátis)
+
+Isso faz cada resposta salva tentar um `POST` automático para uma planilha Google. Exige
+internet no momento do salvamento; sem internet, a resposta fica marcada como **pendente** e
+sincroniza sozinha assim que o celular reconectar (ou ao tocar em **"Sincronizar pendentes agora"**).
+
+### 1. Criar a planilha e o script
+
+1. Crie uma planilha nova em [sheets.google.com](https://sheets.google.com) (ex.: `Coleta 3SemVG`).
+2. Menu **Extensões → Apps Script**.
+3. Apague o conteúdo padrão e cole:
+
+```javascript
+function doPost(e) {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Respostas")
+             || SpreadsheetApp.getActiveSpreadsheet().insertSheet("Respostas");
+  const dados = JSON.parse(e.postData.contents);
+
+  if (sheet.getLastRow() === 0) {
+    const cab = ["recebidoEm","codigo","grupo","grupoNome","criadoEm",
+      "faixaEtaria","sexo","classe","raca"];
+    for (let i = 1; i <= 20; i++) cab.push("Q" + i);
+    cab.push("email_contato");
+    sheet.appendRow(cab);
+  }
+
+  const p = dados.perfil || {};
+  const r = dados.respostas || {};
+  const linha = [new Date(), dados.codigo, dados.grupo, dados.grupoNome, dados.criadoEm,
+    p.faixaEtaria || "", p.sexo || "", p.classe || "", p.raca || ""];
+  for (let i = 0; i < 20; i++) linha.push(r[i] != null ? r[i] : "");
+  linha.push(dados.email || "");
+
+  sheet.appendRow(linha);
+  return ContentService.createTextOutput(JSON.stringify({ ok: true }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+```
+
+4. **Implantar → Nova implantação → tipo "App da Web"**.
+   - Executar como: **Eu**.
+   - Quem pode acessar: **Qualquer pessoa**.
+5. Copie a **URL do app da Web** (termina em `/exec`).
+
+### 2. Configurar no app de coleta
+
+1. Abra o app → **Exportar dados**.
+2. Cole a URL em **"Sincronização automática"** → **Salvar URL de sincronização**.
+3. Pronto — cada resposta nova tenta subir sozinha. O status mostra quantas ficaram pendentes.
+
+> Cada celular/dupla configura a **mesma URL**, então todas as respostas caem na mesma planilha,
+> já consolidadas — sem precisar mesclar JSON manualmente no fim do dia.
+
 ## Observações técnicas
 
-- **Offline por completo** — sem CDN, sem fonte externa, sem build.
+- **Offline por completo** para a coleta em si — sem CDN, sem fonte externa, sem build.
+  A sincronização automática é o único ponto que pede internet, e é opcional.
 - `localStorage` funciona em `file://` no Chrome/Safari; se o navegador bloquear, o app avisa
   e o ideal é **exportar** com frequência (o backup em JSON nunca depende do navegador).
 - Rodar a partir de um servidor local (`python -m http.server`) é ainda mais seguro, mas não é obrigatório.
