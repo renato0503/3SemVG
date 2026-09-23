@@ -50,7 +50,7 @@ Uma pasta `assets/kit/` reutilizada por todos, para não reescrever tudo 5 vezes
 | **M3** | G4 SuaCasaSuaVida | `g4-sua-casa-sua-vida/` (simulador + bairro) | ✅ concluída |
 | **M4** | G6 Vida no Controle | `g6-vida-no-controle/` (orçamento + economia + cupom) | ✅ concluída |
 | **M5** | G5 EDA | `g5-eda/` (acolhimento anônimo) — tema sensível | ✅ concluída |
-| **M6** | Integração + polimento | Hub ligado aos 5 MVPs, PWA, revisão de botões | ✅ concluída |
+| **M6** | Integração + polimento | Hub ligado aos 6 MVPs, PWA, revisão de botões | ✅ concluída |
 
 > **Ordem:** o piloto **G3** valida o padrão (identidade + kit + persistência). Depois replicamos G1 → G4 → G6 → G5. **G5 por último** (exige mais cuidado de linguagem e privacidade).
 
@@ -236,8 +236,9 @@ Um MVP só fecha quando:
 
 ### DoD verificado (22/09/2026)
 
+- [x] 6 MVPs funcionais — G1, G2, G3, G4, G5, G6
 - [x] Nenhum botão morto — cada botão executa ação visível
-- [x]Persistência — localStorage mantido após reload com reset
+- [x] Persistência — localStorage mantido após reload com reset
 - [x] Export/import JSON funciona
 - [x] Sem erro no console em todas as telas (teste HTTP)
 - [x] Responsivo (mobile-first, 44×44px alvos)

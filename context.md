@@ -44,7 +44,7 @@ Definidas pelo professor e aplicadas em **todos** os grupos:
 | Grupo | Projeto | Professor(a) | Integrantes | Código | Meta |
 |---|---|---|---|---|---|
 | 1 | **Dinheiro na Mão** | Olivia | Giselle, Evelin, Franciely, Mara Fernanda | `G1-<nnn>` | 15–20 |
-| 2 | **A Definir** | Olivia | Maria Eloise, Izabelli, Talita, Nicolli | `G2-<nnn>` | 15–20 |
+| 2 | **LifePath** | Olivia | Maria Eloise, Izabelli, Talita, Nicolli | `G2-<nnn>` | 15–20 |
 | 3 | **Quita.AI** | Péricles | Creuza, Daniela, Gilmara, Jakeline | `G3-<nnn>` | 15–20 |
 | 4 | **SuaCasaSuaVida** | Pantaleão | Amanda Karoliny, Beatriz Cristina, Evander, Julimary | `G4-<nnn>` | 15–20 |
 | 5 | **Endividados Anônimos (EDA)** | Renato | Cássia Nóbrega, Sarah, Sabrina, Beatriz B., Denner | `G5-<nnn>` | 15–20 |
@@ -52,7 +52,7 @@ Definidas pelo professor e aplicadas em **todos** os grupos:
 
 ### Ideias (como enviadas pelos grupos)
 - **G1 Dinheiro na Mão:** programa do governo em que as pessoas vão **presencialmente** a um posto, onde **profissionais as auxiliam**; um **sistema inteligente** ajuda a organizar contas e datas; e uma **bolsa-incentivo** dá um empurrão para organizar a vida financeira.
-- **G2 A Definir:** ideia **ainda não definida** pelo grupo (a preencher com a Profa. Olivia).
+- **G2 LifePath:** mentor IA de carreira e finanças — três trilhas (Vocacional, Acadêmica, Empreendedora) com simulação de decisões financeiras ao longo do tempo.
 - **G3 Quita.AI:** **jogo** que a **família toda** joga e **ganha bônus quando controla os impulsos** por gastos desnecessários; financiado por **editais de financiamento tecnológico**; conforme passa de fase, ganha **prêmios** (desconto em faturas, isenção fiscal).
 - **G4 SuaCasaSuaVida:** app que **ajuda a comprar uma casa** — **análise de bairro**, **análise da situação financeira** etc.
 - **G5 Endividados Anônimos (EDA):** **espaço de reabilitação para gastadores compulsivos** (modelo inspirado em Alcoólicos Anônimos, adaptado a finanças). Tema sensível — exige acolhimento e LGPD.
@@ -296,7 +296,7 @@ Start-Process "D:\Dev\UnifaccApps\3SemVG\Grupo3-QuitaAI\Pesquisa-Dados.md"
 | G4 | SuaCasaSuaVida | `#047857` / `#052e2b` / `#d97706` | Imobiliário e confiança | Segoe UI Semibold |
 | G5 | EDA | `#4f5bd5` / `#1e2235` / `#93c5fd` | Acolhedor e calmo (zero culpa) | Cambria / Georgia |
 | G6 | Vida no Controle | `#ea580c` / `#431407` / `#16a34a` | Local e frugal (mercado) | Trebuchet MS |
-| G2 | A Definir | ⚠️ pendente | ⚠️ pendente | ⚠️ pendente |
+| G2 | LifePath | `#ff6b35` / `#1a0e2e` / `#7b2ff7` | Tech e aspiracional | Space Grotesk |
 
 ### 11.2 Variáveis CSS (temas.css)
 
@@ -533,7 +533,6 @@ Todo botão e toda feature **têm que funcionar de verdade**. Nenhum botão mort
 
 | # | Item | Responsável |
 |---|---|---|
-| A | Definir ideia do Grupo 2 + criar `formulario-app.md` + `ContextoApp.md` + `Pesquisa-Dados.md` + slides | Profa. Olivia + grupo |
 | K | **Sprint 3** — coleta no shopping + correlação áudio/formulário | grupo |
 | L | **Sprint 4** — tabulação quanti + leitura quali dos áudios | grupo |
 | M | **Sprint 5** — app pronto + relatório de achados por grupo | grupo |

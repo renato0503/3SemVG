@@ -71,7 +71,7 @@ Status:      ⏳ / 🔄 / ✅ / ⛔
 - **Entregue:**
   - Objeto `GRUPOS` no `App/index.html` com as **20 perguntas** de cada grupo, em 4 blocos, no formato `{q, a, b}` (polo 1 = `a`, polo 5 = `b`).
   - **G1 Dinheiro na Mão · G3 Quita.AI · G4 SuaCasaSuaVida · G5 EDA · G6 Vida no Controle** — 5×20 = 100 perguntas.
-  - **G2 A Definir** marcado como `pendente` (bloco vazio, botão desabilitado).
+  - **G2 LifePath** — 20 perguntas já disponíveis no app de coleta.
   - Notas de campo por grupo: callout de tema sensível no G5; triagem por observação no G1, G5 e G6.
 - **Verificação:** harness Node confirmou **20 perguntas e 2 polos** em cada grupo não-pendente.
 - **Bloqueios:** G2 depende da definição da ideia com a Profa. Olivia.
@@ -249,7 +249,7 @@ Status:      ⏳ / 🔄 / ✅ / ⛔
 - **Verificação:** cada deck tem **12 `<section>`**; PDFs gerados na contagem esperada (sliders transbordam, como na Parte 1).
 - **Bloqueios:** G2 pendente (ideia não definida). **Achado:** o `_pesquisa/INDICE-PESQUISA.md` está com **autores/títulos trocados** em relação aos `Pesquisa-Dados.md` (mesmos DOIs) — precisa re-sincronizar.
 - **Próxima:** —
-- **Status:** ✅ concluída (G2 pendente)
+- **Status:** ✅ concluída
 
 ---
 
@@ -260,6 +260,15 @@ Status:      ⏳ / 🔄 / ✅ / ⛔
 > Relacionado: `SPRINTS-MVP.md` (plano) · `context.md` · `assets/identidade/temas.css`
 
 ## Registro — Track C
+
+### M2b — G2 LifePath ✅
+- **Data:** 22/09/2026
+- **Entregue:**
+  - `Grupo2-LifePath/index.html` — simulador de vida real com 3 trilhas (Vocacional, Acadêmica, Empreendedora), decisões financeiras ao longo do tempo, missões semanais, impacto no bolso, export/import JSON, PWA
+  - Tema laranja `#ff6b35` + roxo `#7b2ff7`, Space Grotesk + Inter, ícone seta SVG inline
+  - `Grupo2-LifePath/ContextoApp.md`, `Pesquisa-Dados.md`, `formulario-app.md`, `Slides-Lifepath.html` + `.pdf`
+- **Verificação:** app carrega sem erro no console; tema LifePath no hub.
+- **Status:** ✅ concluída
 
 ### M0 — Fundação ✅
 - **Data:** 22/09/2026
