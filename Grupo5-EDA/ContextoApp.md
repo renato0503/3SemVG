@@ -30,7 +30,7 @@ O Brasil tem 78% das famílias endividadas (BCB, 2024) e 76,2 milhões de inadim
 
 **Por que agora.** Três movimentos tornam esse momento propício:
 
-1. **Saúde mental saiu do armário.** O aumento de覆盖率 de CAPS, a profissionalização do CVV 188 e a redução do estigma em torno de terapia e apoio psicológico abriram espaço para conversas que antes eram silenciadas.
+1. **Saúde mental saiu do armário.** O aumento de cobertura de CAPS, a profissionalização do CVV 188 e a redução do estigma em torno de terapia e apoio psicológico abriram espaço para conversas que antes eram silenciadas.
 2. **Finanças pessoais viraram assunto de mesa.** De educacional a tabu, a conversa sobre dinheiro mudou — apps como Nubank, Banco Pan e recém-lançados trouxeram o tema para o cotidiano, facilitando abordagens de auto-regulação.
 3. **Modelo AA já provado há 80+ anos.** O formato de grupo de pares, anônimo, sem profissional no centro, com steps e sponsor, tem evidência de eficácia moderada (Müller et al., 2021) e rejeição mínima. Adaptar para finanças é iterar sobre algo que já funciona.
 
@@ -71,13 +71,13 @@ Ficou endividado depois da separação, quando precisou alugar dois lugares (ant
 
 **Check-in diário.** Cada dia, ao abrir o app, o usuário registra seu nível de desejo de gastar (de 1 a 5), o que está sentindo (lista de emoções sem valores) e se teve um "momento difícil" nas últimas 24h. Não é obrigatório — o objetivo é criar o hábito de pausar antes de agir.
 
-**Roda de apoio.** O coração do EDA é a roda — um espaço onde participantes postam mensagens curtas sobre como estão, o que estão enfrentando, o que funcionou ou não.，其他人 reagem com emojis acolhedores (❤️, 💪, 🤝, 🌱). A moderação é feita por um bot que detecta linguagem de automutilação ou suicídio e dispara orientação ao CVV 188.
+**Roda de apoio.** O coração do EDA é a roda — um espaço onde participantes postam mensagens curtas sobre como estão, o que estão enfrentando, o que funcionou ou não. Outras pessoas reagem com emojis acolhedores (❤️, 💪, 🤝, 🌱). A moderação é feita por um bot que detecta linguagem de automutilação ou suicídio e dispara orientação ao CVV 188.
 
 **Meus gatilhos.** O usuário registra situações que disparam vontade de comprar (ex.: "recebi notificação de oferta", "estresse no trabalho", "conflito com parceiro"). Com o tempo, o app ajuda a identificar padrões e sugere estratégias específicas para cada gatilho — baseadas em técnicas de auto-regulação (Bu et al., 2021).
 
 **Steps e sponsor.** Como nos AA, o EDA oferece 12 steps adaptados para finanças e a opção de ter um "parceiro de accountability" — outro membro que escolheu estar nessa relação. A participação nos steps é totalmente voluntária.
 
-**Encaminhamento.** Se o sistema detecta padrão de crise (múltiplos check-ins ruins seguidos, menção a automutilação), oferece discretamente o número do CVV 188 e dos CAPS mais próximos. Não há强制 — a pessoa escolhe.
+**Encaminhamento.** Se o sistema detecta padrão de crise (múltiplos check-ins ruins seguidos, menção a automutilação), oferece discretamente o número do CVV 188 e dos CAPS mais próximos. Não há coerção — a pessoa escolhe.
 
 ---
 
@@ -140,7 +140,7 @@ O EDA **não é uma instituição de saúde**, não faz diagnóstico, não presc
 - donations voluntárias de participantes que quiserem contribuir;
 - licenciamento do modelo para outras cidades/ongs.
 
-O EDA deve permanecer **永远 gratuito e anônimo** — a monetização, se houver, não pode comprometer esses dois pilares.
+O EDA deve permanecer **sempre gratuito e anônimo** — a monetização, se houver, não pode comprometer esses dois pilares.
 
 ---
 
@@ -212,4 +212,4 @@ O EDA deve permanecer **永远 gratuito e anônimo** — a monetização, se hou
 
 ## 14. Pitch de 30 segundos
 
-"Você já comprou algo para se sentir melhor e depois se sentiu pior? Já escondeu uma conta do cartão ou ficou sem dormir por causa de uma dívida? O EDA — Endividados Anônimos — é um espaço onde você pode falar sobre isso com pessoas que estão passando pelo mesmo. Totalmente anônimo, sem julgamento, sem暴露 da sua identidade. Aqui você não está sozinho. E o primeiro passo para sair do ciclo é saber que ele existe — e que tem como aprender a controlá-lo. Sem vergonha. Sem custo. No seu bolso."
+"Você já comprou algo para se sentir melhor e depois se sentiu pior? Já escondeu uma conta do cartão ou ficou sem dormir por causa de uma dívida? O EDA — Endividados Anônimos — é um espaço onde você pode falar sobre isso com pessoas que estão passando pelo mesmo. Totalmente anônimo, sem julgamento, sem exposição da sua identidade. Aqui você não está sozinho. E o primeiro passo para sair do ciclo é saber que ele existe — e que tem como aprender a controlá-lo. Sem vergonha. Sem custo. No seu bolso."

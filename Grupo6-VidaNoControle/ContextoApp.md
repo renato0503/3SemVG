@@ -41,8 +41,8 @@ A oportunidade é ocupar um espaço que nenhuma fintech ocupa: o supermercado re
 **Persona 1 — Dona Marta, 42 anos, auxiliar de limpeza, casada, dois filhos (Várzea Grande–MT)**
 Trabalha em turno e faz as compras da família uma vez por semana no supermercado do bairro. Nunca compara preços entre supermercados porque não tem carro e o do bairro é o mais perto. O cupom fiscal vai para a sacola sem olhar. Dor: no final do mês sempre falta dinheiro e ela não sabe onde foi. O que ela quer: entender para onde o dinheiro está indo e encontrar um jeito de guardar um pouco.
 
-**Persona 2 — Seu José, 55 anos, segurança, esposa病了, três filhos**
-A renda é quase toda do salário dele. O dinheiro da alimentação é curto e qualquer erro de preço no supermercado significa faltar comida. Já ouviu falar em "comparar preços" mas não tem tempo nem condição de ir a cinco supermercados para isso. Dor: vulnerabilidade extrema — um gasto inesperado pode desestruturar a família. O que ele quer: segurança de que está paying the lowest price no lugar mais acessível.
+**Persona 2 — Seu José, 55 anos, segurança, esposa doente, três filhos**
+A renda é quase toda do salário dele. O dinheiro da alimentação é curto e qualquer erro de preço no supermercado significa faltar comida. Já ouviu falar em "comparar preços" mas não tem tempo nem condição de ir a cinco supermercados para isso. Dor: vulnerabilidade extrema — um gasto inesperado pode desestruturar a família. O que ele quer: segurança de que está pagando o menor preço no lugar mais acessível.
 
 **Persona 3 — Aline, 24 anos, atendente, mora com os pais e um irmão**
 Ganha um salário mínimo e gasta boa parte com delivery de comida. Nunca olhou o cupom fiscal na vida. Tem celular bom e usa para tudo — menos para controlar dinheiro. Dor: não sabe quanto gasta por mês; vive no vermelho no limite do cartão. O que ela quer: um app que não exija esforço para registrar gastos e que mostre claramente onde o dinheiro está indo.
@@ -200,4 +200,4 @@ O Vida no Controle **não é uma instituição financeira** — é uma ferrament
 
 ## 14. Pitch de 30 segundos
 
-"Você sabe quanto gastou no supermercado esse mês? E se soubesse que uma em cada 8 vezes você paga a mais — e que nem percebeu? O Vida no Controle ajuda sua família a controlar o orçamento, compara preços entre supermercados de Várzea Grande e ainda lê o cupom fiscal para você. Gratuito, sem burocracia e com o supermercado da sua região como sponsor — que quer que você экономите e volte. Seu dinheiro, seu controle."
+"Você sabe quanto gastou no supermercado esse mês? E se soubesse que uma em cada 8 vezes você paga a mais — e que nem percebeu? O Vida no Controle ajuda sua família a controlar o orçamento, compara preços entre supermercados de Várzea Grande e ainda lê o cupom fiscal para você. Gratuito, sem burocracia e com o supermercado da sua região como sponsor — que quer que você economize e volte. Seu dinheiro, seu controle."

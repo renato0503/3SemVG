@@ -81,17 +81,17 @@ A literatura dos últimos cinco anos confirma que gamificação financeira funci
 - **Como usar na defesa:** o problema é estrutural do ambiente digital — o Quita.AI não elimina o smartphone, mas muda a relação do usuário com ele durante o momento de impulso.
 
 **7. Chen; Zhi; Chen (2022).** How active and passive social media use affects impulse buying in Chinese college students? The roles of emotional responses, gender, materialism and self-control. *Frontiers in Psychology*. DOI: 10.3389/fpsyg.2022.1011337. Citações: 42. Acesso: aberto.
-- **O que sustenta:** uso passivo de redes sociais (scroll sem цель) ativa respostas emocionais negativas, que por sua vez aumentam a compra por impulso — e o autocontrole modera essa relação. Uso ativo (busca por produto) não tem o mesmo efeito.
+- **O que sustenta:** uso passivo de redes sociais (scroll sem objetivo) ativa respostas emocionais negativas, que por sua vez aumentam a compra por impulso — e o autocontrole modera essa relação. Uso ativo (busca por produto) não tem o mesmo efeito.
 - **Como usar na defesa:** o Quita.AI pode usar esses achados para desenhar sessões de jogo que substituam o scroll passivo e ofereçam a recompensa dopamina de outra forma — canalizando o impulso para o jogo em vez da compra.
 
 **8. Ramadan; Farah; Bou Saada (2021).** Fooled in the relationship: How Amazon Prime members' sense of self-control counter-intuitively reinforces impulsive buying behavior. *Journal of Consumer Behaviour*. DOI: 10.1002/cb.1960. Citações: 35. Acesso: fechado.
-- **O que sustenta:** membros Prime se sentem no controle (pela便利 da membresia), mas paradoxalmente compram mais por impulso. Autocontrole percebido não é autocontrole real — uma armadilha de design que o Quita.AI precisa evitar.
+- **O que sustenta:** membros Prime se sentem no controle (pela conveniência da membresia), mas paradoxalmente compram mais por impulso. Autocontrole percebido não é autocontrole real — uma armadilha de design que o Quita.AI precisa evitar.
 - **Como usar na defesa:** o Quita.AI não pode simular controle sem construir controle real. Os bônus devem ser ganhos com métricas comportamentais reais (resistência ao impulso documentada), não apenas pontos no app.
 
 ### Bloco C. Autocontrole como variável central
 
 **9. Artadita; Firmialy (2024).** How Does Self-Control Moderate Shopping Enjoyment and Impulse Buying Among Generation Z Online Gamers? *Binus Business Review*. DOI: 10.21512/bbr.v15i2.10697. Citações: 1. Acesso: aberto.
-- **O que sustenta:** a única pesquisa que conecta diretamente gamificação, diversão购物 e autocontrole em gamers da Geração Z da Indonésia. Mostra que o autocontrole modera a relação entre diversão no jogo e compra por impulso — o que significa que o jogo pode ser usado para construir ou para destruir resistência ao impulso.
+- **O que sustenta:** a única pesquisa que conecta diretamente gamificação, diversão em compras e autocontrole em gamers da Geração Z da Indonésia. Mostra que o autocontrole modera a relação entre diversão no jogo e compra por impulso — o que significa que o jogo pode ser usado para construir ou para destruir resistência ao impulso.
 - **Como usar na defesa:** o achado central é que gamers com alto autocontrole usam o jogo como descargue emocional sem comprar por impulso; gamers com baixo autocontrole usam o jogo como porta de entrada para mais gasto. O Quita.AI deve ser desenhado para o segundo grupo — e o family challenge é a resposta.
 
 **10. Darrat; Darrat; Darrat (2022).** Does wanting more lead to losing control? Examining the psychological drivers of compulsive buying. *Young Consumers*. DOI: 10.1108/yc-01-2022-1453. Citações: 26. Acesso: fechado.

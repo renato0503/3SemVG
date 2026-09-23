@@ -29,7 +29,7 @@
 | Q2 | Com que frequência você sabe exatamente quanto gastou no supermercado no mês | Sempre sei | Nunca sei |
 | Q3 | Intensidade do controle sobre para onde o dinheiro da família vai | Controle total | Nenhum controle |
 | Q4 | Com que frequência você anota ou registra os gastos da família | Sempre registro | Nunca registro |
-| Q5 | Quanto o dinheiro总能 acaba antes do esperado | Sempre sobra | Sempre falta |
+| Q5 | Quanto o dinheiro sempre acaba antes do esperado | Sempre sobra | Sempre falta |
 
 ---
 

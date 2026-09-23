@@ -10,7 +10,7 @@
 
 ## 1. Resumo executivo
 
-O EDA (Endividados Anônimos) parte de uma realidade concreta: o Brasil tem **78% das famílias endividadas** (BCB, 2024), com inadimplência que atinge **76,2 milhões de pessoas** (Serasa, 2024). Por trás dos números há sofrimento: a relação entre dívida e saúde mental é bidirecional e bem documentada — o endividamento agrava ansiedade e depressão, e反过来 a má saúde mental dificulta a saída das dívidas. A compra compulsiva afeta cerca de **5% da população** (Grant & Chamberlain, 2024) e está associada a trauma infantil, baixa autoestima, estresse e dificuldade de autorregulação. O modelo do EDA — espaço anônimo, sem julgamento, entre pares — se inspira no que há de mais consolidado em reabilitação de adictos: os grupos AA, há mais de 80 anos, com evidência de eficácia moderada (Müller et al., 2021).
+O EDA (Endividados Anônimos) parte de uma realidade concreta: o Brasil tem **78% das famílias endividadas** (BCB, 2024), com inadimplência que atinge **76,2 milhões de pessoas** (Serasa, 2024). Por trás dos números há sofrimento: a relação entre dívida e saúde mental é bidirecional e bem documentada — o endividamento agrava ansiedade e depressão, e vice-versa a má saúde mental dificulta a saída das dívidas. A compra compulsiva afeta cerca de **5% da população** (Grant & Chamberlain, 2024) e está associada a trauma infantil, baixa autoestima, estresse e dificuldade de autorregulação. O modelo do EDA — espaço anônimo, sem julgamento, entre pares — se inspira no que há de mais consolidado em reabilitação de adictos: os grupos AA, há mais de 80 anos, com evidência de eficácia moderada (Müller et al., 2021).
 
 A literatura dos últimos cinco anos confirma o diagnóstico: compra compulsiva é transtorno de controle de impulsos com alto custo psicológico e financeiro (Müller et al., 2021; Grant & Chamberlain, 2024); stress e ansiedade são gatilhos diretos (Thomas et al., 2024; De Pasquale et al., 2022); dívida e saúde mental formam ciclo bidirecional (ten Have et al., 2021; Nigatu et al., 2022); e intervenções de autorregulação financeira funcionam (Bu et al., 2021). É exatamente aí que o EDA entra: oferecer acolhimento, quebrar o isolamento e ser porta de encaminhamento para ajuda profissional.
 
@@ -91,7 +91,7 @@ A literatura dos últimos cinco anos confirma o diagnóstico: compra compulsiva 
 - **Como usar na defesa:** o EDA interrompe o ciclo em ambos os sentidos: o acolhimento melhora saúde mental, e a saída da dívida reduz angústia.
 
 **9. Nigatu; Elton-Marshall; Hamilton (2022).** Changes in household debt due to COVID-19 and mental health concerns among adults in Ontario, Canada. *International Journal of Social Psychiatry*. DOI: 10.1177/00207640221136795. Citações: 13. Acesso: aberto.
-- **O que sustenta:** aumento de dívida durante a pandemia elevou轻重 psicológica e piorou saúde geral; o efeito foi mais forte em quem já tinha problemas prévios.
+- **O que sustenta:** aumento de dívida durante a pandemia elevou gravidade psicológica e piorou saúde geral; o efeito foi mais forte em quem já tinha problemas prévios.
 - **Como usar na defesa:** mostra que eventos econômicos externos (como covid) disparam o ciclo dívida-mal-estar. O EDA tem papel em crises econômicas — oferta acolhimento quando mais gente precisa.
 
 **10. Moon; Linton; Mojtabai (2024).** Medical Debt and the Mental Health Treatment Gap Among US Adults. *JAMA Psychiatry*. DOI: 10.1001/jamapsychiatry.2024.1861. Citações: 20. Acesso: aberto.

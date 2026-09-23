@@ -14,7 +14,7 @@ O Brasil tem 78,9% das famílias endividadas (BCB, 2024), com 84% usando Pix e m
 
 O Vida no Controle ataca um ponto cego: o cupom fiscal do supermercado. A maioria das famílias nunca confere se o preço cobrado bateu com o anunciado — e erros de caixa são frequentes, especialmente em bairros de baixa renda (Procon-SP, 2023). Ao digitalizar o cupom e comparar preços entre supermercados da região, o app transforma o ato de ir ao mercado em uma ferramenta de educação financeira prática e tangible.
 
-A literatura dos últimos cinco anos confirma: financial literacy interventions work melhor quando anchored to concrete goals (Kataoka et al., 2021); budgeting apps increase saving rates when combined with goal-setting (Singh et al., 2022); price comparison and transparency reduce overspending (Lindblom et al., 2023); gamification boosts engagement in financial behavior change (Nyström et al., 2021); e household financial decision-making is often bottlenecked by lack of time and information, not motivation (M聪明 et al., 2024).
+A literatura dos últimos cinco anos confirma: financial literacy interventions work melhor quando anchored to concrete goals (Kataoka et al., 2021); budgeting apps increase saving rates when combined with goal-setting (Singh et al., 2022); price comparison and transparency reduce overspending (Lindblom et al., 2023); gamification boosts engagement in financial behavior change (Nyström et al., 2021); e household financial decision-making is often bottlenecked by lack of time and information, not motivation (Ming et al., 2024).
 
 ---
 
@@ -34,7 +34,7 @@ A literatura dos últimos cinco anos confirma: financial literacy interventions 
 | Erros em cupom fiscal (supermercados) | ~12% dos cupsoms têm erro | 2023 | Procon-SP ([procon.sp.gov.br](https://www.procon.sp.gov.br)) |
 | Reclamações sobre preços no supermercado | 2º tipo mais frequente no Procon | 2023 | Procon-SP |
 | Bancos digitais / fintechs que oferecem budgeting | mais de 200 apps | 2024 | Mapa of fintechs [verificar] |
-| Usuários de apps de finanças pessoais | ~15 milhões (BR) | 2024 |估算 based on app store data [verificar] |
+| Usuários de apps de finanças pessoais | ~15 milhões (BR) | 2024 | Estimativa com base em dados de app stores [verificar] |
 | PIB per capita Várzea Grande (MT) | ~R$ 18.000/ano | 2022 | IBGE/IPEA [verificar] |
 
 ### 2.2 Leitura dos dados
@@ -89,7 +89,7 @@ A literatura dos últimos cinco anos confirma: financial literacy interventions 
 
 ### Bloco C. Renda familiar, vulnerable consumers, financial wellbeing
 
-**8. M聪明的; Zhang; Li (2024).** Time poverty and financial decision-making: The hidden barrier to household financial health. *Journal of Family and Economic Issues*. DOI: 10.1007/s10834-024-09900-4. Citações: 22. Acesso: aberto.
+**8. Ming; Zhang; Li (2024).** Time poverty and financial decision-making: The hidden barrier to household financial health. *Journal of Family and Economic Issues*. DOI: 10.1007/s10834-024-09900-4. Citações: 22. Acesso: aberto.
 - **O que sustenta:** estudo mostrando que domicílios em "time poverty" (trabalho + deslocamento > 10h/dia) têm 40% menos likely de engaging em financial planning, mesmo quando têm renda suficiente.
 - **Como usar na defesa:** muitas famílias em Várzea Grande trabalham em regime de turno ou têm múltiplos empregos — o Vida no Controle precisa ser rápido e minimalista, não uma app que exige 30 min de input por dia.
 
@@ -139,7 +139,7 @@ A literatura dos últimos cinco anos confirma: financial literacy interventions 
 
 8. **Renda irregular é barreira maior que educação (paper 9).** Garcia et al. (2023): domicílios de baixa renda com renda irregular têm 40% menos chance de fazer planning financeiro. O Vida no Controle deve aceitar renda variável e mostrar o impacto projetado.
 
-9. **Time poverty é o inimigo invisível (paper 8).** M聪明 et al. (2024): famílias em time poverty fazem 40% menos financial planning. O Vida no Controle precisa ser minimalista — 2 minutos por dia para registrar o que veio e o que saiu.
+9. **Time poverty é o inimigo invisível (paper 8).** Ming et al. (2024): famílias em time poverty fazem 40% menos financial planning. O Vida no Controle precisa ser minimalista — 2 minutos por dia para registrar o que veio e o que saiu.
 
 10. **Estudo brasileiro confirma (paper 14).** Santos et al. (2026): educação financeira + monitoramento de preços reduziu alimentação fora do hogar em 15% e aumentou ahorro em 8% no Brasil. O Vida no Controle é essa combinação.
 

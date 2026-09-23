@@ -12,7 +12,7 @@
 
 O mercado imobiliário brasileiro tem um déficit habitacional de mais de 8 milhões de domicílios e uma taxa de homeownership em torno de 77% — mas a compra da casa própria permanece uma das decisões financeiras mais complexas e opacas do cotidiano. O financiamento é o principal caminho: o SBPE (poupança vinculada) e o FGTS (fundo trabalhista) respondem pela maior parte das operações, com taxas que podem variar de 0,9% a mais de 2% ao mês, dependendo do perfil e da instituição. Poucos compradores sabem comparar essas opções ou calcular o impacto real de uma entrada menor versus parcelas maiores ao longo de 30 ou 35 anos.
 
-A literatura internacional dos últimos cinco anos confirma que a decisão de compra é afetada por múltiplas camadas: incerteza econômica (Fischer; Khorunzhina; Marx, 2024), acesso a crédito e affordability (Szumilo; Vanino, 2021), políticas públicas de incentivo (Hembre; Dantas, 2022; Carozzi; Hilber; Yu, 2024), transferências intergeracionais (Mathä; Pulina; Ziegelmeyer, 2025),搬家远距离 (Ha; Hilber; Schöni, 2021) e até condições de saúde (Awaworyi Churchill; Yew; Nguyen, 2021). O app SuaCasaSuaVida entra como ferramenta de análise simplificada: ajuda o cidadão a entender quanto pode pagar, quais bairros cabem no bolso e como cada opção de financiamento afeta seu futuro — antes de assinar qualquer contrato.
+A literatura internacional dos últimos cinco anos confirma que a decisão de compra é afetada por múltiplas camadas: incerteza econômica (Fischer; Khorunzhina; Marx, 2024), acesso a crédito e affordability (Szumilo; Vanino, 2021), políticas públicas de incentivo (Hembre; Dantas, 2022; Carozzi; Hilber; Yu, 2024), transferências intergeracionais (Mathä; Pulina; Ziegelmeyer, 2025), mudança de longa distância (Ha; Hilber; Schöni, 2021) e até condições de saúde (Awaworyi Churchill; Yew; Nguyen, 2021). O app SuaCasaSuaVida entra como ferramenta de análise simplificada: ajuda o cidadão a entender quanto pode pagar, quais bairros cabem no bolso e como cada opção de financiamento afeta seu futuro — antes de assinar qualquer contrato.
 
 ---
 
@@ -85,11 +85,11 @@ A literatura internacional dos últimos cinco anos confirma que a decisão de co
 ### Bloco C. Riqueza, família e saúde
 
 **8. Awaworyi Churchill; Yew; Nguyen (2021).** Health status and housing tenure decisions of older Australians. *Real Estate Economics*. DOI: 10.1111/1540-6229.12358. Citações: 14. Acesso: fechado.
-- **O que sustenta:** Usando dados longitudinais australianos (HILDA, 2001–2017), mostra que melhor saúde está associada a maior probabilidade de ser proprietário, menor probabilidade de transição de proprietário para inquilino e maior probabilidade de transição de inquilino para proprietário. Efeitos são driven by homens.
+- **O que sustenta:** Usando dados longitudinais australianos (HILDA, 2001–2017), mostra que melhor saúde está associada a maior probabilidade de ser proprietário, menor probabilidade de transição de proprietário para inquilino e maior probabilidade de transição de inquilino para proprietário. Efeitos são conduzidos por homens.
 - **Como usar na defesa:** A saúde é um fator subestimado na decisão de compra habitacional. Quem tem doenças crônicas deve considerar custos de saúde futuros ao se comprometer com prestações de longo prazo. O app pode incluir alertas sobre planejamento de saúde e reserva financeira antes de assumir financiamentos longos.
 
 **9. Mathä; Pulina; Ziegelmeyer (2025).** Private wealth transfers and homeownership: evidence from Luxembourg. *Applied Economics*. DOI: 10.1080/00036846.2025.2471589. Citações: 1. Acesso: fechado.
-- **O que sustenta:** Usa dados de survey detalhados do Luxembourg para mostrar que transferências de riqueza (doações e heranças) acima de € 100 mil aumentam a probabilidade de homeownership em mais de 10 pontos percentuais, e que muitos beneficiários compram logo após receber a transferência — indicando forte связь temporal.
+- **O que sustenta:** Usa dados de survey detalhados do Luxembourg para mostrar que transferências de riqueza (doações e heranças) acima de € 100 mil aumentam a probabilidade de homeownership em mais de 10 pontos percentuais, e que muitos beneficiários compram logo após receber a transferência — indicando forte relação temporal.
 - **Como usar na defesa:** No Brasil, a entrada do financiamento frequentemente depende de recursos familiares (poupança própria ou ajuda de familiares). O app deve permitir simular cenários com diferentes valores de entrada — mostrando como uma entrada maior reduz a prestação e o custo total do financiamento de forma expressiva.
 
 ### Bloco D. Políticas públicas e mercado brasileiro
@@ -99,7 +99,7 @@ A literatura internacional dos últimos cinco anos confirma que a decisão de co
 - **Como usar na defesa:** No Brasil, os incentivos fiscais ao financiamento imobiliário (dedutibilidade de juros, subsídios do MCMV) afetam mais o tipo de imóvel que o cidadão compra do que a decisão de comprar ou não. O app deve mostrar ao usuário o impacto desses incentivos no custo total — não apenas a prestação mensal.
 
 **11. Carozzi; Hilber; Yu (2024).** On the economic impacts of mortgage credit expansion policies: Evidence from Help to Buy. *Journal of Urban Economics*. DOI: 10.1016/j.jue.2023.103611. Citações: 23. Acesso: aberto.
-- **O que sustenta:** Avalia os impactos do Help-to-Buy (programa de equity loan do governo britânico) sobre preços imobiliários, composition do买方e atividade econômica. Mostra que o programa elevou preços nas áreas afetadas e que os beneficios para compradores foram parcialmente compensados pela valorização do imóvel — com efeitos heterogêneos dependendo da localização.
+- **O que sustenta:** Avalia os impactos do Help-to-Buy (programa de equity loan do governo britânico) sobre preços imobiliários, composição do comprador e atividade econômica. Mostra que o programa elevou preços nas áreas afetadas e que os beneficios para compradores foram parcialmente compensados pela valorização do imóvel — com efeitos heterogêneos dependendo da localização.
 - **Como usar na defesa:** Políticas de subsídio à entrada podem gerar valorização artificial dos preços, anulando parte do benefício. No Brasil, o MCMV e programas similares precisam ser avaliados com essa perspectiva — o app pode ajudar o cidadão a entender se o subsídio compensa ou se é melhor esperar.
 
 **12. Grevenbrock; Ludwig; Siassi (2023).** Homeownership rates, housing policies, and co-residence decisions. *Macroeconomic Dynamics*. DOI: 10.1017/s136510052300038x. Citações: 3. Acesso: aberto.
@@ -126,11 +126,11 @@ A literatura internacional dos últimos cinco anos confirma que a decisão de co
 
 3. **Propriedade é investimento, não despesa (paper 2).** Sodini et al. (2023) mostram que homeownership causa acumulação de riqueza real. A decisão de compra é financeiramente relevante — e deve ser tomada com informação, não com intuição.
 
-4. **Entrada maior = custo total menor (paper 9).** Transferências acima de € 100 mil mostram связь temporal forte com compra. No Brasil, a entrada (própria ou via FGTS) é o fator mais impacto no custo total. O app mostra isso de forma clara.
+4. **Entrada maior = custo total menor (paper 9).** Transferências acima de € 100 mil mostram relação temporal forte com compra. No Brasil, a entrada (própria ou via FGTS) é o fator mais impacto no custo total. O app mostra isso de forma clara.
 
 5. **Insegurança no emprego mata sonho (paper 5).** Lepinteur et al. (2026) mostram quejob insecurity reduz homeownership. O app deve incluir simulação de cenários de perda de renda — mostrando quanto o usuário pode pagar sem se expor a risco de inadimplência.
 
-6. **Análise de bairro reduz erro (paper 4).** Ha, Hilber e Schöni (2021) mostram que搬家远距离 reduz homeownership porque o comprador tem menos informação. A funcionalidade de análise de bairro combate exatamente essa assimetria.
+6. **Análise de bairro reduz erro (paper 4).** Ha, Hilber e Schöni (2021) mostram que mudança de longa distância reduz homeownership porque o comprador tem menos informação. A funcionalidade de análise de bairro combate exatamente essa assimetria.
 
 7. **Políticas públicas afetam a decisão (papers 10, 11, 12).** Hembre e Dantas (2022) e Carozzi et al. (2024) mostram que subsídios, incentivos fiscais e programas de equity loan têm efeitos complexos — alguns deles podem até elevar preços. O app informa o cidadão sobre o cenário completo antes de decidir.
 
