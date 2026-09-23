@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Customer Discovery · 3 Semestre VG — FACC/Unifacc</title>
+<meta name="description" content="Materiais e MVPs da pesquisa de campo Customer Discovery do 3º semestre de Tecnologia e Inovação.">
+<meta name="theme-color" content="#0e7490">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
+<link rel="stylesheet" href="assets/identidade/temas.css">
+<style>
+:root{--turma-accent:#0e7490;--turma-tinta:#0b2b2a;--turma-bg:#f0fafc;}
+body{font-family:"Segoe UI",system-ui,-apple-system,sans-serif;background:var(--turma-bg, #f0fafc);color:#1a202c;margin:0;min-height:100dvh}
+.page-header{
+  position:sticky;top:0;z-index:100;
+  background:var(--turma-accent,#0e7490);color:#fff;
+  padding:16px 16px 16px;display:flex;align-items:center;gap:12px;
+  padding-top:calc(16px + env(safe-area-inset-top,0));
+  box-shadow:0 2px 8px rgba(0,0,0,.15);
+}
+.page-header h1{font-size:20px;font-weight:700;flex:1;line-height:1.2}
+.page-body{padding:16px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0));max-width:640px;margin:0 auto}
+
+.hero{
+  background:linear-gradient(135deg,var(--turma-accent,#0e7490),#22d3ee);
+  color:#fff;border-radius:20px;padding:28px 20px;margin-bottom:20px;text-align:center;
+}
+.hero h2{font-size:22px;margin-bottom:8px}
+.hero p{font-size:14px;opacity:.9;line-height:1.5;margin-bottom:0}
+.hero .badge-turma{display:inline-block;background:rgba(255,255,255,.2);padding:4px 12px;border-radius:100px;font-size:12px;font-weight:600;margin-bottom:12px}
+
+.section-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#666;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid #e2e8f0}
+
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+@media(max-width:400px){.card-grid{grid-template-columns:1fr}}
+
+.mvp-card{
+  background:#fff;border-radius:16px;padding:16px;
+  border:2px solid transparent;
+  text-decoration:none;color:inherit;
+  display:flex;flex-direction:column;gap:8px;
+  min-height:120px;
+  box-shadow:0 1px 4px rgba(0,0,0,.08);
+  transition:transform .15s,box-shadow .15s,border-color .15s;
+  overflow:hidden;
+}
+.mvp-card:active{transform:scale(.97)}
+.mvp-card:hover{border-color:var(--card-accent);box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.card-color-bar{height:6px;background:linear-gradient(90deg,var(--card-accent),var(--card-accent2));border-radius:0}
+.card-icon{font-size:28px;line-height:1}
+.card-name{font-size:15px;font-weight:700;color:var(--card-tinta);line-height:1.2}
+.card-desc{font-size:12px;color:#666;line-height:1.4;flex:1}
+.card-status{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:3px 8px;border-radius:100px}
+.status-ok{background:#c6f6d5;color:#276749}
+.status-dev{background:#fef3c7;color:#92400e}
+.status-pend{background:#fee2e2;color:#991b1b}
+
+.materials{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.mat-card{
+  background:#fff;border-radius:14px;padding:14px;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  text-decoration:none;color:#2d3748;font-size:13px;font-weight:600;
+  text-align:center;min-height:90px;
+  box-shadow:0 1px 4px rgba(0,0,0,.07);
+  border:1px solid #e2e8f0;
+  transition:transform .15s;
+}
+.mat-card:active{transform:scale(.96)}
+.mat-card .mat-icon{font-size:32px}
+.mat-card span{line-height:1.2}
+
+.footer-note{text-align:center;font-size:12px;color:#999;margin-top:24px;line-height:1.6}
+</style>
+</head>
+<body class="tema-g1">
+
+<div class="page-header">
+  <h1>📱 Customer Discovery</h1>
+</div>
+
+<div class="page-body">
+
+  <!-- Hero -->
+  <div class="hero">
+    <span class="badge-turma">3º Semestre · Tecnologia e Inovação</span>
+     <h2>6 ideias, 6 MVPs funcionais</h2>
+     <p>Pesquisa de campo no shopping — todos os materiais, formulários e apps prontos para teste.</p>
+  </div>
+
+  <!-- MVPs -->
+  <div class="section-title">🎯 MVPs — Apps funcionais</div>
+  <div class="card-grid">
+
+    <!-- G1 -->
+    <a href="Grupo1-DinheiroNaMao/" class="mvp-card" style="--card-accent:#0e7490;--card-accent2:#22d3ee;--card-tinta:#0b2b2a">
+      <div class="card-color-bar"></div>
+      <div class="card-icon">💼</div>
+      <div class="card-name">Dinheiro na Mão</div>
+      <div class="card-desc">Sistema de contas + bolsa-incentivo</div>
+      <div class="card-status status-ok">✅ Funcional</div>
+    </a>
+
+    <!-- G2 -->
+    <a href="Grupo2-LifePath/" class="mvp-card" style="--card-accent:#ff6b35;--card-accent2:#9333ea;--card-tinta:#2d1b00">
+      <div class="card-color-bar"></div>
+      <div class="card-icon">🧭</div>
+      <div class="card-name">LifePath</div>
+      <div class="card-desc">Mentor IA + Trilhas profissionais + Simulação temporal</div>
+      <div class="card-status status-ok">✅ Funcional</div>
+    </a>
+
+    <!-- G3 -->
+    <a href="Grupo3-QuitaAI/" class="mvp-card" style="--card-accent:#7c3aed;--card-accent2:#facc15;--card-tinta:#1e1b4b">
+      <div class="card-color-bar"></div>
+      <div class="card-icon">🎮</div>
+      <div class="card-name">Quita.AI</div>
+      <div class="card-desc">Jogo familiar anti-impulso</div>
+      <div class="card-status status-ok">✅ Funcional</div>
+    </a>
+
+    <!-- G4 -->
+    <a href="Grupo4-SuaCasaSuaVida/" class="mvp-card" style="--card-accent:#047857;--card-accent2:#d97706;--card-tinta:#052e2b">
+      <div class="card-color-bar"></div>
+      <div class="card-icon">🏠</div>
+      <div class="card-name">SuaCasaSuaVida</div>
+      <div class="card-desc">Simulador + análise de bairro</div>
+      <div class="card-status status-ok">✅ Funcional</div>
+    </a>
+
+    <!-- G5 -->
+    <a href="Grupo5-EDA/" class="mvp-card" style="--card-accent:#4f5bd5;--card-accent2:#93c5fd;--card-tinta:#1e2235">
+      <div class="card-color-bar"></div>
+      <div class="card-icon">🤝</div>
+      <div class="card-name">EDA</div>
+      <div class="card-desc">Acolhimento anônimo entre pares</div>
+      <div class="card-status status-ok">✅ Funcional</div>
+    </a>
+
+    <!-- G6 -->
+    <a href="Grupo6-VidaNoControle/" class="mvp-card" style="--card-accent:#ea580c;--card-accent2:#16a34a;--card-tinta:#431407">
+      <div class="card-color-bar"></div>
+      <div class="card-icon">🛒</div>
+      <div class="card-name">Vida no Controle</div>
+      <div class="card-desc">Orçamento + cupom fiscal</div>
+      <div class="card-status status-ok">✅ Funcional</div>
+    </a>
+
+  </div>
+
+  <!-- Coleta + Materiais -->
+  <div class="section-title">📋 Materiais da pesquisa</div>
+  <div class="materials">
+
+    <a href="coleta/" class="mat-card" style="border-color:#0e7490">
+      <div class="mat-icon">📝</div>
+      <span>App de Coleta<br><small style="font-weight:400;color:#888">20 perguntas por grupo</small></span>
+    </a>
+
+    <a href="Parte%201/Slides-Shopping.html" class="mat-card">
+      <div class="mat-icon">📽️</div>
+      <span>Slides — Parte 1<br><small style="font-weight:400;color:#888">Preparação</small></span>
+    </a>
+
+    <a href="Parte%202/Slides-Shopping-Parte2.html" class="mat-card">
+      <div class="mat-icon">📽️</div>
+      <span>Slides — Parte 2<br><small style="font-weight:400;color:#888">Validação</small></span>
+    </a>
+
+    <a href="Parte%203/Slides-Shopping-Parte3.html" class="mat-card">
+      <div class="mat-icon">📽️</div>
+      <span>Slides — Parte 3<br><small style="font-weight:400;color:#888">Ida ao shopping</small></span>
+    </a>
+
+  </div>
+
+  <!-- Cadernos -->
+  <div class="section-title">📓 Cadernos de apoio</div>
+  <div class="materials">
+
+    <a href="Parte%201/caderno-shopping.html" class="mat-card">
+      <div class="mat-icon">📓</div>
+      <span>Caderno P1<br><small style="font-weight:400;color:#888">Preparação</small></span>
+    </a>
+
+    <a href="Parte%202/caderno-shopping-parte2.html" class="mat-card">
+      <div class="mat-icon">📓</div>
+      <span>Caderno P2<br><small style="font-weight:400;color:#888">Validação</small></span>
+    </a>
+
+    <a href="Parte%203/caderno-shopping-parte3.html" class="mat-card">
+      <div class="mat-icon">📓</div>
+      <span>Caderno P3<br><small style="font-weight:400;color:#888">Execução</small></span>
+    </a>
+
+    <a href="_pesquisa/INDICE-PESQUISA.md" class="mat-card">
+      <div class="mat-icon">🔬</div>
+      <span>Pesquisa<br><small style="font-weight:400;color:#888">60 papers</small></span>
+    </a>
+
+  </div>
+
+  <!-- Grupos -->
+  <div class="section-title">👥 Slides de defesa por grupo</div>
+  <div class="card-grid">
+    <a href="Grupo1-DinheiroNaMao/Slides-DinheiroNaMao.html" class="mvp-card" style="--card-accent:#0e7490;--card-accent2:#22d3ee;--card-tinta:#0b2b2a">
+      <div class="card-color-bar"></div>
+      <div class="card-name">G1 — Dinheiro na Mão</div>
+    </a>
+    <a href="Grupo2-LifePath/Slides-Lifepath.html" class="mvp-card" style="--card-accent:#ff6b35;--card-accent2:#9333ea;--card-tinta:#2d1b00">
+      <div class="card-color-bar"></div>
+      <div class="card-name">G2 — LifePath</div>
+    </a>
+    <a href="Grupo3-QuitaAI/Slides-QuitaAI.html" class="mvp-card" style="--card-accent:#7c3aed;--card-accent2:#facc15;--card-tinta:#1e1b4b">
+      <div class="card-color-bar"></div>
+      <div class="card-name">G3 — Quita.AI</div>
+    </a>
+    <a href="Grupo4-SuaCasaSuaVida/Slides-SuaCasaSuaVida.html" class="mvp-card" style="--card-accent:#047857;--card-accent2:#d97706;--card-tinta:#052e2b">
+      <div class="card-color-bar"></div>
+      <div class="card-name">G4 — SuaCasaSuaVida</div>
+    </a>
+    <a href="Grupo5-EDA/Slides-EDA.html" class="mvp-card" style="--card-accent:#4f5bd5;--card-accent2:#93c5fd;--card-tinta:#1e2235">
+      <div class="card-color-bar"></div>
+      <div class="card-name">G5 — EDA</div>
+    </a>
+    <a href="Grupo6-VidaNoControle/Slides-VidaNoControle.html" class="mvp-card" style="--card-accent:#ea580c;--card-accent2:#16a34a;--card-tinta:#431407">
+      <div class="card-color-bar"></div>
+      <div class="card-name">G6 — Vida no Controle</div>
+    </a>
+  </div>
+
+  <div class="footer-note">
+    Cerrado Tech · Unifacc · 3º Semestre Tecnologia e Inovação<br>
+    Professor Renato Rosa · 2026<br>
+    Os MVPs são <strong>funcionais</strong> — teste cada app diretamente no navegador ou instale como PWA no celular.
+  </div>
+
+</div>
+
+<script>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js').catch(()=>{});
+}
+</script>
+</body>
+</html>

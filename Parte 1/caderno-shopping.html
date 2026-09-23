@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caderno · Parte 1 — Customer Discovery na Prática · 3SemVG</title>
+<meta name="description" content="Material de preparação para a visita técnica ao shopping — roteiros, hipóteses, formulários modelo, pitch de abordagem e tabulação por grupo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../assets/caderno.css">
+</head>
+<body>
+
+<button class="pdfbtn" id="pp" aria-label="Salvar em PDF">⤓ salvar PDF</button>
+<button class="themebtn" id="tt" aria-label="Alternar tema">◐ tema</button>
+
+<header class="top">
+  <div class="wrap">
+    <div class="kicker">3º Semestre (VG) · Customer Discovery</div>
+    <h1>Caderno de Campo — Visita Técnica no Shopping</h1>
+    <p class="sub">Tudo que cada grupo precisa levar pronto: objetivo, hipóteses, roteiro de abordagem, pitch de 15 segundos, formulário modelo e plano de tabulação.</p>
+    <div class="meta">
+      <span><b>Professor</b> Renato Rosa</span>
+      <span><b>Data da aula</b> 21 de Setembro de 2026</span>
+      <span><b>Entregável</b> Formulário pronto + roteiro ensaiado</span>
+      <span><b>Grupos</b> 6 · Tema: Saúde Financeira</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap shell">
+  <nav class="toc" aria-label="Índice">
+    <ol>
+      <li><a href="#intro">00 · O que é Customer Discovery</a></li>
+      <li><a href="#regra">01 · A Regra de Ouro e os 5 entregáveis</a></li>
+      <li><a href="#perguntas">02 · Do problema à pergunta</a></li>
+      <li class="grp">Roteiros por grupo</li>
+      <li><a href="#g1">03 · Grupo 1 — Dinheiro na Mão</a></li>
+      <li><a href="#g2">04 · Grupo 2 — A Definir</a></li>
+      <li><a href="#g3">05 · Grupo 3 — Quita.AI</a></li>
+      <li><a href="#g4">06 · Grupo 4 — SuaCasaSuaVida</a></li>
+      <li><a href="#g5">07 · Grupo 5 — EDA</a></li>
+      <li><a href="#g6">08 · Grupo 6 — Vida no Controle</a></li>
+      <li class="grp">Mãos à obra</li>
+      <li><a href="#pitch">09 · O pitch de 15 segundos</a></li>
+      <li><a href="#forms">10 · Montando o Google Forms</a></li>
+      <li><a href="#modelos">11 · Formulários modelo (prontos)</a></li>
+      <li><a href="#papeis">12 · Divisão de tarefas e papéis</a></li>
+      <li><a href="#protocolo">13 · Protocolo de coleta (prévia da Parte 2)</a></li>
+      <li><a href="#etica">14 · Ética, consentimento e LGPD</a></li>
+      <li><a href="#tab">15 · Tabulação e análise</a></li>
+      <li class="grp">Fechamento</li>
+      <li><a href="#checklist">16 · Checklist final</a></li>
+      <li><a href="#ouro">17 · Dica de ouro</a></li>
+      <li><a href="#quiz">18 · Quiz</a></li>
+      <li><a href="#cola">19 · Folha de cola</a></li>
+    </ol>
+  </nav>
+
+  <main class="col">
+
+  <!-- 00 -->
+  <section id="intro">
+    <div class="secnum">00</div>
+    <h2>O que é Customer Discovery</h2>
+    <p class="lead"><strong>Customer Discovery</strong> é sair do computador e conversar com pessoas reais para descobrir se o problema que você imagina realmente existe — antes de construir qualquer solução.</p>
+
+    <div class="callout note"><span class="lbl">Definição do dia</span>
+      Você não vai ao shopping <strong>vender</strong> a sua ideia. Você vai <strong>coletar evidências</strong> sobre o comportamento, a dor e as prioridades das pessoas.</div>
+
+    <div class="compare">
+      <div class="bad"><h5>✗ Não é…</h5>
+        <ul class="clean">
+          <li>Convencer alguém de que sua ideia é boa</li>
+          <li>Fazer propaganda do seu projeto</li>
+          <li>Perguntar "você usaria isso?"</li>
+          <li>Anotar só o que confirma o que você pensa</li>
+        </ul>
+      </div>
+      <div class="good"><h5>✓ É…</h5>
+        <ul class="clean">
+          <li>Entender a rotina e a dor real da pessoa</li>
+          <li>Ouvir mais do que falar</li>
+          <li>Perguntar o que a pessoa <em>já fez</em> sobre o problema</li>
+          <li>Registrar também as respostas que contrariam a hipótese</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>Toda pesquisa de campo responde a 3 perguntas:</p>
+    <div class="tbl"><table>
+      <tr><th>Pergunta</th><th>O que você quer saber</th></tr>
+      <tr><td><strong>Existe o problema?</strong></td><td>As pessoas vivem isso no dia a dia?</td></tr>
+      <tr><td><strong>Qual a intensidade?</strong></td><td>É uma dor pequena, média ou que atrapalha a vida?</td></tr>
+      <tr><td><strong>Como resolvem hoje?</strong></td><td>Já existe alternativa? Por que ela não basta?</td></tr>
+    </table></div>
+  </section>
+
+  <!-- 01 -->
+  <section id="regra">
+    <div class="secnum">01</div>
+    <h2>A Regra de Ouro e os 5 entregáveis</h2>
+
+    <div class="callout err"><span class="lbl">Regra de Ouro</span>
+      Vocês vão a campo <strong>validar ideias com pessoas reais</strong>. Isso exige <strong>preparação</strong>. Ninguém vai criar formulário na hora. Vocês saem daqui hoje com <strong>tudo pronto</strong>.</div>
+
+    <h3>O que cada grupo deve entregar ao final da aula</h3>
+    <div class="tbl"><table>
+      <tr><th>#</th><th>Entregável</th><th>Como saber que está pronto</th></tr>
+      <tr><td>1</td><td><strong>Roteiro da visita</strong></td><td>Está escrito onde, quem e como abordar</td></tr>
+      <tr><td>2</td><td><strong>Objetivos claros</strong></td><td>O grupo sabe dizer em 1 frase o que quer descobrir</td></tr>
+      <tr><td>3</td><td><strong>Divisão de tarefas</strong></td><td>Cada integrante tem um papel definido</td></tr>
+      <tr><td>4</td><td><strong>Hipóteses</strong></td><td>Está escrito o que o grupo acha que vai ouvir</td></tr>
+      <tr><td>5</td><td><strong>Formulário pronto</strong></td><td>Google Forms criado e <strong>testado no celular</strong> (ou impresso)</td></tr>
+    </table></div>
+
+    <div class="callout tip"><span class="lbl">Critério de aprovação</span>
+      Se o formulário não abre no celular e não gera planilha automaticamente, ele <strong>não está pronto</strong>.</div>
+  </section>
+
+  <!-- 02 -->
+  <section id="perguntas">
+    <div class="secnum">02</div>
+    <h2>Do problema à pergunta</h2>
+    <p class="lead">Pergunta ruim = dado ruim. Antes de montar o formulário, transforme cada hipótese em perguntas que <strong>não induzem</strong> a resposta.</p>
+
+    <h3>As 3 regras de uma boa pergunta</h3>
+    <ol class="step">
+      <li><span class="t">Pergunte sobre o passado, não sobre o futuro</span>
+        <p>"Você usaria um app assim?" gera resposta educada. "Como você resolveu isso da última vez?" gera dado real.</p></li>
+      <li><span class="t">Não embarque o valor na pergunta</span>
+        <p>"Você concorda que gasta demais?" obriga a pessoa a concordar. Pergunte a frequência e deixe ela escolher.</p></li>
+      <li><span class="t">Uma pergunta, uma ideia</span>
+        <p>"Você acha a conta alta e o juros absurdo?" mistura duas dores. Separe.</p></li>
+    </ol>
+
+    <div class="compare">
+      <div class="bad"><h5>✗ Pergunta que induz</h5>
+        <ul class="clean">
+          <li>"Você não acha que as dívidas são um absurdo?"</li>
+          <li>"Você usaria um app que ajuda a controlar gastos?"</li>
+          <li>"Você concorda que a família precisa de ajuda financeira?"</li>
+        </ul>
+      </div>
+      <div class="good"><h5>✓ Pergunta neutra</h5>
+        <ul class="clean">
+          <li>"Com que frequência as contas do mês ficam atrasadas?"</li>
+          <li>"Como você decidiu a última compra grande que fez?"</li>
+          <li>"Quanto em média você gasta com alimentação por semana?"</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout note"><span class="lbl">Tipos de pergunta</span>
+      <strong>Múltipla escolha</strong> → tabula fácil. <strong>Escala 1–5</strong> → mede intensidade (1 = um polo, 5 = o oposto). <strong>Dissertativa curta</strong> → traz a frase que virará insight. As falas ficam no áudio — não no formulário.</div>
+  </section>
+
+  <!-- 03 G1 -->
+  <section id="g1">
+    <div class="secnum">03</div>
+    <h2>Grupo 1 — Dinheiro na Mão <span class="pill">Profa. Olivia</span></h2>
+    <div class="ficha">
+      <h4>Integrantes</h4>
+      <p class="who">Giselle · Evelin · Franciely · Mara Fernanda</p>
+    </div>
+    <div class="ficha g">
+      <h4>Objetivo</h4>
+      <p>Validar se as pessoas têm dificuldade em <strong>organizar contas e datas</strong> e se veriam valor em um <strong>programa presencial</strong> com profissionais, sistema inteligente e <strong>bolsa-incentivo</strong> para organizar a vida financeira.</p>
+    </div>
+    <h3>Roteiro de campo</h3>
+    <div class="tbl"><table>
+      <tr><th>Item</th><th>Definição do grupo</th></tr>
+      <tr><td>Onde</td><td>Entrada principal, lotéricas e praça de alimentação</td></tr>
+      <tr><td>Quem abordar</td><td>Adultos e jovens adultos; priorizar quem parece gerenciar as contas da casa</td></tr>
+      <tr><td>Pitch de abordagem</td><td>"Pesquisa rápida de 2 minutos sobre organização de contas e finanças da casa"</td></tr>
+      <tr><td>Meta</td><td><strong>15–20 respostas</strong></td></tr>
+    </table></div>
+    <h3>Perguntas essenciais</h3>
+    <p>Organização de contas, atrasos, disposição para atendimento presencial e confiança no governo como ajudante financeiro.</p>
+    <h3>Hipótese</h3>
+    <p>As pessoas sentem dificuldade em <strong>organizar as contas</strong> e gostariam de ajuda profissional presencial, mas <strong>desconfiam do governo</strong> como fonte de organização financeira. A <strong>bolsa-incentivo</strong> pode ser o diferencial.</p>
+    <h3>Divisão de tarefas</h3>
+    <div class="tbl"><table>
+      <tr><th>Integrante</th><th>Função</th></tr>
+      <tr><td>Giselle e Evelin</td><td>Abordagem das pessoas</td></tr>
+      <tr><td>Franciely</td><td>Formulário e controle de tempo</td></tr>
+      <tr><td>Mara Fernanda</td><td>Áudio e registros</td></tr>
+    </table></div>
+  </section>
+
+  <!-- 04 G2 -->
+  <section id="g2">
+    <div class="secnum">04</div>
+    <h2>Grupo 2 — A Definir <span class="pill">Profa. Olivia</span></h2>
+    <div class="ficha">
+      <h4>Integrantes</h4>
+      <p class="who">Maria Eloise · Izabelli · Talita · Nicolli</p>
+    </div>
+    <div class="callout note"><span class="lbl">Status</span>
+      A ideia do grupo ainda não foi definida. Este grupo participa da aula para assistir o processo, propor o formulário assim que a ideia estiver clara e validar na Parte 2.</div>
+    <div class="tbl"><table>
+      <tr><th>Integrante</th><th>Função</th></tr>
+      <tr><td>Maria Eloise</td><td>Abordagem</td></tr>
+      <tr><td>Izabelli</td><td>Formulário</td></tr>
+      <tr><td>Talita</td><td>Áudio / registros</td></tr>
+      <tr><td>Nicolli</td><td>Tabulação</td></tr>
+    </table></div>
+    <h3>Próximos passos</h3>
+    <ol class="step">
+      <li><span class="t">Fechar a ideia com a Profa. Olivia</span><p>Definir problema, público e solução em 1 frase.</p></li>
+      <li><span class="t">Montar a hipótese</span><p>O que o grupo acha que vai ouvir em campo.</p></li>
+      <li><span class="t">Propor as 20 perguntas</span><p>Em escala 1–5, seguindo o protocolo único.</p></li>
+      <li><span class="t">Validar na Parte 2</span><p>Revisar cada pergunta e montar o app.</p></li>
+    </ol>
+  </section>
+
+  <!-- 05 G3 -->
+  <section id="g3">
+    <div class="secnum">05</div>
+    <h2>Grupo 3 — Quita.AI <span class="pill">Prof. Péricles</span></h2>
+    <div class="ficha">
+      <h4>Integrantes</h4>
+      <p class="who">Creuza · Daniela · Gilmara · Jakeline</p>
+    </div>
+    <div class="ficha g">
+      <h4>Objetivo</h4>
+      <p>Validar se <strong>compras por impulso</strong> são um problema real nas famílias e se uma <strong>dinâmica de jogo</strong> com recompensas (desconto em faturas, isenção fiscal) motivaria o <strong>controle de gastos</strong>.</p>
+    </div>
+    <h3>Roteiro de campo</h3>
+    <div class="tbl"><table>
+      <tr><th>Item</th><th>Definição do grupo</th></tr>
+      <tr><td>Onde</td><td>Praça de alimentação, corredores e lojas</td></tr>
+      <tr><td>Quem abordar</td><td>Casais, famílias e jovens adultos em circulação</td></tr>
+      <tr><td>Pitch de abordagem</td><td>"A família já comprou algo por impulso e se arrependeu? 2 min de pesquisa".</td></tr>
+      <tr><td>Meta</td><td><strong>15–20 respostas</strong></td></tr>
+    </table></div>
+    <h3>Perguntas essenciais</h3>
+    <p>Frequência de compras por impulso, arrependimento, disposição para participar de jogo em família e valor das recompensas (desconto, isenção fiscal).</p>
+    <h3>Hipótese</h3>
+    <p>Compras por impulso são <strong>frequentes e geram arrependimento</strong>, especialmente quando envolvem a família. A <strong>gamificação com recompensa</strong> pode funcionar como estímulo ao controle — desde que os prêmios (desconto, isenção) sejam percebidos como concretos.</p>
+    <h3>Divisão de tarefas</h3>
+    <div class="tbl"><table>
+      <tr><th>Integrante</th><th>Função</th></tr>
+      <tr><td>Creuza e Daniela</td><td>Abordagem</td></tr>
+      <tr><td>Gilmara</td><td>Formulário</td></tr>
+      <tr><td>Jakeline</td><td>Áudio e registros</td></tr>
+    </table></div>
+  </section>
+
+  <!-- 06 G4 -->
+  <section id="g4">
+    <div class="secnum">06</div>
+    <h2>Grupo 4 — SuaCasaSuaVida <span class="pill">Prof. Pantaleão</span></h2>
+    <div class="ficha">
+      <h4>Integrantes</h4>
+      <p class="who">Amanda Karoliny · Beatriz Cristina · Evander · Julimary</p>
+    </div>
+    <div class="ficha g">
+      <h4>Objetivo</h4>
+      <p>Entender como as pessoas avaliam a <strong>decisão de comprar uma casa</strong> e o quanto conhecem a própria <strong>situação financeira</strong> para esse planejamento.</p>
+    </div>
+    <h3>Roteiro de campo</h3>
+    <div class="tbl"><table>
+      <tr><th>Item</th><th>Definição do grupo</th></tr>
+      <tr><td>Onde</td><td>Praça de alimentação, corredores e entrada principal</td></tr>
+      <tr><td>Quem abordar</td><td>Público adulto em circulação; priorizar quem paga aluguel ou sonha com a casa própria</td></tr>
+      <tr><td>Pitch de abordagem</td><td>"Pesquisa rápida sobre moradia e a casa própria".</td></tr>
+      <tr><td>Meta</td><td><strong>15–20 respostas</strong></td></tr>
+    </table></div>
+    <h3>Perguntas essenciais</h3>
+    <p>Desejo da casa própria, conhecimento da situação financeira, análise de bairro e confiança em um app de apoio à decisão.</p>
+    <h3>Hipótese</h3>
+    <p>As pessoas <strong>querem a casa própria</strong> mas não conhecem bem a própria situação financeira para planejar — e um app que ajude com <strong>análise de bairro e capacidade financeira</strong> seria valorizado.</p>
+    <h3>Divisão de tarefas</h3>
+    <div class="tbl"><table>
+      <tr><th>Integrante</th><th>Função</th></tr>
+      <tr><td>Amanda Karoliny e Beatriz Cristina</td><td>Abordagem</td></tr>
+      <tr><td>Evander</td><td>Formulário</td></tr>
+      <tr><td>Julimary</td><td>Áudio e registros</td></tr>
+    </table></div>
+  </section>
+
+  <!-- 07 G5 -->
+  <section id="g5">
+    <div class="secnum">07</div>
+    <h2>Grupo 5 — Endividados Anônimos (EDA) <span class="pill">Prof. Renato</span></h2>
+    <div class="ficha">
+      <h4>Integrantes</h4>
+      <p class="who">Cássia Nóbrega · Sarah · Sabrina · Beatriz B. · Denner</p>
+    </div>
+    <div class="ficha g">
+      <h4>Objetivo</h4>
+      <p>Entender o comportamento de <strong>compra compulsiva</strong> e a abertura das pessoas a um <strong>espaço de acolhimento anônimo</strong> entre iguais — inspirado no modelo de grupos de apoio.</p>
+    </div>
+    <div class="callout err"><span class="lbl">Tema sensível</span>
+      Abordem com respeito, reforço do anonimato e acolhimento. Nunca sugiram a resposta esperada, nunca peçam valores de dívida ou renda. Se a pessoa demonstrar sofrimento intenso, agradeça e oriente: <strong>CVV 188</strong>, <strong>CAPS</strong> ou <strong>UBS</strong> mais próxima. O EDA é apoio entre pares — <strong>não é tratamento médico</strong>.</div>
+    <h3>Roteiro de campo</h3>
+    <div class="tbl"><table>
+      <tr><th>Item</th><th>Definição do grupo</th></tr>
+      <tr><td>Onde</td><td>Praça de alimentação e áreas de descanso</td></tr>
+      <tr><td>Quem abordar</td><td>Adultos de todas as faixas; ambiente acolhedor</td></tr>
+      <tr><td>Pitch de abordagem</td><td>"Pesquisa anônima sobre consumo e finanças".</td></tr>
+      <tr><td>Meta</td><td><strong>15–20 respostas</strong></td></tr>
+    </table></div>
+    <h3>Perguntas essenciais</h3>
+    <p>Frequência de compras por impulso, vergonha, culpa, sensação de perda de controle e disposição para participar de grupo de apoio.</p>
+    <h3>Hipótese</h3>
+    <p>A <strong>vergonha e a culpa</strong> após compras por impulso são frequentes e silenciosas. As pessoas gostariam de ajuda mas <strong>não procuram</strong> por vergonha. Um espaço <strong>anônimo e acolhedor</strong> poderia quebrar esse ciclo.</p>
+    <h3>Divisão de tarefas</h3>
+    <div class="tbl"><table>
+      <tr><th>Integrante</th><th>Função</th></tr>
+      <tr><td>Cássia e Sarah</td><td>Abordagem</td></tr>
+      <tr><td>Sabrina</td><td>Formulário</td></tr>
+      <tr><td>Beatriz B.</td><td>Áudio e registros</td></tr>
+      <tr><td>Denner</td><td>Registros e tabulação</td></tr>
+    </table></div>
+  </section>
+
+  <!-- 08 G6 -->
+  <section id="g6">
+    <div class="secnum">08</div>
+    <h2>Grupo 6 — Vida no Controle <span class="pill">Prof. Renato</span></h2>
+    <div class="ficha">
+      <h4>Integrantes</h4>
+      <p class="who">Hitalo · Rhaissa · Fernanda · Emilly · Yasmin</p>
+    </div>
+    <div class="ficha g">
+      <h4>Objetivo</h4>
+      <p>Validar se famílias de Várzea Grande querem uma <strong>plataforma free</strong> que organiza a renda, encontra <strong>oportunidades de economia</strong>, lê <strong>cupom fiscal</strong> e é patrocinada pelo <strong>mercado regional</strong>.</p>
+    </div>
+    <h3>Roteiro de campo</h3>
+    <div class="tbl"><table>
+      <tr><th>Item</th><th>Definição do grupo</th></tr>
+      <tr><td>Onde</td><td>Praça de alimentação, corredores e entrada principal</td></tr>
+      <tr><td>Quem abordar</td><td>Famílias e adultos que fazem as compras de casa</td></tr>
+      <tr><td>Pitch de abordagem</td><td>"Pesquisa rápida: como sua família organiza o orçamento e encontra ofertas?".</td></tr>
+      <tr><td>Meta</td><td><strong>15–20 respostas</strong></td></tr>
+    </table></div>
+    <h3>Perguntas essenciais</h3>
+    <p>Orçamento familiar, compras do mês, cupom fiscal, construção de reserva e confiança no patrocínio do mercado.</p>
+    <h3>Hipótese</h3>
+    <p>Famílias de Várzea Grande querem <strong>organizar o orçamento</strong> e economizar, mas não têm ferramentas adequadas. A ideia do <strong>cupom fiscal + patrocínio do mercado</strong> local pode ser o diferencial — e a leitura automática do cupom, a funcionalidade mais atrativa.</p>
+    <h3>Divisão de tarefas</h3>
+    <div class="tbl"><table>
+      <tr><th>Integrante</th><th>Função</th></tr>
+      <tr><td>Hitalo e Rhaissa</td><td>Abordagem</td></tr>
+      <tr><td>Fernanda</td><td>Formulário</td></tr>
+      <tr><td>Emilly</td><td>Áudio e registros</td></tr>
+      <tr><td>Yasmin</td><td>Tabulação</td></tr>
+    </table></div>
+  </section>
+
+  <!-- 09 PITCH -->
+  <section id="pitch">
+    <div class="secnum">09</div>
+    <h2>O pitch de 15 segundos</h2>
+    <p class="lead">A abordagem decide 80% da pesquisa. Decore esta estrutura e ensaie em voz alta pelo menos <strong>3 vezes</strong> antes de sair.</p>
+
+    <ol class="step">
+      <li><span class="t">Identifique-se (3s)</span><p>"Oi! Somos alunos da Unifacc, de Tecnologia e Inovação."</p></li>
+      <li><span class="t">Diga o que é e o tempo (4s)</span><p>"Estamos fazendo uma pesquisa rápida de 2 minutos. É anônima."</p></li>
+      <li><span class="t">Dê o tema em forma de pergunta (5s)</span><p>"Podemos te fazer 5 perguntinhas sobre [tema do grupo]?"</p></li>
+      <li><span class="t">Peça o sim e já apresente o formulário (3s)</span><p>"Posso te enviar o link? Ou prefere responder no meu celular?"</p></li>
+    </ol>
+
+    <div class="compare">
+      <div class="bad"><h5>✗ Evite</h5>
+        <ul class="clean">
+          <li>Chegar falando da sua ideia</li>
+          <li>Frases longas e termos técnicos</li>
+          <li>Grupo inteiro em volta da pessoa</li>
+          <li>Insistir depois do "não, obrigado"</li>
+        </ul>
+      </div>
+      <div class="good"><h5>✓ Faça</h5>
+        <ul class="clean">
+          <li>Sorria e olhe nos olhos</li>
+          <li>Uma pessoa aborda, o resto observa</li>
+          <li>Ofereça responder no seu celular</li>
+          <li>Agradeça mesmo com "não"</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout tip"><span class="lbl">Regra do momento certo</span>
+      Não approche quem está comendo, no telefone ou com criança no colo. Prefira pessoas <strong>sentadas ociosas</strong> ou <strong>paradas esperando alguém</strong>.</div>
+  </section>
+
+  <!-- 10 FORMS -->
+  <section id="forms">
+    <div class="secnum">10</div>
+    <h2>Montando o Google Forms (passo a passo)</h2>
+    <p class="lead">Faça isso agora, durante a aula. O formulário é o instrumento de trabalho de vocês amanhã.</p>
+
+    <div class="ex">
+      <span class="tag">Passo 1</span>
+      <h4>Criar o formulário</h4>
+      <ol class="step">
+        <li><span class="t">Acesse forms.google.com</span><p>Com a conta Google do grupo (crie uma conta única para o grupo).</p></li>
+        <li><span class="t">Escolha "Em branco"</span><p>Você será levado ao editor.</p></li>
+        <li><span class="t">Dê um título e uma descrição</span><p>Exemplo: <code>Pesquisa — Dinheiro na Mão</code>. Na descrição, escreva "Pesquisa anônima de 2 minutos — Unifacc".</p></li>
+      </ol>
+    </div>
+
+    <div class="ex">
+      <span class="tag">Passo 2</span>
+      <h4>Adicionar as perguntas</h4>
+      <ol class="step">
+        <li><span class="t">Escolha o tipo de pergunta</span><p>Use <strong>Múltipla escolha</strong>, <strong>Caixas de seleção</strong>, <strong>Escala linear</strong> e <strong>Parágrafo</strong>.</p></li>
+        <li><span class="t">Marque as obrigatórias</span><p>Só o que for realmente essencial. Pergunta obrigatória demais espanta.</p></li>
+        <li><span class="t">Ative "Resposta curta" para nome/idade só se necessário</span><p>Prefira <strong>anônimo</strong>. Se precisar de perfil, pergunte faixa de idade, não nome.</p></li>
+      </ol>
+    </div>
+
+    <div class="ex">
+      <span class="tag">Passo 3</span>
+      <h4>Configurar destino das respostas</h4>
+      <ol class="step">
+        <li><span class="t">Aba "Respostas" → ícone do Sheets</span><p>Isso cria uma <strong>planilha automática</strong> com todas as respostas.</p></li>
+        <li><span class="t">Ative "Coletar e-mail"? NÃO</span><p>Para pesquisa anônima em campo, deixe desativado.</p></li>
+      </ol>
+    </div>
+
+    <div class="ex">
+      <span class="tag">Passo 4</span>
+      <h4>Testar e distribuir</h4>
+      <ol class="step">
+        <li><span class="t">Abra o link no celular</span><p>Responda você mesmo uma vez. Confira se todas as perguntas aparecem.</p></li>
+        <li><span class="t">Copie o link curto</span><p>Botão <strong>Enviar</strong> → ícone de link → <strong>Encurtar URL</strong>.</p></li>
+        <li><span class="t">Gere um QR Code</span><p>Cole o link em um gerador de QR Code e salve a imagem. Imprima e leve — é a forma mais rápida de a pessoa responder.</p></li>
+        <li><span class="t">Salve offline</span><p>Baixe o formulário em PDF (Ctrl+P → Salvar como PDF) como plano B caso o shopping tenha sinal ruim.</p></li>
+      </ol>
+    </div>
+
+    <div class="callout err"><span class="lbl">Plano B obrigatório</span>
+      Sinal de celular em shopping falha. Todo grupo precisa levar <strong>o formulário impresso + QR Code impresso</strong>. Sem isso, a coleta para.</div>
+  </section>
+
+  <!-- 11 MODELOS -->
+  <section id="modelos">
+    <div class="secnum">11</div>
+    <h2>Formulários modelo (prontos para copiar)</h2>
+    <p class="lead">Cada grupo pode usar estas perguntas como base. Ajustem a linguagem, mas <strong>mantenham o tipo de pergunta</strong> para facilitar a tabulação.</p>
+
+    <div class="ex">
+      <span class="tag">Modelo · Grupo 1 — Dinheiro na Mão</span>
+      <h4>Pesquisa sobre organização de finanças</h4>
+      <div class="f">
+<span class="c">1. Múltipla escolha</span>
+Com que frequência as contas do mês ficam atrasadas?
+( ) Sempre ( ) Frequentemente ( ) Às vezes ( ) Raramente ( ) Nunca
+
+<span class="c">2. Escala 1–5</span>
+O quanto a renda da casa dá conta das despesas do mês?
+1 = Não dá conta de jeito nenhum · 5 = Dá conta com folga
+
+<span class="c">3. Múltipla escolha</span>
+Você já buscou orientação para organizar as finanças?
+( ) Sim ( ) Não
+
+<span class="c">4. Escala 1–5</span>
+Utilidade de um atendimento presencial com profissionais que ajudam a organizar a vida financeira?
+1 = Nada útil · 5 = Muito útil
+
+<span class="c">5. Escala 1–5</span>
+Confiança em um programa do governo para ajudar a organizar finanças?
+1 = Nenhuma confiança · 5 = Total confiança
+      </div>
+    </div>
+
+    <div class="ex">
+      <span class="tag">Modelo · Grupo 3 — Quita.AI</span>
+      <h4>Pesquisa sobre compras por impulso e jogo</h4>
+      <div class="f">
+<span class="c">1. Escala 1–5</span>
+Com que frequência você compra algo que não estava planejando?
+1 = Nunca · 5 = Sempre
+
+<span class="c">2. Escala 1–5</span>
+O quanto você se arrepende depois de uma compra por impulso?
+1 = Nunca me arrependo · 5 = Sempre me arrependo
+
+<span class="c">3. Múltipla escolha</span>
+Você já参与了 um jogo ou dinâmica em família sobre controle de gastos?
+( ) Sim ( ) Não ( ) Já ouvi falar
+
+<span class="c">4. Escala 1–5</span>
+Utilidade de ganhar desconto na fatura como recompensa por controlar gastos?
+1 = Nada útil · 5 = Muito útil
+
+<span class="c">5. Escala 1–5</span>
+Disposição para participar de um jogo em família que ajuda a controlar gastos?
+1 = Nunca · 5 = Com certeza
+      </div>
+    </div>
+
+    <div class="ex">
+      <span class="tag">Modelo · Grupo 5 — EDA</span>
+      <h4>Pesquisa sobre compra compulsiva e apoio</h4>
+      <div class="f">
+<span class="c">1. Escala 1–5</span>
+Com que frequência você compra algo por impulso?
+1 = Nunca · 5 = Sempre
+
+<span class="c">2. Escala 1–5</span>
+O quanto de culpa você sente depois de uma compra por impulso?
+1 = Nenhuma culpa · 5 = Muita culpa
+
+<span class="c">3. Escala 1–5</span>
+Vergonha de falar sobre dívidas com outras pessoas?
+1 = Nenhuma vergonha · 5 = Muita vergonha
+
+<span class="c">4. Escala 1–5</span>
+Utilidade de um espaço de acolhimento entre pessoas que passam pelo mesmo?
+1 = Nada útil · 5 = Muito útil
+
+<span class="c">5. Escala 1–5</span>
+Disposição de participar de encontros regulares de apoio anônimo?
+1 = Nunca · 5 = Com certeza
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 PAPEIS -->
+  <section id="papeis">
+    <div class="secnum">12</div>
+    <h2>Divisão de tarefas e papéis</h2>
+    <p class="lead">Em campo, ninguém faz tudo. Cada pessoa tem <strong>um papel fixo</strong> e o grupo roda como uma equipe.</p>
+
+    <div class="tbl"><table>
+      <tr><th>Papel</th><th>O que faz</th><th>Dica</th></tr>
+      <tr><td><strong>Abordador</strong></td><td>Faz o pitch e consegue o "sim"</td><td>O mais simpático e comunicativo do grupo</td></tr>
+      <tr><td><strong>Operador do formulário</strong></td><td>Preenche no celular enquanto a pessoa responde</td><td>Confira a resposta antes de agradecer</td></tr>
+      <tr><td><strong>Anotador</strong></td><td>Registra falas, reações e o que não cabe no formulário</td><td>Anote frases exatas entre aspas</td></tr>
+      <tr><td><strong>Mídia</strong></td><td>Fotos e vídeos da ação (com autorização)</td><td>Só grave quem autorizou</td></tr>
+      <tr><td><strong>Tabulação</strong></td><td>Confere a planilha e organiza os dados depois</td><td>Fechamento no mesmo dia, ainda quente</td></tr>
+    </table></div>
+
+    <div class="callout tip"><span class="lbl">Rodízio</span>
+      A cada 5 abordagens, troquem de papel. Cansa menos e todos aprendem todas as etapas.</div>
+  </section>
+
+  <!-- 13 PROTOCOLO -->
+  <section id="protocolo">
+    <div class="secnum">13</div>
+    <h2>Protocolo de coleta — prévia da Parte 2</h2>
+    <p class="lead">A coleta segue um <strong>protocolo único</strong> para os 6 grupos. O detalhamento completo — bloco de perfil, respostas marcadas pelo entrevistador e áudio com código de correlação — fica no <strong>Caderno da Parte 2</strong>.</p>
+
+    <div class="f">
+CAMADA 1 — PERFIL    → o entrevistador marca por observação
+CAMADA 2 — RESPOSTAS → pessoa fala livre, entrevistador marca
+CAMADA 3 — ÁUDIO     → outro aluno grava no WhatsApp, iniciando pelo CÓDIGO
+            ↓
+    CÓDIGO = G&lt;grupo&gt;-&lt;nº da resposta&gt;   (ex.: G5-014)
+            ↓
+    Cruza:  áudio (quali)  ×  formulário (quanti)
+    </div>
+
+    <div class="callout note"><span class="lbl">Parte 2</span>
+      Validar os questionários e montar o <strong>app de formulário</strong> são o conteúdo da Parte 2. Registre as tarefas no caderno da Parte 2.</div>
+  </section>
+
+  <!-- 14 ETICA -->
+  <section id="etica">
+    <div class="secnum">14</div>
+    <h2>Ética, consentimento e LGPD</h2>
+
+    <div class="callout note"><span class="lbl">Frase de consentimento (decore)</span>
+      "Estamos fazendo uma pesquisa anônima. Suas respostas não identificam você. Podemos continuar?"</div>
+
+    <div class="semaforo">
+      <span class="chip v">Respostas anônimas</span>
+      <span class="chip v">Avisar o tempo (2 min)</span>
+      <span class="chip v">Agradecer sempre</span>
+      <span class="chip r">Nome / CPF / endereço</span>
+      <span class="chip r">Foto sem autorização</span>
+      <span class="chip r">Insistir após o "não"</span>
+    </div>
+
+    <h3>Regras não negociáveis</h3>
+    <ul class="clean">
+      <li><strong>Sem dados pessoais:</strong> não peça nome, CPF, telefone ou endereço.</li>
+      <li><strong>Sem foto de rosto</strong> sem autorização verbal clara.</li>
+      <li><strong>Menores de idade:</strong> não aborde crianças e adolescentes desacompanhados.</li>
+      <li><strong>Não gravar áudio</strong> sem avisar e obter o "sim".</li>
+      <li><strong>Dado sensível</strong> (saúde, dívidas, moradia): reforce o anonimato e nunca compartilhe individualmente.</li>
+    </ul>
+  </section>
+
+  <!-- 15 TABULACAO -->
+  <section id="tab">
+    <div class="secnum">15</div>
+    <h2>Tabulação e análise</h2>
+    <p class="lead">Pesquisa sem análise é só uma pilha de respostas. Fechem os dados <strong>no mesmo dia</strong> e preparem 3 achados.</p>
+
+    <div class="tbl"><table>
+      <tr><th>Etapa</th><th>O que fazer</th></tr>
+      <tr><td><strong>1. Consolidar</strong></td><td>Todas as respostas caem na planilha do Google automaticamente. Confira se não faltou ninguém.</td></tr>
+      <tr><td><strong>2. Contar</strong></td><td>Para múltipla escolha, olhe a % de cada opção. Use gráficos simples.</td></tr>
+      <tr><td><strong>3. Agrupar</strong></td><td>Nas respostas abertas, agrupe por temas (ex.: "preço", "medo", "demora").</td></tr>
+      <tr><td><strong>4. Destacar frases</strong></td><td>Separe 3 frases exatas que resumem a percepção das pessoas.</td></tr>
+      <tr><td><strong>5. Comparar hipótese</strong></td><td>O que ouvimos confirma ou derruba a hipótese do grupo?</td></tr>
+    </table></div>
+
+    <div class="callout tip"><span class="lbl">Os "nãos" são ouro</span>
+      Não esconda as respostas que contrariam a hipótese. Elas são o dado mais valioso da pesquisa — evitam que o grupo construa algo que ninguém quer.</div>
+
+    <h3>Como apresentar o resultado</h3>
+    <div class="f">
+RESULTADO — [Nome do Grupo]
+Meta de respostas: 15  ·  Obtidas: ___
+
+ACHADO 1: ______________________  (% ou nº)
+ACHADO 2: ______________________  (% ou nº)
+ACHADO 3: ______________________  (% ou nº)
+
+FRASE MARCANTE: "________________"
+
+HIPÓTESE: ( ) CONFIRMADA  ( ) PARCIAL  ( ) DERRUBADA
+    </div>
+  </section>
+
+  <!-- 16 CHECKLIST -->
+  <section id="checklist">
+    <div class="secnum">16</div>
+    <h2>Checklist final — antes de sair hoje</h2>
+    <ul class="check">
+      <li>Google Forms <strong>criado e testado no celular</strong>.</li>
+      <li>Link <strong>encurtado</strong> e <strong>QR Code impresso</strong>.</li>
+      <li>Roteiro de abordagem <strong>ensaiado</strong> (o pitch de 15 segundos).</li>
+      <li>Tarefas <strong>divididas</strong> e papéis definidos.</li>
+      <li>Hipóteses <strong>registradas</strong> por escrito.</li>
+      <li>Plano B <strong>impresso</strong> (formulário em papel) separado.</li>
+      <li>Celular <strong>carregado</strong> para o dia da visita (leve power bank).</li>
+      <li><strong>Ponto de encontro</strong> e horário combinados com o professor.</li>
+    </ul>
+
+    <div class="callout err"><span class="lbl">Lembrete</span>
+      Quem chega à visita sem formulário testado <strong>não participa da coleta</strong> — vai apoiar o grupo, mas perde a experiência principal.</div>
+  </section>
+
+  <!-- 17 DICA DE OURO -->
+  <section id="ouro">
+    <div class="secnum">17</div>
+    <h2>Dica de ouro</h2>
+    <div class="ficha a" style="text-align:center;">
+      <h4 style="font-size:1.35rem;line-height:1.4;">"Vocês não vão ao shopping para provar que a ideia é boa.<br>Vocês vão para descobrir a <span style="color:var(--accent-ink);font-weight:700;">VERDADE</span>."</h4>
+    </div>
+    <div class="callout note">
+      Se a pessoa disser que <strong>não usaria</strong>, isso é um <strong>dado valioso</strong>. Anotem os <strong>'nãos'</strong> com o mesmo cuidado que anotam os 'sins'. <strong>Boa pesquisa!</strong></div>
+  </section>
+
+  <!-- 18 QUIZ -->
+  <section id="quiz">
+    <div class="secnum">18</div>
+    <h2>Quiz de preparação</h2>
+
+    <div class="q"><p class="stem">1. O objetivo do Customer Discovery é:</p>
+      <ol type="a"><li>Vender o produto</li><li>Confirmar que a ideia é boa</li><li>Descobrir se o problema existe de verdade</li><li>Fazer propaganda</li></ol></div>
+
+    <div class="q"><p class="stem">2. Qual pergunta é melhor para uma pesquisa de campo?</p>
+      <ol type="a"><li>"Você usaria um app que resolve tudo?"</li><li>"Você não acha as dívidas um absurdo?"</li><li>"Como você resolveu isso da última vez?"</li><li>"Você concorda comigo?"</li></ol></div>
+
+    <div class="q"><p class="stem">3. O formulário deve ser testado:</p>
+      <ol type="a"><li>Só depois da visita</li><li>No celular, antes de sair</li><li>Nunca, dá certo sempre</li><li>Só no computador</li></ol></div>
+
+    <div class="q"><p class="stem">4. Resposta que contraria a hipótese do grupo deve ser:</p>
+      <ol type="a"><li>Descartada</li><li>Registrada como dado valioso</li><li>Corrigida</li><li>Ignorada</li></ol></div>
+
+    <div class="q"><p class="stem">5. Todo grupo deve levar como plano B:</p>
+      <ol type="a"><li>Nada, só o celular</li><li>Formulário impresso / QR Code</li><li>Uma apresentação</li><li>Um notebook</li></ol></div>
+
+    <div class="q"><p class="stem">6. Sobre dados pessoais, o correto é:</p>
+      <ol type="a"><li>Pedir nome e CPF sempre</li><li>Coletar o máximo de dados possível</li><li>Manter a pesquisa anônima</li><li>Compartilhar com todos</li></ol></div>
+
+    <details><summary>Gabarito</summary>
+    <div class="body">
+      <div class="tbl"><table>
+        <tr><th>#</th><th>Resp.</th></tr>
+        <tr><td>1</td><td>c — Descobrir se o problema existe</td></tr>
+        <tr><td>2</td><td>c — "Como você resolveu isso da última vez?"</td></tr>
+        <tr><td>3</td><td>b — No celular, antes de sair</td></tr>
+        <tr><td>4</td><td>b — Registrada como dado valioso</td></tr>
+        <tr><td>5</td><td>b — Formulário impresso / QR Code</td></tr>
+        <tr><td>6</td><td>c — Manter a pesquisa anônima</td></tr>
+      </table></div>
+    </div>
+    </details>
+  </section>
+
+  <!-- 19 COLA -->
+  <section id="cola">
+    <div class="secnum">19</div>
+    <h2>Folha de cola — referência rápida</h2>
+
+    <h3>Os 5 entregáveis</h3>
+    <div class="tbl"><table>
+      <tr><th>Entregável</th><th>Pergunta de controle</th></tr>
+      <tr><td>Roteiro</td><td>Onde, quem e como?</td></tr>
+      <tr><td>Objetivo</td><td>O que quero descobrir em 1 frase?</td></tr>
+      <tr><td>Divisão de tarefas</td><td>Cada um tem um papel?</td></tr>
+      <tr><td>Hipóteses</td><td>O que eu acho que vou ouvir?</td></tr>
+      <tr><td>Formulário</td><td>Está testado no celular?</td></tr>
+    </table></div>
+
+    <h3>Estrutura do pitch</h3>
+    <div class="tbl"><table>
+      <tr><th>Passo</th><th>Fala</th></tr>
+      <tr><td>1</td><td>"Somos alunos da Unifacc…"</td></tr>
+      <tr><td>2</td><td>"Pesquisa de 2 minutos, é anônima."</td></tr>
+      <tr><td>3</td><td>"5 perguntinhas sobre [tema]?"</td></tr>
+      <tr><td>4</td><td>"Respondo no meu celular ou te mando o link?"</td></tr>
+    </table></div>
+
+    <h3>Resumo por grupo</h3>
+    <div class="tbl"><table>
+      <tr><th>#</th><th>Grupo</th><th>Onde</th><th>Meta</th></tr>
+      <tr><td>1</td><td>Dinheiro na Mão</td><td>Entrada / lotéricas / praça</td><td>15–20</td></tr>
+      <tr><td>2</td><td>A Definir</td><td>A definir</td><td>—</td></tr>
+      <tr><td>3</td><td>Quita.AI</td><td>Praça / corredores / lojas</td><td>15–20</td></tr>
+      <tr><td>4</td><td>SuaCasaSuaVida</td><td>Praça / corredores / entrada</td><td>15–20</td></tr>
+      <tr><td>5</td><td>EDA</td><td>Praça / descanso</td><td>15–20</td></tr>
+      <tr><td>6</td><td>Vida no Controle</td><td>Praça / corredores / entrada</td><td>15–20</td></tr>
+    </table></div>
+
+    <h3>Nunca esqueça</h3>
+    <div class="semaforo">
+      <span class="chip v">Pesquisa anônima</span>
+      <span class="chip v">Ouvir mais que falar</span>
+      <span class="chip v">Anotar os "nãos"</span>
+      <span class="chip r">Dados pessoais</span>
+      <span class="chip r">Foto sem consentimento</span>
+    </div>
+  </section>
+
+  <div class="foot">
+    Customer Discovery na Prática · Visita Técnica ao Shopping · 21 de Setembro de 2026 · Prof. Renato Rosa · Cerrado Tech · Unifacc · 3º Semestre (VG)
+  </div>
+
+  </main>
+</div>
+
+<script>
+(function(){
+  var b=document.getElementById('tt'),r=document.documentElement;
+  function cur(){return r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}
+  try{var s=localStorage.getItem('cd-shopping-theme');if(s)r.setAttribute('data-theme',s);}catch(e){}
+  b.addEventListener('click',function(){
+    var n=cur()==='dark'?'light':'dark';
+    r.setAttribute('data-theme',n);
+    try{localStorage.setItem('cd-shopping-theme',n);}catch(e){}
+  });
+  var p=document.getElementById('pp');
+  if(p) p.addEventListener('click',function(){window.print();});
+})();
+</script>
+</body>
+</html>

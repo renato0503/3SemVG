@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#ff6b35">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>LifePath — Seu mentor de carreira e finanças</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="../assets/identidade/temas.css">
+<link rel="stylesheet" href="../assets/kit/kit.css">
+<style>
+:root{
+  --accent:#ff6b35;--accent-dark:#ea580c;--accent-soft:#fff7ed;
+  --accent2:#9333ea;--tinta:#2d1b00;--tinta2:#451a03;
+  --fonte:'Segoe UI',Arial,sans-serif;--fonte-titulo:'Segoe UI Semibold',Arial;
+  --texto:#2d1b00;--texto-suave:#92400e;--linha:#fed7aa;--fundo:#fffbf7;
+  --card:#ffffff;--ok:#16a34a;--alerta:#dc2626;--atencao:#d97706;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:var(--fonte);background:var(--fundo);color:var(--texto);font-size:16px;overflow-x:hidden}
+.app{max-width:480px;margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;padding-bottom:80px}
+header.top{
+  background:linear-gradient(135deg,var(--tinta) 0%,var(--tinta2) 100%);
+  color:#fff;padding:14px 16px 52px;position:sticky;top:0;z-index:20;
+}
+header.top .brand{display:flex;align-items:center;justify-content:space-between}
+header.top h1{font-size:17px;font-weight:700}
+header.top .sub{font-size:11px;opacity:.75;margin-top:2px}
+.badge-pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:11px;padding:3px 8px;border-radius:20px}
+.mentor-avatar{width:36px;height:36px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:18px;border:2px solid rgba(255,255,255,.4)}
+main{flex:1;padding:0 16px}
+.screen{display:none;flex-direction:column;animation:fade .2s ease}
+.screen.active{display:flex}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.page-title{font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.07em;padding:16px 0 6px}
+.card{background:var(--card);border-radius:16px;padding:16px;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:12px}
+.card-title{font-size:15px;font-weight:700;margin-bottom:6px;color:var(--tinta)}
+.card-sub{font-size:13px;color:var(--texto-suave)}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:12px;padding:14px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;transition:transform .05s;padding-top:calc(14px + env(safe-area-inset-top))}
+.btn:active{transform:scale(.975)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-dark)}
+.btn-ghost{background:#fff;color:var(--accent);border:1.5px solid var(--accent)}
+.btn-secondary{background:var(--accent2);color:#fff}
+.btn-sm{padding:10px 14px;font-size:13px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.text-center{text-align:center}
+.text-muted{color:var(--texto-suave);font-size:13px}
+.mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mb-8{margin-bottom:8px}.mb-12{margin-bottom:12px}
+.flex-between{display:flex;align-items:center;justify-content:space-between}
+.nav-bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--linha);display:flex;z-index:30;padding-bottom:env(safe-area-inset-bottom)}
+.nav-bottom .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px;gap:3px;cursor:pointer;color:var(--texto-suave);transition:color .15s;border:none;background:none;font-size:11px;font-family:inherit}
+.nav-bottom .nav-item.active{color:var(--accent)}
+.nav-bottom .nav-icon{font-size:20px}
+.toast-container{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);z-index:60;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.toast{background:var(--tinta);color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;animation:toastIn .25s ease}
+@keyframes toastIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* Mentor chat */
+.msg-wrap{display:flex;gap:10px;margin-bottom:14px;align-items:flex-start}
+.msg-wrap.mentor .msg-avatar{background:var(--accent2);flex-shrink:0}
+.msg-wrap.user{flex-direction:row-reverse}
+.msg-avatar{width:32px;height:32px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.msg-bubble{max-width:75%;padding:10px 14px;border-radius:16px;font-size:14px;line-height:1.5}
+.msg-wrap.mentor .msg-bubble{background:#fff;border:1.5px solid var(--linha);border-bottom-left-radius:4px}
+.msg-wrap.user .msg-bubble{background:var(--accent);color:#fff;border-bottom-right-radius:4px}
+.msg-time{font-size:10px;color:var(--texto-suave);margin-top:3px;padding-left:42px}
+.msg-wrap.user .msg-time{padding-left:0;text-align:right;padding-right:42px}
+
+/* Track cards */
+.track-card{background:#fff;border-radius:14px;padding:16px;margin-bottom:12px;border:2px solid var(--linha);cursor:pointer;transition:border-color .15s}
+.track-card:hover{border-color:var(--accent)}
+.track-card.selected{border-color:var(--accent);background:var(--accent-soft)}
+.track-card .track-icon{font-size:36px;margin-bottom:8px}
+.track-card .track-name{font-size:16px;font-weight:700;color:var(--tinta);margin-bottom:4px}
+.track-card .track-desc{font-size:13px;color:var(--texto-suave);line-height:1.5}
+.track-card .track-steps{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.track-step{display:inline-flex;align-items:center;gap:4px;font-size:11px;background:var(--accent-soft);color:var(--accent);padding:3px 8px;border-radius:20px;font-weight:600}
+.track-step.done{background:#dcfce7;color:#166534}
+.track-step.done::before{content:'✅ '}
+
+/* Timeline */
+.tl{position:relative;padding-left:24px}
+.tl::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:2px;background:var(--linha)}
+.tl-item{position:relative;margin-bottom:20px}
+.tl-item::before{content:'';position:absolute;left:-20px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--linha);border:2px solid #fff}
+.tl-item.active::before{background:var(--accent);border-color:var(--accent)}
+.tl-item.done::before{background:var(--ok);border-color:var(--ok)}
+.tl-item .tl-title{font-size:14px;font-weight:700;color:var(--tinta)}
+.tl-item .tl-sub{font-size:12px;color:var(--texto-suave);margin-top:2px}
+.tl-item .tl-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-top:4px}
+.tl-item .tl-tag.future{background:#fef3c7;color:#92400e}
+.tl-item .tl-tag.now{background:var(--accent-soft);color:var(--accent)}
+.tl-item .tl-tag.done{background:#dcfce7;color:#166534}
+
+/* Mission card */
+.mission-card{background:#fff;border-radius:14px;padding:14px;margin-bottom:10px;border-left:4px solid var(--accent)}
+.mission-card .m-header{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.mission-card .m-type{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:20px}
+.m-type.discovery{background:#eff6ff;color:#1d4ed8}
+.m-type.action{background:#f0fdf4;color:#166534}
+.m-type.sim{background:#faf5ff;color:#6d28d9}
+.mission-card .m-title{font-size:14px;font-weight:700;color:var(--tinta);flex:1}
+.mission-card .m-desc{font-size:13px;color:var(--texto-suave);line-height:1.5;margin-bottom:8px}
+.mission-card .m-reward{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:var(--ok);background:#dcfce7;padding:3px 8px;border-radius:20px}
+.mission-card .m-deadline{font-size:11px;color:var(--atencao);margin-top:6px}
+
+/* Financial card */
+.fin-card{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px}
+.fin-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--linha)}
+.fin-row:last-child{border-bottom:none}
+.fin-row .fin-label{font-size:13px;color:var(--texto-suave)}
+.fin-row .fin-val{font-size:14px;font-weight:700}
+.fin-row .fin-val.pos{color:var(--ok)}
+.fin-row .fin-val.neg{color:#dc2626}
+.fin-meter{height:10px;background:var(--linha);border-radius:5px;overflow:hidden;margin-top:4px}
+.fin-meter .fill{height:100%;border-radius:5px;transition:width .4s}
+.fin-meter .fill.good{background:var(--ok)}
+.fin-meter .fill.warn{background:var(--atencao)}
+.fin-meter .fill.bad{background:#dc2626}
+
+/* Sim inputs */
+.sim-row{display:flex;gap:8px;margin-bottom:10px}
+.sim-row .input-group{flex:1;margin-bottom:0}
+.input-group{margin-bottom:12px}
+.input-group label{display:block;font-size:11px;font-weight:600;color:var(--texto-suave);margin-bottom:4px;letter-spacing:.04em;text-transform:uppercase}
+.form-input{width:100%;padding:10px 12px;border:1.5px solid var(--linha);border-radius:10px;font-size:14px;font-family:inherit;background:#fff;color:var(--texto);transition:border-color .15s}
+.form-input:focus{outline:none;border-color:var(--accent)}
+select.form-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ff6b35' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.slider-val{font-size:13px;font-weight:700;color:var(--accent);text-align:right}
+
+/* Progress bar */
+.prog-wrap{margin:12px 0}
+.prog-label{display:flex;justify-content:space-between;font-size:12px;color:var(--texto-suave);margin-bottom:4px}
+.prog-bar{height:8px;background:var(--linha);border-radius:4px;overflow:hidden}
+.prog-bar .fill{height:100%;border-radius:4px;background:var(--accent);transition:width .4s}
+
+/* Chat input */
+.chat-input-wrap{display:flex;gap:8px;align-items:flex-end;padding:12px 0;position:sticky;bottom:0;background:var(--fundo)}
+.chat-input-wrap textarea{flex:1;padding:10px 12px;border:1.5px solid var(--linha);border-radius:12px;font-size:14px;font-family:inherit;resize:none;min-height:44px;max-height:100px;background:#fff;color:var(--texto)}
+.chat-input-wrap textarea:focus{outline:none;border-color:var(--accent)}
+.chat-send{width:44px;height:44px;border-radius:12px;background:var(--accent);border:none;color:#fff;font-size:18px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+
+/* Decision card */
+.decision-card{background:linear-gradient(135deg,var(--tinta) 0%,var(--tinta2) 100%);border-radius:16px;padding:18px;color:#fff;margin-bottom:14px}
+.decision-card .d-q{font-size:15px;font-weight:700;margin-bottom:10px;line-height:1.4}
+.decision-card .d-opts{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.decision-card .d-opt{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;padding:10px 14px;border-radius:10px;font-size:13px;text-align:left;cursor:pointer;transition:background .15s}
+.decision-card .d-opt:hover{background:rgba(255,255,255,.25)}
+.decision-card .d-opt .d-opt-title{font-weight:700;font-size:14px;display:block;margin-bottom:2px}
+.decision-card .d-opt .d-opt-sub{font-size:11px;opacity:.8}
+
+/* Level badge */
+.level-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-soft);border:1.5px solid var(--accent);color:var(--accent);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700}
+</style>
+</head>
+<body class="tema-g2">
+<div class="app">
+<header class="top">
+<div class="brand">
+ <div>
+  <h1>🧭 LifePath</h1>
+  <div class="sub" id="headerSub">Seu mentor de carreira e finanças</div>
+ </div>
+ <div style="display:flex;align-items:center;gap:8px">
+  <div class="level-badge" id="levelBadge">🎯 Estagiário</div>
+ </div>
+</div>
+</header>
+
+<main>
+
+<!-- MENTOR CHAT -->
+<section class="screen active" id="screenMentor">
+<div class="page-title">Mentor IA</div>
+<div id="chatMessages" style="max-height:55vh;overflow-y:auto;padding-bottom:8px">
+</div>
+<div class="chat-input-wrap">
+ <textarea id="chatInput" placeholder="Pergunte ao mentor..." rows="1"></textarea>
+ <button class="chat-send" onclick="sendMsg()">➤</button>
+</div>
+</section>
+
+<!-- TRILHA -->
+<section class="screen" id="screenTrilha">
+<div class="page-title">Escolha sua Trilha</div>
+<div id="trackIntro" class="card">
+ <div class="card-title">Qual é o seu objetivo profissional?</div>
+ <div class="card-sub" style="margin-bottom:12px">Escolha a trilha que mais se aproxima da sua realidade. O LifePath vai criar um plano personalizado para você.</div>
+</div>
+<div id="trackList"></div>
+<div class="card mt-12" id="trackConfirmPanel" style="display:none">
+ <div class="card-title mb-8">Trilha selecionada</div>
+ <div id="selectedTrackInfo" style="margin-bottom:12px"></div>
+ <button class="btn btn-primary" onclick="confirmTrack()">Confirmar e começar minha jornada ➤</button>
+</div>
+</section>
+
+<!-- MISSÕES -->
+<section class="screen" id="screenMissions">
+<div class="page-title">Minhas Missões</div>
+<div class="prog-wrap mb-12">
+ <div class="prog-label"><span>Progresso do Mês</span><span id="progLabel">0/0 missões</span></div>
+ <div class="prog-bar"><div class="fill" id="progFill" style="width:0%"></div></div>
+</div>
+<div id="missionsList"></div>
+</section>
+
+<!-- SIMULAÇÃO FINANCEIRA -->
+<section class="screen" id="screenSim">
+<div class="page-title">Simulador Financeiro</div>
+<div class="card">
+ <div class="card-title mb-8">Meu cenário profissional</div>
+ <div class="input-group">
+  <label>Renda mensal atual (R$)</label>
+  <input class="form-input" id="simRenda" type="number" step="100" min="0" value="1600" oninput="updateSim()">
+ </div>
+ <div class="input-group">
+  <label>Etapa profissional</label>
+  <select class="form-input" id="simEtapa">
+   <option value="estagio">Estágio / Primeiro emprego</option>
+   <option value="clt">CLT</option>
+   <option value="plc">Autônomo / PJ</option>
+   <option value="neg">Negociando salário</option>
+  </select>
+ </div>
+ <div class="slider-wrap">
+  <div class="slider-val" id="lblPercFin">30% guardado</div>
+  <label>% da renda que consegue guardar</label>
+  <input type="range" id="slPerc" min="0" max="70" value="30" step="5" oninput="updateSim()">
+ </div>
+</div>
+<div class="card mt-12">
+ <div class="card-title mb-8">Projeção mensal</div>
+ <div class="fin-card">
+  <div class="fin-row">
+   <span class="fin-label">Renda</span>
+   <span class="fin-val pos" id="finRenda">R$ 0</span>
+  </div>
+  <div class="fin-row">
+   <span class="fin-label">Gastos essenciais estimados</span>
+   <span class="fin-val neg" id="finGastos">R$ 0</span>
+  </div>
+  <div class="fin-row">
+   <span class="fin-label">Poupança (reserva)</span>
+   <span class="fin-val pos" id="finPoup">R$ 0</span>
+  </div>
+  <div class="fin-row">
+   <span class="fin-label">Disposição para gastos livres</span>
+   <span class="fin-val" id="finLivre">R$ 0</span>
+  </div>
+ </div>
+ <div class="fin-meter mt-12">
+  <div class="fill" id="finBar" style="width:30%"></div>
+ </div>
+ <div class="text-muted text-center mt-8" id="finConselho">Conselho do mentor aparece aqui</div>
+</div>
+<div class="card mt-12">
+ <div class="card-title mb-8">Objetivos financeiros</div>
+ <div id="finGoals"></div>
+ <div class="input-group mt-12">
+  <label>Novo objetivo</label>
+  <input class="form-input" id="finGoalName" placeholder="Ex.: Reservar 3 meses de aluguel">
+ </div>
+ <div class="grid-2">
+  <input class="form-input" id="finGoalVal" type="number" step="100" placeholder="Valor (R$)">
+  <input class="form-input" id="finGoalMonth" type="number" min="1" max="60" placeholder="Meses">
+ </div>
+ <button class="btn btn-secondary btn-sm mt-8" onclick="addFinGoal()">+ Adicionar objetivo</button>
+</div>
+</section>
+
+<!-- LINHA DO TEMPO -->
+<section class="screen" id="screenTime">
+<div class="page-title">Minha Jornada</div>
+<div id="timelineView"></div>
+<div class="card mt-12" id="decisionPanel" style="display:none">
+ <div id="decisionContent"></div>
+</div>
+</section>
+
+<!-- PERFIL -->
+<section class="screen" id="screenProfile">
+<div class="page-title">Meu Perfil</div>
+<div class="card">
+ <div class="card-title mb-8">Resumo da Jornada</div>
+ <div id="profileStats"></div>
+</div>
+<div class="card mt-12">
+ <div class="card-title mb-8">Sobre o LifePath</div>
+ <div class="alert-box info">
+  O LifePath é seu mentor de carreira e finanças. Escolha sua trilha profissional, receba missões semanais do mentor IA, simule decisões financeiras e acompanhe sua evolução ao longo do tempo.
+ </div>
+ <ul style="font-size:13px;line-height:1.9;padding-left:16px;margin-top:8px">
+  <li>Selecione sua <strong>Trilha</strong> para receber missões personalizadas</li>
+  <li>Converse com o <strong>Mentor IA</strong> para tirar dúvidas</li>
+  <li>Simule decisões financeiras antes de tomá-las</li>
+  <li>Acompanhe sua evolução na <strong>Linha do Tempo</strong></li>
+ </ul>
+</div>
+<div class="card mt-12">
+ <button class="btn btn-ghost" id="btnExportLP" style="margin-bottom:8px">Exportar Dados 📤</button>
+ <button class="btn" style="background:#fee2e2;color:#991b1b" id="btnResetLP">Resetar Tudo 🗑️</button>
+</div>
+</section>
+</main>
+
+<nav class="nav-bottom" id="bottomNav">
+<button class="nav-item active" data-screen="Mentor"><span class="nav-icon">💬</span><span>Mentor</span></button>
+<button class="nav-item" data-screen="Trilha"><span class="nav-icon">🛤️</span><span>Trilha</span></button>
+<button class="nav-item" data-screen="Missions"><span class="nav-icon">🎯</span><span>Missões</span></button>
+<button class="nav-item" data-screen="Sim"><span class="nav-icon">🧮</span><span>Finanças</span></button>
+<button class="nav-item" data-screen="Profile"><span class="nav-icon">👤</span><span>Perfil</span></button>
+</nav>
+</div>
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="../assets/kit/kit.js" type="module"></script>
+<script type="module">
+import { fmtBRL, uid } from '../assets/kit/kit.js';
+
+const NS = 'lifepath';
+function _k(k) { return NS + ':' + k; }
+const s = {
+  get(k, f) { try { const v = localStorage.getItem(_k(k)); return v == null ? f : JSON.parse(v); } catch { return f; } },
+  set(k, v) { try { localStorage.setItem(_k(k), JSON.stringify(v)); return true; } catch { return false; } }
+};
+
+const TRACKS = [
+  {
+    id: 'vocacional', name: 'Trilha Vocacional', icon: '🔧',
+    desc: 'Técnico, cursos profissionalizantes e primeiro emprego. Ideal para quem quer entrar no mercado rápido e começar a ganhar experiência.',
+    steps: ['Estágio', 'Curso técnico', 'Primeiro emprego', 'Primeira promoção', 'Especialização'],
+    income: [1400, 2200, 2800, 3500, 4500],
+    tip: 'Ideal para quem quer results rápidos e não quer esperar 4-5 anos de universidade.'
+  },
+  {
+    id: 'academica', name: 'Trilha Acadêmica', icon: '🎓',
+    desc: 'Universidade, estágio curricular, trainee e posições de CLT. Para quem quer formação sólida e carreiras reguladas ou de grande empresa.',
+    steps: ['Enem/Vestibular', 'Universidade', 'Estágio', 'Trainee / CLT', 'Pleno/Sênior', 'Independência'],
+    income: [0, 1200, 2800, 5500, 9000, 15000],
+    tip: 'Investimento maior em tempo, mas renda potencial mais alta a longo prazo.'
+  },
+  {
+    id: 'empreendedor', name: 'Trilha Empreendedora', icon: '🚀',
+    desc: 'Freelancer, MEI, pequeno negócio. Para quem prefere autonomia e quer construir seu próprio caminho.',
+    steps: ['MEI / Freelance', 'Primeiro cliente', 'Estabilidade', 'Escala', 'Empresa formal'],
+    income: [1200, 2500, 4000, 7000, 12000],
+    tip: 'Mais liberdade, mais incerteza. Planejamento financeiro é ainda mais crítico aqui.'
+  }
+];
+
+const MISSION_TEMPLATES = {
+  vocacional: [
+    { type: 'discovery', title: 'Pesquise profissões técnicas da sua área', desc: 'Busque no Google: "cursos técnicos mais bem pagos 2026". Liste 3 que te interessam.', reward: '+50 XP' },
+    { type: 'action', title: 'Monte seu orçamento do mês', desc: 'Anote tudo que entra e sai do seu bolso este mês. Use o Simulador para te ajudar.', reward: '+80 XP' },
+    { type: 'sim', title: 'Simule um financiamento de equipamento', desc: 'Você precisa de um notebook para o curso? Simule quanto ficaria a parcela.', reward: '+60 XP' },
+    { type: 'action', title: 'Identifique um gasto que pode cortar', desc: 'Analyse seus gastos e encontre pelo menos R$ 50 que possa economizar este mês.', reward: '+40 XP' },
+    { type: 'discovery', title: 'Descubra quanto ganha um profissional iniciante na sua área', desc: 'Pesquise: "salário técnico em [sua área]" no Catho ou Google. Anote.', reward: '+30 XP' },
+    { type: 'sim', title: 'Calcule: quanto tempo para juntar a entrada do seu sonho?', desc: 'Quanto quer guardar? Quanto consegue por mês? Use o simulador para projetar.', reward: '+70 XP' },
+  ],
+  academica: [
+    { type: 'discovery', title: 'Calcule o custo real da sua universidade', desc: 'Mensalidade + transporte + material + alimentação. Quanto vai custar por mês?', reward: '+50 XP' },
+    { type: 'action', title: 'Monte um plano de estudos com folgas', desc: 'Planeje suas horas de estudo incluindo tempo livre. Equilíbrio é essencial.', reward: '+80 XP' },
+    { type: 'sim', title: 'Simule um financiamento estudantil', desc: 'Se vai pegar FIES ou financiamento, simule a parcela depois da formatura.', reward: '+60 XP' },
+    { type: 'action', title: 'Identifique 3 habilidades que o mercado pede na sua área', desc: 'Pesquise vagas de estágio na sua área. Quais habilidades aparecem sempre?', reward: '+40 XP' },
+    { type: 'sim', title: 'Quanto você precisa ganar para manter seu padrão de vida?', desc: 'Pense na vida pós-universidade. Qual renda mensal você precisa para se sustentar?', reward: '+70 XP' },
+    { type: 'discovery', title: 'Pesquise estágios e trainees para sua área', desc: 'Liste 3 programas de estágio ou trainee que você pode se candidatar agora.', reward: '+50 XP' },
+  ],
+  empreendedor: [
+    { type: 'discovery', title: 'Defina seu serviço ou produto mínimo', desc: 'O que você vai vender? Para quem? Quanto cobrar? Escreva em 5 linhas.', reward: '+50 XP' },
+    { type: 'action', title: 'Calcule quanto precisa cobrar por hora', desc: 'Custo de vida + impostos + reserva ÷ horas trabalhadas = seu valor/hora mínimo.', reward: '+80 XP' },
+    { type: 'sim', title: 'Simule seu fluxo de caixa do primeiro trimestre', desc: 'Liste receitas e despesas fixas estimadas. O resultado é positivo ou negativo?', reward: '+70 XP' },
+    { type: 'action', title: 'Abra seu MEI se ainda não abriu', desc: 'Se ainda não tem CNPJ, pesquisar como abrir. É gratuito e leva 5 minutos online.', reward: '+100 XP' },
+    { type: 'discovery', title: 'Mapeie 5 concorrentes na sua área', desc: 'Quem já faz o que você quer fazer? O que você pode fazer diferente?', reward: '+40 XP' },
+    { type: 'sim', title: 'Simule quanto guardar por mês para sua reserva de 6 meses', desc: 'Reserva de emergência = 6 × custo mensal. Quanto por mês para chegar lá em 1 ano?', reward: '+60 XP' },
+  ]
+};
+
+let state = s.get('state', {
+  track: null,
+  missions: [],
+  completedMissions: [],
+  xp: 0,
+  level: 0,
+  finGoals: [],
+  timeline: [],
+  messages: [],
+  currentMonth: 0,
+  finances: { renda: 1600, percSave: 30 }
+});
+
+let selectedTrackId = null;
+
+function toast(msg) {
+  const c = document.getElementById('toastContainer');
+  const el = document.createElement('div'); el.className = 'toast'; el.textContent = msg;
+  c.appendChild(el); setTimeout(() => el.remove(), 2800);
+}
+
+function fmt(v) { return fmtBRL(v || 0); }
+
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(x => x.classList.remove('active'));
+  document.getElementById('screen' + name).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.screen === name));
+  if (name === 'Mentor') renderChat();
+  if (name === 'Trilha') renderTracks();
+  if (name === 'Missions') renderMissions();
+  if (name === 'Sim') { updateSim(); renderFinGoals(); }
+  if (name === 'Time') renderTimeline();
+  if (name === 'Profile') renderProfile();
+}
+
+document.querySelectorAll('.nav-item').forEach(n => { n.onclick = () => showScreen(n.dataset.screen); });
+
+// ---- TRACKS ----
+function renderTracks() {
+  const el = document.getElementById('trackList');
+  el.innerHTML = TRACKS.map(t => {
+    const isSelected = state.track === t.id;
+    const isDone = t.steps.slice(0, state.level).map(s => `<span class="track-step done">${s}</span>`).join('');
+    const isFuture = t.steps.slice(state.level).map(s => `<span class="track-step">${s}</span>`).join('');
+    return `<div class="track-card ${isSelected ? 'selected' : ''}" onclick="selectTrack('${t.id}')">
+     <div class="track-icon">${t.icon}</div>
+     <div class="track-name">${t.name}</div>
+     <div class="track-desc">${t.desc}</div>
+     <div class="track-steps">${isDone}${isFuture}</div>
+    ${isSelected ? `<div style="margin-top:10px;font-size:12px;color:var(--accent);font-weight:700">✅ Trilha ativa</div>` : ''}
+    <div style="margin-top:6px;font-size:11px;color:var(--texto-suave);font-style:italic">💡 ${t.tip}</div>
+    ${state.track === t.id ? `<div class="level-badge mt-8">🏅 Nível ${state.level + 1}: ${t.steps[state.level] || 'Concluído'}</div>` : ''}
+    <div style="margin-top:6px;font-size:12px;color:var(--texto-suave)">Renda esperada nesta etapa: <strong style="color:var(--ok)">${fmt(t.income[state.level] || 0)}/mês</strong></div>
+    <button class="btn btn-sm ${isSelected ? 'btn-ghost' : 'btn-primary'} mt-8" style="width:100%" onclick="event.stopPropagation();${isSelected ? '' : `selectTrack('${t.id}')`}">${isSelected ? 'Trilha ativa ✓' : 'Selecionar esta trilha'}</button>
+    ${state.track === t.id ? `<button class="btn btn-sm mt-8" style="width:100%;background:var(--accent2);color:#fff" onclick="advanceLevel()">Avançar para próxima etapa ➤</button>` : ''}
+    </div>`;
+  }).join('');
+}
+
+window.selectTrack = function(id) {
+  if (state.track && state.track !== id) {
+    if (!confirm('Mudar de trilha vai reiniciar seu progresso. Continuar?')) return;
+    state.track = id; state.level = 0; state.xp = 0;
+    state.missions = []; state.completedMissions = [];
+  }
+  state.track = id;
+  s.set('state', state);
+  renderTracks();
+  generateMissions();
+  addMsg('mentor', getTrackMentorIntro(id));
+};
+
+window.confirmTrack = function() {
+  toast('Trilha confirmada! Missões geradas. Vamos começar!');
+  showScreen('Missions');
+};
+
+function getTrackMentorIntro(trackId) {
+  const t = TRACKS.find(x => x.id === trackId);
+  if (trackId === 'vocacional') return `Ótima escolha! A Trilha Vocacional é direta e prática. Vou te ajudar a entrar no mercado, crescer e aprender a cuidar do seu dinheiro desde o primeiro salário. Vamos começar com sua primeira missão?`;
+  if (trackId === 'academica') return `Boa! A vida universitária tem seus próprios desafios financeiros: mensalidade, material, festas. Vou te ajudar a sobreviver financeiramente na graduação e chegar no mercado com um plano. Vamos lá?`;
+  return `Excelente! Ser Empreendedor é um caminho desafiador mas libertador. Vou te ajudar a entender suas finanças como autônomo, calcular quanto cobrar e construir uma reserva. Vamos começar!`;
+}
+
+window.advanceLevel = function() {
+  const t = TRACKS.find(x => x.id === state.track);
+  if (!t || state.level >= t.steps.length - 1) { toast('Você já completou sua trilha! Parabéns!'); return; }
+  state.level++;
+  const newIncome = t.income[state.level];
+  state.finances.renda = newIncome;
+  s.set('state', state);
+  addMsg('mentor', `🎉 Parabéns! Você avançou para o nível ${state.level + 1}: **${t.steps[state.level]}**! \n\nSua renda média esperada sobe para ${fmt(newIncome)}/mês. Com essa renda, é hora de replanejar suas finanças. Quer que eu te ajude com isso?`);
+  generateMissions();
+  document.getElementById('levelBadge').textContent = `🎯 ${t.steps[state.level]}`;
+  renderTracks();
+  toast(`Avançou para ${t.steps[state.level]}!`);
+};
+
+// ---- MISSIONS ----
+function generateMissions() {
+  if (!state.track) return;
+  const templates = MISSION_TEMPLATES[state.track] || [];
+  state.missions = templates.map((m, i) => ({ id: uid(), ...m, done: false, month: state.currentMonth }));
+  s.set('state', state);
+}
+
+function renderMissions() {
+  if (!state.track) {
+    document.getElementById('missionsList').innerHTML = '<div class="card"><div class="text-muted text-center" style="padding:24px">Escolha primeiro sua <strong>Trilha</strong> para receber missões personalizadas!</div></div>';
+    return;
+  }
+  const done = state.completedMissions.length;
+  const total = state.missions.length;
+  const pct = total ? Math.round(done / total * 100) : 0;
+  document.getElementById('progLabel').textContent = `${done}/${total} missões`;
+  document.getElementById('progFill').style.width = pct + '%';
+  const el = document.getElementById('missionsList');
+  el.innerHTML = state.missions.map(m => {
+    const isDone = state.completedMissions.includes(m.id);
+    return `<div class="mission-card ${isDone ? 'done' : ''}" style="${isDone ? 'opacity:.6;border-left-color:var(--ok)' : ''}">
+     <div class="m-header">
+      <span class="m-type ${m.type}">${m.type === 'discovery' ? '🔍 Descobrir' : m.type === 'action' ? '✅ Ação' : '🧮 Simular'}</span>
+      ${isDone ? '<span style="font-size:12px;color:var(--ok);font-weight:700">✅ Feita</span>' : ''}
+     </div>
+     <div class="m-title">${m.title}</div>
+     <div class="m-desc">${m.desc}</div>
+     <div style="display:flex;justify-content:space-between;align-items:center">
+      <span class="m-reward">${m.reward}</span>
+      ${!isDone ? `<button class="btn btn-sm" style="background:var(--accent);color:#fff;width:auto;padding:6px 12px" onclick="completeMission('${m.id}')">Marcar como feita</button>` : ''}
+     </div>
+    </div>`;
+  }).join('');
+}
+
+window.completeMission = function(id) {
+  if (state.completedMissions.includes(id)) return;
+  const m = state.missions.find(x => x.id === id);
+  const xpGain = m ? parseInt(m.reward.match(/\d+/)) || 30 : 30;
+  state.completedMissions.push(id);
+  state.xp += xpGain;
+  s.set('state', state);
+  const xpForNext = (state.level + 1) * 200;
+  if (state.xp >= xpForNext && state.level < 5) {
+    addMsg('mentor', `🌟 Incrível! Você ganhou ${xpGain} XP e já tem ${state.xp} XP no total. Está pronto para avançar de nível! Vá até a Trilha e clique em "Avançar para próxima etapa".`);
+  } else {
+    addMsg('mentor', `Boa! Missão concluída! +${xpGain} XP. Você tem ${state.xp} XP. Faltam ${Math.max(0, xpForNext - state.xp)} XP para o próximo nível.`);
+  }
+  toast(`+${xpGain} XP! Total: ${state.xp}`);
+  renderMissions();
+};
+
+// ---- MENTOR CHAT ----
+function initChat() {
+  if (!state.messages.length) {
+    addMsg('mentor', 'Olá! 👋 Sou seu mentor de carreira e finanças do LifePath. Estou aqui para te ajudar a trilhar seu caminho profissional e tomar melhores decisões financeiras.\n\nAntes de tudo: você já sabe qual trilha profissional quer seguir? 🤔\n\n1️⃣ **Vocacional** — técnico, curso profissionalizante, entrar no mercado rápido\n2️⃣ **Acadêmica** — universidade, trainee, CLT\n3️⃣ **Empreendedora** — MEI, freelance, negócio próprio\n\nMe conta o que você está pensando!');
+  }
+  renderChat();
+}
+
+function addMsg(type, text) {
+  state.messages.push({ type, text, time: Date.now() });
+  s.set('state', state);
+  renderChat();
+  if (type === 'user') respondToUser(text);
+}
+
+function renderChat() {
+  const el = document.getElementById('chatMessages');
+  el.innerHTML = state.messages.map(m => {
+    const icon = m.type === 'mentor' ? '🤖' : '👤';
+    return `<div class="msg-wrap ${m.type}">
+     ${m.type === 'mentor' ? `<div class="msg-avatar">🤖</div>` : ''}
+     <div class="msg-bubble">${m.text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</div>
+     ${m.type === 'user' ? `<div class="msg-avatar">👤</div>` : ''}
+    </div>
+    <div class="msg-time">${new Date(m.time).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}</div>`;
+  }).join('');
+  el.scrollTop = el.scrollHeight;
+}
+
+function respondToUser(text) {
+  const t = text.toLowerCase();
+  let response = '';
+  if (!state.track) {
+    if (t.includes('1') || t.includes('vocacional') || t.includes('técnico') || t.includes('profissionalizante')) {
+      response = 'Boa! A Trilha Vocacional é excelente para quem quer resultados rápidos. Vá até a aba **Trilha** e selecione "Trilha Vocacional" para começar. Vou gerar missões personalizadas para você!';
+    } else if (t.includes('2') || t.includes('acadêmica') || t.includes('universidade') || t.includes('trainee') || t.includes('clt')) {
+      response = 'Ótima escolha! A vida universitária tem seus próprios desafios financeiros. Vá até a aba **Trilha** e selecione "Trilha Acadêmica". Vou te ajudar a sobreviver financeiramente na graduação!';
+    } else if (t.includes('3') || t.includes('empreendedor') || t.includes('mei') || t.includes('freelance') || t.includes('negócio')) {
+      response = 'Empreendedor! Coragem é o que não falta. Vá até a aba **Trilha** e selecione "Trilha Empreendedora". Vamos montar um plano financeiro para o seu negócio!';
+    } else {
+      response = 'Entendi! Vá até a aba **Trilha** para escolher seu caminho. As três opções são:\n\n1️⃣ **Vocacional** — entre rápido no mercado\n2️⃣ **Acadêmica** — Construa uma carreira com diploma\n3️⃣ **Empreendedora** — autonomia e seu próprio negócio\n\nQual te faz mais sentido agora?';
+    }
+  } else {
+    const track = TRACKS.find(x => x.id === state.track);
+    if (t.includes('quanto') && (t.includes('ganhar') || t.includes('renda') || t.includes('salário'))) {
+      response = `Na sua etapa atual (${track.steps[state.level]}), a renda média esperada é cerca de **${fmt(track.income[state.level])}/mês**. Claro que isso varia muito, mas já te dá um norte. Quer ajuda para montar um orçamento com essa renda?`;
+    } else if (t.includes('dica') || t.includes('conselho') || t.includes('ajuda')) {
+      const conselhos = [
+        `Aqui vai um princípio fundamental: **pague-se primeiro**. Assim que receber, separe pelo menos 10% para reserva antes de pagar qualquer conta.`,
+        `Você sabia que o maior inimigo do jovem que está começando não é o gasto grande, mas o **gasto pequeno e frequente**? Delivery, assinaturas, compras por impulso. Tente anotar tudo por uma semana.`,
+        `Na sua etapa (${track.steps[state.level]}), o mais importante não é investir — é **construir o hábito de poupar** e criar uma reserva de emergência de 3 meses de despesas.`,
+        `Uma decisão financeira inteligente que muitos jovens ignoram: **qualificar-se vale mais que economizar**. Às vezes gastar R$ 200 num curso que te dê R$ 500 a mais por mês é o melhor investimento que existe.`
+      ];
+      response = conselhos[Math.floor(Math.random() * conselhos.length)];
+    } else if (t.includes('missão') || t.includes('o que preciso fazer')) {
+      response = `Você tem ${state.missions.length} missões pendentes na aba **Missões**. Cada uma te dá XP e te aproxima do próximo nível da sua trilha. Quer que eu explique alguma missão em particular?`;
+    } else {
+      response = `Estou aqui para te ajudar! Algumas coisas que posso fazer:\n\n📊 **Analisar sua renda** — Me diga quanto você ganha e eu ajudo a organizar\n🎯 **Explicar suas missões** — Vá em Missões para ver o que fazer\n🧮 **Simular decisões** — Use o Simulador Financeiro\n🛤️ **Mudar de trilha** — Se sua situação mudou, podemos ajustar\n\nO que quer fazer agora?`;
+    }
+  }
+  setTimeout(() => addMsg('mentor', response), 600);
+}
+
+window.sendMsg = function() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (!text) return;
+  addMsg('user', text);
+  input.value = '';
+};
+
+document.getElementById('chatInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMsg(); }
+});
+
+// ---- FINANCES ----
+function updateSim() {
+  const renda = parseFloat(document.getElementById('simRenda').value) || 0;
+  const perc = parseFloat(document.getElementById('slPerc').value) || 0;
+  document.getElementById('lblPercFin').textContent = perc + '% guardado';
+  const gastos = Math.round(renda * (1 - perc / 100));
+  const poupe = Math.round(renda * perc / 100);
+  const livre = Math.max(0, renda - gastos);
+  state.finances = { renda, percSave: perc };
+  s.set('state', state);
+  document.getElementById('finRenda').textContent = fmt(renda);
+  document.getElementById('finGastos').textContent = fmt(gastos);
+  document.getElementById('finPoup').textContent = fmt(poupe);
+  document.getElementById('finLivre').textContent = fmt(livre);
+  const bar = document.getElementById('finBar');
+  bar.style.width = perc + '%';
+  bar.className = 'fill ' + (perc >= 20 ? 'good' : perc >= 10 ? 'warn' : 'bad');
+  const conselhos = [
+    'Reserva de emergência primeiro: 3 meses de despesas. Depois pense em investimentos.',
+    'Tente guardar pelo menos 20% da renda. Pequenos ajustes hoje significam grandes diferenças no futuro.',
+    'Antes de qualquer gasto grande, durma uma noite. Se ainda quiser no dia seguinte, talvez valha a pena.',
+    'Automitize a poupança: configure transferência automática no seu banco no dia do salário.'
+  ];
+  document.getElementById('finConselho').textContent = '💡 ' + conselhos[Math.floor(perc / 10) % conselhos.length];
+}
+
+function addFinGoal() {
+  const name = document.getElementById('finGoalName').value.trim();
+  const val = parseFloat(document.getElementById('finGoalVal').value) || 0;
+  const months = parseInt(document.getElementById('finGoalMonth').value) || 1;
+  if (!name || !val) { toast('Preencha nome e valor!'); return; }
+  state.finGoals.push({ id: uid(), name, target: val, months, done: false });
+  s.set('state', state);
+  document.getElementById('finGoalName').value = '';
+  document.getElementById('finGoalVal').value = '';
+  document.getElementById('finGoalMonth').value = '';
+  toast('Objetivo adicionado!');
+  renderFinGoals();
+}
+
+function renderFinGoals() {
+  const el = document.getElementById('finGoals');
+  if (!state.finGoals.length) {
+    el.innerHTML = '<div class="text-muted text-center" style="padding:12px;font-size:13px">Nenhum objetivo. Adicione abaixo!</div>';
+    return;
+  }
+  const monthly = state.finances.renda * state.finances.percSave / 100;
+  el.innerHTML = state.finGoals.map(g => {
+    const monthlyNeeded = g.target / g.months;
+    const doable = monthlyNeeded <= monthly;
+    const pct = Math.min(100, Math.round((monthly * g.months) / g.target * 100));
+    return `<div class="fin-card" style="margin-bottom:8px">
+     <div class="flex-between mb-4">
+      <strong style="font-size:14px">${g.name}</strong>
+      <span class="badge-pill" style="background:${doable ? '#dcfce7' : '#fee2e2'};color:${doable ? '#166534' : '#991b1b'};font-size:10px">${doable ? '✅ Possível' : '⚠️ Ajustar'}</span>
+     </div>
+     <div style="font-size:13px;margin-bottom:4px">Meta: ${fmt(g.target)} em ${g.months} meses → <strong>${fmt(monthlyNeeded)}/mês</strong></div>
+     <div class="fin-meter"><div class="fill ${doable ? 'good' : 'bad'}" style="width:${pct}%"></div></div>
+     <div style="font-size:11px;color:var(--texto-suave);margin-top:3px">${pct}% do caminho</div>
+    <button class="btn btn-sm mt-4" style="width:100%;background:#fef3c7;color:#92400e" onclick="remFinGoal('${g.id}')">Remover</button>
+    </div>`;
+  }).join('');
+}
+
+window.remFinGoal = function(id) {
+  state.finGoals = state.finGoals.filter(g => g.id !== id);
+  s.set('state', state);
+  renderFinGoals();
+};
+
+// ---- TIMELINE ----
+function renderTimeline() {
+  if (!state.track) {
+    document.getElementById('timelineView').innerHTML = '<div class="card"><div class="text-muted text-center" style="padding:24px">Escolha sua Trilha primeiro!</div></div>';
+    return;
+  }
+  const t = TRACKS.find(x => x.id === state.track);
+  const el = document.getElementById('timelineView');
+  el.innerHTML = `<div class="card mb-12"><div class="card-title">Trilha: ${t.name}</div><div class="card-sub">Nível atual: ${state.level + 1} — ${t.steps[state.level]}</div></div>` +
+  `<div class="tl">` +
+  t.steps.map((step, i) => {
+    const isDone = i < state.level;
+    const isActive = i === state.level;
+    const income = t.income[i];
+    const tag = isDone ? 'done' : isActive ? 'now' : 'future';
+    const tagText = isDone ? '✅ Concluído' : isActive ? '🔄 Atual' : '📅 Futuro';
+    return `<div class="tl-item ${isDone ? 'done' : isActive ? 'active' : ''}">
+     <div class="tl-title">${step}</div>
+     <div class="tl-sub">Renda esperada: ${fmt(income)}/mês</div>
+     <div><span class="tl-tag ${tag}">${tagText}</span></div>
+     ${isActive ? `<div class="decision-card mt-8">
+      <div class="d-q">💬 O mentor diz:</div>
+      <div style="font-size:13px;opacity:.9;line-height:1.5">${getMentorForStep(state.track, i)}</div>
+     </div>` : ''}
+     </div>`;
+  }).join('') + '</div>';
+}
+
+function getMentorForStep(track, step) {
+  const msgs = {
+    vocacional: [
+      'Neste estágio, o foco é construir o hábito de poupar. Mesmo com pouco, o importante é começar. Reserve pelo menos 10% de tudo que receber.',
+      'Você já tem renda! Agora a pergunta é: quanto dessa renda vai para o seu futuro? Tente poupar 20% e vivre com os 80% restantes.',
+      'Com a primeira promoção, muitas armadilhas aparecem: carro novo, celular melhor. Antes de qualquer gasto novo, construa sua reserva de 3 meses.',
+      'Especialização é um investimento. Mas cuidado: nem todo curso se paga. Pesquise o retorno antes de investir.',
+      'Você está consolidado! Hora de pensar em diversificar renda: reservas, investimentos, uma renda extra.'
+    ],
+    academica: [
+      'Enquanto estuda, seu maior investimento é o tempo. Use-o bem: estágios e projetos valem mais que notas.',
+      'Estágio é renda E experiência. Além do salário, você está construindo currículo. Aproveite cada oportunidade.',
+      'Trainee ou primeiro emprego: esta é a etapa mais crítica para construir hábitos financeiros. Não adie.',
+      'CLT traz benefícios: FGTS, INSS, férias. Mas também novas tentações. Mantenha o padrão de vida abaixo do salário.',
+      'Pleno e Sênior: chegou a hora de pensar em diversificação. Renda extra, investimentos, reserva.',
+      'Independence means having multiple income streams and zero consumer debt.'
+    ],
+    empreendedor: [
+      'MEI é só o começo. Seu foco agora é conseguir os primeiros clientes reais e aprender a cobrar certo.',
+      'Estabilidade vem de clientes recorrentes. Foque em qualidade, não quantidade.',
+      'Escala não significa trabalhar mais. Significa sistemizar o que funciona e delegar.',
+      'Empresa formal traz obrigações, mas também oportunidades. Planeje antes de expandir.',
+      'Parabéns por chegar até aqui! Você construiu algo do zero.'
+    ]
+  };
+  const arr = msgs[track] || msgs.vocacional;
+  return arr[step] || 'Continue focando nos seus objetivos!';
+}
+
+// ---- PROFILE ----
+function renderProfile() {
+  const t = state.track ? TRACKS.find(x => x.id === state.track) : null;
+  const xpForNext = t ? (state.level + 1) * 200 : 0;
+  document.getElementById('profileStats').innerHTML = `
+   <div class="grid-2 mb-12">
+    <div class="kpi-big"><div class="num" style="font-size:28px">${state.xp}</div><div class="label">XP Total</div></div>
+    <div class="kpi-big"><div class="num" style="font-size:28px">${state.completedMissions.length}</div><div class="label">Missões</div></div>
+   </div>
+   ${t ? `
+   <div class="fin-row"><span class="fin-label">Trilha</span><span class="fin-val">${t.icon} ${t.name}</span></div>
+   <div class="fin-row"><span class="fin-label">Etapa atual</span><span class="fin-val">${t.steps[state.level]}</span></div>
+   <div class="fin-row"><span class="fin-label">Renda esperada</span><span class="fin-val pos">${fmt(t.income[state.level])}/mês</span></div>
+   <div class="fin-row"><span class="fin-label">Progresso da trilha</span><span class="fin-val">${state.level + 1}/${t.steps.length}</span></div>
+   <div class="fin-meter mt-8"><div class="fill good" style="width:${(state.level / (t.steps.length - 1)) * 100}%"></div></div>
+   ` : '<div class="text-muted text-center" style="padding:12px">Selecione uma trilha na aba Trilha</div>'}
+   <div class="fin-row mt-12"><span class="fin-label">Objetivos financeiros</span><span class="fin-val">${state.finGoals.length}</span></div>
+  `;
+}
+
+// ---- INIT ----
+initChat();
+generateMissions();
+
+document.getElementById('btnExportLP').onclick = () => {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'lifepath_dados.json'; a.click();
+};
+document.getElementById('btnResetLP').onclick = () => {
+  if (confirm('Apagar TODOS os dados do LifePath?')) {
+    localStorage.removeItem('lifepath:state');
+    location.reload();
+  }
+};
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+</script>
+</body>
+</html>

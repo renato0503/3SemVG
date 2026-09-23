@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0e7490">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Dinheiro na Mão</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="../assets/identidade/temas.css">
+<link rel="stylesheet" href="../assets/kit/kit.css">
+<style>
+:root{
+  --accent:#0e7490;--accent-dark:#083344;--accent-soft:#cffafe;
+  --accent2:#22d3ee;--tinta:#083344;--tinta2:#0e4a6b;
+  --fonte:'Segoe UI',Arial,sans-serif;--fonte-titulo:'Segoe UI Semibold',Arial;
+  --texto:#0f172a;--texto-suave:#64748b;--linha:#e2e8f0;--fundo:#f0fdfc;
+  --card:#ffffff;--ok:#16a34a;--alerta:#dc2626;--atencao:#d97706;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:var(--fonte);background:var(--fundo);color:var(--texto);font-size:16px;overflow-x:hidden}
+.app{max-width:480px;margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;padding-bottom:80px}
+header.top{background:linear-gradient(135deg,var(--tinta) 0%,var(--tinta2) 100%);color:#fff;padding:14px 16px 40px;position:sticky;top:0;z-index:20}
+header.top .brand{display:flex;align-items:center;justify-content:space-between}
+header.top h1{font-size:17px;font-weight:700}
+header.top .sub{font-size:11px;opacity:.75;margin-top:2px}
+.badge-pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:11px;padding:3px 8px;border-radius:20px}
+main{flex:1;padding:0 16px}
+.screen{display:none;flex-direction:column;animation:fade .2s ease}
+.screen.active{display:flex}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.page-title{font-size:13px;font-weight:700;color:var(--texto-suave);text-transform:uppercase;letter-spacing:.07em;padding:16px 0 6px}
+.card{background:var(--card);border-radius:16px;padding:16px;box-shadow:0 1px 4px rgba(14,116,144,.08);margin-bottom:12px}
+.card-title{font-size:16px;font-weight:700;margin-bottom:6px;color:var(--tinta)}
+.card-sub{font-size:13px;color:var(--texto-suave)}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:12px;padding:14px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;transition:transform .05s;padding-top:calc(14px + env(safe-area-inset-top))}
+.btn:active{transform:scale(.975)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-ghost{background:#fff;color:var(--accent);border:1.5px solid var(--accent)}
+.btn-success{background:var(--ok);color:#fff}
+.btn-danger{background:#fff;color:var(--alerta);border:1.5px solid #fca5a5}
+.btn-sm{padding:10px 14px;font-size:13px}
+.row{display:flex;gap:10px}
+.row>*{flex:1}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.text-center{text-align:center}
+.text-muted{color:var(--texto-suave);font-size:13px}
+.mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mb-8{margin-bottom:8px}.mb-12{margin-bottom:12px}
+.flex-between{display:flex;align-items:center;justify-content:space-between}
+.kpi-big{text-align:center;padding:16px 0}
+.kpi-big .num{font-size:40px;font-weight:900;color:var(--accent);line-height:1}
+.kpi-big .label{font-size:12px;color:var(--texto-suave);margin-top:4px}
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.kpi-item{background:#fff;border-radius:12px;padding:14px;text-align:center;border:1.5px solid var(--linha)}
+.kpi-item .val{font-size:22px;font-weight:900;color:var(--accent)}
+.kpi-item .lbl{font-size:11px;color:var(--texto-suave);margin-top:2px}
+.input-group{margin-bottom:12px}
+.input-group label{display:block;font-size:12px;font-weight:600;color:var(--texto-suave);margin-bottom:4px;letter-spacing:.04em}
+.form-input,.form-select,.form-textarea{width:100%;padding:12px 14px;border:1.5px solid var(--linha);border-radius:10px;font-size:15px;font-family:inherit;background:#fff;color:var(--texto);transition:border-color .15s}
+.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--accent)}
+.form-input.error,.form-select.error{border-color:var(--alerta)}
+select.form-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.empty-state{text-align:center;padding:32px 20px;color:var(--texto-suave)}
+.nav-bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--linha);display:flex;z-index:30;padding-bottom:env(safe-area-inset-bottom)}
+.nav-bottom .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px;gap:3px;cursor:pointer;color:var(--texto-suave);transition:color .15s;border:none;background:none;font-size:11px;font-family:inherit}
+.nav-bottom .nav-item.active{color:var(--accent)}
+.nav-bottom .nav-icon{font-size:20px}
+.badge{background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px}
+.alert-box{padding:12px 14px;border-radius:10px;font-size:13px;margin-bottom:10px}
+.alert-box.info{background:#eff6ff;color:#1d4ed8}
+.alert-box.warn{background:#fffbeb;color:#92400e}
+.alert-box.ok{background:#f0fdf4;color:#166534}
+.alert-box.danger{background:#fef2f2;color:#991b1b}
+.item-conta{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--linha);cursor:pointer}
+.item-conta:last-child{border-bottom:none}
+.item-conta .icon-cat{width:40px;height:40px;border-radius:10px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.item-conta .info{flex:1}
+.item-conta .nome{font-size:14px;font-weight:600}
+.item-conta .meta{font-size:12px;color:var(--texto-suave)}
+.item-conta .valor{font-size:15px;font-weight:700}
+.item-conta .valor.pago{color:var(--ok)}
+.item-conta .valor.vencido{color:var(--alerta)}
+.item-conta .valor.pendente{color:var(--atencao)}
+.badge-status{padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
+.badge-status.pago{background:#dcfce7;color:#166534}
+.badge-status.vencido{background:#fef2f2;color:#991b1b}
+.badge-status.pendente{background:#fffbeb;color:#92400e}
+.cal-day{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;cursor:pointer;border:none;background:none}
+.cal-day.today{background:var(--accent);color:#fff;font-weight:700}
+.cal-day.has-bill{background:var(--accent-soft);color:var(--accent)}
+.cal-day.selected{background:var(--accent);color:#fff}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;margin-bottom:4px}
+.cal-grid .dow{font-size:11px;color:var(--texto-suave);font-weight:600;padding:4px 0}
+.calendar{overflow-x:auto}
+.toast-container{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);z-index:60;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.toast{background:var(--tinta);color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;animation:toastIn .25s ease}
+@keyframes toastIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.slider-wrap{margin-bottom:12px}
+.slider-wrap label{display:flex;justify-content:space-between;font-size:12px;color:var(--texto-suave);margin-bottom:6px}
+.slider-wrap input[type=range]{width:100%;accent-color:var(--accent)}
+.sim-result{background:var(--accent-soft);border-radius:10px;padding:14px;text-align:center;margin-top:12px}
+.sim-result .val{font-size:28px;font-weight:900;color:var(--accent)}
+.sim-result .lbl{font-size:12px;color:var(--texto-suave)}
+</style>
+</head>
+<body class="tema-g1">
+<div class="app">
+<header class="top">
+<div class="brand">
+ <div>
+  <h1>Dinheiro na Mão</h1>
+  <div class="sub" id="mesAtual">Setembro 2026</div>
+ </div>
+ <span class="badge-pill" id="saldoPill">R$ 0</span>
+</div>
+</header>
+
+<main>
+<!-- DASHBOARD -->
+<section class="screen active" id="screenHome">
+<div class="page-title">Resumo do Mês</div>
+<div class="kpi-grid">
+ <div class="kpi-item">
+  <div class="val" id="totalReceitas" style="color:var(--ok)">R$ 0</div>
+  <div class="lbl">Receitas</div>
+ </div>
+ <div class="kpi-item">
+  <div class="val" id="totalDespesas" style="color:var(--alerta)">R$ 0</div>
+  <div class="lbl">Despesas</div>
+ </div>
+</div>
+<div class="card">
+ <div class="flex-between mb-8">
+  <div class="card-title" style="margin:0">Contas</div>
+  <span class="badge" id="contasCount">0 contas</span>
+ </div>
+ <div id="contasList"></div>
+ <button class="btn btn-sm btn-ghost mt-8" onclick="showScreen('AddConta')">+ Nova Conta</button>
+</div>
+<div class="card mt-12">
+ <div class="card-title mb-8">Calendário de Vencimentos</div>
+ <div id="miniCal"></div>
+</div>
+<div class="card mt-12">
+ <div class="card-title mb-8">Metas do Mês</div>
+ <div id="metasList"></div>
+</div>
+</section>
+
+<!-- ADICIONAR CONTA -->
+<section class="screen" id="screenAddConta">
+<div class="page-title">Nova Conta</div>
+<div class="card">
+ <div class="input-group">
+  <label>DESCRIÇÃO</label>
+  <input class="form-input" id="inputDesc" placeholder="Ex.: Aluguel, Água, Mercado" maxlength="50">
+ </div>
+ <div class="input-group">
+  <label>TIPO</label>
+  <select class="form-input" id="inputTipo" onchange="toggleReceita()">
+   <option value="despesa">🟢 Despesa (gasto)</option>
+   <option value="receita">🔵 Receita (entrada)</option>
+  </select>
+ </div>
+ <div class="input-group">
+  <label>VALOR (R$)</label>
+  <input class="form-input" id="inputValor" type="number" placeholder="0,00" step="0.01" min="0">
+ </div>
+ <div class="input-group">
+  <label>CATEGORIA</label>
+  <select class="form-input" id="inputCat">
+   <option value="fixo">🏠 Fixo (aluguel, salary)</option>
+   <option value="variavel">🛒 Variável (mercado, gasto)</option>
+   <option value="contas">💧 Contas (água, luz, internet)</option>
+   <option value="financiamento">🏦 Financiamento / Empréstimo</option>
+   <option value="cartao">💳 Cartão de Crédito</option>
+   <option value="outro">📦 Outro</option>
+  </select>
+ </div>
+ <div class="input-group">
+  <label>DATA DE VENCIMENTO</label>
+  <input class="form-input" id="inputVenc" type="date">
+ </div>
+ <div class="input-group">
+  <label>STATUS</label>
+  <select class="form-input" id="inputStatus">
+   <option value="pendente">⏳ Pendente</option>
+   <option value="pago">✅ Pago</option>
+   <option value="vencido">⚠️ Vencido</option>
+  </select>
+ </div>
+ <button class="btn btn-primary" id="btnAddConta">Salvar Conta</button>
+ <button class="btn btn-ghost mt-8" onclick="showScreen('Home')">Cancelar</button>
+</div>
+</section>
+
+<!-- LISTA DE CONTAS -->
+<section class="screen" id="screenContas">
+<div class="page-title">Todas as Contas</div>
+<div class="flex-between mb-12">
+ <div class="input-group" style="margin:0;flex:1">
+  <select class="form-input" id="filterStatus" onchange="renderContas()">
+   <option value="todas">Todas</option>
+   <option value="pendente">Pendentes</option>
+   <option value="pago">Pagas</option>
+   <option value="vencido">Vencidas</option>
+  </select>
+ </div>
+</div>
+<div class="card" id="allContasList"></div>
+</section>
+
+<!-- SIMULADOR -->
+<section class="screen" id="screenSimulador">
+<div class="page-title">Simulador de Pagamento</div>
+<div class="card">
+ <div class="card-title">Monte seu cenário</div>
+ <div class="slider-wrap">
+  <label><span>Valor da dívida</span><span id="lblValDeu">R$ 1.000</span></label>
+  <input type="range" id="slValDeu" min="100" max="50000" value="1000" step="100" oninput="updateSim()">
+ </div>
+ <div class="slider-wrap">
+  <label><span>Taxa de juros (% a.m.)</span><span id="lblJuros">5%</span></label>
+  <input type="range" id="slJuros" min="0" max="20" value="5" step="0.5" oninput="updateSim()">
+ </div>
+ <div class="slider-wrap">
+  <label><span>Prazo (meses)</span><span id="lblPrazo">6</span></label>
+  <input type="range" id="slPrazo" min="1" max="120" value="6" step="1" oninput="updateSim()">
+ </div>
+ <div class="grid-2 mt-12">
+  <div>
+   <div class="card-title" style="font-size:13px">Parcela Mensal (Price)</div>
+   <div class="sim-result">
+    <div class="val" id="simPrice" style="font-size:20px">—</div>
+    <div class="lbl">por mês</div>
+   </div>
+  </div>
+  <div>
+   <div class="card-title" style="font-size:13px">Total a Pagar</div>
+   <div class="sim-result">
+    <div class="val" id="simTotalPrice" style="font-size:20px">—</div>
+    <div class="lbl">em <span id="simPrazoText">6</span>x</div>
+   </div>
+  </div>
+ </div>
+ <div class="grid-2 mt-8">
+  <div>
+   <div class="card-title" style="font-size:13px">Parcela Mensal (SAC)</div>
+   <div class="sim-result">
+    <div class="val" id="simSAC" style="font-size:20px">—</div>
+    <div class="lbl">1ª parcela</div>
+   </div>
+  </div>
+  <div>
+   <div class="card-title" style="font-size:13px">Total a Pagar (SAC)</div>
+   <div class="sim-result">
+    <div class="val" id="simTotalSAC" style="font-size:20px">—</div>
+    <div class="lbl">total</div>
+   </div>
+  </div>
+ </div>
+ <div class="alert-box warn mt-12" style="font-size:12px">
+  <strong>Simulação.</strong> Valores aproximados. Procure o agente financeiro do bairro ou um banco para oferta real.
+ </div>
+</div>
+</section>
+
+<!-- METAS -->
+<section class="screen" id="screenMetas">
+<div class="page-title">Metas Financeiras</div>
+<div id="metasFullList"></div>
+<div class="card mt-12">
+ <div class="card-title">Nova Meta</div>
+ <div class="input-group">
+  <label>DESCRIÇÃO</label>
+  <input class="form-input" id="inputMetaDesc" placeholder="Ex.: Reserva de R$ 500" maxlength="50">
+ </div>
+  <div class="input-group">
+  <label>VALOR DA META (R$)</label>
+  <input class="form-input" id="inputMetaVal" type="number" step="0.01" min="0" placeholder="0,00">
+ </div>
+ <button class="btn btn-primary" id="btnAddMeta">Criar Meta</button>
+</div>
+</section>
+
+<!-- PERFIL -->
+<section class="screen" id="screenProfile">
+<div class="page-title">Meu Perfil</div>
+<div class="card">
+ <div class="card-title">Agente Financeiro do Bairro</div>
+ <div class="alert-box ok mb-8">
+  <strong>O Agente Financeiro do Bairro é a pessoa que te ajuda a organizar suas finanças.</strong> Ele não pega senha, não movimenta dinheiro e não promete aprovação de crédito.
+ </div>
+ <div class="grid-3">
+  <div class="text-center">
+   <div style="font-size:28px">✓</div>
+   <div style="font-size:12px;color:var(--texto-suave)">Ensina a consultar saldo</div>
+  </div>
+  <div class="text-center">
+   <div style="font-size:28px">✓</div>
+   <div style="font-size:12px;color:var(--texto-suave)">Ajuda a pagar contas</div>
+  </div>
+  <div class="text-center">
+   <div style="font-size:28px">✓</div>
+   <div style="font-size:12px;color:var(--texto-suave)">Monta um plano simples</div>
+  </div>
+  <div class="text-center">
+   <div style="font-size:28px">✗</div>
+   <div style="font-size:12px;color:var(--texto-suave)">Não pega senha</div>
+  </div>
+  <div class="text-center">
+   <div style="font-size:28px">✗</div>
+   <div style="font-size:12px;color:var(--texto-suave)">Não movimenta dinheiro</div>
+  </div>
+  <div class="text-center">
+   <div style="font-size:28px">✗</div>
+   <div style="font-size:12px;color:var(--texto-suave)">Não promete crédito</div>
+  </div>
+ </div>
+</div>
+<div class="card mt-12">
+ <div class="card-title">Dicas Rápidas</div>
+ <div class="alert-box info mb-8">
+  <strong>1.</strong> Registre todas as suas despesas — até as pequenas.<br>
+  <strong>2.</strong> Separe o que é <em>fixo</em> e o que é <em>variável</em>.<br>
+  <strong>3.</strong> Anote a data de vencimento de cada conta.<br>
+  <strong>4.</strong> Quando puder, pague a conta <em>antes</em> do vencimento para evitar juros.
+ </div>
+</div>
+<div class="card mt-12">
+ <button class="btn btn-ghost" id="btnExportDinheiro" style="margin-bottom:8px">Exportar Dados 📤</button>
+ <button class="btn btn-danger" id="btnResetDinheiro">Resetar Tudo 🗑️</button>
+</div>
+</section>
+</main>
+
+<nav class="nav-bottom" id="bottomNav">
+<button class="nav-item active" data-screen="Home"><span class="nav-icon">🏠</span><span>Home</span></button>
+<button class="nav-item" data-screen="Contas"><span class="nav-icon">📋</span><span>Contas</span></button>
+<button class="nav-item" data-screen="Simulador"><span class="nav-icon">🔢</span><span>Simular</span></button>
+<button class="nav-item" data-screen="Metas"><span class="nav-icon">🎯</span><span>Metas</span></button>
+<button class="nav-item" data-screen="Profile"><span class="nav-icon">⚙️</span><span>Perfil</span></button>
+</nav>
+</div>
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="../assets/kit/kit.js" type="module"></script>
+<script type="module">
+import { fmtBRL, uid } from '../assets/kit/kit.js';
+
+const NS = 'dnm';
+function _k(k) { return NS + ':' + k; }
+const s = {
+  get(k, f) { try { const v = localStorage.getItem(_k(k)); return v == null ? f : JSON.parse(v); } catch { return f; } },
+  set(k, v) { try { localStorage.setItem(_k(k), JSON.stringify(v)); return true; } catch { return false; } }
+};
+
+let contas = s.get('contas', []);
+let metas = s.get('metas', []);
+
+function toast(msg) {
+  const c = document.getElementById('toastContainer');
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.textContent = msg;
+  c.appendChild(el);
+  setTimeout(() => el.remove(), 2800);
+}
+
+function fmt(v) { return fmtBRL(v); }
+
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(x => x.classList.remove('active'));
+  document.getElementById('screen' + name).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.screen === name));
+  if (name === 'Home') renderHome();
+  if (name === 'Contas') renderAllContas();
+  if (name === 'Simulador') updateSim();
+  if (name === 'Metas') renderMetas();
+}
+
+function renderHome() {
+  const now = new Date();
+  const mes = now.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+  document.getElementById('mesAtual').textContent = mes.charAt(0).toUpperCase() + mes.slice(1);
+
+  const mesAtual = now.getMonth();
+  const anoAtual = now.getFullYear();
+  const doMes = contas.filter(c => {
+    const d = new Date(c.venc);
+    return d.getMonth() === mesAtual && d.getFullYear() === anoAtual;
+  });
+
+  const receitas = doMes.filter(c => c.tipo === 'receita' && c.status === 'pago').reduce((a, c) => a + c.valor, 0);
+  const despesas = doMes.filter(c => c.tipo === 'despesa' && c.status === 'pago').reduce((a, c) => a + c.valor, 0);
+  const saldo = receitas - despesas;
+
+  document.getElementById('totalReceitas').textContent = fmt(receitas);
+  document.getElementById('totalDespesas').textContent = fmt(despesas);
+  document.getElementById('saldoPill').textContent = fmt(saldo);
+  document.getElementById('saldoPill').style.color = saldo >= 0 ? '#86efac' : '#fca5a5';
+
+  document.getElementById('contasCount').textContent = doMes.length + ' contas';
+  renderContasList(doMes.slice(0, 5));
+  renderMiniCal();
+  renderMetasHome();
+}
+
+function renderContasList(list) {
+  const el = document.getElementById('contasList');
+  if (!list.length) {
+    el.innerHTML = '<div class="text-muted" style="font-size:13px;text-align:center;padding:16px">Nenhuma conta este mês. Clique em "+ Nova Conta" para começar!</div>';
+    return;
+  }
+  const catIcon = {fixo:'🏠',variavel:'🛒',contas:'💧',financiamento:'🏦',cartao:'💳',outro:'📦'};
+  const hoje = new Date();
+  el.innerHTML = list.map(c => {
+    const venc = new Date(c.venc);
+    const diff = Math.ceil((venc - hoje) / 86400000);
+    let statusClass = c.status;
+    let statusLabel = {pago:'✅ Pago',pendente:'⏳ Pendente',vencido:'⚠️ Vencido'}[c.status];
+    if (c.status === 'pendente' && diff < 0) { statusClass = 'vencido'; statusLabel = '⚠️ Vencido'; }
+    if (c.status === 'pendente' && diff <= 5 && diff >= 0) { statusClass = 'pendente'; statusLabel = '⏳ Vence em ' + diff + 'd'; }
+    return `<div class="item-conta" onclick="editarConta('${c.id}')">
+     <div class="icon-cat">${catIcon[c.cat] || '📦'}</div>
+     <div class="info">
+      <div class="nome">${c.desc}</div>
+      <div class="meta">${venc.toLocaleDateString('pt-BR')} · <span class="badge-status ${statusClass}">${statusLabel}</span></div>
+     </div>
+     <div class="valor ${statusClass}">${fmt(c.valor)}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderMiniCal() {
+  const now = new Date();
+  const mes = now.getMonth();
+  const ano = now.getFullYear();
+  const primeiroDia = new Date(ano, mes, 1).getDay();
+  const diasNoMes = new Date(ano, mes + 1, 0).getDate();
+  const hoje = now.getDate();
+
+  const contasDoMes = contas.filter(c => {
+    const d = new Date(c.venc);
+    return d.getMonth() === mes && d.getFullYear() === ano;
+  });
+
+  const diasComConta = new Set(contasDoMes.map(c => new Date(c.venc).getDate()));
+
+  let html = '<div class="cal-grid">';
+  ['D','S','T','Q','Q','S','S'].forEach(d => html += '<div class="dow">' + d + '</div>');
+  for (let i = 0; i < primeiroDia; i++) html += '<div></div>';
+  for (let d = 1; d <= diasNoMes; d++) {
+    const isToday = d === hoje;
+    const hasBill = diasComConta.has(d);
+    html += `<button class="cal-day ${isToday ? 'today' : ''} ${hasBill ? 'has-bill' : ''}" onclick="showScreen('Contas')">${d}</button>`;
+  }
+  html += '</div>';
+  document.getElementById('miniCal').innerHTML = html;
+}
+
+function renderMetasHome() {
+  const el = document.getElementById('metasList');
+  if (!metas.length) {
+    el.innerHTML = '<div class="text-muted" style="font-size:13px">Nenhuma meta. Vá em "Metas" para criar uma!</div>';
+    return;
+  }
+  el.innerHTML = metas.slice(0, 3).map(m => {
+    const pct = Math.min(100, Math.round((m.atual / m.valor) * 100));
+    return `<div style="margin-bottom:10px">
+     <div class="flex-between" style="margin-bottom:4px">
+      <span style="font-size:13px;font-weight:600">${m.desc}</span>
+      <span style="font-size:12px;color:var(--texto-suave)">${fmt(m.atual)} / ${fmt(m.valor)}</span>
+     </div>
+     <div style="height:8px;background:var(--linha);border-radius:4px;overflow:hidden">
+      <div style="height:100%;width:${pct}%;background:var(--accent);border-radius:4px;transition:width .3s"></div>
+     </div>
+    </div>`;
+  }).join('');
+}
+
+function renderAllContas() {
+  const filter = document.getElementById('filterStatus')?.value || 'todas';
+  let list = [...contas].sort((a, b) => new Date(a.venc) - new Date(b.venc));
+  if (filter !== 'todas') list = list.filter(c => c.status === filter);
+  const el = document.getElementById('allContasList');
+  if (!list.length) {
+    el.innerHTML = '<div class="text-muted" style="font-size:13px;padding:16px;text-align:center">Nenhuma conta encontrada.</div>';
+    return;
+  }
+  const catIcon = {fixo:'🏠',variavel:'🛒',contas:'💧',financiamento:'🏦',cartao:'💳',outro:'📦'};
+  el.innerHTML = list.map(c => {
+    const venc = new Date(c.venc);
+    const hoje = new Date();
+    const diff = Math.ceil((venc - hoje) / 86400000);
+    let statusClass = c.status;
+    let statusLabel = {pago:'✅ Pago',pendente:'⏳ Pendente',vencido:'⚠️ Vencido'}[c.status];
+    if (c.status === 'pendente' && diff < 0) { statusClass = 'vencido'; statusLabel = '⚠️ Vencido'; }
+    return `<div class="item-conta" onclick="editarConta('${c.id}')">
+     <div class="icon-cat">${catIcon[c.cat] || '📦'}</div>
+     <div class="info">
+      <div class="nome">${c.desc}</div>
+      <div class="meta">${venc.toLocaleDateString('pt-BR')} · <span class="badge-status ${statusClass}">${statusLabel}</span></div>
+     </div>
+     <div class="valor ${statusClass}">${fmt(c.valor)}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderContas() { renderAllContas(); }
+
+function toggleReceita() {
+  const tipo = document.getElementById('inputTipo').value;
+  const cat = document.getElementById('inputCat');
+  if (tipo === 'receita') {
+    cat.innerHTML = '<option value="salario">💰 Salário / Renda</option><option value="beneficio">🪙 Benefício / Bolsa</option><option value="extra">📈 Extra / Freelance</option><option value="outro">📦 Outro</option>';
+  } else {
+    cat.innerHTML = '<option value="fixo">🏠 Fixo (aluguel, salary)</option><option value="variavel">🛒 Variável (mercado, gasto)</option><option value="contas">💧 Contas (água, luz, internet)</option><option value="financiamento">🏦 Financiamento / Empréstimo</option><option value="cartao">💳 Cartão de Crédito</option><option value="outro">📦 Outro</option>';
+  }
+}
+
+let editingId = null;
+
+window.editarConta = function(id) {
+  const c = contas.find(x => x.id === id);
+  if (!c) return;
+  editingId = id;
+  document.getElementById('inputDesc').value = c.desc;
+  document.getElementById('inputTipo').value = c.tipo;
+  toggleReceita();
+  document.getElementById('inputCat').value = c.cat;
+  document.getElementById('inputValor').value = c.valor;
+  document.getElementById('inputVenc').value = c.venc;
+  document.getElementById('inputStatus').value = c.status;
+  showScreen('AddConta');
+  toast('Editando: ' + c.desc);
+};
+
+document.getElementById('btnAddConta').onclick = () => {
+  const desc = document.getElementById('inputDesc').value.trim();
+  const tipo = document.getElementById('inputTipo').value;
+  const cat = document.getElementById('inputCat').value;
+  const valor = parseFloat(document.getElementById('inputValor').value) || 0;
+  const venc = document.getElementById('inputVenc').value;
+  const status = document.getElementById('inputStatus').value;
+  if (!desc || !valor || !venc) { toast('Preencha todos os campos!'); return; }
+  if (editingId) {
+    const idx = contas.findIndex(x => x.id === editingId);
+    if (idx >= 0) {
+      contas[idx] = { ...contas[idx], desc, tipo, cat, valor, venc, status };
+    }
+    editingId = null;
+    toast('Conta atualizada!');
+  } else {
+    contas.push({ id: uid(), desc, tipo, cat, valor, venc, status });
+    toast('Conta adicionada!');
+  }
+  s.set('contas', contas);
+  showScreen('Home');
+};
+
+function updateSim() {
+  const v = parseFloat(document.getElementById('slValDeu').value);
+  const j = parseFloat(document.getElementById('slJuros').value) / 100;
+  const p = parseInt(document.getElementById('slPrazo').value);
+  document.getElementById('lblValDeu').textContent = fmt(v);
+  document.getElementById('lblJuros').textContent = (j * 100).toFixed(1) + '%';
+  document.getElementById('lblPrazo').textContent = p;
+  document.getElementById('simPrazoText').textContent = p;
+  const i = j / 12;
+  let price = 0, sac = 0;
+  if (i > 0 && p > 0) {
+    price = v * (i * Math.pow(1 + i, p)) / (Math.pow(1 + i, p) - 1);
+    sac = v / p + v * i;
+  } else {
+    price = v / p; sac = v / p;
+  }
+  document.getElementById('simPrice').textContent = fmt(price);
+  document.getElementById('simTotalPrice').textContent = fmt(price * p);
+  document.getElementById('simSAC').textContent = fmt(sac);
+  let totalSac = 0;
+  for (let k = 0; k < p; k++) totalSac += (v - (v / p) * k) * (i) + (v / p);
+  document.getElementById('simTotalSAC').textContent = fmt(totalSac);
+}
+
+function renderMetas() {
+  const el = document.getElementById('metasFullList');
+  if (!metas.length) {
+    el.innerHTML = '<div class="card"><div class="text-muted" style="font-size:13px;text-align:center;padding:16px">Nenhuma meta ainda. Crie sua primeira meta abaixo!</div></div>';
+    return;
+  }
+  el.innerHTML = metas.map(m => {
+    const pct = Math.min(100, Math.round((m.atual / m.valor) * 100));
+    return `<div class="card">
+     <div class="flex-between mb-8">
+      <div class="card-title" style="margin:0">${m.desc}</div>
+      <button class="btn btn-sm btn-ghost" onclick="addMetaProgress('${m.id}')" style="width:auto;padding:6px 12px">+ R$</button>
+     </div>
+     <div style="height:10px;background:var(--linha);border-radius:5px;overflow:hidden;margin-bottom:6px">
+      <div style="height:100%;width:${pct}%;background:var(--accent);border-radius:5px;transition:width .3s"></div>
+     </div>
+     <div class="flex-between">
+      <span class="text-muted">${fmt(m.atual)}</span>
+      <span class="text-muted">${fmt(m.valor)} (${pct}%)</span>
+     </div>
+     <button class="btn btn-danger btn-sm mt-8" onclick="remMeta('${m.id}')" style="width:100%">Remover</button>
+    </div>`;
+  }).join('');
+}
+
+window.addMetaProgress = function(id) {
+  const v = parseFloat(prompt('Quanto quer adicionar à meta?'));
+  if (!v || v <= 0) return;
+  const m = metas.find(x => x.id === id);
+  if (m) { m.atual = (m.atual || 0) + v; s.set('metas', metas); toast('+' + fmt(v) + ' adicionado à meta!'); renderMetas(); }
+};
+
+window.remMeta = function(id) {
+  if (!confirm('Remover esta meta?')) return;
+  metas = metas.filter(x => x.id !== id);
+  s.set('metas', metas);
+  toast('Meta removida');
+  renderMetas();
+};
+
+document.getElementById('btnAddMeta').onclick = () => {
+  const desc = document.getElementById('inputMetaDesc').value.trim();
+  const valor = parseFloat(document.getElementById('inputMetaVal').value) || 0;
+  if (!desc || !valor) { toast('Preencha descrição e valor!'); return; }
+  metas.push({ id: uid(), desc, valor, atual: 0 });
+  s.set('metas', metas);
+  document.getElementById('inputMetaDesc').value = '';
+  document.getElementById('inputMetaVal').value = '';
+  toast('Meta criada!');
+  renderMetas();
+};
+
+document.getElementById('btnExportDinheiro').onclick = () => {
+  const data = { contas, metas };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'dinheiro_na_mao.json'; a.click();
+};
+
+document.getElementById('btnResetDinheiro').onclick = () => {
+  if (confirm('Apagar TODOS os dados? Esta ação não pode ser desfeita.')) {
+    localStorage.clear();
+    contas = []; metas = [];
+    toast('Dados apagados.');
+    showScreen('Home');
+  }
+};
+
+document.querySelectorAll('.nav-item').forEach(n => { n.onclick = () => showScreen(n.dataset.screen); });
+
+// defaults
+const hoje2 = new Date().toISOString().slice(0, 10);
+document.getElementById('inputVenc').value = hoje2;
+
+renderHome();
+updateSim();
+
+// Register SW
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+</script>
+</body>
+</html>

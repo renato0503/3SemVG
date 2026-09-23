@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#4f5bd5">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>EDA — Endividados Anônimos</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="../assets/identidade/temas.css">
+<link rel="stylesheet" href="../assets/kit/kit.css">
+<style>
+:root{
+  --accent:#4f5bd5;--accent-dark:#3730a3;--accent-soft:#eef2ff;
+  --accent2:#93c5fd;--tinta:#1e2235;--tinta2:#312e81;
+  --fonte:'Segoe UI',Arial,sans-serif;--fonte-titulo:Georgia,serif;
+  --texto:#1e2235;--texto-suave:#6b7280;--linha:#e5e7eb;--fundo:#f8f7ff;
+  --card:#ffffff;--ok:#16a34a;--alerta:#dc2626;--atencao:#d97706;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:var(--fonte);background:var(--fundo);color:var(--texto);font-size:16px;overflow-x:hidden}
+.app{max-width:480px;margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;padding-bottom:80px}
+header.top{background:linear-gradient(135deg,var(--tinta) 0%,var(--tinta2) 100%);color:#fff;padding:14px 16px 40px;position:sticky;top:0;z-index:20}
+header.top .brand{display:flex;align-items:center;justify-content:space-between}
+header.top h1{font-size:17px;font-weight:700;font-family:var(--fonte-titulo)}
+header.top .sub{font-size:11px;opacity:.75;margin-top:2px}
+.badge-pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:11px;padding:3px 8px;border-radius:20px}
+.progress-bar{height:4px;background:rgba(255,255,255,.2);border-radius:4px;margin-top:10px;overflow:hidden}
+.progress-bar i{display:block;height:100%;width:0;background:var(--accent2);transition:width .3s}
+main{flex:1;padding:0 16px}
+.screen{display:none;flex-direction:column;animation:fade .2s ease}
+.screen.active{display:flex}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.page-title{font-size:13px;font-weight:700;color:var(--texto-suave);text-transform:uppercase;letter-spacing:.07em;padding:16px 0 6px}
+.card{background:var(--card);border-radius:16px;padding:16px;box-shadow:0 1px 4px rgba(79,91,213,.08);margin-bottom:12px}
+.card-title{font-size:16px;font-weight:700;margin-bottom:6px;color:var(--tinta);font-family:var(--fonte-titulo)}
+.card-sub{font-size:13px;color:var(--texto-suave)}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:12px;padding:14px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;transition:transform .05s,background .15s;padding-top:calc(14px + env(safe-area-inset-top))}
+.btn:active{transform:scale(.975)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-dark)}
+.btn-ghost{background:#fff;color:var(--accent);border:1.5px solid var(--accent)}
+.btn-success{background:var(--ok);color:#fff}
+.btn-danger{background:#fff;color:var(--alerta);border:1.5px solid #fca5a5}
+.btn-sm{padding:10px 14px;font-size:13px}
+.row{display:flex;gap:10px}
+.row>*{flex:1}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.text-center{text-align:center}
+.text-muted{color:var(--texto-suave);font-size:13px}
+.mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mb-8{margin-bottom:8px}.mb-12{margin-bottom:12px}
+.flex-between{display:flex;align-items:center;justify-content:space-between}
+.kpi-big{text-align:center;padding:16px 0}
+.kpi-big .num{font-size:48px;font-weight:900;color:var(--accent);line-height:1;font-family:var(--fonte-titulo)}
+.kpi-big .label{font-size:12px;color:var(--texto-suave);margin-top:4px;letter-spacing:.04em}
+.emoji-big{font-size:64px;text-align:center;margin-bottom:8px}
+.input-group{margin-bottom:12px}
+.input-group label{display:block;font-size:12px;font-weight:600;color:var(--texto-suave);margin-bottom:4px;letter-spacing:.04em}
+.form-input,.form-select,.form-textarea{width:100%;padding:12px 14px;border:1.5px solid var(--linha);border-radius:10px;font-size:15px;font-family:inherit;background:#fff;color:var(--texto);transition:border-color .15s}
+.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--accent)}
+.empty-state{text-align:center;padding:40px 20px;color:var(--texto-suave)}
+.empty-state .icon{font-size:48px;margin-bottom:12px}
+.empty-state .msg{font-size:15px;font-weight:600;color:var(--texto)}
+.empty-state .sub{font-size:13px}
+.nav-bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--linha);display:flex;z-index:30;padding-bottom:env(safe-area-inset-bottom)}
+.nav-bottom .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px;gap:3px;cursor:pointer;color:var(--texto-suave);transition:color .15s;border:none;background:none;font-size:11px;font-family:inherit}
+.nav-bottom .nav-item.active{color:var(--accent)}
+.nav-bottom .nav-item .nav-icon{font-size:20px}
+.badge{background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px}
+.alert-box{padding:12px 14px;border-radius:10px;font-size:13px;margin-bottom:10px}
+.alert-box.info{background:#eff6ff;color:#1d4ed8}
+.alert-box.warn{background:#fffbeb;color:#92400e}
+.alert-box.ok{background:#f0fdf4;color:#166534}
+.alert-box.emergency{background:#fef2f2;color:#991b1b;border-left:4px solid #dc2626}
+.msg-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--linha)}
+.msg-item .avatar{width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0}
+.msg-item .bubble{flex:1;background:var(--accent-soft);border-radius:12px;padding:10px 12px}
+.msg-item .name{font-size:12px;font-weight:700;color:var(--accent);margin-bottom:2px}
+.msg-item .text{font-size:14px;line-height:1.45;color:var(--texto)}
+.msg-item .time{font-size:11px;color:var(--texto-suave);margin-top:4px}
+.humor-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:12px}
+.humor-btn{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 4px;border:1.5px solid var(--linha);border-radius:12px;background:#fff;cursor:pointer;font-size:11px;color:var(--texto-suave);transition:all .15s}
+.humor-btn.selected{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.humor-btn .emo{font-size:28px}
+.breathing-circle{width:120px;height:120px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin:20px auto;transition:transform 4s ease-in-out}
+.breathing-circle .inner{font-size:16px;font-weight:600;color:var(--accent);text-align:center}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;display:none;align-items:center;justify-content:center;padding:16px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:16px;width:100%;max-width:400px;max-height:90dvh;overflow-y:auto;padding:20px}
+.modal-title{font-size:18px;font-weight:700;margin-bottom:12px}
+.modal-close{float:right;background:none;border:none;font-size:22px;cursor:pointer;color:var(--texto-suave);padding:4px}
+.toast-container{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);z-index:60;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none}
+.toast{background:var(--tinta);color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;animation:toastIn .25s ease;white-space:nowrap}
+@keyframes toastIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.truncate{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.section-title{font-size:12px;font-weight:700;color:var(--texto-suave);text-transform:uppercase;letter-spacing:.06em;margin:16px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--linha)}
+</style>
+</head>
+<body class="tema-g5">
+<div class="app">
+<header class="top">
+<div class="brand">
+ <div>
+  <h1>EDA</h1>
+  <div class="sub" id="dispNick">Crie seu perfil</div>
+ </div>
+ <span class="badge-pill" id="dispStreak">0 dias</span>
+</div>
+<div class="progress-bar"><i id="levelProgress" style="width:0%"></i></div>
+</header>
+
+<main>
+<!-- TELA: Boas-vindas -->
+<section class="screen active" id="screenWelcome">
+<div class="page-title">Bem-vindos ao EDA</div>
+<div id="noProfile">
+ <div class="card">
+  <div class="emoji-big">🤝</div>
+  <div class="card-title" style="text-align:center;font-size:20px">Endividados Anônimos</div>
+  <div class="card-sub text-center mb-12">Um espaço de acolhimento anônimo entre pessoas que passam pelas mesmas dificuldades com dinheiro.</div>
+  <div class="alert-box info mb-12">
+   <strong>Como funciona?</strong><br>
+   <span style="font-size:12px">Aqui ninguém julga. Você escolhe um apelido, compartilha se quiser, e encontra pessoas que entendem o que você está passando. Não é terapia — é apoio entre pares.</span>
+  </div>
+  <div class="input-group">
+   <label>SEU APELIDO (escolha um nome qualquer)</label>
+   <input class="form-input" id="inputNick" placeholder="Ex.: Marquinhos, Luz, Esperanza" maxlength="20">
+  </div>
+  <button class="btn btn-primary" id="btnCreateProfile">Entrar no EDA</button>
+ </div>
+ <div class="alert-box warn mt-12">
+  <strong>⚠️ Não é tratamento médico</strong><br>
+  <span style="font-size:12px">O EDA é apoio entre pares. Se você estiver em crise, procure o <strong>CVV 188</strong>, <strong>CAPS</strong> ou <strong>UBS</strong> mais próxima.</span>
+ </div>
+</div>
+<div id="hasProfile" style="display:none">
+ <div class="emoji-big">🤝</div>
+ <div class="card-title text-center" style="font-size:18px" id="welcomeMsg">Bem-vindo de volta!</div>
+ <div class="card-sub text-center mb-12">Você está no espaço seguro do EDA. O que gostaria de fazer hoje?</div>
+ <button class="btn btn-primary" onclick="showScreen('Checkin')">Fazer Check-in ✅</button>
+ <button class="btn btn-ghost mt-8" onclick="showScreen('Roda')">Roda de Apoio 💬</button>
+ <button class="btn btn-ghost mt-8" onclick="showScreen('Ajuda')">Preciso de Ajuda 🆘</button>
+ <button class="btn btn-ghost mt-8" onclick="showScreen('Respirar')">Respirar 🧘</button>
+</div>
+</section>
+
+<!-- TELA: Check-in -->
+<section class="screen" id="screenCheckin">
+<div class="page-title">Check-in de Hoje</div>
+<div class="card">
+ <div class="card-title">Como você está se sentindo hoje?</div>
+ <div class="card-sub mb-12">Escolha o emoji que mais representa seu estado atual.</div>
+ <div class="humor-grid" id="humorGrid">
+  <button class="humor-btn" data-humor="otimo" onclick="selectHumor('otimo')">
+   <span class="emo">😄</span>
+   <span>Ótimo</span>
+  </button>
+  <button class="humor-btn" data-humor="ok" onclick="selectHumor('ok')">
+   <span class="emo">🙂</span>
+   <span>Ok</span>
+  </button>
+  <button class="humor-btn" data-humor="receio" onclick="selectHumor('receio')">
+   <span class="emo">😟</span>
+   <span>Com receio</span>
+  </button>
+  <button class="humor-btn" data-humor="difícil" onclick="selectHumor('difícil')">
+   <span class="emo">😢</span>
+   <span>Difícil</span>
+  </button>
+ </div>
+ <div class="input-group">
+  <label>DESCRIva um gatilho de HOJE (opcional, sem valores)</label>
+  <input class="form-input" id="inputGatilho" placeholder="Ex.: Vi uma promoção no app e quase comprei..." maxlength="100">
+ </div>
+ <div class="input-group">
+  <label>NOTA DO DIA (1 a 5)</label>
+  <div class="humor-grid" style="grid-template-columns:1fr 1fr 1fr 1fr 1fr">
+   <button class="humor-btn" onclick="selectNota(1)">1</button>
+   <button class="humor-btn" onclick="selectNota(2)">2</button>
+   <button class="humor-btn" onclick="selectNota(3)">3</button>
+   <button class="humor-btn" onclick="selectNota(4)">4</button>
+   <button class="humor-btn" onclick="selectNota(5)">5</button>
+  </div>
+  <div class="flex-between text-muted mt-8">
+   <span>Difícil</span><span>Ótimo</span>
+  </div>
+ </div>
+ <button class="btn btn-success" id="btnSaveCheckin" onclick="saveCheckin()">Salvar Check-in ✅</button>
+</div>
+<div class="card mt-12">
+ <div class="card-title">Histórico de Check-ins</div>
+ <div id="checkinHistory"></div>
+</div>
+</section>
+
+<!-- TELA: Roda de Apoio -->
+<section class="screen" id="screenRoda">
+<div class="page-title">Roda de Apoio</div>
+<div class="alert-box ok mb-12">
+ <strong>💬 O que é dito aqui fica aqui.</strong><br>
+ <span style="font-size:12px">Este é um espaço seguro. Respeite o silêncio de cada um e não julgue. Sem nomes, sem exposição.</span>
+</div>
+<div class="card">
+ <div class="card-title">Mensagens da Roda</div>
+ <div id="messagesList"></div>
+</div>
+<div class="card mt-12">
+ <div class="input-group">
+  <label>SUA MENSAGEM (opcional)</label>
+  <textarea class="form-textarea" id="inputMessage" placeholder="Compartilhe algo, se quiser... ou apenas leia o que outros escreveram." rows="3" maxlength="300"></textarea>
+ </div>
+ <button class="btn btn-primary" id="btnSendMessage" onclick="sendMessage()">Enviar para a Roda ✉️</button>
+</div>
+</section>
+
+<!-- TELA: Ajuda -->
+<section class="screen" id="screenAjuda">
+<div class="page-title">Preciso de Ajuda</div>
+<div class="card">
+ <div class="emoji-big">🆘</div>
+ <div class="card-title text-center" style="font-size:18px">Você não está sozinho(a)</div>
+ <div class="card-sub text-center mb-12">Esses serviços estão disponíveis 24 horas para ouvir você.</div>
+</div>
+<div class="card emergency">
+ <div class="card-title" style="color:#991b1b">Emergência — Crise aguda</div>
+ <div class="flex-between mt-8">
+  <span style="font-size:15px;font-weight:600">CVV — Centro de Valorização da Vida</span>
+  <span style="font-size:18px;font-weight:900;color:#991b1b">188</span>
+ </div>
+ <div class="text-muted mt-4" style="font-size:12px">Ligação e chat 24h. Gratuito e sigiloso.</div>
+ <button class="btn btn-danger mt-8" onclick="window.open('tel:188')">Ligar agora 📞</button>
+</div>
+<div class="card mt-12">
+ <div class="card-title">UBS — Unidade Básica de Saúde</div>
+ <div class="card-sub mb-8">Busque a UBS mais próxima da sua casa. O acolhimento inicial é feito sem custo.</div>
+ <button class="btn btn-ghost" onclick="toast('Procure a UBS mais próxima de você!')">Encontrar UBS 🏥</button>
+</div>
+<div class="card mt-12">
+ <div class="card-title">CAPS — Centro de Atenção Psicossocial</div>
+ <div class="card-sub mb-8">Para acompanhamento de saúde mental. Encaminhamento via UBS ou direto.</div>
+ <button class="btn btn-ghost" onclick="toast('Procure o CAPS mais próximo!')">Encontrar CAPS 🧠</button>
+</div>
+<div class="card mt-12">
+ <div class="card-title">Aplicativo de Crédito Consciente</div>
+ <div class="card-sub mb-8">Para apoio com organização de dívidas e renegociação.</div>
+ <button class="btn btn-ghost" onclick="toast('Procure o programa Desenrola Brasil ou a biblioteca local!')">Saber mais 💡</button>
+</div>
+</section>
+
+<!-- TELA: Respirar -->
+<section class="screen" id="screenRespirar">
+<div class="page-title">Respirar</div>
+<div class="card">
+ <div class="card-title text-center">Técnica 4-7-8</div>
+ <div class="card-sub text-center mb-12">Uma respiração que acalma o sistema nervoso. Repita 3 a 4 ciclos.</div>
+ <div style="text-align:center">
+  <div class="breathing-circle" id="breathCircle">
+   <div class="inner" id="breathText">Toque para começar</div>
+  </div>
+  <button class="btn btn-primary mt-12" id="btnBreath" onclick="startBreathing()">Iniciar Ciclo 🟢</button>
+  <button class="btn btn-ghost mt-8" onclick="stopBreathing()">Parar ⏹</button>
+ </div>
+ <div class="card-sub mt-12" style="font-size:12px;line-height:1.6">
+  <strong>Como funciona:</strong><br>
+  1. <strong>Inspire</strong> pelo nariz por <strong>4 segundos</strong><br>
+  2. <strong>Segure</strong> a respiração por <strong>7 segundos</strong><br>
+  3. <strong>Expire</strong> pela boca por <strong>8 segundos</strong><br>
+  4. Repita 3 a 4 vezes.
+ </div>
+</div>
+</section>
+
+<!-- TELA: Perfil -->
+<section class="screen" id="screenProfile">
+<div class="page-title">Meu Perfil</div>
+<div class="card">
+ <div class="card-title">Meu Apelido</div>
+ <div id="profileNick"></div>
+</div>
+<div class="card mt-12">
+ <div class="card-title">Estatísticas</div>
+ <div id="profileStats"></div>
+</div>
+<div class="card mt-12">
+ <div class="alert-box info mb-8">
+  <strong>💡 O que é o EDA?</strong><br>
+  <span style="font-size:12px">O Endividados Anônimos é um espaço de acolhimento anônimo. Não é terapia nem tratamento médico. É apoio entre pessoas que passam pelas mesmas dificuldades.</span>
+ </div>
+</div>
+<div class="card mt-12">
+ <button class="btn btn-ghost" id="btnExportEDA" style="margin-bottom:8px">Exportar Dados 📤</button>
+ <button class="btn btn-danger" id="btnResetEDA">Apagar Todos os Dados 🗑️</button>
+</div>
+</section>
+</main>
+
+<nav class="nav-bottom" id="bottomNav" style="display:none">
+<button class="nav-item active" data-screen="Welcome">
+ <span class="nav-icon">🏠</span><span>Início</span>
+</button>
+<button class="nav-item" data-screen="Checkin">
+ <span class="nav-icon">📝</span><span>Check-in</span>
+</button>
+<button class="nav-item" data-screen="Roda">
+ <span class="nav-icon">💬</span><span>Roda</span>
+</button>
+<button class="nav-item" data-screen="Ajuda">
+ <span class="nav-icon">🆘</span><span>Ajuda</span>
+</button>
+<button class="nav-item" data-screen="Profile">
+ <span class="nav-icon">⚙️</span><span>Perfil</span>
+</button>
+</nav>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="../assets/kit/kit.js" type="module"></script>
+<script type="module">
+import { uid } from '../assets/kit/kit.js';
+
+const NS = 'eda';
+function _k(k) { return NS + ':' + k; }
+const s = {
+  get(k, f) { try { const v = localStorage.getItem(_k(k)); return v == null ? f : JSON.parse(v); } catch { return f; } },
+  set(k, v) { try { localStorage.setItem(_k(k), JSON.stringify(v)); return true; } catch { return false; } }
+};
+
+let state = s.get('state', { nick: null, checkins: [], messages: [], streak: 0, lastCheckin: null });
+let selectedHumor = null;
+let selectedNota = null;
+let breathingTimer = null;
+let breathPhase = 0;
+
+function toast(msg) {
+  const c = document.getElementById('toastContainer');
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.textContent = msg;
+  c.appendChild(el);
+  setTimeout(() => el.remove(), 2800);
+}
+
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen' + name).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.screen === name));
+  if (name === 'Roda') renderMessages();
+  if (name === 'Checkin') renderCheckinHistory();
+  if (name === 'Profile') renderProfile();
+}
+
+function save() { s.set('state', state); }
+
+function render() {
+  const hasNick = !!state.nick;
+  document.getElementById('noProfile').style.display = hasNick ? 'none' : 'block';
+  document.getElementById('hasProfile').style.display = hasNick ? 'block' : 'none';
+  document.getElementById('bottomNav').style.display = hasNick ? 'flex' : 'none';
+  if (hasNick) {
+    document.getElementById('dispNick').textContent = state.nick;
+    document.getElementById('welcomeMsg').textContent = 'Bem-vindo de volta, ' + state.nick + '!';
+    const streak = calcStreak();
+    document.getElementById('dispStreak').textContent = streak + ' dia' + (streak !== 1 ? 's' : '');
+  }
+}
+
+function calcStreak() {
+  if (!state.lastCheckin) return 0;
+  const now = new Date();
+  const last = new Date(state.lastCheckin);
+  const diff = Math.floor((now - last) / 86400000);
+  return diff <= 1 ? (state.streak || 0) : 0;
+}
+
+function selectHumor(h) {
+  selectedHumor = h;
+  document.querySelectorAll('.humor-btn').forEach(b => b.classList.remove('selected'));
+  document.querySelector('[data-humor="' + h + '"]').classList.add('selected');
+}
+
+function selectNota(n) {
+  selectedNota = n;
+  document.querySelectorAll('.humor-btn').forEach(b => b.classList.remove('selected'));
+}
+
+function saveCheckin() {
+  if (!selectedHumor && !selectedNota) { toast('Escolha pelo menos um emoji ou uma nota!'); return; }
+  const checkin = {
+    id: uid(),
+    humor: selectedHumor,
+    nota: selectedNota,
+    gatilho: document.getElementById('inputGatilho').value.trim(),
+    ts: new Date().toISOString()
+  };
+  state.checkins.push(checkin);
+  const now = new Date();
+  const last = state.lastCheckin ? new Date(state.lastCheckin) : null;
+  if (last) {
+    const diff = Math.floor((now - last) / 86400000);
+    if (diff <= 1) state.streak = (state.streak || 0) + 1;
+    else state.streak = 1;
+  } else { state.streak = 1; }
+  state.lastCheckin = now.toISOString();
+  save();
+  selectedHumor = null;
+  selectedNota = null;
+  document.getElementById('inputGatilho').value = '';
+  document.querySelectorAll('.humor-btn').forEach(b => b.classList.remove('selected'));
+  toast('Check-in salvo! Cuide-se hoje. 💜');
+  renderCheckinHistory();
+}
+
+function renderCheckinHistory() {
+  const el = document.getElementById('checkinHistory');
+  if (!state.checkins.length) {
+    el.innerHTML = '<div class="text-muted" style="font-size:13px">Nenhum check-in ainda. Este é um bom momento para o primeiro!</div>';
+    return;
+  }
+  const humorEmo = { otimo: '😄', ok: '🙂', receio: '😟', difícil: '😢' };
+  el.innerHTML = state.checkins.slice(-7).reverse().map(c => {
+    const d = new Date(c.ts);
+    const emo = humorEmo[c.humor] || '📝';
+    return `<div class="msg-item">
+     <div class="avatar">${emo}</div>
+     <div class="bubble">
+      <div class="name">${state.nick} · Nota ${c.nota || '?'}/5</div>
+      ${c.gatilho ? '<div class="text" style="font-size:13px;color:var(--texto)">' + c.gatilho + '</div>' : ''}
+      <div class="time">${d.toLocaleDateString('pt-BR')} ${d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}</div>
+     </div>
+    </div>`;
+  }).join('');
+}
+
+function sendMessage() {
+  const text = document.getElementById('inputMessage').value.trim();
+  if (!text) { toast('Digite uma mensagem primeiro!'); return; }
+  const msg = { id: uid(), nick: state.nick || 'Anônimo', text, ts: new Date().toISOString() };
+  state.messages.push(msg);
+  save();
+  document.getElementById('inputMessage').value = '';
+  toast('Mensagem enviada para a roda! 💜');
+  renderMessages();
+}
+
+function renderMessages() {
+  const el = document.getElementById('messagesList');
+  if (!state.messages.length) {
+    el.innerHTML = '<div class="text-muted" style="font-size:13px">A roda está silenciosa. Seja o primeiro a compartilhar algo. 💜</div>';
+    return;
+  }
+  const randomColors = ['#4f5bd5','#7c3aed','#16a34a','#d97706','#dc2626','#0891b2'];
+  el.innerHTML = state.messages.slice(-20).reverse().map((m, i) => {
+    const d = new Date(m.ts);
+    const color = randomColors[m.id.charCodeAt(0) % randomColors.length];
+    return `<div class="msg-item">
+     <div class="avatar" style="background:${color}">${m.nick.charAt(0).toUpperCase()}</div>
+     <div class="bubble">
+      <div class="name">${m.nick}</div>
+      <div class="text">${m.text}</div>
+      <div class="time">${d.toLocaleDateString('pt-BR')} ${d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}</div>
+     </div>
+    </div>`;
+  }).join('');
+}
+
+function renderProfile() {
+  document.getElementById('profileNick').innerHTML = `<div class="flex-between" style="padding:8px 0">
+   <span style="font-size:15px;font-weight:600">${state.nick || 'Anônimo'}</span>
+   <span class="badge">${calcStreak()} dias de streak</span>
+  </div>`;
+  document.getElementById('profileStats').innerHTML = `<div class="grid-2">
+   <div class="kpi-big"><div class="num" style="font-size:32px">${state.checkins.length}</div><div class="label">check-ins</div></div>
+   <div class="kpi-big"><div class="num" style="font-size:32px">${state.messages.length}</div><div class="label">mensagens</div></div>
+  </div>`;
+}
+
+// Breathing exercise
+function startBreathing() {
+  if (breathingTimer) return;
+  const circle = document.getElementById('breathCircle');
+  const text = document.getElementById('breathText');
+  let phase = 0; // 0=inhale, 1=hold, 2=exhale
+  let count = 4;
+  breathPhase = 0;
+
+  function tick() {
+    if (phase === 0) {
+      circle.style.transform = 'scale(1.3)';
+      text.textContent = 'Inspire 4s';
+      count--;
+      if (count === 0) { phase = 1; count = 7; }
+    } else if (phase === 1) {
+      text.textContent = 'Segure 7s';
+      count--;
+      if (count === 0) { phase = 2; count = 8; }
+    } else {
+      circle.style.transform = 'scale(1)';
+      text.textContent = 'Expire 8s';
+      count--;
+      if (count === 0) {
+        count = 4; phase = 0;
+        toast('Ciclo completo! Como você se sente? 💜');
+        stopBreathing();
+        return;
+      }
+    }
+    breathingTimer = setTimeout(tick, 1000);
+  }
+  tick();
+}
+
+function stopBreathing() {
+  if (breathingTimer) { clearTimeout(breathingTimer); breathingTimer = null; }
+  document.getElementById('breathCircle').style.transform = 'scale(1)';
+  document.getElementById('breathText').textContent = 'Toque para começar';
+}
+
+// Actions
+document.getElementById('btnCreateProfile').onclick = () => {
+  const nick = document.getElementById('inputNick').value.trim();
+  if (!nick) { toast('Escolha um apelido para entrar!'); return; }
+  state.nick = nick;
+  save();
+  toast('Bem-vindo(a), ' + nick + '! 💜');
+  render();
+};
+
+document.getElementById('btnExportEDA').onclick = () => {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'eda_dados.json'; a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+};
+
+document.getElementById('btnResetEDA').onclick = () => {
+  if (confirm('Tem certeza? Isso apaga todos os seus dados do EDA permanentemente.')) {
+    localStorage.clear();
+    state = { nick: null, checkins: [], messages: [], streak: 0, lastCheckin: null };
+    toast('Dados apagados.');
+    render();
+  }
+};
+
+document.querySelectorAll('.nav-item').forEach(n => { n.onclick = () => showScreen(n.dataset.screen); });
+
+render();
+
+// Register SW
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+PROMPT UTILIZADO PARA DESENVOLVIMENTO DA APRESENTAÇÃO
+Crie uma apresentação acadêmica completa e visual sobre o projeto “Quit AI – Inteligência financeira para uma vida real”, seguindo uma estrutura de defesa: problema → dados e evidências → fundamentação científica → solução → funcionamento → aplicação → viabilidade → impacto → conclusão.
+O problema central do trabalho é o superendividamento e a dificuldade de organização financeira das famílias, considerando também os impactos financeiros que podem estar associados às apostas online.
+Desenvolva o Quit AI como uma proposta de solução tecnológica baseada em inteligência artificial, educação financeira, Open Finance, gamificação e participação familiar.
+O funcionamento proposto deve seguir esta lógica:
+Dívidas e finanças reais → autorização para integração via Open Finance → IA auxilia na organização das dívidas, gastos e metas → criação de missões financeiras personalizadas → família cumpre as metas → recebe pontos e estrelas → avança de níveis → conquista benefícios reais.
+Exemplos de missões: controlar compras por impulso, organizar o orçamento mensal, reduzir gastos desnecessários, cumprir uma meta de economia, criar reserva financeira e avançar no pagamento de dívidas.
+Deixe claro que não se trata de jogo de aposta. Não haverá aposta de dinheiro para obter recompensa. A lógica dos jogos será utilizada apenas como ferramenta de engajamento para incentivar comportamentos financeiros positivos.
+Inclua a possibilidade de os pontos conquistados gerarem, futuramente, benefícios oferecidos por empresas parceiras, como descontos em supermercados, farmácias, cursos e outros serviços.
+Apresente também como proposta futura a possibilidade de parcerias com o poder público para estudar incentivos relacionados a IPTU, taxas municipais e outros benefícios públicos. Para o IPVA, considere que se trata de competência estadual. Deixe expressamente informado que esses benefícios não existem atualmente no Quit AI e dependeriam de legislação, regulamentação, estudo de impacto e aprovação do poder público.
+Inclua uma estratégia de prevenção por meio das escolas, fazendo com que a educação financeira aprendida pelo aluno também alcance sua família.
+Apresente ainda a possibilidade futura de o Quit AI funcionar como ferramenta complementar de reorganização financeira para pessoas que enfrentam problemas relacionados a jogos e apostas e estejam sendo acompanhadas pela rede de saúde, incluindo UBS e CAPS. Deixe claro que o aplicativo não substitui psicólogos, médicos, CAPS, UBS ou qualquer tratamento profissional.
+Apresente possibilidades reais para tirar o projeto do papel, incluindo projeto-piloto, editais de inovação, fundos de investimento e Corporate Venture Capital (CVC). Instituições ou fundos existentes podem ser apresentados como exemplos de caminhos possíveis de captação, mas não devem ser apresentados como parceiros confirmados do Quit AI.
+Crie um projeto-piloto para testar a solução antes de sua expansão. Mostre a lógica: situação inicial → utilização do Quit AI → acompanhamento das missões → medição dos resultados → comparação → ajustes → possível expansão.
+Utilize somente dados verdadeiros e verificáveis. Pesquise fontes oficiais e estudos científicos para sustentar a apresentação. Priorize Banco Central do Brasil, legislação federal, Ministério da Saúde, órgãos públicos, artigos científicos revisados por pares e documentos oficiais. Não invente pesquisas, percentuais, resultados, investimentos ou parcerias.
+Utilize como fundamentos, quando aplicáveis, a Lei nº 14.181/2021 (superendividamento), Open Finance/Banco Central, programas oficiais de educação financeira e pesquisas acadêmicas sobre educação financeira e gamificação.
+Separe claramente no conteúdo: (a) o que já existe e possui evidência;
+(b) o que é proposta do Quit AI;
+(c) o que é resultado esperado e ainda precisa ser validado;
+(d) o que depende de futuras parcerias ou alterações legais.
+Produza aproximadamente 12 slides, evitando repetição. Utilize textos curtos, gráficos, fluxogramas, ícones, imagens e mockups de celular. O visual deve ser moderno e profissional, semelhante a uma apresentação elaborada no Canva, utilizando principalmente verde-escuro, verde-sálvia, bege/creme e detalhes dourados.
+Utilize letras grandes e legíveis para apresentação em datashow. Não sobrecarregue os slides com parágrafos extensos.
+Na capa, coloque:
+QUIT AI
+Inteligência financeira para uma vida real
+“Escolhas hoje, conquistas amanhã.”
+Creuza Medeiros e Jakeline Vieira
+Termine com um slide de referências bibliográficas contendo somente fontes reais utilizadas na apresentação e, depois, um slide de encerramento.
+A apresentação deve funcionar como uma defesa acadêmica da proposta, e não apenas como descrição de um aplicativo. O objetivo é demonstrar que existe um problema real, que há fundamentação para a abordagem escolhida, explicar por que a solução proposta é diferente e mostrar como ela poderia ser testada e viabilizada, sem apresentar como comprovados resultados que o Quit AI ainda não produziu.
+Esse é o tipo de prompt que mostra ao professor os comandos e critérios usados para construir a apresentação,

@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#1a1a2e">
+<title>Coleta · Customer Discovery 3SemVG</title>
+<style>
+:root{
+  --dark:#1a1a2e; --dark2:#16213e; --accent:#e94560; --accent-dark:#c73550;
+  --ink:#2d3748; --muted:#718096; --line:#e2e8f0; --bg:#f7fafc; --card:#ffffff;
+  --green:#38a169; --amber:#dd6b20;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.45;
+  font-size:16px; overflow-x:hidden;
+}
+.app{max-width:640px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;background:var(--bg)}
+header.top{
+  background:linear-gradient(135deg,var(--dark) 0%,var(--dark2) 100%);
+  color:#fff;padding:14px 16px 12px;position:sticky;top:0;z-index:20;
+  box-shadow:0 2px 10px rgba(0,0,0,.18);
+}
+header.top .brand{display:flex;align-items:center;justify-content:space-between;gap:10px}
+header.top h1{font-size:15px;font-weight:700;letter-spacing:.02em}
+header.top .sub{font-size:11px;opacity:.75;margin-top:2px}
+.pill{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);
+  color:#fff;font-size:11px;padding:4px 9px;border-radius:20px;white-space:nowrap}
+.bar{height:4px;background:rgba(255,255,255,.15);border-radius:4px;margin-top:10px;overflow:hidden}
+.bar>i{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+main{flex:1;padding:16px;display:flex;flex-direction:column;gap:14px}
+.screen{display:none;flex-direction:column;gap:14px;animation:fade .18s ease}
+.screen.active{display:flex}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+  box-shadow:0 1px 3px rgba(16,24,40,.04)}
+.card h2{font-size:17px;margin-bottom:6px}
+.card p{font-size:14px;color:var(--muted)}
+.muted{color:var(--muted)}
+.small{font-size:12.5px}
+.center{text-align:center}
+
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;
+  border:none;border-radius:12px;padding:14px 16px;font-size:16px;font-weight:600;
+  background:var(--accent);color:#fff;cursor:pointer;width:100%;transition:transform .05s,background .15s}
+.btn:active{transform:scale(.985)}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.dark{background:var(--dark)}
+.btn.green{background:var(--green)}
+.btn.danger{background:#fff;color:var(--accent-dark);border:1px solid #f0c3cc}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.sm{padding:10px 12px;font-size:14px;border-radius:10px}
+.btn.block{width:100%}
+.row{display:flex;gap:10px}
+.row>*{flex:1}
+
+.grupo-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grupo-btn{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 12px;
+  text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:4px}
+.grupo-btn.active{border-color:var(--accent);box-shadow:0 0 0 2px rgba(233,69,96,.18)}
+.grupo-btn .g{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.06em}
+.grupo-btn .n{font-size:14.5px;font-weight:600;color:var(--ink)}
+.grupo-btn .p{font-size:11.5px;color:var(--muted)}
+.grupo-btn[disabled]{opacity:.5;cursor:not-allowed}
+
+.pergunta-q{font-size:19px;font-weight:600;line-height:1.35;margin:6px 0 4px}
+.pergunta-hint{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+.escala{display:flex;flex-direction:column;gap:8px}
+.escala .opt{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);
+  background:#fff;border-radius:12px;padding:13px 14px;cursor:pointer;font-size:15px}
+.escala .opt .num{width:30px;height:30px;flex:0 0 30px;border-radius:50%;background:var(--bg);
+  border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:14px;color:var(--muted)}
+.escala .opt.sel{border-color:var(--accent);background:#fdf2f4}
+.escala .opt.sel .num{background:var(--accent);border-color:var(--accent);color:#fff}
+.polos{display:flex;justify-content:space-between;gap:12px;font-size:12px;color:var(--muted);margin-bottom:12px}
+.polos b{color:var(--ink);font-weight:600}
+
+.campo{margin-bottom:12px}
+.campo label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+.campo select{width:100%;padding:12px;border:1.5px solid var(--line);border-radius:11px;
+  font-size:15px;background:#fff;color:var(--ink);appearance:none}
+.campo .obs{font-size:11.5px;color:var(--muted);margin-top:4px}
+
+.callout{background:#fffbeb;border-left:4px solid var(--amber);border-radius:0 10px 10px 0;
+  padding:11px 13px;font-size:13px}
+.callout.info{background:#eff6ff;border-left-color:#3182ce}
+.callout.warn{background:#fdf2f4;border-left-color:var(--accent)}
+
+.codigo-box{background:var(--dark);color:#fff;border-radius:14px;padding:20px;text-align:center}
+.codigo-box .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.65}
+.codigo-box .cod{font-size:42px;font-weight:800;letter-spacing:.04em;margin:6px 0 2px;color:#fff;
+  font-family:'Consolas','SF Mono',monospace}
+.audio-modelo{background:#f0fdf4;border:1px dashed var(--green);border-radius:12px;
+  padding:13px;font-size:13.5px;line-height:1.5}
+
+.lista{display:flex;flex-direction:column;gap:8px}
+.item{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);
+  border-radius:12px;padding:11px 13px}
+.item .cod{font-family:'Consolas',monospace;font-weight:700;font-size:14px;color:var(--accent);min-width:74px}
+.item .meta{flex:1;font-size:12px;color:var(--muted)}
+.item .x{border:none;background:#fff;color:var(--muted);font-size:18px;cursor:pointer;padding:4px 6px}
+.stat{display:flex;gap:10px;flex-wrap:wrap}
+.stat .s{flex:1;min-width:90px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px;text-align:center}
+.stat .s b{display:block;font-size:22px;color:var(--dark)}
+.stat .s span{font-size:11px;color:var(--muted)}
+.vazio{text-align:center;color:var(--muted);font-size:13.5px;padding:24px 8px}
+
+footer{padding:14px 16px 22px;text-align:center;color:var(--muted);font-size:11.5px}
+.hidden{display:none !important}
+.tag-live{display:inline-block;background:#fdf2f4;color:var(--accent-dark);border-radius:8px;
+  padding:2px 8px;font-size:11px;font-weight:700}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(80px);
+  background:var(--dark);color:#fff;padding:11px 18px;border-radius:22px;font-size:13.5px;
+  opacity:0;transition:.25s;z-index:60;pointer-events:none;max-width:90vw}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand">
+      <div>
+        <h1>Coleta · Customer Discovery</h1>
+        <div class="sub">Saúde financeira, dívidas e orçamento · 3SemVG / Unifacc</div>
+      </div>
+      <span class="pill" id="pillGrupo">—</span>
+    </div>
+    <div class="bar"><i id="barra"></i></div>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section class="screen active" id="scr-home">
+      <div class="card">
+        <h2>Grupo do entrevistador</h2>
+        <p class="small">Escolha o grupo desta dupla. Fica salvo no aparelho.</p>
+        <div class="grupo-grid" id="grupo-grid" style="margin-top:12px"></div>
+      </div>
+      <div class="callout warn">
+        <b>Bloco 0 (perfil) é por observação.</b> Nunca pergunte raça nem renda. Na dúvida, marque
+        <b>“Não sei estimar”</b>.
+      </div>
+      <button class="btn" id="btn-nova" disabled>Iniciar nova coleta</button>
+      <div class="row">
+        <button class="btn ghost" id="btn-respostas">Ver respostas</button>
+        <button class="btn ghost" id="btn-dados">Exportar dados</button>
+      </div>
+      <div class="stat" style="margin-top:2px">
+        <div class="s"><b id="st-total">0</b><span>respostas salvas</span></div>
+        <div class="s"><b id="st-grupo">0</b><span>do grupo atual</span></div>
+        <div class="s"><b id="st-meta">—</b><span>meta 15–20</span></div>
+      </div>
+      <div id="aviso-storage" class="callout warn hidden">
+        Atenção: este navegador não está guardando dados localmente. Exporte as respostas com frequência.
+      </div>
+    </section>
+
+    <!-- PERFIL -->
+    <section class="screen" id="scr-perfil">
+      <div>
+        <span class="tag-live">BLOCO 0 · PERFIL (observação)</span>
+        <h2 style="font-size:20px;margin-top:8px" id="perfil-titulo">Perfil</h2>
+        <p class="small muted" id="perfil-desc"></p>
+      </div>
+      <div class="card" id="perfil-campos"></div>
+      <div class="row">
+        <button class="btn ghost" data-nav="home">Voltar</button>
+        <button class="btn" id="btn-perfil-ok">Começar as 20 perguntas</button>
+      </div>
+    </section>
+
+    <!-- PERGUNTA -->
+    <section class="screen" id="scr-pergunta">
+      <div>
+        <div class="row" style="align-items:center;flex:none">
+          <button class="btn ghost sm" id="btn-perg-voltar" style="flex:0 0 auto;width:auto">←</button>
+          <span class="pill" style="background:var(--bg);color:var(--ink);border-color:var(--line)" id="perg-cont">Pergunta</span>
+        </div>
+        <div class="small muted" id="perg-bloco" style="margin-top:10px"></div>
+        <div class="pergunta-q" id="perg-q"></div>
+        <div class="pergunta-hint">Pergunte <b>aberto</b> e marque onde a fala caiu.</div>
+      </div>
+      <div class="card">
+        <div class="polos"><span><b>1</b> · <span id="polo-a"></span></span><span><span id="polo-b"></span> · <b>5</b></span></div>
+        <div class="escala" id="escala"></div>
+      </div>
+    </section>
+
+    <!-- RESULTADO -->
+    <section class="screen" id="scr-fim">
+      <div class="card center">
+        <h2>Resposta salva</h2>
+        <p class="small">Leia este código no início do áudio do WhatsApp.</p>
+        <div class="codigo-box" style="margin-top:14px">
+          <div class="lbl">Código</div>
+          <div class="cod" id="fim-cod">G0-000</div>
+          <div class="small" id="fim-resumo" style="opacity:.7"></div>
+        </div>
+        <button class="btn dark" id="btn-copiar" style="margin-top:12px">Copiar código</button>
+      </div>
+      <div class="audio-modelo" id="fim-audio"></div>
+      <button class="btn green" id="btn-proxima">Nova coleta (mesmo grupo)</button>
+      <button class="btn ghost" id="btn-fim-home" data-nav="home">Voltar ao início</button>
+    </section>
+
+    <!-- RESPOSTAS -->
+    <section class="screen" id="scr-respostas">
+      <div class="row" style="flex:none;align-items:center">
+        <button class="btn ghost sm" data-nav="home" style="width:auto;flex:0 0 auto">←</button>
+        <h2 style="font-size:19px">Respostas salvas</h2>
+      </div>
+      <div class="stat" id="resp-stat"></div>
+      <div class="lista" id="resp-lista"></div>
+      <div id="resp-vazio" class="vazio hidden">Nenhuma resposta salva ainda.</div>
+    </section>
+
+    <!-- DADOS -->
+    <section class="screen" id="scr-dados">
+      <div class="row" style="flex:none;align-items:center">
+        <button class="btn ghost sm" data-nav="home" style="width:auto;flex:0 0 auto">←</button>
+        <h2 style="font-size:19px">Exportar dados</h2>
+      </div>
+      <div class="card">
+        <p class="small">Envie o arquivo para o professor / responsável pela tabulação. O CSV abre no Excel
+        (separador <b>;</b>). O JSON preserva tudo (para o app / correlação com os áudios).</p>
+      </div>
+      <button class="btn" id="btn-csv">Baixar CSV (Excel)</button>
+      <button class="btn ghost" id="btn-json">Baixar JSON (backup)</button>
+      <button class="btn ghost" id="btn-copiar-dados">Copiar JSON (backup rápido)</button>
+      <div class="callout info">
+        O código liga <b>quanti × quali</b>: a planilha guarda as notas 1–5 e o áudio guarda as falas.
+      </div>
+      <button class="btn danger" id="btn-limpar">Apagar TODAS as respostas</button>
+    </section>
+  </main>
+
+  <footer>
+    Customer Discovery na Prática · Prof. Renato Rosa · Cerrado Tech / Unifacc<br>
+    App offline · v1 (Sprints 0–2)
+  </footer>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+
+/* ============================================================
+   PERFIL (Bloco 0) — marcado por OBSERVAÇÃO, nunca perguntado
+   ============================================================ */
+const PERFIL = [
+  { id:"faixaEtaria", label:"Faixa etária",  opcoes:["18–24","25–34","35–44","45–59","60+"] },
+  { id:"sexo",        label:"Sexo",          opcoes:["Feminino","Masculino","Não identificado"] },
+  { id:"classe",      label:"Classe social (estimada)", opcoes:["A/B","C","D/E","Não sei estimar"] },
+  { id:"raca",        label:"Raça/cor (estimada)", opcoes:["Branca","Preta","Parda","Amarela","Indígena","Não sei estimar"] },
+];
+
+/* ============================================================
+   GRUPOS E PERGUNTAS (20 por grupo · escala 1–5 com polos)
+   ============================================================ */
+const GRUPOS = {
+  1: {
+    nome:"Dinheiro na Mão", prof:"Profa. Olivia",
+    triagem:{ id:"cuidados", label:"Quem cuida das contas na casa (triagem)", opcoes:["Eu mesmo(a)","Divido com outra pessoa","Outra pessoa","Não sei informar"] },
+    blocos:[
+      { titulo:"Situação financeira e contas", perguntas:[
+        {q:"Como está a situação financeira da sua casa hoje?", a:"Muito apertada", b:"Muito tranquila"},
+        {q:"Com que frequência as contas do mês ficam atrasadas?", a:"Nunca", b:"Sempre"},
+        {q:"Com que frequência você perde uma data de vencimento por esquecimento?", a:"Nunca", b:"Sempre"},
+        {q:"O quanto a renda da casa dá conta das despesas do mês?", a:"Não dá conta", b:"Dá conta com folga"},
+        {q:"Com que frequência você deixou de comprar algo essencial por falta de dinheiro?", a:"Nunca", b:"Sempre"},
+      ]},
+      { titulo:"Organização e comportamento", perguntas:[
+        {q:"Com que frequência você anota ou planeja as contas antes de pagar?", a:"Nunca", b:"Sempre"},
+        {q:"O quanto você sabe de cabeça as datas de vencimento das suas contas?", a:"Nada", b:"Todas"},
+        {q:"Com que frequência você compra por impulso algo que não estava precisando?", a:"Nunca", b:"Sempre"},
+        {q:"Como estão organizadas as contas da sua casa hoje?", a:"Nada organizadas", b:"Muito organizadas"},
+        {q:"Com que frequência você conversa sobre dinheiro com a família?", a:"Nunca", b:"Sempre"},
+      ]},
+      { titulo:"Ajuda, informação e confiança", perguntas:[
+        {q:"Com que frequência você já buscou ajuda ou orientação para organizar as finanças?", a:"Nunca", b:"Sempre"},
+        {q:"Qual a facilidade de encontrar orientação confiável sobre dívidas e orçamento?", a:"Muito difícil", b:"Muito fácil"},
+        {q:"Qual a confiança em uma orientação financeira dada por um profissional?", a:"Nenhuma", b:"Total"},
+        {q:"O quanto falar de dívidas e de dinheiro te deixa desconfortável?", a:"Nada", b:"Muito"},
+        {q:"Com que frequência você conversou com alguém sobre uma dificuldade financeira sua?", a:"Nunca", b:"Sempre"},
+      ]},
+      { titulo:"Programa presencial, sistema e bolsa-incentivo", perguntas:[
+        {q:"Utilidade de um atendimento PRESENCIAL com profissionais que ajudam a organizar a vida financeira", a:"Nada útil", b:"Muito útil"},
+        {q:"Utilidade de um SISTEMA INTELIGENTE que organiza contas e datas para você", a:"Nada útil", b:"Muito útil"},
+        {q:"Utilidade de uma BOLSA-INCENTIVO para quem coloca as contas em ordem", a:"Nada útil", b:"Muito útil"},
+        {q:"Confiança em um programa do governo para ajudar a organizar as suas finanças", a:"Nenhuma", b:"Total"},
+        {q:"Disposição para ir PRESENCIALMENTE a um posto receber essa ajuda", a:"Nunca", b:"Sempre"},
+      ]},
+    ]
+  },
+  2: {
+    nome:"A Definir", prof:"Profa. Olivia", pendente:true,
+    motivo:"Ideia ainda a definir com a Profa. Olivia. Formulário será inserido depois.",
+    blocos:[]
+  },
+  3: {
+    nome:"Quita.AI", prof:"Prof. Péricles",
+    blocos:[
+      { titulo:"Gastos por impulso", perguntas:[
+        {q:"Com que frequência você compra algo sem ter planejado?", a:"Nunca", b:"Sempre"},
+        {q:"Como você costuma decidir uma compra não planejada?", a:"Penso muito antes", b:"Compro por impulso na hora"},
+        {q:"O quanto as compras por impulso pesam no seu orçamento no fim do mês?", a:"Nada", b:"Muito"},
+        {q:"Com que frequência se arrepende de uma compra que fez por impulso?", a:"Nunca", b:"Sempre"},
+        {q:"O quanto uma compra por impulso costuma desorganizar o mês da família?", a:"Nada", b:"Muito"},
+      ]},
+      { titulo:"Controle e metas da família", perguntas:[
+        {q:"Com que frequência a família conversa junto sobre gastos e contas?", a:"Nunca", b:"Sempre"},
+        {q:"Qual o nível de organização financeira da sua família hoje?", a:"Nenhuma", b:"Muito organizada"},
+        {q:"Com que frequência vocês conseguem cumprir uma meta de economia do mês?", a:"Nunca", b:"Sempre"},
+        {q:"O quanto você acompanha seus gastos durante o mês?", a:"Não acompanho", b:"Acompanho muito"},
+        {q:"Qual o grau de controle que você sente sobre os gastos da família?", a:"Nenhum", b:"Total"},
+      ]},
+      { titulo:"Jogo, recompensa e motivação", perguntas:[
+        {q:"O quanto você se motiva com desafios, fases e metas em formato de jogo?", a:"Nada", b:"Muito"},
+        {q:"Utilidade de controlar os gastos em família como um jogo com fases", a:"Nada útil", b:"Muito útil"},
+        {q:"O quanto jogar em família (e não sozinho) ajudaria a manter a disciplina?", a:"Nada", b:"Muito"},
+        {q:"Utilidade de receber bônus por atingir uma meta de economia", a:"Nada útil", b:"Muito útil"},
+        {q:"O quanto uma recompensa ajuda a segurar um gasto por impulso?", a:"Nada", b:"Muito"},
+      ]},
+      { titulo:"Confiança, prêmios e adoção", perguntas:[
+        {q:"Utilidade de ganhar desconto nas faturas por cumprir metas (hipótese)", a:"Nada útil", b:"Muito útil"},
+        {q:"O quanto uma isenção fiscal ou benefício do governo motivaria você (hipótese)", a:"Nada", b:"Muito"},
+        {q:"Confiança em um app/jogo que acompanha seus gastos e metas", a:"Nenhuma", b:"Total"},
+        {q:"Importância de o projeto ser ligado a editais e apoio de governo/instituto", a:"Nada importante", b:"Muito importante"},
+        {q:"Disposição de usar um jogo financeiro em família no dia a dia", a:"Nunca", b:"Sempre"},
+      ]},
+    ]
+  },
+  4: {
+    nome:"SuaCasaSuaVida", prof:"Prof. Pantaleão",
+    blocos:[
+      { titulo:"Moradia atual e desejo da casa própria", perguntas:[
+        {q:"Qual a sua situação de moradia hoje?", a:"Mora de aluguel ou cedida", b:"Mora em casa própria quitada"},
+        {q:"Quanto o aluguel pesa no orçamento da família?", a:"Pesa pouco", b:"Pesa muito"},
+        {q:"Qual a força do desejo de sair do aluguel e ter a casa própria?", a:"Nenhum", b:"Muito forte"},
+        {q:"Há quanto tempo você pensa em comprar a casa própria?", a:"Nunca pensou", b:"Pensa há muito tempo"},
+        {q:"O quanto já se preparou para isso (guardou reserva, buscou informação)?", a:"Não se preparou", b:"Preparou bastante"},
+      ]},
+      { titulo:"Análise do bairro e localização", perguntas:[
+        {q:"Qual a importância da LOCALIZAÇÃO/BAIRRO na decisão de comprar?", a:"Nada importante", b:"Muito importante"},
+        {q:"Qual a preocupação com SEGURANÇA no bairro escolhido?", a:"Nenhuma", b:"Muita"},
+        {q:"Qual a importância de ter SERVIÇOS E COMÉRCIO perto (escola, saúde, mercado)?", a:"Nada importante", b:"Muito importante"},
+        {q:"Qual a importância de o imóvel VALORIZAR no futuro?", a:"Nada importante", b:"Muito importante"},
+        {q:"Qual a facilidade de descobrir hoje QUANTO CUSTA e COMO É um bairro antes de decidir?", a:"Muito difícil", b:"Muito fácil"},
+      ]},
+      { titulo:"Situação financeira e financiamento", perguntas:[
+        {q:"Qual a clareza sobre quanto pode pagar por mês para a casa?", a:"Nenhuma", b:"Muito clara"},
+        {q:"Qual a dificuldade de juntar a ENTRADA do imóvel?", a:"Muito difícil", b:"Muito fácil"},
+        {q:"O quanto você entende hoje sobre FINANCIAMENTO (juros, prazo, parcela)?", a:"Entende nada", b:"Entende muito"},
+        {q:"Qual o medo de assumir uma dívida de longuíssimo prazo?", a:"Nenhum", b:"Muito medo"},
+        {q:"O quanto a INSEGURANÇA FINANCEIRA já fez você adiar a compra?", a:"Nada", b:"Muito"},
+      ]},
+      { titulo:"App, informação e confiança", perguntas:[
+        {q:"Utilidade de uma ANÁLISE DE BAIRRO (segurança, serviços, valorização) antes de comprar", a:"Nada útil", b:"Muito útil"},
+        {q:"Utilidade de uma ANÁLISE DA PRÓPRIA SITUAÇÃO FINANCEIRA para saber quanto pode pagar", a:"Nada útil", b:"Muito útil"},
+        {q:"Utilidade de SIMULAR O FINANCIAMENTO (parcela, prazo, juros) pelo celular", a:"Nada útil", b:"Muito útil"},
+        {q:"Confiança em usar um app para orientar uma decisão tão importante", a:"Nenhuma", b:"Total"},
+        {q:"Interesse em usar um app que ajude a planejar a compra da casa própria", a:"Nunca", b:"Sempre"},
+      ]},
+    ]
+  },
+  5: {
+    nome:"Endividados Anônimos (EDA)", prof:"Prof. Renato", sensivel:true,
+    triagem:{ id:"contexto", label:"Contexto da abordagem (triagem)", opcoes:["Sozinho(a)","Com família","Com amigos","Não identificado"] },
+    blocos:[
+      { titulo:"Comportamento de consumo", perguntas:[
+        {q:"Com que frequência você compra algo que NÃO estava planejando?", a:"Nunca", b:"Sempre"},
+        {q:"Como costuma decidir uma compra?", a:"Penso bastante antes", b:"Decido na hora"},
+        {q:"Com que frequência se ARREPENDE depois de uma compra?", a:"Nunca", b:"Sempre"},
+        {q:"O quanto comprar alivia um momento de estresse, tristeza ou ansiedade?", a:"Não alivia nada", b:"Alivia muito"},
+        {q:"Com que frequência compra ESCONDIDO de familiares?", a:"Nunca", b:"Sempre"},
+      ]},
+      { titulo:"Dívidas e consequências", perguntas:[
+        {q:"Com que frequência as contas do mês acabam atrasando?", a:"Nunca", b:"Sempre"},
+        {q:"O quanto as dívidas apertam o seu dia a dia?", a:"Nada", b:"Muito"},
+        {q:"Com que frequência usa crédito, parcelamento ou limite para cobrir gastos do dia a dia?", a:"Nunca", b:"Sempre"},
+        {q:"O quanto as dívidas já afetaram suas RELAÇÕES FAMILIARES?", a:"Nada", b:"Muito"},
+        {q:"Com que frequência a preocupação com dívidas atrapalha seu sono ou sua rotina?", a:"Nunca", b:"Sempre"},
+      ]},
+      { titulo:"Sentimentos, vergonha e apoio", perguntas:[
+        {q:"Qual a vergonha de falar sobre dívidas com outras pessoas?", a:"Nenhuma", b:"Muita"},
+        {q:"Qual a intensidade da CULPA depois de gastar por impulso?", a:"Nenhuma", b:"Muita"},
+        {q:"Com que frequência sente que PERDE O CONTROLE sobre os gastos?", a:"Nunca", b:"Sempre"},
+        {q:"O quanto se sente sozinho(a) ou sem apoio para lidar com isso?", a:"Nada", b:"Muito"},
+        {q:"O quanto conversar com quem vive o mesmo problema ajuda?", a:"Não ajuda", b:"Ajuda muito"},
+      ]},
+      { titulo:"Busca de ajuda e confiança no espaço EDA", perguntas:[
+        {q:"Com que frequência já procurou algum tipo de ajuda (grupo, terapia, orientação financeira)?", a:"Nunca", b:"Várias vezes"},
+        {q:"Qual a importância do ANONIMATO para participar de um grupo de apoio?", a:"Nada importante", b:"Muito importante"},
+        {q:"Utilidade de um ESPAÇO DE ACOLHIMENTO entre pessoas que passam pelo mesmo", a:"Nada útil", b:"Muito útil"},
+        {q:"O quanto confiaria em COMPARTILHAR SUA HISTÓRIA num espaço assim?", a:"Nada", b:"Totalmente"},
+        {q:"Qual a disposição de participar de ENCONTROS REGULARES de apoio?", a:"Nenhuma", b:"Muita"},
+      ]},
+    ]
+  },
+  6: {
+    nome:"Vida no Controle", prof:"Prof. Renato",
+    triagem:{ id:"varzea", label:"Mora em Várzea Grande? (triagem)", opcoes:["Sim","Não","Não sei"] },
+    blocos:[
+      { titulo:"Renda e orçamento familiar", perguntas:[
+        {q:"Com que frequência você planeja o orçamento da família antes de gastar?", a:"Nunca", b:"Sempre"},
+        {q:"O quanto você tem clareza de quanto a família ganha e quanto gasta por mês?", a:"Nenhuma clareza", b:"Total clareza"},
+        {q:"Como a renda da família costuma se comportar até o fim do mês?", a:"Sobra dinheiro", b:"Falta muito"},
+        {q:"Com que frequência o mês “fecha no vermelho”?", a:"Nunca", b:"Sempre"},
+        {q:"O quanto você organiza e acompanha as contas da casa?", a:"Nenhum controle", b:"Controle total"},
+      ]},
+      { titulo:"Compras, preços e economia", perguntas:[
+        {q:"Com que frequência você compara preços antes de comprar itens da casa?", a:"Nunca", b:"Sempre"},
+        {q:"Com que frequência você pesquisa ofertas e encartes do mercado?", a:"Nunca", b:"Sempre"},
+        {q:"Com que frequência você troca de mercado por causa do preço mais baixo?", a:"Nunca", b:"Sempre"},
+        {q:"Qual a facilidade de saber onde o produto da casa está mais barato?", a:"Muito difícil", b:"Muito fácil"},
+        {q:"O quanto uma economia pequena no mercado faz diferença no mês da família?", a:"Nenhuma", b:"Muita"},
+      ]},
+      { titulo:"Reserva, imprevistos e cupom fiscal", perguntas:[
+        {q:"Com que frequência você consegue guardar dinheiro por mês?", a:"Nunca", b:"Sempre"},
+        {q:"O quanto a família tem de reserva guardada para imprevistos?", a:"Nada", b:"Muita"},
+        {q:"O quanto um imprevisto (doença, conserto, conta extra) desorganiza as contas?", a:"Nada", b:"Muito"},
+        {q:"Com que frequência você guarda ou confere o cupom fiscal das compras?", a:"Nunca", b:"Sempre"},
+        {q:"O quanto você confere no cupom se os preços cobrados estão corretos?", a:"Nunca", b:"Sempre"},
+      ]},
+      { titulo:"Plataforma, patrocínio e confiança", perguntas:[
+        {q:"Utilidade de um app GRATUITO que organiza a renda da família", a:"Nada útil", b:"Muito útil"},
+        {q:"Utilidade de o app encontrar OPORTUNIDADES DE ECONOMIA e ofertas do mercado regional", a:"Nada útil", b:"Muito útil"},
+        {q:"Utilidade de o app LER O CUPOM FISCAL e mostrar os gastos da família", a:"Nada útil", b:"Muito útil"},
+        {q:"Confiança em usar um app gratuito PATROCINADO PELO MERCADO LOCAL", a:"Nenhuma", b:"Total"},
+        {q:"O quanto você se sentiria à vontade em compartilhar seus DADOS DE COMPRA em troca do app gratuito", a:"Nada à vontade", b:"Muito à vontade"},
+      ]},
+    ]
+  },
+};
+const CODIGO_PREFIXO = { 1:"G1", 2:"G2", 3:"G3", 4:"G4", 5:"G5", 6:"G6" };
+
+/* ============================================================
+   ARMAZENAMENTO LOCAL
+   ============================================================ */
+const LS = {
+  respostas:"cd3semvg_respostas",
+  seq:"cd3semvg_seq",
+  grupo:"cd3semvg_grupo",
+};
+let storageOK = true;
+function lsGet(k, def){
+  try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : def; }
+  catch(e){ storageOK=false; return def; }
+}
+function lsSet(k, v){
+  try{ localStorage.setItem(k, JSON.stringify(v)); return true; }
+  catch(e){ storageOK=false; return false; }
+}
+let respostas = lsGet(LS.respostas, []);
+let seq = lsGet(LS.seq, {});
+let grupoAtual = lsGet(LS.grupo, null);
+
+/* ============================================================
+   ESTADO DA COLETA EM ANDAMENTO
+   ============================================================ */
+let coleta = null;      // {grupo, perfil:{}, respostas:{}}
+let fila = [];          // perguntas achatadas do grupo
+let idx = 0;            // índice na fila
+
+/* ============================================================
+   UTILITÁRIOS
+   ============================================================ */
+const $ = (s) => document.querySelector(s);
+function toast(msg){
+  const t = $("#toast"); t.textContent = msg; t.classList.add("show");
+  clearTimeout(t._h); t._h = setTimeout(()=>t.classList.remove("show"), 2200);
+}
+function mostrar(id){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  $(id).classList.add("active");
+  window.scrollTo({top:0,behavior:"instant"});
+  atualizarBarra();
+}
+function totalPerguntas(){ return fila.length; }
+function atualizarBarra(){
+  const home = $("#scr-home").classList.contains("active");
+  const fim = $("#scr-fim").classList.contains("active");
+  let pct = 0;
+  if(!home && !fim && coleta){ pct = (idx / Math.max(1,totalPerguntas())) * 100; }
+  if(fim) pct = 100;
+  $("#barra").style.width = pct + "%";
+}
+function atualizarPill(){
+  if(grupoAtual && GRUPOS[grupoAtual]){
+    $("#pillGrupo").textContent = CODIGO_PREFIXO[grupoAtual] + " · " + GRUPOS[grupoAtual].nome;
+  } else { $("#pillGrupo").textContent = "—"; }
+}
+function flattenGrupo(g){
+  fila = [];
+  (GRUPOS[g].blocos||[]).forEach((b, bi)=>{
+    b.perguntas.forEach((p, qi)=>{
+      fila.push({ ...p, bloco:b.titulo, blocoIdx:bi });
+    });
+  });
+  return fila;
+}
+function contarDoGrupo(g){ return respostas.filter(r=>r.grupo===g).length; }
+function proxCodigo(g){
+  const atual = seq[g] || 0;
+  const n = String(atual + 1).padStart(3,"0");
+  return CODIGO_PREFIXO[g] + "-" + n;
+}
+
+/* ============================================================
+   HOME
+   ============================================================ */
+function renderHome(){
+  atualizarPill();
+  const grid = $("#grupo-grid");
+  grid.innerHTML = "";
+  [1,2,3,4,5,6].forEach(g=>{
+    const gr = GRUPOS[g];
+    const b = document.createElement("button");
+    b.className = "grupo-btn" + (grupoAtual===g ? " active" : "");
+    b.disabled = !!gr.pendente;
+    b.innerHTML = `<span class="g">GRUPO ${g}</span>
+      <span class="n">${gr.nome}</span>
+      <span class="p">${gr.prof}${gr.pendente ? " · pendente" : " · " + contarDoGrupo(g) + " resp."}</span>`;
+    b.onclick = ()=> selecionarGrupo(g);
+    grid.appendChild(b);
+  });
+  $("#btn-nova").disabled = !(grupoAtual && !GRUPOS[grupoAtual].pendente);
+  $("#st-total").textContent = respostas.length;
+  $("#st-grupo").textContent = grupoAtual ? contarDoGrupo(grupoAtual) : 0;
+  $("#st-meta").textContent = grupoAtual ? (contarDoGrupo(grupoAtual) + "/15–20") : "—";
+  $("#aviso-storage").classList.toggle("hidden", storageOK);
+}
+function selecionarGrupo(g){
+  if(GRUPOS[g].pendente){ toast("Grupo 2: ideia ainda a definir."); return; }
+  grupoAtual = g; lsSet(LS.grupo, g);
+  renderHome();
+}
+$("#btn-nova").onclick = ()=>{ if(grupoAtual) iniciarColeta(grupoAtual); };
+$("#btn-respostas").onclick = ()=> renderRespostas();
+$("#btn-dados").onclick = ()=> mostrar("#scr-dados");
+
+/* ============================================================
+   COLETA — PERFIL
+   ============================================================ */
+function iniciarColeta(g){
+  coleta = { grupo:g, criadoEm:new Date().toISOString(), perfil:{}, respostas:{} };
+  flattenGrupo(g);
+  idx = 0;
+  renderPerfil();
+  mostrar("#scr-perfil");
+}
+function renderPerfil(){
+  const g = coleta.grupo, gr = GRUPOS[g];
+  $("#perfil-titulo").textContent = "Perfil · Grupo " + g + " — " + gr.nome;
+  $("#perfil-desc").textContent = "Marque por OBSERVAÇÃO. Não pergunte — em dúvida, “Não sei estimar”.";
+  const box = $("#perfil-campos"); box.innerHTML = "";
+  const campos = gr.triagem ? [...PERFIL, { ...gr.triagem, triagem:true }] : PERFIL;
+  campos.forEach(c=>{
+    const div = document.createElement("div"); div.className = "campo";
+    const opts = ['<option value="">— marcar —</option>']
+      .concat(c.opcoes.map(o=>`<option value="${o}">${o}</option>`)).join("");
+    div.innerHTML = `<label>${c.label}${c.triagem ? ' <span class="small muted">(triagem)</span>' : ""}</label>
+      <select data-perfil="${c.id}">${opts}</select>`;
+    box.appendChild(div);
+  });
+  if(gr.sensivel){
+    const av = document.createElement("div");
+    av.className = "callout warn"; av.style.marginTop = "4px";
+    av.innerHTML = "<b>Tema sensível.</b> Não pergunte valores de dívida nem renda. Se houver sofrimento, acolha e oriente procurar apoio (CVV 188 · CAPS · UBS).";
+    box.appendChild(av);
+  }
+}
+$("#btn-perfil-ok").onclick = ()=>{
+  const faltou = [];
+  $("#perfil-campos select").forEach(s=>{
+    coleta.perfil[s.dataset.perfil] = s.value || "";
+    if(!s.value) faltou.push(s.dataset.perfil);
+  });
+  if(faltou.length){ toast("Complete o Bloco 0 (perfil) por observação."); return; }
+  idx = 0; renderPergunta(); mostrar("#scr-pergunta");
+};
+
+/* ============================================================
+   COLETA — PERGUNTAS
+   ============================================================ */
+function renderPergunta(){
+  const p = fila[idx];
+  $("#perg-cont").textContent = `Pergunta ${idx+1} de ${totalPerguntas()}`;
+  $("#perg-bloco").textContent = "Bloco: " + p.bloco;
+  $("#perg-q").textContent = p.q;
+  $("#polo-a").textContent = p.a;
+  $("#polo-b").textContent = p.b;
+  const esc = $("#escala"); esc.innerHTML = "";
+  for(let n=1;n<=5;n++){
+    const o = document.createElement("div");
+    o.className = "opt" + (coleta.respostas[idx]===n ? " sel" : "");
+    o.innerHTML = `<span class="num">${n}</span><span>${n===1?p.a:(n===5?p.b:"")}</span>`;
+    o.onclick = ()=> responder(idx, n);
+    esc.appendChild(o);
+  }
+  atualizarBarra();
+}
+function responder(i, n){
+  coleta.respostas[i] = n;
+  const opts = document.querySelectorAll("#escala .opt");
+  opts.forEach((o,k)=> o.classList.toggle("sel", (k+1)===n));
+  setTimeout(()=>{
+    if(i < totalPerguntas()-1){ idx = i+1; renderPergunta(); }
+    else { finalizarColeta(); }
+  }, 180);
+}
+$("#btn-perg-voltar").onclick = ()=>{
+  if(idx===0){ mostrar("#scr-perfil"); }
+  else { idx--; renderPergunta(); }
+};
+
+/* ============================================================
+   COLETA — FINALIZAR / CÓDIGO
+   ============================================================ */
+function finalizarColeta(){
+  const g = coleta.grupo;
+  const codigo = proxCodigo(g);
+  const reg = {
+    id: "r" + Date.now() + "-" + Math.random().toString(36).slice(2,7),
+    grupo: g, codigo, criadoEm: new Date().toISOString(),
+    perfil: coleta.perfil, respostas: coleta.respostas,
+  };
+  respostas.push(reg);
+  seq[g] = (seq[g]||0) + 1;
+  lsSet(LS.respostas, respostas); lsSet(LS.seq, seq);
+
+  const preenchidas = Object.keys(reg.respostas).length;
+  $("#fim-cod").textContent = codigo;
+  $("#fim-resumo").textContent = `${GRUPOS[g].nome} · ${preenchidas}/${totalPerguntas()} respondidas · ${new Date().toLocaleString("pt-BR")}`;
+  const modelo = `Código ${codigo}. Principais pontos: [2–3 ideias]. Frase marcante: “[...]”.`;
+  const audio = document.createElement("div");
+  audio.innerHTML = `<b>Modelo de áudio (WhatsApp):</b><br>${modelo}`;
+  $("#fim-audio").innerHTML = "";
+  $("#fim-audio").appendChild(audio);
+  $("#fim-audio").classList.remove("hidden");
+  coleta = null;
+  mostrar("#scr-fim");
+  renderHome();
+}
+$("#btn-copiar").onclick = async ()=>{
+  const cod = $("#fim-cod").textContent;
+  try{ await navigator.clipboard.writeText(cod); toast("Código copiado: " + cod); }
+  catch(e){ toast(cod); }
+};
+$("#btn-proxima").onclick = ()=>{ if(grupoAtual) iniciarColeta(grupoAtual); };
+$("#btn-fim-home").onclick = ()=>{ renderHome(); };
+
+/* ============================================================
+   RESPOSTAS
+   ============================================================ */
+function renderRespostas(){
+  const lista = $("#resp-lista"); lista.innerHTML = "";
+  const st = $("#resp-stat");
+  st.innerHTML = `<div class="s"><b>${respostas.length}</b><span>total</span></div>
+    <div class="s"><b>${grupoAtual?contarDoGrupo(grupoAtual):0}</b><span>grupo atual</span></div>
+    <div class="s"><b>${new Set(respostas.map(r=>r.grupo)).size}</b><span>grupos</span></div>`;
+  const minhas = [...respostas].sort((a,b)=> b.criadoEm.localeCompare(a.criadoEm));
+  $("#resp-vazio").classList.toggle("hidden", minhas.length>0);
+  minhas.forEach(r=>{
+    const el = document.createElement("div"); el.className = "item";
+    const d = new Date(r.criadoEm).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"});
+    el.innerHTML = `<span class="cod">${r.codigo}</span>
+      <span class="meta">${GRUPOS[r.grupo].nome}<br>${d} · ${Object.keys(r.respostas).length} respostas</span>
+      <button class="x" title="Apagar">✕</button>`;
+    el.querySelector(".x").onclick = ()=>{
+      if(confirm("Apagar a resposta " + r.codigo + "?")){
+        respostas = respostas.filter(x=>x.id!==r.id);
+        lsSet(LS.respostas, respostas); renderRespostas(); renderHome();
+      }
+    };
+    lista.appendChild(el);
+  });
+  mostrar("#scr-respostas");
+}
+$("#btn-limpar").onclick = ()=>{
+  if(!respostas.length){ toast("Nada para apagar."); return; }
+  if(confirm("Apagar TODAS as " + respostas.length + " respostas? Isto não pode ser desfeito.")){
+    if(confirm("Tem certeza? Exporte antes se precisar.")){
+      respostas = []; seq = {};
+      lsSet(LS.respostas, respostas); lsSet(LS.seq, seq);
+      renderHome(); toast("Respostas apagadas.");
+    }
+  }
+};
+
+/* ============================================================
+   EXPORTAÇÃO
+   ============================================================ */
+function baixar(nome, conteudo, mime){
+  const blob = new Blob([conteudo], {type:mime});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = nome; document.body.appendChild(a); a.click();
+  setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); }, 500);
+}
+function csvEscape(v){ const s = String(v==null?"":v); return '"' + s.replace(/"/g,'""') + '"'; }
+function gerarCSV(){
+  const grupos = [...new Set(respostas.map(r=>r.grupo))].sort();
+  const maxPerg = 20;
+  const cab = ["codigo","grupo","grupo_nome","data",
+    ...PERFIL.map(p=>p.id),
+    ...Array.from({length:maxPerg},(_,i)=>"Q"+(i+1))];
+  const linhas = [cab.map(csvEscape).join(";")];
+  [...respostas].sort((a,b)=>a.codigo.localeCompare(b.codigo)).forEach(r=>{
+    const cols = [r.codigo, r.grupo, GRUPOS[r.grupo].nome, new Date(r.criadoEm).toLocaleString("pt-BR")];
+    PERFIL.forEach(p=> cols.push(r.perfil[p.id]||""));
+    for(let i=0;i<maxPerg;i++) cols.push(r.respostas[i]!=null ? r.respostas[i] : "");
+    linhas.push(cols.map(csvEscape).join(";"));
+  });
+  return "\uFEFF" + linhas.join("\r\n");
+}
+$("#btn-csv").onclick = ()=>{
+  if(!respostas.length){ toast("Nenhuma resposta para exportar."); return; }
+  baixar("coleta-3semvg.csv", gerarCSV(), "text/csv;charset=utf-8");
+  toast("CSV gerado.");
+};
+$("#btn-json").onclick = ()=>{
+  if(!respostas.length){ toast("Nenhuma resposta para exportar."); return; }
+  baixar("coleta-3semvg.json", JSON.stringify({app:"3SemVG coleta v1", exportadoEm:new Date().toISOString(), respostas}, null, 2), "application/json");
+  toast("JSON gerado.");
+};
+$("#btn-copiar-dados").onclick = async ()=>{
+  const txt = JSON.stringify({respostas}, null, 2);
+  try{ await navigator.clipboard.writeText(txt); toast("JSON copiado (" + respostas.length + " respostas)."); }
+  catch(e){ toast("Não deu para copiar. Use Baixar JSON."); }
+};
+
+/* ============================================================
+   NAVEGAÇÃO GENÉRICA (data-nav)
+   ============================================================ */
+document.querySelectorAll("[data-nav]").forEach(b=>{
+  b.onclick = ()=>{
+    const t = b.dataset.nav;
+    if(t==="home"){ renderHome(); mostrar("#scr-home"); }
+  };
+});
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+if(!storageOK){ setTimeout(()=>toast("Aviso: armazenamento local indisponível."), 800); }
+renderHome();
+mostrar("#scr-home");
+</script>
+</body>
+</html>

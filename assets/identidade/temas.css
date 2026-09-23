@@ -1,0 +1,90 @@
+/* ==========================================================================
+   temas.css — Identidade visual por grupo (Customer Discovery · 3SemVG)
+   Cada grupo tem paleta, tinta, fonte e acento próprios, derivados da ideia.
+   Uso nos slides: <link .../temas.css"> + <body class="tema-g3">
+   Uso nos MVPs/hub: idem, e as variáveis ficam disponíveis para todo o CSS.
+   ========================================================================== */
+
+:root{
+  /* identidade padrão (turma Cerrado Tech) */
+  --accent:#e94560;
+  --accent-dark:#c73550;
+  --accent-soft:#fdf2f4;
+  --accent-rgb:233,69,96;
+  --accent2:#f59e0b;
+  --tinta:#1a1a2e;
+  --tinta2:#16213e;
+  --texto:#2d3748;
+  --texto-suave:#4a5568;
+  --linha:#e2e8f0;
+  --fundo:#f7fafc;
+  --fonte:"Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  --fonte-titulo:"Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  --raio:14px;
+}
+
+/* ---------------------------------------------------------------- G1 · Dinheiro na Mão
+   Ideia: programa presencial + sistema de contas + bolsa-incentivo.
+   Tom: institucional e acolhedor (posto público). Paleta: petróleo/cyan.        */
+body.tema-g1, .tema-g1{
+  --accent:#0e7490; --accent-dark:#0b5568; --accent-soft:#ecfeff; --accent-rgb:14,116,144;
+  --accent2:#22d3ee; --tinta:#083344; --tinta2:#0e7490;
+  --fonte:"Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  --fonte-titulo:"Segoe UI Semibold", "Segoe UI", system-ui, Roboto, Arial, sans-serif;
+}
+
+/* ---------------------------------------------------------------- G3 · Quita.AI
+   Ideia: jogo da família que premia resistir ao impulso.
+   Tom: lúdico/gamer. Paleta: violeta + amarelo neon.                            */
+body.tema-g3, .tema-g3{
+  --accent:#7c3aed; --accent-dark:#5b21b6; --accent-soft:#f5f3ff; --accent-rgb:124,58,237;
+  --accent2:#facc15; --tinta:#1e1b4b; --tinta2:#4c1d95;
+  --fonte:"Trebuchet MS", "Verdana", system-ui, Arial, sans-serif;
+  --fonte-titulo:"Trebuchet MS", "Verdana", system-ui, Arial, sans-serif;
+}
+
+/* ---------------------------------------------------------------- G4 · SuaCasaSuaVida
+   Ideia: app que ajuda a comprar a casa (bairro + finanças + simulação).
+   Tom: imobiliário/confiança. Paleta: esmeralda + areia.                        */
+body.tema-g4, .tema-g4{
+  --accent:#047857; --accent-dark:#065f46; --accent-soft:#ecfdf5; --accent-rgb:4,120,87;
+  --accent2:#d97706; --tinta:#052e2b; --tinta2:#065f46;
+  --fonte:"Segoe UI", "Helvetica Neue", system-ui, Arial, sans-serif;
+  --fonte-titulo:"Segoe UI Semibold", "Helvetica Neue", system-ui, Arial, sans-serif;
+}
+
+/* ---------------------------------------------------------------- G5 · EDA
+   Ideia: espaço anônimo de acolhimento entre pares (tema sensível).
+   Tom: acolhedor/calmo, zero culpabilização. Paleta: azul/índigo suave.         */
+body.tema-g5, .tema-g5{
+  --accent:#4f5bd5; --accent-dark:#3b45a8; --accent-soft:#eef2ff; --accent-rgb:79,91,213;
+  --accent2:#93c5fd; --tinta:#1e2235; --tinta2:#3730a3;
+  --fonte:"Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  --fonte-titulo:"Cambria", "Georgia", "Segoe UI", serif;
+}
+
+/* ---------------------------------------------------------------- G2 · LifePath (Simulador da Vida Real)
+   Ideia: gamificação financeira + Nubank — simulação de vida financeira para jovens.
+   Tom: fintech, digital, limpo. Paleta: laranja Nubank + roxo digital.            */
+body.tema-g2, .tema-g2{
+  --accent:#ff6b35; --accent-dark:#d4521e; --accent-soft:#fff4f0; --accent-rgb:255,107,53;
+  --accent2:#7b2ff7; --tinta:#1a0e2e; --tinta2:#4a1080;
+  --fonte:"Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  --fonte-titulo:"Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+}
+
+/* ---------------------------------------------------------------- G6 · Vida no Controle
+   Ideia: plataforma free que organiza a renda, acha economia e lê o cupom fiscal.
+   Tom: local/frugal, patrocinado pelo mercado. Paleta: laranja-mercado + verde.  */
+body.tema-g6, .tema-g6{
+  --accent:#ea580c; --accent-dark:#9a3412; --accent-soft:#fff7ed; --accent-rgb:234,88,12;
+  --accent2:#16a34a; --tinta:#431407; --tinta2:#9a3412;
+  --fonte:"Tahoma", "Segoe UI", system-ui, Arial, sans-serif;
+  --fonte-titulo:"Trebuchet MS", "Tahoma", system-ui, Arial, sans-serif;
+}
+
+/* faixa de identidade no topo de cada slide (não interfere no layout) */
+.reveal .slides section::before{
+  content:""; position:absolute; top:0; left:0; right:0; height:6px;
+  background:linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%);
+}

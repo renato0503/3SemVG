@@ -1,0 +1,11 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Development helpers (keep essential scripts)
+check-*.ps1
+check_*.py
+extract-*.ps1
+extract_pdfs.py
+read-*.ps1
+apply-themes.ps1

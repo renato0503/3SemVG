@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#7c3aed">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Quita.AI — Controle financeiro em família</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="../assets/identidade/temas.css">
+<link rel="stylesheet" href="../assets/kit/kit.css">
+<style>
+:root{
+  --accent:#7c3aed;--accent-dark:#6d28d9;--accent-soft:#ede9fe;
+  --accent2:#facc15;--tinta:#1e1b4b;--tinta2:#312e81;
+  --fonte:'Segoe UI',Arial,sans-serif;--fonte-titulo:'Trebuchet MS',Arial;
+  --texto:#1e1b4b;--texto-suave:#6b7280;--linha:#e5e7eb;--fundo:#f5f3ff;
+  --card:#ffffff;--ok:#16a34a;--alerta:#dc2626;--atencao:#d97706;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:var(--fonte);background:var(--fundo);color:var(--texto);font-size:16px;overflow-x:hidden}
+.app{max-width:480px;margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;padding-bottom:80px}
+header.top{background:linear-gradient(135deg,var(--tinta) 0%,var(--tinta2) 100%);color:#fff;padding:14px 16px 40px;position:sticky;top:0;z-index:20}
+header.top .brand{display:flex;align-items:center;justify-content:space-between}
+header.top h1{font-size:17px;font-weight:700;letter-spacing:.02em;font-family:var(--fonte-titulo)}
+header.top .sub{font-size:11px;opacity:.75;margin-top:2px}
+.badge-pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:11px;padding:3px 8px;border-radius:20px}
+.progress-bar{height:4px;background:rgba(255,255,255,.2);border-radius:4px;margin-top:10px;overflow:hidden}
+.progress-bar i{display:block;height:100%;width:0;background:var(--accent2);transition:width .3s}
+main{flex:1;padding:0 16px;display:flex;flex-direction:column;gap:0}
+.screen{display:none;flex-direction:column;animation:fade .2s ease}
+.screen.active{display:flex}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.page-title{font-size:13px;font-weight:700;color:var(--texto-suave);text-transform:uppercase;letter-spacing:.07em;padding:16px 0 6px}
+.card{background:var(--card);border-radius:16px;padding:16px;box-shadow:0 1px 4px rgba(124,58,237,.08);margin-bottom:12px}
+.card-title{font-size:16px;font-weight:700;margin-bottom:6px;color:var(--tinta)}
+.card-sub{font-size:13px;color:var(--texto-suave)}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:12px;padding:14px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;transition:transform .05s,background .15s;padding-top:calc(14px + env(safe-area-inset-top))}
+.btn:active{transform:scale(.975)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-dark)}
+.btn-ghost{background:#fff;color:var(--accent);border:1.5px solid var(--accent)}
+.btn-success{background:var(--ok);color:#fff}
+.btn-sm{padding:10px 14px;font-size:13px}
+.btn-icon{padding:10px;border-radius:10px;width:auto}
+.row{display:flex;gap:10px}
+.row>*{flex:1}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.text-center{text-align:center}
+.text-right{text-align:right}
+.text-muted{color:var(--texto-suave);font-size:13px}
+.mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mb-8{margin-bottom:8px}.mb-12{margin-bottom:12px}
+.flex-between{display:flex;align-items:center;justify-content:space-between}
+.kpi-big{text-align:center;padding:16px 0}
+.kpi-big .num{font-size:48px;font-weight:900;color:var(--accent);font-family:var(--fonte-titulo);line-height:1}
+.kpi-big .label{font-size:12px;color:var(--texto-suave);margin-top:4px;letter-spacing:.04em}
+.streak-display{display:flex;align-items:center;gap:8px;justify-content:center;padding:12px;background:var(--accent-soft);border-radius:12px}
+.streak-display .fire{font-size:28px}
+.streak-display .count{font-size:32px;font-weight:900;color:var(--accent)}
+.streak-display .label{font-size:12px;color:var(--accent-dark)}
+.missions-list{display:flex;flex-direction:column;gap:8px}
+.mission-item{display:flex;align-items:center;gap:12px;padding:12px;background:#fff;border-radius:12px;border:1.5px solid var(--linha)}
+.mission-item.done{border-color:var(--ok);background:#f0fdf4}
+.mission-item .icon{width:36px;height:36px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.mission-item.done .icon{background:#dcfce7}
+.mission-item .info{flex:1}
+.mission-item .name{font-size:14px;font-weight:600}
+.mission-item .desc{font-size:12px;color:var(--texto-suave)}
+.mission-item .pts{font-size:13px;font-weight:700;color:var(--accent)}
+.phase-card{text-align:center;padding:20px;background:linear-gradient(135deg,var(--tinta),var(--accent));border-radius:16px;color:#fff}
+.phase-card .level{font-size:13px;opacity:.8;letter-spacing:.05em;text-transform:uppercase}
+.phase-card .phase-name{font-size:24px;font-weight:900;margin:4px 0;font-family:var(--fonte-titulo)}
+.phase-card .phase-bar{height:8px;background:rgba(255,255,255,.2);border-radius:4px;margin:12px 0;overflow:hidden}
+.phase-card .phase-bar i{display:block;height:100%;width:0;background:var(--accent2);border-radius:4px;transition:width .5s}
+.phase-card .next{font-size:12px;opacity:.7}
+.family-member{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--linha)}
+.family-member .avatar{width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;flex-shrink:0}
+.family-member .name{font-size:14px;font-weight:600}
+.family-member .pts-label{font-size:12px;color:var(--texto-suave)}
+.family-member .pts-val{font-size:13px;font-weight:700;color:var(--accent)}
+.input-group{margin-bottom:12px}
+.input-group label{display:block;font-size:12px;font-weight:600;color:var(--texto-suave);margin-bottom:4px;letter-spacing:.04em}
+.form-input,.form-select,.form-textarea{width:100%;padding:12px 14px;border:1.5px solid var(--linha);border-radius:10px;font-size:15px;font-family:inherit;background:#fff;color:var(--texto);transition:border-color .15s}
+.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--accent)}
+.empty-state{text-align:center;padding:40px 20px;color:var(--texto-suave)}
+.empty-state .icon{font-size:48px;margin-bottom:12px}
+.empty-state .msg{font-size:15px;font-weight:600;color:var(--texto);margin-bottom:4px}
+.empty-state .sub{font-size:13px}
+.nav-bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--linha);display:flex;z-index:30;padding-bottom:env(safe-area-inset-bottom)}
+.nav-bottom .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px;gap:3px;cursor:pointer;color:var(--texto-suave);transition:color .15s;border:none;background:none;font-size:11px;font-family:inherit}
+.nav-bottom .nav-item.active{color:var(--accent)}
+.nav-bottom .nav-item .nav-icon{font-size:20px}
+.badge{background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px}
+.alert-box{padding:12px 14px;border-radius:10px;font-size:13px;margin-bottom:10px}
+.alert-box.info{background:#eff6ff;color:#1d4ed8}
+.alert-box.warn{background:#fffbeb;color:#92400e}
+.alert-box.ok{background:#f0fdf4;color:#166534}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;display:none;align-items:center;justify-content:center;padding:16px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:16px;width:100%;max-width:400px;max-height:90dvh;overflow-y:auto;padding:20px}
+.modal-title{font-size:18px;font-weight:700;margin-bottom:12px}
+.modal-close{float:right;background:none;border:none;font-size:22px;cursor:pointer;color:var(--texto-suave);padding:4px}
+.toast-container{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);z-index:60;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none}
+.toast{background:var(--tinta);color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;animation:toastIn .25s ease;white-space:nowrap}
+@keyframes toastIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.history-item{padding:10px 0;border-bottom:1px solid var(--linha);display:flex;align-items:flex-start;gap:10px}
+.history-item .hi-icon{font-size:20px;flex-shrink:0;margin-top:2px}
+.history-item .hi-text{flex:1}
+.history-item .hi-name{font-size:14px;font-weight:600}
+.history-item .hi-meta{font-size:12px;color:var(--texto-suave)}
+.history-item .hi-pts{font-size:13px;font-weight:700;color:var(--ok)}
+.section-divider{height:1px;background:var(--linha);margin:8px 0}
+</style>
+</head>
+<body class="tema-g3">
+<div class="app">
+<header class="top" id="appHeader">
+<div class="brand">
+ <div>
+  <h1>Quita.AI</h1>
+  <div class="sub" id="roomName">Crie sua sala</div>
+ </div>
+ <span class="badge-pill" id="userLevel">Nível 1</span>
+</div>
+<div class="progress-bar"><i id="levelProgress" style="width:0%"></i></div>
+</header>
+
+<main id="mainContent">
+<!-- TELA: Home / Sala -->
+<section class="screen active" id="screenHome">
+<div class="page-title">Sala da Família</div>
+<div id="noRoom">
+ <div class="card">
+  <div class="card-title">Bem-vindo ao Quita.AI!</div>
+  <div class="card-sub mb-12">Transforme o controle dos gastos em um jogo da família inteira.</div>
+  <div class="input-group">
+   <label>NOME DA SALA</label>
+   <input class="form-input" id="inputRoomName" placeholder="Ex.: Família Souza" maxlength="30">
+  </div>
+  <div class="input-group">
+   <label>SEU APELIDO</label>
+   <input class="form-input" id="inputNick" placeholder="Ex.: João, Mãe, Lu" maxlength="20">
+  </div>
+  <button class="btn btn-primary" id="btnCreateRoom">Criar Sala</button>
+ </div>
+ <div class="card">
+  <div class="card-title">Já tem uma sala?</div>
+  <div class="card-sub mb-12">Digite o nome da sala e seu apelido para entrar.</div>
+  <div class="input-group">
+   <label>NOME DA SALA</label>
+   <input class="form-input" id="inputJoinRoom" placeholder="Nome da sala" maxlength="30">
+  </div>
+  <div class="input-group">
+   <label>SEU APELIDO</label>
+   <input class="form-input" id="inputJoinNick" placeholder="Seu apelido" maxlength="20">
+  </div>
+  <button class="btn btn-ghost" id="btnJoinRoom">Entrar na Sala</button>
+ </div>
+</div>
+<div id="hasRoom" style="display:none">
+ <div class="phase-card mb-12">
+  <div class="level">Nível <span id="dispLevel">1</span></div>
+  <div class="phase-name" id="dispPhaseName">Iniciante</div>
+  <div class="phase-bar"><i id="dispPhaseBar" style="width:0%"></i></div>
+  <div class="next"><span id="dispPtsNext">100</span> pts para o próximo nível</div>
+ </div>
+ <div class="card">
+  <div class="flex-between mb-8">
+   <div class="card-title" style="margin:0">Pontos da Família</div>
+   <span class="badge" id="dispTotalPts">0 pts</span>
+  </div>
+  <div class="streak-display">
+   <span class="fire">🔥</span>
+   <span class="count" id="dispStreak">0</span>
+   <span class="label">dias seguidos</span>
+   <span class="badge" style="margin-left:auto">🔥 Meta: 7 dias</span>
+  </div>
+ </div>
+ <div class="card">
+  <div class="card-title mb-8">Missões Semanais</div>
+  <div class="missions-list" id="missionsList"></div>
+ </div>
+ <div class="card">
+  <div class="card-title mb-8">Família</div>
+  <div id="membersList"></div>
+ </div>
+ <div class="card">
+  <div class="card-title mb-8">Histórico Recente</div>
+  <div id="historyList"></div>
+ </div>
+</div>
+</section>
+
+<!-- TELA: Registrar Impulso -->
+<section class="screen" id="screenRegistro">
+<div class="page-title">Registrar</div>
+<div class="card">
+ <div class="card-title mb-12">Você resistiu a um gasto?</div>
+ <div class="kpi-big mb-12">
+  <div class="num" id="regPts" style="color:var(--ok)">+20</div>
+  <div class="label">pontos por registro</div>
+ </div>
+ <div class="input-group">
+  <label>CATEGORIA DO GASTO RESISTIDO</label>
+  <select class="form-select" id="inputCat">
+   <option value="mercado">🛒 Mercado / Alimentação</option>
+   <option value="delivery">🍔 Delivery / Restaurante</option>
+   <option value="roupa">👕 Roupa / Acessório</option>
+   <option value="tech">📱 Tech / Eletrônico</option>
+   <option value="lazer">🎮 Lazer / Entretenimento</option>
+   <option value="beleza">💄 Beleza / Cosmético</option>
+   <option value="outro">📦 Outro</option>
+  </select>
+ </div>
+ <div class="input-group">
+  <label>OBSERVAÇÃO (OPCIONAL)</label>
+  <input class="form-input" id="inputObs" placeholder="Ex.: Quase comprei uma camisa..." maxlength="80">
+ </div>
+ <button class="btn btn-success" id="btnRegistrar">Registrar Resistência ✅</button>
+</div>
+<div class="card mt-12">
+ <div class="card-title mb-8">Como funciona?</div>
+ <div class="text-muted" style="line-height:1.6;font-size:13px">
+  <p>Quando você <strong>resiste a um gasto por impulso</strong>, registre aqui para ganhar pontos para a família. Cada registro vale pontos e aproxima a família do próximo nível!</p>
+  <p style="margin-top:8px"><strong>Exemplo:</strong> Você estava no shopping e quase comprou uma camisa que não precisava. Resistiu e não comprou. Registre aqui!</p>
+ </div>
+</div>
+</section>
+
+<!-- TELA: Missões -->
+<section class="screen" id="screenMissions">
+<div class="page-title">Missões Semanais</div>
+<div id="missionsDetail"></div>
+</section>
+
+<!-- TELA: Família -->
+<section class="screen" id="screenFamily">
+<div class="page-title">Família</div>
+<div class="card mb-12">
+ <div class="card-title">Integrantes</div>
+ <div id="familyDetail"></div>
+</div>
+<div class="card">
+ <div class="card-title mb-8">Adicionar Membro</div>
+ <div class="input-group">
+  <label>APELIDO DO NOVO MEMBRO</label>
+  <input class="form-input" id="inputNewMember" placeholder="Ex.: Pai, Tia Maria" maxlength="20">
+ </div>
+ <button class="btn btn-ghost" id="btnAddMember">Adicionar à Sala</button>
+</div>
+<div class="card mt-12">
+ <div class="card-title mb-8">Ranking da Família</div>
+ <div id="rankingList"></div>
+</div>
+</section>
+
+<!-- TELA: Perfil -->
+<section class="screen" id="screenProfile">
+<div class="page-title">Meu Perfil</div>
+<div class="card">
+ <div class="card-title">Dados da Sala</div>
+ <div id="profileRoom"></div>
+</div>
+<div class="card mt-12">
+ <div class="card-title">Estatísticas</div>
+ <div id="profileStats"></div>
+</div>
+<div class="card mt-12">
+ <div class="alert-box info mb-8">
+  <strong>💡 O que é o Quita.AI?</strong><br>
+  <span style="font-size:12px">Um jogo em que a família ganha pontos ao resistir a gastos por impulso. Cada resistência vira pontos, fases e bônus. Não é um app de orçamento — é um jogo cujo resultado é o orçamento melhor!</span>
+ </div>
+ <div class="alert-box warn mb-8">
+  <strong>⚠️ Hipótese, não promessa</strong><br>
+  <span style="font-size:12px">Descontos em parceiros e benefícios fiscais são ideias a serem validadas — ainda não existem no produto.</span>
+ </div>
+</div>
+<div class="card mt-12">
+ <button class="btn btn-ghost" id="btnExportData" style="margin-bottom:8px">Exportar Dados 📤</button>
+ <button class="btn btn-danger" id="btnResetData">Resetar Tudo 🗑️</button>
+</div>
+</section>
+</main>
+
+<nav class="nav-bottom" id="bottomNav" style="display:none">
+<button class="nav-item active" data-screen="Home">
+ <span class="nav-icon">🏠</span>
+ <span>Home</span>
+</button>
+<button class="nav-item" data-screen="Registro">
+ <span class="nav-icon">✊</span>
+ <span>Registrar</span>
+</button>
+<button class="nav-item" data-screen="Missions">
+ <span class="nav-icon">🎯</span>
+ <span>Missões</span>
+</button>
+<button class="nav-item" data-screen="Family">
+ <span class="nav-icon">👨‍👩‍👧</span>
+ <span>Família</span>
+</button>
+<button class="nav-item" data-screen="Profile">
+ <span class="nav-icon">⚙️</span>
+ <span>Perfil</span>
+</button>
+</nav>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+<div class="modal-box" id="modalBox"></div>
+</div>
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="../assets/kit/kit.js" type="module"></script>
+<script type="module">
+import { store, fmtBRL, uid } from '../assets/kit/kit.js';
+
+const NS = 'quitai';
+function _k(k) { return NS + ':' + k; }
+const s = {
+  get(k, f) { try { const v = localStorage.getItem(_k(k)); return v == null ? f : JSON.parse(v); } catch { return f; } },
+  set(k, v) { try { localStorage.setItem(_k(k), JSON.stringify(v)); return true; } catch { return false; } },
+  rem(k) { localStorage.removeItem(_k(k)); },
+  clear() { Object.keys(localStorage).forEach(k => { if (k.startsWith(NS + ':')) localStorage.removeItem(k); }); }
+};
+
+const MISSIONS = [
+  { id: 'm1', icon: '🛒', name: 'Zero impulso no mercado', desc: 'Não compre por impulso no mercado esta semana', pts: 30 },
+  { id: 'm2', icon: '📱', name: 'Desconecte o checkout', desc: 'Resista a 3 compras por impulso em apps de entrega', pts: 40 },
+  { id: 'm3', icon: '💸', name: 'Primeiro registro', desc: 'Faça seu primeiro registro de resistência', pts: 20 },
+  { id: 'm4', icon: '👨‍👩‍👧', name: 'Família Unite', desc: 'Todos os membros registraram pelo menos 1 resistência', pts: 50 },
+  { id: 'm5', icon: '🔥', name: 'Streak de 3 dias', desc: '3 dias seguidos registrando resistências', pts: 60 },
+  { id: 'm6', icon: '🎯', name: 'Missão Dupla', desc: 'Resista a 5 gastos esta semana', pts: 45 },
+];
+
+const LEVELS = [
+  { lvl: 1, name: 'Iniciante', min: 0 },
+  { lvl: 2, name: 'Aprendiz', min: 100 },
+  { lvl: 3, name: 'Controlador', min: 300 },
+  { lvl: 4, name: 'Mestre', min: 600 },
+  { lvl: 5, name: 'Lenda Financeira', min: 1000 },
+];
+
+let state = s.get('state', null);
+if (!state) state = { room: null, members: [], records: [], missions: [], streak: 0, lastRecord: null };
+
+function save() { s.set('state', state); render(); }
+
+function getLevel(pts) {
+  let lvl = LEVELS[0];
+  for (const l of LEVELS) { if (pts >= l.min) lvl = l; }
+  return lvl;
+}
+function getNextLevel(pts) {
+  for (const l of LEVELS) { if (pts < l.min) return l; }
+  return LEVELS[LEVELS.length - 1];
+}
+function totalPts() { return state.records.reduce((a, r) => a + r.pts, 0); }
+function calcStreak() {
+  if (!state.lastRecord) return 0;
+  const now = new Date();
+  const last = new Date(state.lastRecord);
+  const diff = Math.floor((now - last) / 86400000);
+  if (diff > 1) return 0;
+  return state.streak;
+}
+
+function toast(msg) {
+  const c = document.getElementById('toastContainer');
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.textContent = msg;
+  c.appendChild(el);
+  setTimeout(() => el.remove(), 2800);
+}
+
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen' + name).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.screen === name));
+}
+
+function render() {
+  const hasRoom = !!state.room;
+  document.getElementById('noRoom').style.display = hasRoom ? 'none' : 'block';
+  document.getElementById('hasRoom').style.display = hasRoom ? 'block' : 'none';
+  document.getElementById('bottomNav').style.display = hasRoom ? 'flex' : 'none';
+
+  if (!hasRoom) return;
+
+  const pts = totalPts();
+  const lvl = getLevel(pts);
+  const nextLvl = getNextLevel(pts);
+  const progress = nextLvl.min === lvl.min ? 100 : Math.min(100, Math.round((pts - lvl.min) / (nextLvl.min - lvl.min) * 100));
+
+  document.getElementById('roomName').textContent = state.room || 'Sala';
+  document.getElementById('userLevel').textContent = 'Nível ' + lvl.lvl;
+  document.getElementById('dispLevel').textContent = lvl.lvl;
+  document.getElementById('dispPhaseName').textContent = lvl.name;
+  document.getElementById('dispPhaseBar').style.width = progress + '%';
+  document.getElementById('dispPtsNext').textContent = nextLvl.min - pts;
+  document.getElementById('dispTotalPts').textContent = pts + ' pts';
+  document.getElementById('levelProgress').style.width = progress + '%';
+
+  const streak = calcStreak();
+  document.getElementById('dispStreak').textContent = streak;
+
+  // Missions
+  const ml = document.getElementById('missionsList');
+  const doneIds = new Set(state.missions.map(m => m.id));
+  const weeklyDone = state.records.filter(r => {
+    const d = new Date(r.ts);
+    const now = new Date();
+    return d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth() && d.getDate() >= 1;
+  }).length;
+  ml.innerHTML = MISSIONS.map(m => {
+    const done = doneIds.has(m.id);
+    return `<div class="mission-item ${done ? 'done' : ''}">
+     <div class="icon">${done ? '✅' : m.icon}</div>
+     <div class="info">
+      <div class="name">${m.name}</div>
+      <div class="desc">${m.desc}</div>
+     </div>
+     <div class="pts">${done ? '✅' : '+' + m.pts + ' pts'}</div>
+    </div>`;
+  }).join('');
+
+  // Members
+  const mlist = document.getElementById('membersList');
+  if (state.members.length === 0) {
+    mlist.innerHTML = '<div class="text-muted" style="font-size:13px">Nenhum membro ainda.</div>';
+  } else {
+    mlist.innerHTML = state.members.map(m => {
+      const mp = state.records.filter(r => r.member === m.nick).reduce((a, r) => a + r.pts, 0);
+      return `<div class="family-member">
+       <div class="avatar">${m.nick.charAt(0).toUpperCase()}</div>
+       <div style="flex:1">
+        <div class="name">${m.nick}</div>
+        <div class="pts-label">${state.records.filter(r => r.member === m.nick).length} registros</div>
+       </div>
+       <div class="pts-val">${mp} pts</div>
+      </div>`;
+    }).join('');
+  }
+
+  // History
+  const hlist = document.getElementById('historyList');
+  const recent = [...state.records].reverse().slice(0, 8);
+  if (recent.length === 0) {
+    hlist.innerHTML = '<div class="text-muted" style="font-size:13px">Nenhum registro ainda. Bora registrar a primeira resistência!</div>';
+  } else {
+    hlist.innerHTML = recent.map(r => {
+      const d = new Date(r.ts);
+      const catLabels = { mercado:'🛒',delivery:'🍔',roupa:'👕',tech:'📱',lazer:'🎮',beleza:'💄',outro:'📦' };
+      return `<div class="history-item">
+       <div class="hi-icon">${catLabels[r.cat] || '💰'}</div>
+       <div class="hi-text">
+        <div class="hi-name">${r.member} resistiu (${r.cat})</div>
+        <div class="hi-meta">${d.toLocaleDateString('pt-BR')} ${d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}</div>
+       </div>
+       <div class="hi-pts">+${r.pts}</div>
+      </div>`;
+    }).join('');
+  }
+
+  // Missions detail
+  const md = document.getElementById('missionsDetail');
+  md.innerHTML = MISSIONS.map(m => {
+    const done = doneIds.has(m.id);
+    return `<div class="card">
+     <div class="flex-between">
+      <div>
+       <div style="font-size:22px;margin-bottom:4px">${done ? '✅' : m.icon}</div>
+       <div class="card-title" style="margin:0">${m.name}</div>
+       <div class="card-sub">${m.desc}</div>
+      </div>
+      <div style="text-align:right">
+       <div style="font-size:20px;font-weight:900;color:${done ? 'var(--ok)' : 'var(--accent)'}">+${m.pts}</div>
+       <div style="font-size:11px;color:var(--texto-suave)">pontos</div>
+      </div>
+     </div>
+     ${done ? '<div class="badge" style="margin-top:8px;background:#dcfce7;color:var(--ok)">Concluída ✅</div>' : ''}
+    </div>`;
+  }).join('');
+
+  // Family detail
+  const fd = document.getElementById('familyDetail');
+  fd.innerHTML = state.members.map(m => {
+    const mp = state.records.filter(r => r.member === m.nick).length;
+    return `<div class="family-member">
+     <div class="avatar">${m.nick.charAt(0).toUpperCase()}</div>
+     <div style="flex:1">
+      <div class="name">${m.nick}</div>
+      <div class="pts-label">${mp} registros</div>
+     </div>
+    <div class="pts-val">${state.records.filter(r => r.member === m.nick).reduce((a, r) => a + r.pts, 0)} pts</div>
+    </div>`;
+  }).join('') || '<div class="text-muted">Nenhum membro.</div>';
+
+  // Ranking
+  const rl = document.getElementById('rankingList');
+  const ranked = state.members.map(m => ({ nick: m.nick, pts: state.records.filter(r => r.member === m.nick).reduce((a, r) => a + r.pts, 0) })).sort((a, b) => b.pts - a.pts);
+  rl.innerHTML = ranked.map((r, i) => `<div class="history-item">
+   <div class="hi-icon">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i + 1)}</div>
+   <div class="hi-text"><div class="hi-name">${r.nick}</div></div>
+   <div class="hi-pts">${r.pts} pts</div>
+  </div>`).join('') || '<div class="text-muted">Nenhum ranking disponível.</div>';
+
+  // Profile
+  const pr = document.getElementById('profileRoom');
+  pr.innerHTML = `<div class="history-item">
+   <div class="hi-text"><div class="hi-name">${state.room}</div><div class="hi-meta">${state.members.length} membros</div></div>
+  </div>`;
+
+  const pst = document.getElementById('profileStats');
+  pst.innerHTML = `<div class="grid-2">
+   <div class="kpi-big"><div class="num" style="font-size:32px">${totalPts()}</div><div class="label">pontos total</div></div>
+   <div class="kpi-big"><div class="num" style="font-size:32px">${state.records.length}</div><div class="label">registros</div></div>
+   <div class="kpi-big"><div class="num" style="font-size:32px">${calcStreak()}</div><div class="label">dias streak</div></div>
+   <div class="kpi-big"><div class="num" style="font-size:32px">${state.missions.length}/${MISSIONS.length}</div><div class="label">missões</div></div>
+  </div>`;
+}
+
+// Actions
+document.getElementById('btnCreateRoom').onclick = () => {
+  const rn = document.getElementById('inputRoomName').value.trim();
+  const nick = document.getElementById('inputNick').value.trim();
+  if (!rn || !nick) { toast('Preencha o nome da sala e seu apelido!'); return; }
+  state.room = rn;
+  state.members.push({ nick });
+  save();
+  toast('Sala criada! Boas-vindas, ' + nick + '!');
+};
+
+document.getElementById('btnJoinRoom').onclick = () => {
+  const rn = document.getElementById('inputJoinRoom').value.trim();
+  const nick = document.getElementById('inputJoinNick').value.trim();
+  if (!rn || !nick) { toast('Preencha o nome da sala e seu apelido!'); return; }
+  state.room = rn;
+  state.members.push({ nick });
+  save();
+  toast('Você entrou na sala ' + rn + '!');
+};
+
+document.getElementById('btnRegistrar').onclick = () => {
+  if (!state.room) { toast('Crie ou entre em uma sala primeiro!'); return; }
+  const cat = document.getElementById('inputCat').value;
+  const obs = document.getElementById('inputObs').value.trim();
+  const nick = state.members[0]?.nick || 'Você';
+  const rec = { id: uid(), member: nick, cat, obs, pts: 20, ts: new Date().toISOString() };
+  state.records.push(rec);
+  const now = new Date();
+  const last = state.lastRecord ? new Date(state.lastRecord) : null;
+  if (last) {
+    const diff = Math.floor((now - last) / 86400000);
+    if (diff <= 1) state.streak = (state.streak || 0) + 1;
+    else state.streak = 1;
+  } else { state.streak = 1; }
+  state.lastRecord = now.toISOString();
+  // Check missions
+  if (!state.missions.find(m => m.id === 'm1') && state.records.filter(r => r.cat === 'mercado').length >= 1) { state.missions.push({ id: 'm1' }); toast('🎯 Missão "Zero impulso no mercado" concluída!'); }
+  if (!state.missions.find(m => m.id === 'm3') && state.records.length >= 1) { state.missions.push({ id: 'm3' }); toast('🎯 Missão "Primeiro registro" concluída!'); }
+  if (!state.missions.find(m => m.id === 'm5') && state.streak >= 3) { state.missions.push({ id: 'm5' }); toast('🔥 Missão "Streak de 3 dias" concluída!'); }
+  if (!state.missions.find(m => m.id === 'm6') && state.records.length >= 5) { state.missions.push({ id: 'm6' }); toast('🎯 Missão "Missão Dupla" concluída!'); }
+  save();
+  toast('Resistência registrada! +20 pts para a família!');
+  document.getElementById('inputObs').value = '';
+  showScreen('Home');
+};
+
+document.getElementById('btnAddMember').onclick = () => {
+  const nick = document.getElementById('inputNewMember').value.trim();
+  if (!nick) { toast('Digite o apelido!'); return; }
+  if (state.members.find(m => m.nick === nick)) { toast('Esse apelido já existe na sala!'); return; }
+  state.members.push({ nick });
+  if (!state.missions.find(m => m.id === 'm4') && state.members.length >= 2) { state.missions.push({ id: 'm4' }); toast('🎯 Missão "Família Unite" desbloqueada!'); }
+  save();
+  toast(nick + ' entrou na família!');
+  document.getElementById('inputNewMember').value = '';
+};
+
+document.getElementById('btnExportData').onclick = () => {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'quitaai_' + (state.room || 'dados') + '.json'; a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  toast('Dados exportados!');
+};
+
+document.getElementById('btnResetData').onclick = () => {
+  if (confirm('Tem certeza? Isso apaga todos os dados desta sala.')) {
+    s.clear();
+    state = { room: null, members: [], records: [], missions: [], streak: 0, lastRecord: null };
+    save();
+    toast('Dados resetados!');
+  }
+};
+
+document.querySelectorAll('.nav-item').forEach(n => {
+  n.onclick = () => showScreen(n.dataset.screen);
+});
+
+render();
+
+// Register SW
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+</script>
+</body>
+</html>

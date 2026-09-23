@@ -1,0 +1,201 @@
+# Busca OpenAlex: personal finance management low income
+
+## 1. An agent‐based financing model for post‐earthquake housing recovery: Quantifying recovery inequalities across income groups
+- Autores: Irene Alisjahbana; Ana Moura-Cook; Rodrigo Costa; Anne S. Kiremidjian
+- Ano: 2022 | Periodico: Earthquake Spectra | Tipo: article
+- DOI: 10.1177/87552930211064319 | Citacoes: 34 | OA: False
+- Areas: Disaster Management and Resilience, Flood Risk Assessment and Management, Infrastructure Resilience and Vulnerability Analysis
+- Link: https://doi.org/10.1177/87552930211064319
+- Resumo: Past disasters have consistently led to unequal housing recovery for different economic groups, in large part, because of the difficulty of obtaining funding for low‐income groups. Current earthquake recovery models simplify the financing process for homeowners to rebuild after earthquakes, and in consequence, cannot fully capture disparities in the recovery outcomes of economic groups. In this article, we develop an agent‐based financing model for post‐earthquake housing recovery. We focus on single‐family, owner‐occupied homes. The model includes funding from earthquake insurance, the Federal Emergency Management Agency, the Small Business Administration, the Department of Housing and Urba...
+
+## 2. Effects of performance based financing on facility autonomy and accountability: Evidence from Zambia
+- Autores: Chitalu Miriam Chama‐Chiliba; Peter Hangoma; Collins Chansa; Mulenga Chonzi Mulenga
+- Ano: 2021 | Periodico: Health Policy OPEN | Tipo: article
+- DOI: 10.1016/j.hpopen.2021.100061 | Citacoes: 7 | OA: True
+- Areas: Healthcare Policy and Management, Primary Care and Health Outcomes, Patient Satisfaction in Healthcare
+- Link: https://www.sciencedirect.com/science/article/pii/S2590229621000320/pdf
+- Resumo: Several low and lower- middle income countries have been using Performance-Based Financing (PBF) to motivate health workers to increase the quantity and quality of health services. Studies have demonstrated that PBF can contribute to improved health service delivery and health outcomes, but there is limited evidence on the mechanisms through which PBF can necessitate changes in the health system. Using difference-in-difference and synthetic control analytical approaches, we investigated the effect of PBF on autonomy and accountability at service delivery level using data from a 3-arm cluster randomised trial in Zambia. The arms consisted of PBF where financing is linked to outputs in terms o...
+
+## 3. Financial Literacy and Personal Financial Management Assessment among Students in Border Area of Indonesia-Timor Leste
+- Autores: Yohanis Ndapa Deda; Hermina Disnawati; Ando Missa
+- Ano: 2022 | Periodico: IJHCM (International Journal of Human Capital Management) | Tipo: article
+- DOI: 10.21009/ijhcm.06.01.1 | Citacoes: 4 | OA: True
+- Areas: Financial Literacy and Behavior, Financial Literacy, Pension, Retirement Analysis
+- Link: https://journal.unj.ac.id/unj/index.php/ijhcm/article/download/23518/12653
+- Resumo: Financial literacy has become a global trend and the need for individuals to take responsibility for their finances. Still, financial literacy and financial management have not yet become a course in some universities, especially Timor University, which lies in the border area of Indonesia-Timor Leste (BAITL). Economic literacy and student financial management levels need to be analyzed because they relate to expenditure, income, credit, savings, and investments. This study aimed to evaluate financial literacy level and personal financial management level among college students in BAITL. This research includes quantitative descriptive analysis. Data was collected using a questionnaire from 1...
+
+## 4. WHO 's global oral health status report 2022: Actions, discussion and implementation
+- Autores: Nityanand Jain; Upasna Dutt; Igor Radenkov; Shivani Jain
+- Ano: 2023 | Periodico: Oral Diseases | Tipo: article
+- DOI: 10.1111/odi.14516 | Citacoes: 352 | OA: True
+- Areas: Dental Health and Care Utilization, Oral microbiology and periodontitis research, Dental Research and COVID-19
+- Link: https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/odi.14516
+- Resumo: The Global Oral Health Status Report (GOHSR) directed towards the promotion and achievement of the universal health coverage (UHC) for oral health by the year 2030 was published by the World Health Organization (WHO) in November 2022. The report reviews the latest evidence-based data on the status of oral health worldwide in terms of oral disease burden, risk factors, distributions of dental practitioners, health benefits package and the national health response for oral health crises (World Health Organization, 2022). The first of its kind report aims to foster discussion and implementation of the policy reforms on a national and international level amongst the 194 member states. Most impor...
+
+## 5. Investors’ financial aspirations excite investment decisions: current income, future inheritance expectations, and short-term and long-term decisions—The Matthew Effect in Pakistan’s emerging markets
+- Autores: Samra Chaudary; Sohail Zafar; Thomas Li‐Ping Tang
+- Ano: 2022 | Periodico: International Journal of Emerging Markets | Tipo: article
+- DOI: 10.1108/ijoem-07-2021-1098 | Citacoes: 13 | OA: False
+- Areas: Financial Literacy, Pension, Retirement Analysis, Financial Markets and Investment Strategies, Islamic Finance and Banking Studies
+- Link: https://doi.org/10.1108/ijoem-07-2021-1098
+- Resumo: Purpose Following behavioral finance and monetary wisdom, the authors theorize: Decision-makers (investors) adopt deep-rooted personal values (the love-of-money attitudes/avaricious financial aspirations) as a lens to frame critical concerns (short-term and long-term investment decisions) in the immediate-proximal (current income) and distal-omnibus (future inheritance) contexts to maximize expected utility and ultimate serenity across context, people and time. Design/methodology/approach The authors collected data from 277 active equity traders (professional money managers and individual investors) in Pakistan’s two most robust investment hubs—Karachi and Lahore. The authors measured their ...
+
+## 6. The Effect of Murabahah Financing for Civil Servants on Jambi Syariah Bank Income
+- Autores: Novita Lisa
+- Ano: 2023 | Periodico: Zabags International Journal Of Economy | Tipo: article
+- DOI: 10.61233/zijec.v1i2.71 | Citacoes: 1 | OA: True
+- Areas: Islamic Finance and Banking Studies, Islamic Finance and Communication, Consumer Behavior and Marketing Influence
+- Link: https://e.journal.zabagsqupublish.com/zijec/index.php/zijec/article/download/71/23
+- Resumo: This research aims to develop micro, small and medium enterprises (MSMEs) at Bank Syariah Mandiri Jambi Area. Even with this strategy alone, Bank Syari'ah Mandiri Jambi Area has played an active role in the development of MSMEs in Jambi City by helping the growth and development of MSME businesses. Previously BSM focused on providing business capital only. However, currently, BSM Area Jambi has played an active role in providing business assistance, such as encouraging business permits for businesses that do not yet have official permits from the government. Factors that support BSM's contribution in financing MSMEs in Jambi City are religious adherents supporting MSMEs in choosing BSM finan...
+
+## 7. From missions to systems: rethinking international surgical support in low- and middle-income countries
+- Autores: George Wharton; David C. Jones; R. A. Yates
+- Ano: 2025 | Periodico: British journal of surgery | Tipo: article
+- DOI: 10.1093/bjs/znaf212 | Citacoes: 2 | OA: True
+- Areas: Global Health and Surgery, Global Health Workforce Issues, Global Healthcare and Medical Tourism
+- Link: https://academic.oup.com/bjs/article-pdf/112/Supplement_15/xv15/65828762/znaf212.pdf
+- Resumo: Each year, thousands of well-intentioned surgical missions deliver care to underserved populations in low- and middle-income countries (LMICs), providing immediate relief to individual patients and personal fulfilment to participating practitioners. Yet despite decades of this humanitarian effort, approximately five billion people still lack access to safe, timely, and affordable surgical care. Although surgical missions were never intended to address need at this scale, their prominence as the dominant mode of international surgical support raises critical questions about opportunity cost and strategic direction. As development assistance contracts and surgical need expands, the time has co...
+
+## 8. AN ANALYSIS OF PERSONAL FINANCIAL LITERACY AMONG ADULTS IN VHEMBE DISTRICT, A RURAL MUNICIPALITY IN SOUTH AFRICA
+- Autores: Adam Ndou; Sam Ngwenya
+- Ano: 2021 | Periodico: Eurasian Journal of Economics and Finance | Tipo: article
+- DOI: 10.15604/ejef.2021.09.01.005 | Citacoes: 2 | OA: True
+- Areas: Financial Literacy, Pension, Retirement Analysis, Microfinance and Financial Inclusion
+- Link: https://doi.org/10.15604/ejef.2021.09.01.005
+- Resumo: Consumers in rural and low-income areas are the most financially vulnerable and are facing challenges with their finances and depend mostly on unsecured loans to finance their daily expenses. This has been exacerbated by global financial crises, which left many consumers in financial strains. The purpose of this paper is to measure the level of financial literacy focusing on the areas of day-to-day money management, financial planning, choosing appropriate financial services and products, and financial knowledge and understanding. The quantitative research approach was used to collect primary data among adults in Vhembe District Municipality (VDM), a rural and low-income municipality in Sout...
+
+## 9. DETERMINANTS OF PERSONAL FINANCIAL MANAGEMENT DECISIONS: A COMPARISON OF SELF-EMPLOYED GENERATION X AND GENERATION Y IN EMBAKASI EAST CONSTITUENCY OF NAIROBI, KENYA
+- Autores: Audrey Adhiambo Onyango
+- Ano: 2021 | Periodico: African Journal of Emerging Issues | Tipo: article
+- DOI: n/d | Citacoes: 1 | OA: False
+- Areas: Financial Literacy, Pension, Retirement Analysis
+- Link: https://www.ajoeijournals.org/sys/index.php/ajoei/article/download/183/218
+- Resumo: Personal financial management (PFM) decisions greatly influence living standards, the performance of organizations, and by extension, the economy. Since every generation is unique, Generation X and Y more often than not demonstrate different decisions on PFM. The general objective of the study was to investigate and compare the determinants of personal financial management decisions among the self-employed Generations X and Y in Embakasi East constituency of Nairobi, Kenya as guided by four independent variables; financial knowledge, demographic factors which are age, education level, marital status and income level; financial attitude and financial locus of control (LOC). Out of a target po...
+
+## 10. Infection prevention and control in low- and middle-income countries: policy, practice, and implementation challenges in sub-Saharan Africa
+- Autores: Uduak Okomo; Felicity Fitzgerald; Nicholas Feasey; Shaheen Mehtar et al.
+- Ano: 2026 | Periodico: Clinical Microbiology Reviews | Tipo: article
+- DOI: 10.1128/cmr.00142-22 | Citacoes: 2 | OA: True
+- Areas: Infection Control in Healthcare, Global Maternal and Child Health, Antibiotic Use and Resistance
+- Link: https://researchonline.lshtm.ac.uk/id/eprint/4682157/3/Okomo_etal_2026_Infection_prevention_and_control.pdf
+- Resumo: SUMMARY Infection prevention and control (IPC) programs are essential for safe healthcare; yet, implementation across sub-Saharan Africa remains constrained by chronic underfunding, weak water, sanitation, and hygiene (WASH) systems, limited laboratory capacity, and shortages of trained staff. Healthcare-associated infections (HCAIs) are presumed common, underreported, and often severe, with a disproportionate burden among hospitalized neonates and postpartum women, and they pose substantial risks to healthcare workers during outbreaks. Gram-negative pathogens such as Klebsiella , Escherichia coli , Pseudomonas, and Acinetobacter predominate, alongside methicillin-resistant Staphylococcus au...
+
+## 11. Financial Management Behavior of Micro-Businesses in Tourism Destinations: A Qualitative Study
+- Autores: Alfred Boediman; Eko Susanto; Kurnia Fajar Afgani; Raden Aswin Rahadi
+- Ano: 2025 | Periodico: Journal of Tourism Hospitality and Travel Management | Tipo: article
+- DOI: 10.58229/jthtm.v2i1.300 | Citacoes: 2 | OA: True
+- Areas: Islamic Finance and Banking Studies, Microfinance and Financial Inclusion
+- Link: https://doi.org/10.58229/jthtm.v2i1.300
+- Resumo: This study explores the financial management behavior of micro-businesses in tourism destinations across West Java, Indonesia. Using a qualitative descriptive approach, data were collected through in-depth interviews and observations of eight micro-entrepreneurs operating in Pangandaran, Lembang, Ciwidey, Ciletuh Geopark, and Puncak. The findings reveal that financial management practices are predominantly informal, with minimal record-keeping, mixing personal and business finances, and reliance on daily cash flow. Low financial literacy, seasonal income fluctuations, and psychological biases such as loss aversion and overconfidence shape these behaviors. Micro-businesses tend to avoid forma...
+
+## 12. Integrated Depression Care and Livelihood Interventions for Low-Income Women in Vietnam: Protocol for a Cluster Nonrandomized Controlled Trial (LIFE-DM)
+- Autores: Victoria K. Ngo; Thinh Toan Vu; Kunmi Sobowale; Trung Tu Lam et al.
+- Ano: 2026 | Periodico: JMIR Research Protocols | Tipo: article
+- DOI: 10.2196/80546 | Citacoes: 1 | OA: True
+- Areas: Mental Health Treatment and Access, Healthcare Systems and Reforms, Primary Care and Health Outcomes
+- Link: https://www.researchprotocols.org/2026/1/e80546/PDF
+- Resumo: Background: In Vietnam, economically disadvantaged women face compounded risks due to gender inequality, financial instability, and limited access to mental health care. Community health stations (CHSs), the frontline entry point into the health system and the most accessible primary care facilities, typically lack trained mental health providers, further exacerbating an already existing treatment gap. While evidence-based treatments for depression exist, most interventions address either mental health or economic hardship separately, limiting their effectiveness in resource-constrained settings. Objective: This study aims to evaluate the effectiveness of Livelihood Integration for Effective...
+
+## 13. Livestock sustainability research in Africa with a focus on the environment
+- Autores: Mulubrhan Balehegn; E. Kebreab; Adugna Tolera; Sarah Hunt et al.
+- Ano: 2021 | Periodico: Animal Frontiers | Tipo: article
+- DOI: 10.1093/af/vfab034 | Citacoes: 90 | OA: True
+- Areas: Agriculture Sustainability and Environmental Impact, Rangeland Management and Livestock Ecology, Agriculture and Rural Development Research
+- Link: https://doi.org/10.1093/af/vfab034
+- Resumo: Livestock in African countries contribute to about 10% of enteric methane emissions from dairy cattle worldwide despite producing only 3.9% of the world’s milk. Livestock in Sub-Saharan Africa also cause extensive land degradation with 48% of rangelands in SSA degraded due to overgrazing. Strategies for sustainable intensification of livestock such as improving quality of feed, range and grazing land rehabilitation, introduction of improved forages and silvopastoral systems, and improvement of herd genetics can reduce both total emission and emission intensity while improving productivity. Sustainable intensification strategies are not always readily adopted, therefore, smallholder farmers i...
+
+## 14. Global surgery research: defend or denounce? Focus on the ethics of research in low- and middle-income countries
+- Autores: Jenny Edge; Ines Buccimazza
+- Ano: 2025 | Periodico: British journal of surgery | Tipo: article
+- DOI: 10.1093/bjs/znaf204 | Citacoes: 1 | OA: True
+- Areas: Global Health and Surgery, Ethics in Clinical Research, History of Medical Practice
+- Link: https://doi.org/10.1093/bjs/znaf204
+- Resumo: Global surgery evolved in response to the perceived neglect of surgical care in global health, particularly in resource-constrained settings. The call to arms was sounded in 2008 by Paul Farmer and Jim Kim who described surgery as ‘the neglected stepchild of global public health’1. This clarion call was embraced by the Lancet Commission on Global Surgery, which promoted global surgery as a field with the primary aim of empowering underserviced and marginalized populations to improve health outcomes through research, policy development, and advocacy2. However, in places, the noble aspiration of global surgery has been usurped. Over the decades, there have been concerns about low- and middle-i...
+
+## 15. Financial literacy and its correlates among healthcare professionals of India: An ignored educational need
+- Autores: Neeraj Agarwal; Bijit Biswas
+- Ano: 2022 | Periodico: Journal of Education and Health Promotion | Tipo: article
+- DOI: 10.4103/jehp.jehp_1129_21 | Citacoes: 10 | OA: True
+- Areas: Financial Literacy, Pension, Retirement Analysis, Financial Literacy and Behavior, Elder Abuse and Neglect
+- Link: https://doi.org/10.4103/jehp.jehp_1129_21
+- Resumo: BACKGROUND: Financial literacy is a person's capability to manage their own monetary matters. There was no information available on financial literacy status of healthcare professionals (HCPs) of India. So, the current research was formulated to assess the financial literacy status and its correlates among HCPs of India. MATERIALS AND METHODS: It was an observational study, cross-sectionally designed, conducted among 524 HCPs of India using a structured Google form during July 2020. For data analysis, SPSS (version 22) was used. RESULTS: Among the study participants, 68.3% were found to be financially literate. Among the various subdomains of the total financial literacy, knowledge regarding...
+
+## 16. Financial Literacy in Orthopaedic Surgery Residents: A COERG Survey
+- Autores: Ryan J. Cone; Brent M. Cone; Kyle D. Paul; Alexandra M. Arguello et al.
+- Ano: 2022 | Periodico: JAAOS Global Research and Reviews | Tipo: article
+- DOI: 10.5435/jaaosglobal-d-21-00276 | Citacoes: 7 | OA: True
+- Areas: Financial Literacy, Pension, Retirement Analysis, Economic and Financial Impacts of Cancer, Adolescent and Pediatric Healthcare
+- Link: https://doi.org/10.5435/jaaosglobal-d-21-00276
+- Resumo: INTRODUCTION: Financial literacy is the individual ability and skill to make informed decisions in the management of resources within the financial marketplace to yield a lifetime of financial well-being. Residents across several subspecialties have demonstrated low levels of financial literacy, and it is thought that more financial education is needed during residency training. The purpose of this study is to perform a comprehensive evaluation on financial literacy and financial attitudes of orthopaedic surgery residents. The authors hypothesize that orthopaedic residents will have low levels of financial literacy and financial satisfaction. METHODS: A 46-question anonymous survey was admin...
+
+## 17. The impact of COVID‐19 on African economies: An introduction
+- Autores: John C. Anyanwu; Adeleke Salami
+- Ano: 2021 | Periodico: African Development Review | Tipo: article
+- DOI: 10.1111/1467-8268.12531 | Citacoes: 123 | OA: True
+- Areas: Economic Growth and Development, COVID-19 Pandemic Impacts
+- Link: https://www.ncbi.nlm.nih.gov/pmc/articles/8207010
+- Resumo: Over the last 14 months, Africa and the entire world experienced the worst Socioeconomic challenges of alarming proportion. Specifically, on 30 December 2019, an epidemiological alert was issued by the Chinese Wuhan local health authority of the emergence of a new strand of the coronavirus—severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2)—which causes what has come to be known as coronavirus disease 2019 (COVID-19). Africa's first case of COVID-19 was recorded in Egypt on 14 February 2020, followed by Nigeria on 27 February 2020. Early in March 2020, Algeria, Cameroon, Morocco, Senegal, South Africa, Togo and Tunisia reported positive cases. From then, the virus spread to all over...
+
+## 18. The AI Health Arms Race: A Critical Perspective on Big Tech and the Widening Global Health Equity Gap
+- Autores: Mohamed Mustaf Ahmed; Zhinya Othman
+- Ano: 2026 | Periodico: Journal of Multidisciplinary Healthcare | Tipo: article
+- DOI: 10.2147/jmdh.s610208 | Citacoes: 1 | OA: True
+- Areas: Artificial Intelligence in Healthcare and Education, Digital Mental Health Interventions, Global Health and Surgery
+- Link: https://www.dovepress.com/article/download/114340
+- Resumo: The first quarter of 2026 witnessed an unprecedented convergence, with OpenAI, Anthropic, Microsoft, Google, and Apple launching or advancing dedicated artificial intelligence health platforms. ChatGPT Health, Claude for Healthcare, Copilot Health, Med-Gemini, and Apple Health+ collectively represent a paradigm shift toward AI-mediated personal health management, integrating electronic health records, wearable device data, and conversational AI in privacy-isolated environments. However, these tools are primarily designed for high-income country markets, with limited infrastructure, insufficient multilingual support beyond dominant global languages, and minimal cultural adaptation for low- an...
+
+## 19. Rebuilding trust in the physician–patient relationship: addressing causes and implementing reforms in China
+- Autores: Yu Xiao; Liang Liu; Tingting Chen; Shao-yi Zhu
+- Ano: 2023 | Periodico: Family Practice | Tipo: article
+- DOI: 10.1093/fampra/cmad104 | Citacoes: 3 | OA: True
+- Areas: Patient Satisfaction in Healthcare, Patient-Provider Communication in Healthcare, Global Maternal and Child Health
+- Link: https://academic.oup.com/fampra/advance-article-pdf/doi/10.1093/fampra/cmad104/52959301/cmad104.pdf
+- Resumo: As medical professionals, we find the article “Public expectations of good primary health care in China: a national qualitative study” 1 thought-provoking. In this article,1 the authors utilized qualitative data from 6 provinces in China to generate knowledge that revealed the perspectives and expectations of the public regarding high-quality primary healthcare. Ultimately, this study1 demonstrates that the government needs to further enhance the delivery system and medical training programme in order to better meet the public’s expectations in these areas. Undoubtedly, nurturing positive physician–patient relationships is an essential foundation for providing high-quality care. However, rec...
+
+## 20. The Impact of Commercial Insurance on Household Financial Vulnerability
+- Autores: Xin Li; Zhichao YIN; Taixing LIU; Huajun WEN
+- Ano: 2022 | Periodico: 系统科学与信息学报(英文) | Tipo: article
+- DOI: 10.21078/jssi-2022-531-23 | Citacoes: 1 | OA: True
+- Areas: Financial Literacy, Pension, Retirement Analysis, Microfinance and Financial Inclusion, Intergenerational Family Dynamics and Caregiving
+- Link: https://syssci.cjoe.ac.cn/EN/PDF/10.21078/JSSI-2022-531-23
+- Resumo: This research examines the effects of commercial insurance on household financial vulnerability using data from the China Household Finance Survey (CHFS). Data were collected from 39875 households in 29 provinces of China. The probit model was used to test the relationship between the study variables. The results show that commercial insurance participation reduces the likelihood of a householdos financial vulnerability. Heterogeneity analysis found that commercial insurance participation had a more significant dampening effect on the financial vulnerability of households with low personal expenses, low-income, low human capital, rural areas, and the central and western regions, indicating t...
+
+## 21. Organization of work to counteract illegal withdrawal of funds and money laundering through microfinance organizations
+- Autores: Vitaliy V. Begeza; Stanislav V. Svistunov
+- Ano: 2021 | Periodico: Вестник Российского университета дружбы народов. Серия: Юридические науки | Tipo: article
+- DOI: 10.22363/2313-2337-2021-25-2-685-699 | Citacoes: 2 | OA: True
+- Areas: Legal and Policy Issues, Economic and Technological Developments in Russia
+- Link: https://journals.rudn.ru/law/article/download/26720/19447
+- Resumo: The relevance of the chosen topic is due to the problems of ensuring the protection of personal rights when interacting with microfinance organizations, protection of personal data of citizens, fraudulent actions when entering into a loan agreement using copies of documents, personal data in the information telecommunications network Internet, as well as stolen or lost documents, protection of citizens rights when processing personal data by microfinance organizations to obtain a consumer loan. Ensuring the protection of society and the state by creating a legal mechanism to counteract the legalization (laundering) of income and funds withdrawal abroad. In the microfinance market, there are ...
+
+## 22. Cohort Profile Update: The Study of Health in Pomerania (SHIP)
+- Autores: Henry Völzke; Janka Schössow; Carsten Oliver Schmidt; Clemens Jürgens et al.
+- Ano: 2022 | Periodico: International Journal of Epidemiology | Tipo: article
+- DOI: 10.1093/ije/dyac034 | Citacoes: 221 | OA: True
+- Areas: Health, Environment, Cognitive Aging, Nutritional Studies and Diet, Diet and metabolism studies
+- Link: https://academic.oup.com/ije/article-pdf/51/6/e372/47882022/dyac034.pdf
+- Resumo: The Study of Health in Pomerania (SHIP) is a population-based project, which consists of the two independent cohorts: SHIP-START and SHIP-TREND. SHIP investigates common risk factors, subclinical disorders and manifest diseases in the high-risk population of Northeast Germany. A particular characteristic of SHIP is that it does not specifically address one selected disease. It rather attempts to investigate health-related conditions with the widest scope possible. New examination waves of both cohorts were conducted to ensure longitudinal analyses. One new research focus has been laid on omics research. Information is available on genome-wide genotyping, whole-blood-transcriptome and methylo...
+
+## 23. Is the Wage of Regular Employees Higher? A Study on the Difference and Evolution of Establishment Wages in China’s Public Sectors
+- Autores: Sun Guangya; Zhengyu Zhang
+- Ano: 2021 | Periodico: Cai-jing yanjiu | Tipo: article
+- DOI: 10.16538/j.cnki.jfe.20201115.302 | Citacoes: 2 | OA: False
+- Areas: Employment and Welfare Studies
+- Link: https://qks.sufe.edu.cn/J/PDFFull/64ec8cad-cfa3-43b3-a487-0f9f03765938.pdf
+- Resumo: The “dual system” employment is an important feature of China’s public sector personnel management. This article uses the data from the 2011, 2013 and 2015 China Household Finance Survey to investigate the wage difference and its evolutionary trend caused by the dual system. The results show that there is a significant gap between the wages of regular employees and contracted employees, and the wage of regular employees is significantly higher than that of contracted employees. From 2011 to 2015, public sectors’ establishment wage gap was significant, and the wage gap caused by the endowment difference was greater than the wage gap caused by the characteristic difference; over time, the prop...
+
+## 24. Personal Finance Tracker with AI-Driven Savings Prediction
+- Autores: Sunil Khullar; Raushan Raj; Dishant Seth; Abhishek Oli
+- Ano: 2025 | Periodico: INTERANTIONAL JOURNAL OF SCIENTIFIC RESEARCH IN ENGINEERING AND MANAGEMENT | Tipo: article
+- DOI: 10.55041/ijsrem55580 | Citacoes: 0 | OA: True
+- Areas: Financial Distress and Bankruptcy Prediction, Stock Market Forecasting Methods, AI and HR Technologies
+- Link: https://ijsrem.com/download/personal-finance-tracker-with-ai-driven-savings-prediction/?wpdmdl=63057&refresh=69522eba1e2071766993594
+- Resumo: Abstract Financial management at the individual level has been growing more difficult in the contemporary digital economy because of the prevalence of online transactions, subscription services, the lack of regular income, and the diversification of spending habits. The conventional personal finance applications are mostly recurrent expense and manual budgeting and are very shallow in their analysis and provide no foresight. Consequently, users tend not to plan their future financial results, and they end up spending more, saving less as well as poor financial planning on the long run. In this study, the design, development, and testing of a Personal Finance Tracker, which includes AI-Driven...
+
+## 25. Echoes of the Wallet: A Portrait of Personal Finance Practices of Employees
+- Autores: Katrina Suson; Judy Ann Ferrater-Gimena; Eddie Llamedo
+- Ano: 2026 | Periodico: Zenodo (CERN European Organization for Nuclear Research) | Tipo: article
+- DOI: 10.5281/zenodo.21633753 | Citacoes: 0 | OA: True
+- Areas: Financial Literacy, Pension, Retirement Analysis, Economic Systems and Logistics Management, Environmental Engineering and Cultural Studies
+- Link: https://doi.org/10.5281/zenodo.21633753
+- Resumo: The effective management of personal finances is fundamental to achieving financial security and overall well-being. The primary objective of this investigation is to assess the personal finance practices of the selected public and private sector employees in Cebu, Philippines, C.Y. 2025. The outcomes served as the basis in crafting a personal finance primer for public and private sector employees. This study employed a descriptive-survey research design to determine the personal finance practices of the 100 public and private sector employees in Cebu, C.Y. 2025. This study was undertaken in Cebu, Philippines. The research respondents for this study were the public-sector employees of Arcelo...
