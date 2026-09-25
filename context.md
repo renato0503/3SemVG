@@ -701,7 +701,7 @@ suspeitos cada, além do G6 com 14/14 fabricados) quando o usuário pediu pra re
 | G2 LifePath | Maria Eloise da Cruz Silva, Izabelli Aparecida Rodrigues Silva, Talita Veronica de Arruda Nassarden, Nicolli Thainá Conceição Rodrigues Silva |
 | G3 Quita.AI | Creuza Bezerra de Medeiros Marques, Daniela Souza de Arruda, Gilmara do Carmo Cunha Silva, Jakeline Vieira de Sousa |
 | G4 SuaCasaSuaVida | Amanda Karoliny Oliveira Fernandes, Beatriz Cristina Ferreira da Silva, **Ewander** José da Silva, Julimary da Silva Amorim |
-| G5 EDA | Cássia Virgínia Aparecida da Silva Nobrega, Sarah Caroline de Souza Santos, **Sabrina (não consta na chamada)**, Beatriz Luiza Almeida da Silva (= "Beatriz B."? confirmar), Denner Silva Port |
+| G5 EDA | Cássia Virgínia Aparecida da Silva Nobrega, Sarah Caroline de Souza Santos, Beatriz Luiza Almeida da Silva ("Beatriz B."), Denner Silva Port — **Sabrina retirada** (25/09/2026) |
 | G6 Vida no Controle | Hítalo Padilha de Oliveira, Rhayssa da Silva Bertazzoni, Fernanda Gabrielly dos Santos, Emilly da Silva Moreira, Yasmim Victoria da Silva Basto |
 
 ### 20.3 CONFACC 2026
@@ -709,7 +709,6 @@ suspeitos cada, além do G6 com 14/14 fabricados) quando o usuário pediu pra re
 - As referências dos resumos usam **só DOIs que existem nos brutos da API** (`_pesquisa/saidas`). As citações inventadas da seção 19.3 continuam **nos `Pesquisa-Dados.md` desta pasta** (2 no G1, 2 no G2, 2 no G3, 2 no G4, 2 no G5 e as 14 do G6) — a correção desses arquivos segue pendente (plano na seção 19.3).
 
 ### 20.4 Próximos passos
-1. Confirmar Sabrina e "Beatriz B." (G5).
-2. Corrigir o rótulo do curso (Ciências Contábeis) em context, Partes, landings e hub.
+1. Corrigir o rótulo do curso (Ciências Contábeis) em context, Partes, landings e hub.
 3. Corrigir os `Pesquisa-Dados.md` com citações inventadas (seção 19.3).
-4. Sobrenomes das professoras/professores Olivia, Péricles e Pantaleão (kit CONFACC).
+3. Kit CONFACC: orientador de todos os trabalhos é Renato de Oliveira Rosa (decisão de 25/09/2026).
