@@ -1,32 +1,22 @@
-const CACHE = 'scv-v1';
-const PRE = [
-  './',
-  './index.html','./app.html',
-  '../assets/identidade/temas.css',
-  '../assets/kit/kit.css',
-  '../assets/kit/kit.js',
-];
+const CACHE = 'suacasasuavida-v2';
+const PRE = ['./', './index.html', './app.html', './manifest.json', '../assets/logos/g4-192.png'];
 
 self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open(CACHE).then(c => c.addAll(PRE)).then(() => self.skipWaiting())
-  );
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(PRE)).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', e => {
-  e.waitUntil(
-    caches.keys().then(k => Promise.all(
-      k.filter(v => v !== CACHE).map(v => caches.delete(v))
-    )).then(() => self.clients.claim())
-  );
+  e.waitUntil(caches.keys().then(k => Promise.all(k.filter(v => v !== CACHE).map(v => caches.delete(v)))).then(() => self.clients.claim()));
 });
 
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
-  e.respondWith(
-    caches.match(e.request).then(r => r || fetch(e.request).then(f => {
-      if (f.ok) { const c = caches.open(CACHE); c.then(x => x.put(e.request, f.clone())); }
-      return f;
-    })).catch(() => caches.match('./index.html'))
-  );
+  // rede primeiro (conteúdo sempre atualizado); sem internet, usa o cache
+  e.respondWith(fetch(e.request).then(res => {
+    if (res && res.ok && new URL(e.request.url).origin === location.origin) {
+      const copia = res.clone();
+      caches.open(CACHE).then(c => c.put(e.request, copia));
+    }
+    return res;
+  }).catch(() => caches.match(e.request).then(r => r || caches.match('./app.html'))));
 });

@@ -2,724 +2,294 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#0e7490">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<title>Dinheiro na Mão</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0b5568">
+<title>Dinheiro na Mão — programa de orientação financeira</title>
 <link rel="manifest" href="manifest.json">
-<link rel="icon" type="image/png" sizes="192x192" href="../assets/logos/g1-192.png">
+<link rel="icon" type="image/png" href="../assets/logos/g1-96.png">
 <link rel="apple-touch-icon" href="../assets/logos/g1-192.png">
-<link rel="stylesheet" href="../assets/identidade/temas.css">
-<link rel="stylesheet" href="../assets/kit/kit.css">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;800&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
 <style>
-:root{
-  --accent:#0e7490;--accent-dark:#083344;--accent-soft:#cffafe;
-  --accent2:#22d3ee;--tinta:#083344;--tinta2:#0e4a6b;
-  --fonte:'Nunito',Arial,sans-serif;--fonte-titulo:'Merriweather',Georgia,serif;
-  --texto:#0f172a;--texto-suave:#64748b;--linha:#e2e8f0;--fundo:#f0fdfc;
-  --card:#ffffff;--ok:#16a34a;--alerta:#dc2626;--atencao:#d97706;
-  --nav-bg:#f0fdfc;--nav-icon-size:26px;--nav-radius:12px;
-}
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{height:100%}
-body{font-family:var(--fonte);background:var(--fundo);color:var(--texto);font-size:16px;overflow-x:hidden}
-.app{max-width:480px;margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;padding-bottom:80px}
-header.top{background:linear-gradient(135deg,var(--tinta) 0%,var(--tinta2) 100%);color:#fff;padding:14px 16px 40px;position:sticky;top:0;z-index:20}
-header.top .brand{display:flex;align-items:center;justify-content:space-between}
-header.top h1{font-size:17px;font-weight:700}
-header.top .sub{font-size:11px;opacity:.75;margin-top:2px}
-.badge-pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:11px;padding:3px 8px;border-radius:20px}
-main{flex:1;padding:0 16px}
-.screen{display:none;flex-direction:column;animation:fade .2s ease}
-.screen.active{display:flex}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.page-title{font-size:13px;font-weight:700;color:var(--texto-suave);text-transform:uppercase;letter-spacing:.07em;padding:16px 0 6px}
-.card{background:var(--card);border-radius:16px;padding:16px;box-shadow:0 1px 4px rgba(14,116,144,.08);margin-bottom:12px}
-.card-title{font-size:16px;font-weight:700;margin-bottom:6px;color:var(--tinta)}
-.card-sub{font-size:13px;color:var(--texto-suave)}
-/* G1 distinctive: clean institutional */
-body{font-family:'Nunito',Arial,sans-serif;background:#f0fdfc}
-header.top{background:linear-gradient(135deg,#083344 0%,#0e4a6b 100%);border-bottom:3px solid #22d3ee}
-header.top h1{font-family:'Merriweather',Georgia,serif;font-size:18px}
-.card{background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(14,116,144,.1);border-top:3px solid #0e7490}
-.btn{display:flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:12px;padding:14px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;transition:transform .05s;padding-top:calc(14px + env(safe-area-inset-top))}
-.btn:active{transform:scale(.975)}
-.btn-primary{background:var(--accent);color:#fff}
-.btn-ghost{background:#fff;color:var(--accent);border:1.5px solid var(--accent)}
-.btn-success{background:var(--ok);color:#fff}
-.btn-danger{background:#fff;color:var(--alerta);border:1.5px solid #fca5a5}
-.btn-sm{padding:10px 14px;font-size:13px}
-.row{display:flex;gap:10px}
-.row>*{flex:1}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-.text-center{text-align:center}
-.text-muted{color:var(--texto-suave);font-size:13px}
-.mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mb-8{margin-bottom:8px}.mb-12{margin-bottom:12px}
-.flex-between{display:flex;align-items:center;justify-content:space-between}
-.kpi-big{text-align:center;padding:16px 0}
-.kpi-big .num{font-size:40px;font-weight:900;color:var(--accent);line-height:1}
-.kpi-big .label{font-size:12px;color:var(--texto-suave);margin-top:4px}
-.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
-.kpi-item{background:#fff;border-radius:12px;padding:14px;text-align:center;border:1.5px solid var(--linha)}
-.kpi-item .val{font-size:22px;font-weight:900;color:var(--accent)}
-.kpi-item .lbl{font-size:11px;color:var(--texto-suave);margin-top:2px}
-.input-group{margin-bottom:12px}
-.input-group label{display:block;font-size:12px;font-weight:600;color:var(--texto-suave);margin-bottom:4px;letter-spacing:.04em}
-.form-input,.form-select,.form-textarea{width:100%;padding:12px 14px;border:1.5px solid var(--linha);border-radius:10px;font-size:15px;font-family:inherit;background:#fff;color:var(--texto);transition:border-color .15s}
-.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--accent)}
-.form-input.error,.form-select.error{border-color:var(--alerta)}
-select.form-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
-.empty-state{text-align:center;padding:32px 20px;color:var(--texto-suave)}
-.nav-bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--linha);display:flex;z-index:30;padding-bottom:env(safe-area-inset-bottom)}
-.nav-bottom .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px;gap:3px;cursor:pointer;color:var(--texto-suave);transition:color .15s;border:none;background:none;font-size:11px;font-family:inherit}
-.nav-bottom .nav-item.active{color:var(--accent)}
-.nav-bottom .nav-icon{font-size:20px}
-.badge{background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px}
-.alert-box{padding:12px 14px;border-radius:10px;font-size:13px;margin-bottom:10px}
-.alert-box.info{background:#eff6ff;color:#1d4ed8}
-.alert-box.warn{background:#fffbeb;color:#92400e}
-.alert-box.ok{background:#f0fdf4;color:#166534}
-.alert-box.danger{background:#fef2f2;color:#991b1b}
-.item-conta{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--linha);cursor:pointer}
-.item-conta:last-child{border-bottom:none}
-.item-conta .icon-cat{width:40px;height:40px;border-radius:10px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.item-conta .info{flex:1}
-.item-conta .nome{font-size:14px;font-weight:600}
-.item-conta .meta{font-size:12px;color:var(--texto-suave)}
-.item-conta .valor{font-size:15px;font-weight:700}
-.item-conta .valor.pago{color:var(--ok)}
-.item-conta .valor.vencido{color:var(--alerta)}
-.item-conta .valor.pendente{color:var(--atencao)}
-.badge-status{padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
-.badge-status.pago{background:#dcfce7;color:#166534}
-.badge-status.vencido{background:#fef2f2;color:#991b1b}
-.badge-status.pendente{background:#fffbeb;color:#92400e}
-.cal-day{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;cursor:pointer;border:none;background:none}
-.cal-day.today{background:var(--accent);color:#fff;font-weight:700}
-.cal-day.has-bill{background:var(--accent-soft);color:var(--accent)}
-.cal-day.selected{background:var(--accent);color:#fff}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;margin-bottom:4px}
-.cal-grid .dow{font-size:11px;color:var(--texto-suave);font-weight:600;padding:4px 0}
-.calendar{overflow-x:auto}
-.toast-container{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);z-index:60;display:flex;flex-direction:column;gap:8px;pointer-events:none}
-.toast{background:var(--tinta);color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;animation:toastIn .25s ease}
-@keyframes toastIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.slider-wrap{margin-bottom:12px}
-.slider-wrap label{display:flex;justify-content:space-between;font-size:12px;color:var(--texto-suave);margin-bottom:6px}
-.slider-wrap input[type=range]{width:100%;accent-color:var(--accent)}
-.sim-result{background:var(--accent-soft);border-radius:10px;padding:14px;text-align:center;margin-top:12px}
-.sim-result .val{font-size:28px;font-weight:900;color:var(--accent)}
-.sim-result .lbl{font-size:12px;color:var(--texto-suave)}
-.brand{display:flex;align-items:center;gap:10px}
-.app-logo{width:38px;height:38px;border-radius:10px;object-fit:cover;box-shadow:0 2px 6px rgba(0,0,0,.25);flex-shrink:0}
+/* ===== Dinheiro na Mão · serviço público: faixa institucional, carteirinha do programa, calendário de vencimentos ===== */
+:root{--ciano:#0e7490;--ciano2:#0b5568;--tinta:#083344;--claro:#ecfeff;--agua:#22d3ee;--ok:#15803d;--atr:#b91c1c;--atc:#b45309;--txt:#0f172a;--mudo:#546274;--linha:#d5e3e8;--fundo:#f4f8f9}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Public Sans",system-ui,sans-serif;background:var(--fundo);color:var(--txt);min-height:100dvh;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+button,input,select{font:inherit;color:inherit}
+h1,h2,h3{font-family:Merriweather,Georgia,serif}
+.gov{background:var(--tinta);color:#cffafe;font-size:12px;padding:calc(6px + env(safe-area-inset-top)) 14px 6px;display:flex;justify-content:space-between;letter-spacing:.03em}
+.cab{background:var(--ciano);color:#fff;padding:12px 14px 16px;display:flex;align-items:center;gap:10px}
+.cab img{width:40px;height:40px;border-radius:10px;background:#fff}
+.cab h1{font-size:18px;font-weight:900;line-height:1.1}.cab small{display:block;font-family:"Public Sans";font-size:12px;opacity:.9}
+main{max-width:640px;margin:0 auto;padding:14px}
+.tela{display:none}.tela.on{display:block}
+h2{font-size:21px;margin:4px 0 10px;color:var(--tinta)}
+.card{background:#fff;border:1px solid var(--linha);border-radius:10px;padding:14px;margin-bottom:12px}
+.carteira{background:linear-gradient(135deg,var(--ciano2),var(--ciano) 60%,#0891b2);color:#fff;border-radius:16px;padding:16px;position:relative;overflow:hidden;margin-bottom:14px}
+.carteira::after{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;border:24px solid rgba(255,255,255,.08)}
+.carteira .n{font-size:12px;letter-spacing:.14em;opacity:.85}
+.carteira .v{font-family:Merriweather;font-size:30px;font-weight:900;margin:6px 0}
+.carteira .l{display:flex;gap:14px;flex-wrap:wrap;font-size:13px}
+.grade3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.kpi{background:#fff;border:1px solid var(--linha);border-radius:10px;padding:10px;text-align:center}
+.kpi b{display:block;font-size:18px}.kpi span{font-size:12px;color:var(--mudo)}
+.kpi.atr b{color:var(--atr)}.kpi.ok b{color:var(--ok)}.kpi.atc b{color:var(--atc)}
+.mes{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.mes button{width:44px;height:44px;border-radius:50%;border:1px solid var(--linha);background:#fff;cursor:pointer;font-size:18px}
+.mes b{font-family:Merriweather;font-size:18px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;view-transition-name:calendario}
+.cal .sem{font-size:11px;text-align:center;color:var(--mudo);font-weight:600}
+.dia{min-height:48px;border-radius:8px;background:#fff;border:1px solid var(--linha);padding:3px;font-size:12px;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left}
+.dia.fora{visibility:hidden}
+.dia.hoje{border:2px solid var(--ciano)}
+.dia.sel{background:var(--claro)}
+.dia i{display:block;width:100%;height:5px;border-radius:3px}
+.dia i.paga{background:var(--ok)}.dia i.aberta{background:var(--atc)}.dia i.atrasada{background:var(--atr)}
+.conta{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--linha)}
+.conta:last-child{border:none}
+.conta .d{width:42px;height:42px;border-radius:10px;background:var(--claro);display:grid;place-items:center;font-weight:800;color:var(--ciano2);flex-shrink:0}
+.conta .info{flex:1;min-width:0}.conta .info b{display:block}
+.st{font-size:11.5px;font-weight:800;padding:2px 8px;border-radius:999px}
+.st.paga{background:#dcfce7;color:var(--ok)}.st.aberta{background:#fef3c7;color:var(--atc)}.st.atrasada{background:#fee2e2;color:var(--atr)}
+.btn{min-height:44px;border:none;border-radius:8px;background:var(--ciano);color:#fff;font-weight:700;padding:0 14px;cursor:pointer}
+.btn.sec{background:#fff;color:var(--ciano2);border:1.5px solid var(--ciano)}.btn.peq{min-height:38px;font-size:13.5px;padding:0 10px}
+.fila{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.fila>*{flex:1 1 auto}
+label{display:block;font-size:13px;font-weight:600;margin:8px 0 4px;color:var(--mudo)}
+.in{width:100%;min-height:44px;border:1.5px solid var(--linha);border-radius:8px;padding:8px 10px;background:#fff;font-size:16px}
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.barra{height:10px;background:var(--linha);border-radius:9px;overflow:hidden}.barra i{display:block;height:100%;background:var(--ciano)}
+.tab{width:100%;border-collapse:collapse;font-size:14px}.tab td,.tab th{padding:7px 4px;border-bottom:1px solid var(--linha);text-align:right}.tab td:first-child,.tab th:first-child{text-align:left}
+.selo{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:#fef3c7;color:var(--atc);padding:2px 8px;border-radius:4px}
+.cond{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px dashed var(--linha)}
+.cond .ic{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--linha);font-weight:800;flex-shrink:0}
+.cond.ok .ic{background:var(--ok);color:#fff}
+nav.baixo{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--linha);display:grid;grid-template-columns:repeat(6,1fr);padding-bottom:env(safe-area-inset-bottom);z-index:10}
+nav.baixo a{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10.5px;font-weight:700;color:var(--mudo);text-decoration:none;padding:8px 0;min-height:56px}
+nav.baixo a span{font-size:19px}
+nav.baixo a[aria-current=page]{color:var(--ciano);box-shadow:inset 0 3px 0 var(--ciano)}
+dialog{border:none;border-radius:14px;padding:18px;width:min(92vw,440px);margin:auto}
+dialog::backdrop{background:rgba(8,51,68,.5)}
+#brinde{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--tinta);color:#fff;padding:10px 16px;border-radius:8px;opacity:0;transition:.25s;pointer-events:none;z-index:30;max-width:90vw}
+#brinde.on{opacity:1}
+::view-transition-old(calendario){animation:.2s ease-out both sai}
+::view-transition-new(calendario){animation:.25s ease-out both entra}
+@keyframes sai{to{opacity:0;transform:translateX(var(--dir,-20px))}}@keyframes entra{from{opacity:0;transform:translateX(calc(var(--dir,-20px) * -1))}}
+:focus-visible{outline:3px solid var(--agua);outline-offset:2px}
+[hidden]{display:none!important}
 </style>
 </head>
-<body class="tema-g1">
-<div class="app">
-<header class="top">
-<div class="brand">
- <img class="app-logo" src="../assets/logos/g1-96.png" alt="Logo G1">
- <div>
-  <h1>Dinheiro na Mão</h1>
-  <div class="sub" id="mesAtual">Setembro 2026</div>
- </div>
- <span class="badge-pill" id="saldoPill">R$ 0</span>
-</div>
-</header>
+<body>
+<div class="gov"><span>PROGRAMA PÚBLICO · PROTÓTIPO</span><span>dados só neste aparelho</span></div>
+<header class="cab"><img src="../assets/logos/g1-96.png" alt=""><div><h1>Dinheiro na Mão</h1><small>Orientação financeira perto de você</small></div></header>
 
 <main>
-<!-- DASHBOARD -->
-<section class="screen active" id="screenHome">
-<div class="page-title">Resumo do Mês</div>
-<div class="kpi-grid">
- <div class="kpi-item">
-  <div class="val" id="totalReceitas" style="color:var(--ok)">R$ 0</div>
-  <div class="lbl">Receitas</div>
- </div>
- <div class="kpi-item">
-  <div class="val" id="totalDespesas" style="color:var(--alerta)">R$ 0</div>
-  <div class="lbl">Despesas</div>
- </div>
-</div>
-<div class="card">
- <div class="flex-between mb-8">
-  <div class="card-title" style="margin:0">Contas</div>
-  <span class="badge" id="contasCount">0 contas</span>
- </div>
- <div id="contasList"></div>
- <button class="btn btn-sm btn-ghost mt-8" onclick="showScreen('AddConta')">+ Nova Conta</button>
-</div>
-<div class="card mt-12">
- <div class="card-title mb-8">Calendário de Vencimentos</div>
- <div id="miniCal"></div>
-</div>
-<div class="card mt-12">
- <div class="card-title mb-8">Metas do Mês</div>
- <div id="metasList"></div>
-</div>
-</section>
+  <section class="tela" id="t-resumo">
+    <div class="carteira"><div class="n" id="c-num">PARTICIPANTE</div><div class="v" id="c-sobra">R$ 0</div><div style="font-size:13px;opacity:.9">sobra prevista no mês</div>
+      <div class="l" style="margin-top:10px"><span id="c-renda"></span><span id="c-contas"></span></div></div>
+    <div class="grade3"><div class="kpi ok"><b id="k-pagas">0</b><span>pagas</span></div><div class="kpi atc"><b id="k-semana">0</b><span>vencem em 7 dias</span></div><div class="kpi atr"><b id="k-atr">0</b><span>atrasadas</span></div></div>
+    <div class="card" style="margin-top:12px"><h3 style="font-size:16px">Próximos vencimentos</h3><div id="proximas"></div></div>
+    <div class="card"><h3 style="font-size:16px">Renda do mês</h3><label for="renda">Renda da família (R$)</label><input class="in" id="renda" type="number" inputmode="decimal"></div>
+  </section>
 
-<!-- ADICIONAR CONTA -->
-<section class="screen" id="screenAddConta">
-<div class="page-title">Nova Conta</div>
-<div class="card">
- <div class="input-group">
-  <label>DESCRIÇÃO</label>
-  <input class="form-input" id="inputDesc" placeholder="Ex.: Aluguel, Água, Mercado" maxlength="50">
- </div>
- <div class="input-group">
-  <label>TIPO</label>
-  <select class="form-input" id="inputTipo" onchange="toggleReceita()">
-   <option value="despesa">🟢 Despesa (gasto)</option>
-   <option value="receita">🔵 Receita (entrada)</option>
-  </select>
- </div>
- <div class="input-group">
-  <label>VALOR (R$)</label>
-  <input class="form-input" id="inputValor" type="number" placeholder="0,00" step="0.01" min="0">
- </div>
- <div class="input-group">
-  <label>CATEGORIA</label>
-  <select class="form-input" id="inputCat">
-   <option value="fixo">🏠 Fixo (aluguel, salary)</option>
-   <option value="variavel">🛒 Variável (mercado, gasto)</option>
-   <option value="contas">💧 Contas (água, luz, internet)</option>
-   <option value="financiamento">🏦 Financiamento / Empréstimo</option>
-   <option value="cartao">💳 Cartão de Crédito</option>
-   <option value="outro">📦 Outro</option>
-  </select>
- </div>
- <div class="input-group">
-  <label>DATA DE VENCIMENTO</label>
-  <input class="form-input" id="inputVenc" type="date">
- </div>
- <div class="input-group">
-  <label>STATUS</label>
-  <select class="form-input" id="inputStatus">
-   <option value="pendente">⏳ Pendente</option>
-   <option value="pago">✅ Pago</option>
-   <option value="vencido">⚠️ Vencido</option>
-  </select>
- </div>
- <button class="btn btn-primary" id="btnAddConta">Salvar Conta</button>
- <button class="btn btn-ghost mt-8" onclick="showScreen('Home')">Cancelar</button>
-</div>
-</section>
+  <section class="tela" id="t-calendario">
+    <div class="mes"><button id="m-ant" aria-label="Mês anterior">‹</button><b id="m-nome"></b><button id="m-prox" aria-label="Próximo mês">›</button></div>
+    <div class="cal" id="cal" role="grid" aria-label="Calendário de vencimentos"></div>
+    <p style="font-size:12px;color:var(--mudo);margin:6px 0 12px">■ verde paga · ■ laranja em aberto · ■ vermelho atrasada</p>
+    <div class="card"><h3 style="font-size:16px" id="dia-tit">Contas do mês</h3><div id="contas-dia"></div>
+      <div class="fila"><button class="btn" id="nova-conta">+ Nova conta</button></div></div>
+  </section>
 
-<!-- LISTA DE CONTAS -->
-<section class="screen" id="screenContas">
-<div class="page-title">Todas as Contas</div>
-<div class="flex-between mb-12">
- <div class="input-group" style="margin:0;flex:1">
-  <select class="form-input" id="filterStatus" onchange="renderContas()">
-   <option value="todas">Todas</option>
-   <option value="pendente">Pendentes</option>
-   <option value="pago">Pagas</option>
-   <option value="vencido">Vencidas</option>
-  </select>
- </div>
-</div>
-<div class="card" id="allContasList"></div>
-</section>
+  <section class="tela" id="t-metas">
+    <h2>Metas</h2><div id="metas"></div>
+    <div class="card"><h3 style="font-size:16px">Nova meta</h3><div class="duas"><div><label for="mt-nome">Para quê?</label><input class="in" id="mt-nome" placeholder="Reserva de emergência"></div><div><label for="mt-alvo">Valor (R$)</label><input class="in" id="mt-alvo" type="number" inputmode="decimal"></div></div>
+      <div class="fila"><button class="btn" id="add-meta">Criar meta</button></div></div>
+  </section>
 
-<!-- SIMULADOR -->
-<section class="screen" id="screenSimulador">
-<div class="page-title">Simulador de Pagamento</div>
-<div class="card">
- <div class="card-title">Monte seu cenário</div>
- <div class="slider-wrap">
-  <label><span>Valor da dívida</span><span id="lblValDeu">R$ 1.000</span></label>
-  <input type="range" id="slValDeu" min="100" max="50000" value="1000" step="100" oninput="updateSim()">
- </div>
- <div class="slider-wrap">
-  <label><span>Taxa de juros (% a.m.)</span><span id="lblJuros">5%</span></label>
-  <input type="range" id="slJuros" min="0" max="20" value="5" step="0.5" oninput="updateSim()">
- </div>
- <div class="slider-wrap">
-  <label><span>Prazo (meses)</span><span id="lblPrazo">6</span></label>
-  <input type="range" id="slPrazo" min="1" max="120" value="6" step="1" oninput="updateSim()">
- </div>
- <div class="grid-2 mt-12">
-  <div>
-   <div class="card-title" style="font-size:13px">Parcela Mensal (Price)</div>
-   <div class="sim-result">
-    <div class="val" id="simPrice" style="font-size:20px">—</div>
-    <div class="lbl">por mês</div>
-   </div>
-  </div>
-  <div>
-   <div class="card-title" style="font-size:13px">Total a Pagar</div>
-   <div class="sim-result">
-    <div class="val" id="simTotalPrice" style="font-size:20px">—</div>
-    <div class="lbl">em <span id="simPrazoText">6</span>x</div>
-   </div>
-  </div>
- </div>
- <div class="grid-2 mt-8">
-  <div>
-   <div class="card-title" style="font-size:13px">Parcela Mensal (SAC)</div>
-   <div class="sim-result">
-    <div class="val" id="simSAC" style="font-size:20px">—</div>
-    <div class="lbl">1ª parcela</div>
-   </div>
-  </div>
-  <div>
-   <div class="card-title" style="font-size:13px">Total a Pagar (SAC)</div>
-   <div class="sim-result">
-    <div class="val" id="simTotalSAC" style="font-size:20px">—</div>
-    <div class="lbl">total</div>
-   </div>
-  </div>
- </div>
- <div class="alert-box warn mt-12" style="font-size:12px">
-  <strong>Simulação.</strong> Valores aproximados. Procure o agente financeiro do bairro ou um banco para oferta real.
- </div>
-</div>
-</section>
+  <section class="tela" id="t-simulador">
+    <h2>Simulador de parcelas</h2>
+    <div class="card"><div class="duas"><div><label for="s-valor">Valor (R$)</label><input class="in" id="s-valor" type="number" value="3000"></div><div><label for="s-juros">Juros ao mês (%)</label><input class="in" id="s-juros" type="number" step="0.1" value="4.5"></div></div>
+      <label for="s-n">Número de parcelas: <b id="s-n-v">12</b></label><input id="s-n" type="range" min="2" max="48" value="12" style="width:100%;accent-color:#0e7490">
+      <table class="tab" style="margin-top:10px"><tr><th></th><th>Price</th><th>SAC</th></tr><tr><td>1ª parcela</td><td id="r-p1"></td><td id="r-s1"></td></tr><tr><td>Última</td><td id="r-pn"></td><td id="r-sn"></td></tr><tr><td>Total pago</td><td id="r-pt"></td><td id="r-st"></td></tr><tr><td>Juros</td><td id="r-pj"></td><td id="r-sj"></td></tr></table>
+      <p id="s-dica" style="font-size:14px;margin-top:10px"></p></div>
+    <p style="font-size:12px;color:var(--mudo)">Simulação educativa, sem IOF e tarifas. Leve ao agente para conversar sobre renegociação.</p>
+  </section>
 
-<!-- METAS -->
-<section class="screen" id="screenMetas">
-<div class="page-title">Metas Financeiras</div>
-<div id="metasFullList"></div>
-<div class="card mt-12">
- <div class="card-title">Nova Meta</div>
- <div class="input-group">
-  <label>DESCRIÇÃO</label>
-  <input class="form-input" id="inputMetaDesc" placeholder="Ex.: Reserva de R$ 500" maxlength="50">
- </div>
-  <div class="input-group">
-  <label>VALOR DA META (R$)</label>
-  <input class="form-input" id="inputMetaVal" type="number" step="0.01" min="0" placeholder="0,00">
- </div>
- <button class="btn btn-primary" id="btnAddMeta">Criar Meta</button>
-</div>
-</section>
+  <section class="tela" id="t-agente">
+    <h2>Agente do bairro</h2>
+    <div class="card" style="display:flex;gap:12px;align-items:center"><div style="width:56px;height:56px;border-radius:50%;background:var(--claro);display:grid;place-items:center;font-size:26px">🧑🏽‍💼</div>
+      <div><b>Agente Marta</b> <span class="selo">exemplo</span><div style="font-size:13px;color:var(--mudo)">Posto de atendimento · CRAS do bairro (VG) · seg a sex, 8h–17h</div></div></div>
+    <div class="card"><h3 style="font-size:16px">Agendar atendimento presencial</h3><div id="horarios" class="fila"></div></div>
+    <div class="card"><h3 style="font-size:16px">O que levar</h3><ul style="margin:8px 0 0 18px;font-size:14px;line-height:1.7"><li>Documento com foto e CPF</li><li>Contas do mês (papel ou foto)</li><li>Extrato ou fatura do cartão, se tiver</li><li>Este app, para mostrar o calendário</li></ul></div>
+    <div class="card"><h3 style="font-size:16px">Meus atendimentos</h3><div id="atend"></div></div>
+  </section>
 
-<!-- PERFIL -->
-<section class="screen" id="screenProfile">
-<div class="page-title">Meu Perfil</div>
-<div class="card">
-  <div class="card-title">📋 Sobre o Trabalho Acadêmico</div>
-  <p style="font-size:13px;color:var(--texto-suave);margin-bottom:12px;line-height:1.6">
-    Este app faz parte da pesquisa de <strong>Customer Discovery</strong> da disciplina de Projeto Inovador (3º Semestre · Unifacc).
-    Os alunos foram a um shopping ouvir pessoas reais sobre ideias de apps de saúde financeira.
-  </p>
-  <button class="btn btn-primary btn-sm" id="btnSobreTrabalho" onclick="abrirSobreTrabalho()">
-    Ver contexto, formulário e referencial
-  </button>
-</div>
-<div class="card">
- <div class="card-title">Agente Financeiro do Bairro</div>
- <div class="alert-box ok mb-8">
-  <strong>O Agente Financeiro do Bairro é a pessoa que te ajuda a organizar suas finanças.</strong> Ele não pega senha, não movimenta dinheiro e não promete aprovação de crédito.
- </div>
- <div class="grid-3">
-  <div class="text-center">
-   <div style="font-size:28px">✓</div>
-   <div style="font-size:12px;color:var(--texto-suave)">Ensina a consultar saldo</div>
-  </div>
-  <div class="text-center">
-   <div style="font-size:28px">✓</div>
-   <div style="font-size:12px;color:var(--texto-suave)">Ajuda a pagar contas</div>
-  </div>
-  <div class="text-center">
-   <div style="font-size:28px">✓</div>
-   <div style="font-size:12px;color:var(--texto-suave)">Monta um plano simples</div>
-  </div>
-  <div class="text-center">
-   <div style="font-size:28px">✗</div>
-   <div style="font-size:12px;color:var(--texto-suave)">Não pega senha</div>
-  </div>
-  <div class="text-center">
-   <div style="font-size:28px">✗</div>
-   <div style="font-size:12px;color:var(--texto-suave)">Não movimenta dinheiro</div>
-  </div>
-  <div class="text-center">
-   <div style="font-size:28px">✗</div>
-   <div style="font-size:12px;color:var(--texto-suave)">Não promete crédito</div>
-  </div>
- </div>
-</div>
-<div class="card mt-12">
- <div class="card-title">Dicas Rápidas</div>
- <div class="alert-box info mb-8">
-  <strong>1.</strong> Registre todas as suas despesas — até as pequenas.<br>
-  <strong>2.</strong> Separe o que é <em>fixo</em> e o que é <em>variável</em>.<br>
-  <strong>3.</strong> Anote a data de vencimento de cada conta.<br>
-  <strong>4.</strong> Quando puder, pague a conta <em>antes</em> do vencimento para evitar juros.
- </div>
-</div>
-<div class="card mt-12">
- <button class="btn btn-ghost" id="btnExportDinheiro" style="margin-bottom:8px">Exportar Dados 📤</button>
- <button class="btn btn-danger" id="btnResetDinheiro">Resetar Tudo 🗑️</button>
-</div>
-</section>
+  <section class="tela" id="t-bolsa">
+    <h2>Bolsa-incentivo</h2>
+    <div class="card"><span class="selo">regra hipotética · a validar</span><p style="margin:8px 0">Quem cumpre as 3 condições do mês recebe a bolsa. Valor de exemplo: <b>R$ 100</b>.</p><div class="barra"><i id="b-barra"></i></div><div id="conds" style="margin-top:6px"></div></div>
+    <div class="card"><h3 style="font-size:16px">Histórico</h3><div id="b-hist"></div></div>
+    <div class="card"><h3 style="font-size:16px">Seus dados</h3><div class="fila"><button class="btn sec peq" id="exportar">Exportar</button><button class="btn sec peq" id="importar" data-teste="pular">Importar</button><button class="btn sec peq" id="zerar">Apagar tudo</button></div>
+      <p style="font-size:12px;color:var(--mudo);margin-top:10px">Dinheiro na Mão · Grupo 1 · 3SemVG · UNIFACC-MT</p></div>
+  </section>
 </main>
 
-<nav class="nav-bottom" id="bottomNav">
-<button class="nav-item active" data-screen="Home"><span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/><circle cx="12" cy="9" r="1.5" fill="currentColor" stroke="none"/></svg></span><span>Home</span></button>
-<button class="nav-item" data-screen="Contas"><span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12l2 2 4-4"/></svg></span><span>Contas</span></button>
-<button class="nav-item" data-screen="Simulador"><span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></span><span>Simular</span></button>
-<button class="nav-item" data-screen="Metas"><span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L8 6h8l-4-4z"/><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M8 6v4M16 6v4"/><path d="M12 10v6M9 13h6"/></svg></span><span>Metas</span></button>
-<button class="nav-item" data-screen="Profile"><span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><path d="M15 3l3 3-3 3"/></svg></span><span>Perfil</span></button>
+<nav class="baixo" aria-label="Seções">
+  <a href="#/resumo"><span>🏠</span>Resumo</a><a href="#/calendario"><span>📅</span>Contas</a><a href="#/metas"><span>🎯</span>Metas</a><a href="#/simulador"><span>🧮</span>Simular</a><a href="#/agente"><span>🤝</span>Agente</a><a href="#/bolsa"><span>🎁</span>Bolsa</a>
 </nav>
-</div>
-<div class="toast-container" id="toastContainer"></div>
-<div class="modal-overlay" id="modalSobre" style="display:none">
-  <div class="modal-box" style="max-height:85dvh;overflow-y:auto;padding:20px">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-      <div style="font-size:16px;font-weight:800;color:var(--tinta)">📋 Sobre o Trabalho</div>
-      <button onclick="fecharSobreTrabalho()" style="background:none;border:none;font-size:20px;cursor:pointer;color:var(--texto-suave)">✕</button>
-    </div>
-    <div style="font-size:13px;line-height:1.7;color:var(--texto)">
-      <div style="background:var(--accent-soft);border-radius:10px;padding:12px;margin-bottom:14px;border-left:4px solid var(--accent)">
-        <strong style="color:var(--accent)">🏫 Contexto do Projeto</strong><br>
-        O <strong>Dinheiro na Mão</strong> nasceu da defesa de projeto inovador sobre inclusão financeira para populações de baixa renda. A ideia: um programa governamental presencial, com sistema inteligente de organização de contas e uma bolsa-incentivo que motiva o cidadão a manter as contas em dia. A pesquisa de campo aconteceu no shopping, com entrevistas reais usando formulário de 20 perguntas em escala 1–5.
-      </div>
-      <div style="background:#f0fdf4;border-radius:10px;padding:12px;margin-bottom:14px;border-left:4px solid var(--ok)">
-        <strong style="color:var(--ok)">📊 Resultado do Formulário (Customer Discovery)</strong><br>
-        <span style="font-size:12px">A pesquisa de campo foi aplicada pelo grupo com apoio do app de coleta. As perguntas medem: conhecimento de programas sociais, capacidade de organização financeira, interesse em programas de incentivo e percepção de controle sobre o dinheiro. Os códigos G1-<nnn> correlacionam cada resposta quantitativa com o áudio gravado no WhatsApp.</span>
-      </div>
-      <div style="background:#fffbeb;border-radius:10px;padding:12px;margin-bottom:14px;border-left:4px solid var(--atencao)">
-        <strong style="color:var(--atencao)">📚 Referencial Teórico</strong><br>
-        <span style="font-size:12px">O trabalho tem base em 14 artigos peer-reviewed (2021–2026), incluindo: Hasan et al. (2021) sobre literacia financeira e inclusão; Khor et al. (2023) sobre aconselhamento financeiro comportamental; Bruhn et al. (2025) sobre educação financeira em escolas brasileiras; Fernandes et al. (2024) sobre comportamento financeiro de baixa renda; e Lone & Bhat (2022) sobre autoeficácia financeira. O arcabouço teórico inclui autoeficácia (Bandura), nudges em finanças públicas e counselling comportamental.</span>
-      </div>
-      <div style="background:#f5f3ff;border-radius:10px;padding:12px;border-left:4px solid var(--accent2)">
-        <strong style="color:var(--accent-dark)">🎯 Hipótese de Campo</strong><br>
-        <span style="font-size:12px">A hipótese validada na pesquisa de campo é que populações de baixa renda têm interesse em organizar suas finanças, mas faltam orientação acessível e um mecanismo de incentivo. O Dinheiro na Mão propõe ser esse elo — unindo a infraestrutura governamental (CadÚnico, Bolsa Família) com tecnologia mobile e uma bolsa que premia o comportamento de manter as contas em dia.</span>
-      </div>
-    </div>
-    <button class="btn btn-ghost btn-sm" onclick="fecharSobreTrabalho()" style="margin-top:14px;width:100%">Fechar</button>
-  </div>
-</div>
+
+<template id="tpl-dia"><button class="dia" type="button"><span class="num"></span><span class="marcas" style="display:flex;flex-direction:column;gap:2px;width:100%"></span></button></template>
+<template id="tpl-conta"><div class="conta"><span class="d"></span><div class="info"><b></b><span style="font-size:13px;color:var(--mudo)"></span></div><span class="st"></span><button class="btn peq sec acao"></button></div></template>
+
+<dialog id="dlg-conta"><form method="dialog" id="f-conta"><h3 style="font-size:18px;margin-bottom:6px">Nova conta</h3>
+  <label for="fc-nome">Nome</label><input class="in" id="fc-nome" required placeholder="Ex.: Energia">
+  <div class="duas"><div><label for="fc-valor">Valor (R$)</label><input class="in" id="fc-valor" type="number" inputmode="decimal" required></div><div><label for="fc-dia">Vence dia</label><input class="in" id="fc-dia" type="number" min="1" max="31" required></div></div>
+  <label for="fc-tipo">Tipo</label><select class="in" id="fc-tipo"><option>Casa</option><option>Energia e água</option><option>Cartão</option><option>Empréstimo</option><option>Escola</option><option>Outros</option></select>
+  <div class="fila"><button class="btn sec" value="cancel" formnovalidate data-fechar>Cancelar</button><button class="btn" value="ok">Salvar</button></div></form></dialog>
+<div id="brinde" role="status" aria-live="polite"></div>
+
 <script>
-function abrirSobreTrabalho(){document.getElementById('modalSobre').style.display='flex';document.body.style.overflow='hidden'}
-function fecharSobreTrabalho(){document.getElementById('modalSobre').style.display='none';document.body.style.overflow=''}
-document.getElementById('modalSobre').onclick=function(e){if(e.target===this)fecharSobreTrabalho()};
-</script>
+/* ============================================================================
+   Construção do Dinheiro na Mão: motor de calendário. As contas são regras
+   recorrentes (dia do vencimento); o motor projeta cada regra no mês visível e
+   cruza com os pagamentos (chave aaaa-mm) para derivar o status. A grade é montada
+   clonando <template> e a troca de mês usa a View Transitions API quando existe.
+   ============================================================================ */
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const R$ = v => (+v || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+let tb; const brinde = m => { const e = $('#brinde'); e.textContent = m; e.classList.add('on'); clearTimeout(tb); tb = setTimeout(() => e.classList.remove('on'), 2200); };
+const CH = 'dinheironamao:v2';
+const chaveMes = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+const semente = () => ({
+  id: 'DNM-' + Math.random().toString().slice(2, 8), renda: 2800,
+  contas: [{ id: 'c1', nome: 'Aluguel', valor: 850, dia: 10, tipo: 'Casa' }, { id: 'c2', nome: 'Energia', valor: 180, dia: 15, tipo: 'Energia e água' }, { id: 'c3', nome: 'Água', valor: 70, dia: 18, tipo: 'Energia e água' },
+    { id: 'c4', nome: 'Cartão de crédito', valor: 420, dia: 5, tipo: 'Cartão' }, { id: 'c5', nome: 'Empréstimo (6/12)', valor: 260, dia: 25, tipo: 'Empréstimo' }],
+  pagos: (() => { const h = new Date(), k = chaveMes(h), o = {}; [['c1', 10], ['c2', 15], ['c3', 18], ['c4', 5], ['c5', 25]].forEach(([id, d]) => { if (d < h.getDate()) o[id] = h.toISOString(); }); return { [k]: o }; })(), metas: [{ id: 'm1', nome: 'Reserva de emergência', alvo: 1000, deps: [{ v: 50, d: new Date().toISOString() }] }], atend: [], bolsas: {}
+});
+let S; try { S = JSON.parse(localStorage.getItem(CH)); } catch (e) {} if (!S) S = semente();
+const salvar = () => localStorage.setItem(CH, JSON.stringify(S)); salvar();
 
-<script src="../assets/kit/kit.js" type="module"></script>
-<script type="module">
-import { fmtBRL, uid } from '../assets/kit/kit.js';
-
-const NS = 'dnm';
-function _k(k) { return NS + ':' + k; }
-const s = {
-  get(k, f) { try { const v = localStorage.getItem(_k(k)); return v == null ? f : JSON.parse(v); } catch { return f; } },
-  set(k, v) { try { localStorage.setItem(_k(k), JSON.stringify(v)); return true; } catch { return false; } }
-};
-
-let contas = s.get('contas', []);
-let metas = s.get('metas', []);
-
-function toast(msg) {
-  const c = document.getElementById('toastContainer');
-  const el = document.createElement('div');
-  el.className = 'toast';
-  el.textContent = msg;
-  c.appendChild(el);
-  setTimeout(() => el.remove(), 2800);
+/* ---------- motor ---------- */
+const hoje = new Date(); hoje.setHours(0, 0, 0, 0);
+let visto = new Date(hoje.getFullYear(), hoje.getMonth(), 1), diaSel = null;
+function ocorrencias(mesRef) { // projeta as contas no mês
+  const ult = new Date(mesRef.getFullYear(), mesRef.getMonth() + 1, 0).getDate(), k = chaveMes(mesRef);
+  return S.contas.map(c => { const data = new Date(mesRef.getFullYear(), mesRef.getMonth(), Math.min(c.dia, ult));
+    const paga = !!(S.pagos[k] || {})[c.id]; const st = paga ? 'paga' : data < hoje ? 'atrasada' : 'aberta';
+    return { ...c, data, st, k }; }).sort((a, b) => a.data - b.data);
 }
-
-function fmt(v) { return fmtBRL(v); }
-
-function showScreen(name) {
-  document.querySelectorAll('.screen').forEach(x => x.classList.remove('active'));
-  document.getElementById('screen' + name).classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.screen === name));
-  if (name === 'Home') renderHome();
-  if (name === 'Contas') renderAllContas();
-  if (name === 'Simulador') updateSim();
-  if (name === 'Metas') renderMetas();
+const ROT = { paga: 'paga', aberta: 'em aberto', atrasada: 'atrasada' };
+function linhaConta(o) {
+  const n = $('#tpl-conta').content.cloneNode(true);
+  n.querySelector('.d').textContent = o.data.getDate(); n.querySelector('b').textContent = o.nome;
+  n.querySelector('.info span').textContent = `${R$(o.valor)} · ${o.tipo}`;
+  const st = n.querySelector('.st'); st.textContent = ROT[o.st]; st.classList.add(o.st);
+  const b = n.querySelector('.acao'); b.textContent = o.st === 'paga' ? 'Desfazer' : 'Paguei'; b.dataset.pagar = o.id; b.dataset.k = o.k;
+  return n;
 }
-
-function renderHome() {
-  const now = new Date();
-  const mes = now.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
-  document.getElementById('mesAtual').textContent = mes.charAt(0).toUpperCase() + mes.slice(1);
-
-  const mesAtual = now.getMonth();
-  const anoAtual = now.getFullYear();
-  const doMes = contas.filter(c => {
-    const d = new Date(c.venc);
-    return d.getMonth() === mesAtual && d.getFullYear() === anoAtual;
-  });
-
-  const receitas = doMes.filter(c => c.tipo === 'receita' && c.status === 'pago').reduce((a, c) => a + c.valor, 0);
-  const despesas = doMes.filter(c => c.tipo === 'despesa' && c.status === 'pago').reduce((a, c) => a + c.valor, 0);
-  const saldo = receitas - despesas;
-
-  document.getElementById('totalReceitas').textContent = fmt(receitas);
-  document.getElementById('totalDespesas').textContent = fmt(despesas);
-  document.getElementById('saldoPill').textContent = fmt(saldo);
-  document.getElementById('saldoPill').style.color = saldo >= 0 ? '#86efac' : '#fca5a5';
-
-  document.getElementById('contasCount').textContent = doMes.length + ' contas';
-  renderContasList(doMes.slice(0, 5));
-  renderMiniCal();
-  renderMetasHome();
-}
-
-function renderContasList(list) {
-  const el = document.getElementById('contasList');
-  if (!list.length) {
-    el.innerHTML = '<div class="text-muted" style="font-size:13px;text-align:center;padding:16px">Nenhuma conta este mês. Clique em "+ Nova Conta" para começar!</div>';
-    return;
+function desenharCal() {
+  const cal = $('#cal'); cal.replaceChildren();
+  ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'].forEach(s => cal.insertAdjacentHTML('beforeend', `<span class="sem">${s}</span>`));
+  const oc = ocorrencias(visto), ini = visto.getDay(), ult = new Date(visto.getFullYear(), visto.getMonth() + 1, 0).getDate();
+  for (let i = 0; i < ini; i++) { const f = $('#tpl-dia').content.cloneNode(true); f.querySelector('.dia').classList.add('fora'); cal.append(f); }
+  for (let d = 1; d <= ult; d++) {
+    const f = $('#tpl-dia').content.cloneNode(true), b = f.querySelector('.dia'), data = new Date(visto.getFullYear(), visto.getMonth(), d);
+    f.querySelector('.num').textContent = d; b.dataset.dia = d;
+    const dele = oc.filter(o => o.data.getDate() === d); b.setAttribute('aria-label', `Dia ${d}${dele.length ? ', ' + dele.length + ' conta(s)' : ''}`);
+    dele.forEach(o => { const i = document.createElement('i'); i.className = o.st; f.querySelector('.marcas').append(i); });
+    if (+data === +hoje) b.classList.add('hoje'); if (diaSel === d) b.classList.add('sel');
+    cal.append(f);
   }
-  const catIcon = {fixo:'🏠',variavel:'🛒',contas:'💧',financiamento:'🏦',cartao:'💳',outro:'📦'};
-  const hoje = new Date();
-  el.innerHTML = list.map(c => {
-    const venc = new Date(c.venc);
-    const diff = Math.ceil((venc - hoje) / 86400000);
-    let statusClass = c.status;
-    let statusLabel = {pago:'✅ Pago',pendente:'⏳ Pendente',vencido:'⚠️ Vencido'}[c.status];
-    if (c.status === 'pendente' && diff < 0) { statusClass = 'vencido'; statusLabel = '⚠️ Vencido'; }
-    if (c.status === 'pendente' && diff <= 5 && diff >= 0) { statusClass = 'pendente'; statusLabel = '⏳ Vence em ' + diff + 'd'; }
-    return `<div class="item-conta" onclick="editarConta('${c.id}')">
-     <div class="icon-cat">${catIcon[c.cat] || '📦'}</div>
-     <div class="info">
-      <div class="nome">${c.desc}</div>
-      <div class="meta">${venc.toLocaleDateString('pt-BR')} · <span class="badge-status ${statusClass}">${statusLabel}</span></div>
-     </div>
-     <div class="valor ${statusClass}">${fmt(c.valor)}</div>
-    </div>`;
-  }).join('');
+  const nm = visto.toLocaleDateString('pt-BR', { month: 'long' }); $('#m-nome').textContent = nm[0].toUpperCase() + nm.slice(1) + ' de ' + visto.getFullYear();
+  const lista = diaSel ? oc.filter(o => o.data.getDate() === diaSel) : oc;
+  $('#dia-tit').textContent = diaSel ? `Dia ${diaSel}` : 'Contas do mês';
+  const box = $('#contas-dia'); box.replaceChildren(); lista.forEach(o => box.append(linhaConta(o)));
+  if (!lista.length) box.innerHTML = '<p style="color:var(--mudo);font-size:14px">Nenhuma conta neste dia.</p>';
+}
+function trocarMes(d) {
+  document.documentElement.style.setProperty('--dir', d > 0 ? '-20px' : '20px');
+  const f = () => { visto = new Date(visto.getFullYear(), visto.getMonth() + d, 1); diaSel = null; desenharCal(); };
+  document.startViewTransition ? document.startViewTransition(f) : f();
 }
 
-function renderMiniCal() {
-  const now = new Date();
-  const mes = now.getMonth();
-  const ano = now.getFullYear();
-  const primeiroDia = new Date(ano, mes, 1).getDay();
-  const diasNoMes = new Date(ano, mes + 1, 0).getDate();
-  const hoje = now.getDate();
-
-  const contasDoMes = contas.filter(c => {
-    const d = new Date(c.venc);
-    return d.getMonth() === mes && d.getFullYear() === ano;
-  });
-
-  const diasComConta = new Set(contasDoMes.map(c => new Date(c.venc).getDate()));
-
-  let html = '<div class="cal-grid">';
-  ['D','S','T','Q','Q','S','S'].forEach(d => html += '<div class="dow">' + d + '</div>');
-  for (let i = 0; i < primeiroDia; i++) html += '<div></div>';
-  for (let d = 1; d <= diasNoMes; d++) {
-    const isToday = d === hoje;
-    const hasBill = diasComConta.has(d);
-    html += `<button class="cal-day ${isToday ? 'today' : ''} ${hasBill ? 'has-bill' : ''}" onclick="showScreen('Contas')">${d}</button>`;
-  }
-  html += '</div>';
-  document.getElementById('miniCal').innerHTML = html;
+/* ---------- telas ---------- */
+function telaResumo() {
+  const oc = ocorrencias(new Date(hoje.getFullYear(), hoje.getMonth(), 1)), total = oc.reduce((a, o) => a + o.valor, 0);
+  const guard = S.metas.reduce((a, m) => a + m.deps.filter(x => x.d.slice(0, 7) === chaveMes(hoje)).reduce((x, y) => x + y.v, 0), 0);
+  $('#c-num').textContent = 'PARTICIPANTE · ' + S.id; $('#c-sobra').textContent = R$(S.renda - total - guard);
+  $('#c-renda').textContent = 'Renda ' + R$(S.renda); $('#c-contas').textContent = 'Contas ' + R$(total) + (guard ? ' · Metas ' + R$(guard) : '');
+  $('#k-pagas').textContent = oc.filter(o => o.st === 'paga').length;
+  $('#k-semana').textContent = oc.filter(o => o.st === 'aberta' && (o.data - hoje) / 864e5 <= 7).length;
+  $('#k-atr').textContent = oc.filter(o => o.st === 'atrasada').length;
+  const box = $('#proximas'); box.replaceChildren(); oc.filter(o => o.st !== 'paga').slice(0, 4).forEach(o => box.append(linhaConta(o)));
+  if (!box.children.length) box.innerHTML = '<p style="color:var(--ok);font-weight:700">Tudo pago neste mês. 👏</p>';
+  $('#renda').value = S.renda;
+}
+function telaMetas() {
+  $('#metas').innerHTML = S.metas.map(m => { const g = m.deps.reduce((a, d) => a + d.v, 0), p = Math.min(100, g / m.alvo * 100);
+    return `<div class="card"><div style="display:flex;justify-content:space-between;gap:8px"><b>${m.nome.replace(/</g, '&lt;')}</b><span>${R$(g)} de ${R$(m.alvo)}</span></div><div class="barra" style="margin:8px 0"><i style="width:${p}%"></i></div>
+    <div class="fila"><button class="btn peq" data-dep="${m.id}" data-v="20">+ R$ 20</button><button class="btn peq" data-dep="${m.id}" data-v="50">+ R$ 50</button><button class="btn peq sec" data-rem-meta="${m.id}">Excluir</button></div></div>`; }).join('') || '<p class="card">Crie sua primeira meta.</p>';
+}
+function simular() {
+  const pv = +$('#s-valor').value || 0, i = (+$('#s-juros').value || 0) / 100, n = +$('#s-n').value; $('#s-n-v').textContent = n;
+  const pmt = i ? pv * i / (1 - Math.pow(1 + i, -n)) : pv / n, a = pv / n, sac = k => a + (pv - a * k) * i;
+  let st = 0; for (let k = 0; k < n; k++) st += sac(k);
+  const set = (id, v) => $('#' + id).textContent = R$(v);
+  set('r-p1', pmt); set('r-pn', pmt); set('r-pt', pmt * n); set('r-pj', pmt * n - pv); set('r-s1', sac(0)); set('r-sn', sac(n - 1)); set('r-st', st); set('r-sj', st - pv);
+  const pesa = pmt / S.renda;
+  $('#s-dica').innerHTML = `A parcela Price compromete <b>${(pesa * 100).toFixed(0)}%</b> da sua renda. ${pesa > .3 ? '⚠️ Acima de 30%: converse com o agente antes de assinar.' : 'Dentro de um limite prudente.'} O SAC começa mais alto, mas paga <b>${R$(pmt * n - st)}</b> a menos de juros.`;
+}
+function telaAgente() {
+  const uteis = [], d = new Date(hoje); while (uteis.length < 3) { d.setDate(d.getDate() + 1); if (d.getDay() % 6) uteis.push(chaveMes(d) + '-' + String(d.getDate()).padStart(2, '0')); }
+  const slots = uteis.flatMap(x => ['09:00', '14:30'].map(h => [x, h]));
+  $('#horarios').innerHTML = slots.map(([d, h]) => `<button class="btn sec peq" data-agendar="${d}|${h}">${new Date(d + 'T12:00').toLocaleDateString('pt-BR', { weekday: 'short', day: '2-digit', month: '2-digit' })} ${h}</button>`).join('');
+  $('#atend').innerHTML = S.atend.map(a => `<div class="conta"><span class="d">🤝</span><div class="info"><b>${new Date(a.d + 'T12:00').toLocaleDateString('pt-BR')} às ${a.h}</b><span style="font-size:13px;color:var(--mudo)">${a.feito ? 'Atendimento realizado' : 'Agendado (simulado)'}</span></div>
+    ${a.feito ? '<span class="st paga">feito</span>' : `<button class="btn peq sec" data-feito="${a.id}">Compareci</button>`}</div>`).join('') || '<p style="color:var(--mudo);font-size:14px">Nenhum atendimento ainda.</p>';
+}
+function condicoes() {
+  const k = chaveMes(hoje), oc = ocorrencias(new Date(hoje.getFullYear(), hoje.getMonth(), 1));
+  return [['Participar de 1 atendimento no mês', S.atend.some(a => a.feito && a.d.slice(0, 7) === k)],
+    ['Nenhuma conta atrasada no mês', !oc.some(o => o.st === 'atrasada')],
+    ['Guardar algum valor em uma meta', S.metas.some(m => m.deps.some(d => d.d.slice(0, 7) === k))]];
+}
+function telaBolsa() {
+  const c = condicoes(), ok = c.filter(x => x[1]).length, k = chaveMes(hoje);
+  $('#b-barra').style.width = ok / 3 * 100 + '%';
+  $('#conds').innerHTML = c.map(([t, v], i) => `<div class="cond ${v ? 'ok' : ''}"><span class="ic">${v ? '✓' : i + 1}</span><span>${t}</span></div>`).join('') +
+    (ok === 3 ? (S.bolsas[k] ? `<p style="margin-top:10px;color:var(--ok);font-weight:700">Bolsa de ${k} solicitada ✓ (simulado)</p>` : `<div class="fila"><button class="btn" id="pedir-bolsa">Solicitar bolsa do mês</button></div>`) : `<p style="margin-top:10px;font-size:14px;color:var(--mudo)">Faltam ${3 - ok} condição(ões).</p>`);
+  $('#b-hist').innerHTML = Object.keys(S.bolsas).sort().reverse().map(m => `<div class="conta"><span class="d">🎁</span><div class="info"><b>${m}</b><span style="font-size:13px;color:var(--mudo)">R$ 100 · em análise (simulado)</span></div></div>`).join('') || '<p style="color:var(--mudo);font-size:14px">Nenhuma bolsa solicitada.</p>';
 }
 
-function renderMetasHome() {
-  const el = document.getElementById('metasList');
-  if (!metas.length) {
-    el.innerHTML = '<div class="text-muted" style="font-size:13px">Nenhuma meta. Vá em "Metas" para criar uma!</div>';
-    return;
-  }
-  el.innerHTML = metas.slice(0, 3).map(m => {
-    const pct = Math.min(100, Math.round((m.atual / m.valor) * 100));
-    return `<div style="margin-bottom:10px">
-     <div class="flex-between" style="margin-bottom:4px">
-      <span style="font-size:13px;font-weight:600">${m.desc}</span>
-      <span style="font-size:12px;color:var(--texto-suave)">${fmt(m.atual)} / ${fmt(m.valor)}</span>
-     </div>
-     <div style="height:8px;background:var(--linha);border-radius:4px;overflow:hidden">
-      <div style="height:100%;width:${pct}%;background:var(--accent);border-radius:4px;transition:width .3s"></div>
-     </div>
-    </div>`;
-  }).join('');
+/* ---------- eventos ---------- */
+document.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.pagar) { const k = b.dataset.k; S.pagos[k] = S.pagos[k] || {}; S.pagos[k][b.dataset.pagar] ? delete S.pagos[k][b.dataset.pagar] : (S.pagos[k][b.dataset.pagar] = new Date().toISOString()); salvar(); rota(true); brinde(S.pagos[k][b.dataset.pagar] ? 'Conta marcada como paga.' : 'Pagamento desfeito.'); }
+  else if (b.dataset.dia) { diaSel = diaSel === +b.dataset.dia ? null : +b.dataset.dia; desenharCal(); }
+  else if (b.id === 'm-ant') trocarMes(-1); else if (b.id === 'm-prox') trocarMes(1);
+  else if (b.id === 'nova-conta') { $('#f-conta').reset(); if (diaSel) $('#fc-dia').value = diaSel; $('#dlg-conta').showModal(); }
+  else if (b.dataset.dep) { const m = S.metas.find(x => x.id === b.dataset.dep); m.deps.push({ v: +b.dataset.v, d: new Date().toISOString() }); salvar(); telaMetas(); brinde('Guardado! Cada passo conta.'); }
+  else if (b.dataset.remMeta) { if (confirm('Excluir esta meta?')) { S.metas = S.metas.filter(x => x.id !== b.dataset.remMeta); salvar(); telaMetas(); } }
+  else if (b.id === 'add-meta') { const n = $('#mt-nome').value.trim(), v = +$('#mt-alvo').value; if (!n || !v) return brinde('Preencha nome e valor.'); S.metas.push({ id: 'm' + Date.now(), nome: n, alvo: v, deps: [] }); salvar(); $('#mt-nome').value = $('#mt-alvo').value = ''; telaMetas(); }
+  else if (b.dataset.agendar) { const [d, h] = b.dataset.agendar.split('|'); if (S.atend.some(a => a.d === d && a.h === h)) return brinde('Você já tem este horário.'); S.atend.unshift({ id: 'a' + Date.now(), d, h, feito: false }); salvar(); telaAgente(); brinde('Atendimento agendado (simulado).'); }
+  else if (b.dataset.feito) { S.atend.find(a => a.id === b.dataset.feito).feito = true; salvar(); telaAgente(); brinde('Presença registrada.'); }
+  else if (b.id === 'pedir-bolsa') { S.bolsas[chaveMes(hoje)] = new Date().toISOString(); salvar(); telaBolsa(); brinde('Solicitação enviada (simulado).'); }
+  else if (b.id === 'exportar') { Object.assign(document.createElement('a'), { href: URL.createObjectURL(new Blob([JSON.stringify({ app: 'dinheironamao', dados: S })], { type: 'application/json' })), download: 'dinheiro-na-mao.json' }).click(); }
+  else if (b.id === 'importar') { const i = Object.assign(document.createElement('input'), { type: 'file', accept: '.json' }); i.onchange = async () => { try { const j = JSON.parse(await i.files[0].text()); if (j.app !== 'dinheironamao') throw 0; S = j.dados; salvar(); rota(); brinde('Importado.'); } catch (x) { brinde('Arquivo inválido.'); } }; i.click(); }
+  else if (b.id === 'zerar') { if (confirm('Apagar todos os dados?')) { S = semente(); salvar(); rota(); brinde('Dados apagados.'); } }
+});
+$('#f-conta').addEventListener('submit', e => { if (e.submitter && e.submitter.value === 'cancel') return;
+  S.contas.push({ id: 'c' + Date.now(), nome: $('#fc-nome').value.trim(), valor: +$('#fc-valor').value, dia: Math.min(31, Math.max(1, +$('#fc-dia').value)), tipo: $('#fc-tipo').value }); salvar(); desenharCal(); brinde('Conta adicionada ao calendário.'); });
+$('#renda').addEventListener('change', e => { S.renda = +e.target.value || 0; salvar(); telaResumo(); });
+['s-valor', 's-juros', 's-n'].forEach(id => $('#' + id).addEventListener('input', simular));
+
+/* ---------- rotas ---------- */
+window.__rotas = ['#/resumo', '#/calendario', '#/metas', '#/simulador', '#/agente', '#/bolsa'];
+const TELAS = { resumo: telaResumo, calendario: desenharCal, metas: telaMetas, simulador: simular, agente: telaAgente, bolsa: telaBolsa };
+function rota(manter) {
+  const n = (location.hash.match(/^#\/(\w+)/) || [])[1], nome = TELAS[n] ? n : 'resumo';
+  $$('.tela').forEach(t => t.classList.toggle('on', t.id === 't-' + nome));
+  $$('nav.baixo a').forEach(a => a.getAttribute('href') === '#/' + nome ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+  TELAS[nome](); if (manter !== true) scrollTo(0, 0);
 }
-
-function renderAllContas() {
-  const filter = document.getElementById('filterStatus')?.value || 'todas';
-  let list = [...contas].sort((a, b) => new Date(a.venc) - new Date(b.venc));
-  if (filter !== 'todas') list = list.filter(c => c.status === filter);
-  const el = document.getElementById('allContasList');
-  if (!list.length) {
-    el.innerHTML = '<div class="text-muted" style="font-size:13px;padding:16px;text-align:center">Nenhuma conta encontrada.</div>';
-    return;
-  }
-  const catIcon = {fixo:'🏠',variavel:'🛒',contas:'💧',financiamento:'🏦',cartao:'💳',outro:'📦'};
-  el.innerHTML = list.map(c => {
-    const venc = new Date(c.venc);
-    const hoje = new Date();
-    const diff = Math.ceil((venc - hoje) / 86400000);
-    let statusClass = c.status;
-    let statusLabel = {pago:'✅ Pago',pendente:'⏳ Pendente',vencido:'⚠️ Vencido'}[c.status];
-    if (c.status === 'pendente' && diff < 0) { statusClass = 'vencido'; statusLabel = '⚠️ Vencido'; }
-    return `<div class="item-conta" onclick="editarConta('${c.id}')">
-     <div class="icon-cat">${catIcon[c.cat] || '📦'}</div>
-     <div class="info">
-      <div class="nome">${c.desc}</div>
-      <div class="meta">${venc.toLocaleDateString('pt-BR')} · <span class="badge-status ${statusClass}">${statusLabel}</span></div>
-     </div>
-     <div class="valor ${statusClass}">${fmt(c.valor)}</div>
-    </div>`;
-  }).join('');
-}
-
-function renderContas() { renderAllContas(); }
-
-function toggleReceita() {
-  const tipo = document.getElementById('inputTipo').value;
-  const cat = document.getElementById('inputCat');
-  if (tipo === 'receita') {
-    cat.innerHTML = '<option value="salario">💰 Salário / Renda</option><option value="beneficio">🪙 Benefício / Bolsa</option><option value="extra">📈 Extra / Freelance</option><option value="outro">📦 Outro</option>';
-  } else {
-    cat.innerHTML = '<option value="fixo">🏠 Fixo (aluguel, salary)</option><option value="variavel">🛒 Variável (mercado, gasto)</option><option value="contas">💧 Contas (água, luz, internet)</option><option value="financiamento">🏦 Financiamento / Empréstimo</option><option value="cartao">💳 Cartão de Crédito</option><option value="outro">📦 Outro</option>';
-  }
-}
-
-let editingId = null;
-
-window.editarConta = function(id) {
-  const c = contas.find(x => x.id === id);
-  if (!c) return;
-  editingId = id;
-  document.getElementById('inputDesc').value = c.desc;
-  document.getElementById('inputTipo').value = c.tipo;
-  toggleReceita();
-  document.getElementById('inputCat').value = c.cat;
-  document.getElementById('inputValor').value = c.valor;
-  document.getElementById('inputVenc').value = c.venc;
-  document.getElementById('inputStatus').value = c.status;
-  showScreen('AddConta');
-  toast('Editando: ' + c.desc);
-};
-
-document.getElementById('btnAddConta').onclick = () => {
-  const desc = document.getElementById('inputDesc').value.trim();
-  const tipo = document.getElementById('inputTipo').value;
-  const cat = document.getElementById('inputCat').value;
-  const valor = parseFloat(document.getElementById('inputValor').value) || 0;
-  const venc = document.getElementById('inputVenc').value;
-  const status = document.getElementById('inputStatus').value;
-  if (!desc || !valor || !venc) { toast('Preencha todos os campos!'); return; }
-  if (editingId) {
-    const idx = contas.findIndex(x => x.id === editingId);
-    if (idx >= 0) {
-      contas[idx] = { ...contas[idx], desc, tipo, cat, valor, venc, status };
-    }
-    editingId = null;
-    toast('Conta atualizada!');
-  } else {
-    contas.push({ id: uid(), desc, tipo, cat, valor, venc, status });
-    toast('Conta adicionada!');
-  }
-  s.set('contas', contas);
-  showScreen('Home');
-};
-
-function updateSim() {
-  const v = parseFloat(document.getElementById('slValDeu').value);
-  const j = parseFloat(document.getElementById('slJuros').value) / 100;
-  const p = parseInt(document.getElementById('slPrazo').value);
-  document.getElementById('lblValDeu').textContent = fmt(v);
-  document.getElementById('lblJuros').textContent = (j * 100).toFixed(1) + '%';
-  document.getElementById('lblPrazo').textContent = p;
-  document.getElementById('simPrazoText').textContent = p;
-  const i = j / 12;
-  let price = 0, sac = 0;
-  if (i > 0 && p > 0) {
-    price = v * (i * Math.pow(1 + i, p)) / (Math.pow(1 + i, p) - 1);
-    sac = v / p + v * i;
-  } else {
-    price = v / p; sac = v / p;
-  }
-  document.getElementById('simPrice').textContent = fmt(price);
-  document.getElementById('simTotalPrice').textContent = fmt(price * p);
-  document.getElementById('simSAC').textContent = fmt(sac);
-  let totalSac = 0;
-  for (let k = 0; k < p; k++) totalSac += (v - (v / p) * k) * (i) + (v / p);
-  document.getElementById('simTotalSAC').textContent = fmt(totalSac);
-}
-
-function renderMetas() {
-  const el = document.getElementById('metasFullList');
-  if (!metas.length) {
-    el.innerHTML = '<div class="card"><div class="text-muted" style="font-size:13px;text-align:center;padding:16px">Nenhuma meta ainda. Crie sua primeira meta abaixo!</div></div>';
-    return;
-  }
-  el.innerHTML = metas.map(m => {
-    const pct = Math.min(100, Math.round((m.atual / m.valor) * 100));
-    return `<div class="card">
-     <div class="flex-between mb-8">
-      <div class="card-title" style="margin:0">${m.desc}</div>
-      <button class="btn btn-sm btn-ghost" onclick="addMetaProgress('${m.id}')" style="width:auto;padding:6px 12px">+ R$</button>
-     </div>
-     <div style="height:10px;background:var(--linha);border-radius:5px;overflow:hidden;margin-bottom:6px">
-      <div style="height:100%;width:${pct}%;background:var(--accent);border-radius:5px;transition:width .3s"></div>
-     </div>
-     <div class="flex-between">
-      <span class="text-muted">${fmt(m.atual)}</span>
-      <span class="text-muted">${fmt(m.valor)} (${pct}%)</span>
-     </div>
-     <button class="btn btn-danger btn-sm mt-8" onclick="remMeta('${m.id}')" style="width:100%">Remover</button>
-    </div>`;
-  }).join('');
-}
-
-window.addMetaProgress = function(id) {
-  const v = parseFloat(prompt('Quanto quer adicionar à meta?'));
-  if (!v || v <= 0) return;
-  const m = metas.find(x => x.id === id);
-  if (m) { m.atual = (m.atual || 0) + v; s.set('metas', metas); toast('+' + fmt(v) + ' adicionado à meta!'); renderMetas(); }
-};
-
-window.remMeta = function(id) {
-  if (!confirm('Remover esta meta?')) return;
-  metas = metas.filter(x => x.id !== id);
-  s.set('metas', metas);
-  toast('Meta removida');
-  renderMetas();
-};
-
-document.getElementById('btnAddMeta').onclick = () => {
-  const desc = document.getElementById('inputMetaDesc').value.trim();
-  const valor = parseFloat(document.getElementById('inputMetaVal').value) || 0;
-  if (!desc || !valor) { toast('Preencha descrição e valor!'); return; }
-  metas.push({ id: uid(), desc, valor, atual: 0 });
-  s.set('metas', metas);
-  document.getElementById('inputMetaDesc').value = '';
-  document.getElementById('inputMetaVal').value = '';
-  toast('Meta criada!');
-  renderMetas();
-};
-
-document.getElementById('btnExportDinheiro').onclick = () => {
-  const data = { contas, metas };
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-  a.download = 'dinheiro_na_mao.json'; a.click();
-};
-
-document.getElementById('btnResetDinheiro').onclick = () => {
-  if (confirm('Apagar TODOS os dados? Esta ação não pode ser desfeita.')) {
-    localStorage.clear();
-    contas = []; metas = [];
-    toast('Dados apagados.');
-    showScreen('Home');
-  }
-};
-
-document.querySelectorAll('.nav-item').forEach(n => { n.onclick = () => showScreen(n.dataset.screen); });
-
-// defaults
-const hoje2 = new Date().toISOString().slice(0, 10);
-document.getElementById('inputVenc').value = hoje2;
-
-renderHome();
-updateSim();
-
-// Register SW
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
-}
+addEventListener('hashchange', () => rota()); rota();
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('sw.js').catch(() => {});
 </script>
 </body>
 </html>

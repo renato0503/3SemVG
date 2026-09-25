@@ -3,203 +3,83 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SuaCasaSuaVida — Grupo 4 · Customer Discovery 3SemVG</title>
-<meta name="description" content="App que ajuda a comprar uma casa: análise de bairro, análise da situação financeira e simulador de financiamento.">
-<meta name="theme-color" content="#052e2b">
-<link rel="icon" type="image/png" sizes="192x192" href="../assets/logos/g4-192.png">
-<link rel="apple-touch-icon" href="../assets/logos/g4-192.png">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f7f3ea">
+<title>SuaCasaSuaVida — Grupo 4 · 3SemVG</title>
+<meta name="description" content="SuaCasaSuaVida: a casa certa no bairro certo, com análise multicritério e simulação de financiamento. Grupo 4 · UNIFACC.">
+<link rel="icon" type="image/png" href="../assets/logos/g4-96.png">
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@500;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --acc:#047857; --acc2:#d97706; --tinta:#052e2b;
-  --surface:#fff; --surface-2:#f4f6fb; --ink:#0f172a; --ink-soft:#5b6478; --line:#e7e9f2;
-  --radius-lg:22px; --radius-md:16px;
-  --shadow-card:0 10px 30px -12px rgba(15,23,42,.18);
-  --shadow-hover:0 18px 40px -14px rgba(15,23,42,.28);
-}
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--surface-2);color:var(--ink);min-height:100dvh}
-h1,h2{font-family:'Space Grotesk',system-ui,sans-serif}
-a{color:inherit}
-img{display:block;max-width:100%}
-.wrap{max-width:920px;margin:0 auto;padding:0 20px}
-
-.nav{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.92);backdrop-filter:blur(10px)}
-.nav .wrap{display:flex;align-items:center;gap:12px;padding:12px 20px;color:#fff}
-.nav-back{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#c7cee8;text-decoration:none;flex-shrink:0}
-.nav-back svg{width:16px;height:16px}
-.nav-back:hover{color:#fff}
-.nav-title{margin-left:auto;font-size:13px;font-weight:700;opacity:.85}
-
-.hero{
-  position:relative;color:#fff;padding:52px 0 74px;overflow:hidden;
-  background:linear-gradient(160deg,var(--tinta) 0%,#0b1220 100%);
-}
-.hero::before{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(600px 320px at 85% 0%, color-mix(in srgb, var(--acc) 35%, transparent), transparent 60%);
-}
-.hero .wrap{position:relative;z-index:2}
-.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:22px}
-.hero-logo{width:64px;height:64px;border-radius:16px;box-shadow:0 8px 22px rgba(0,0,0,.35);flex-shrink:0}
-.hero-group{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--acc2)}
-.hero h1{font-size:clamp(24px,4.2vw,34px);font-weight:700;letter-spacing:-.01em;margin-top:2px}
-.hero p.pitch{margin-top:14px;font-size:15px;line-height:1.6;color:#c7cee8;max-width:600px}
-.hero-meta{display:flex;gap:22px;margin-top:26px;flex-wrap:wrap;font-size:12.5px;color:#9aa5c3}
-.hero-meta b{color:#fff;display:block;font-size:13px;margin-bottom:2px}
-
-.cta-row{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
-.btn-cta{
-  display:inline-flex;align-items:center;gap:8px;
-  background:linear-gradient(90deg,var(--acc),var(--acc2));color:#0b1220;
-  font-weight:700;font-size:14.5px;padding:13px 22px;border-radius:100px;text-decoration:none;
-  box-shadow:0 10px 24px -8px color-mix(in srgb, var(--acc) 60%, transparent);
-  transition:transform .15s;
-}
-.btn-cta:hover{transform:translateY(-2px)}
-.btn-cta svg{width:16px;height:16px}
-.btn-secondary{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;
-  font-weight:600;font-size:13.5px;padding:12px 18px;border-radius:100px;text-decoration:none;
-}
-.btn-secondary:hover{background:rgba(255,255,255,.14)}
-.btn-secondary svg{width:14px;height:14px}
-
-section.block{padding:44px 0}
-.block-head{margin-bottom:22px}
-.block-head h2{font-size:19px;font-weight:700;display:flex;align-items:center;gap:9px;color:var(--ink)}
-.block-head h2 svg{width:20px;height:20px;color:var(--acc)}
-.block-head p{font-size:13px;color:var(--ink-soft);margin-top:4px}
-
-.doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
-.doc-card{
-  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
-  padding:18px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:10px;
-  box-shadow:0 1px 3px rgba(15,23,42,.05);
-  transition:transform .15s,box-shadow .15s,border-color .15s;
-}
-.doc-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-card);border-color:var(--acc)}
-.doc-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
-  background:color-mix(in srgb, var(--acc) 14%, white);color:var(--acc)}
-.doc-icon svg{width:19px;height:19px}
-.doc-card b{font-size:14px;font-weight:700}
-.doc-card small{font-size:12px;color:var(--ink-soft);line-height:1.4}
-
-.team{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.team span{background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:100px;font-size:12.5px;font-weight:600}
-
-footer{background:var(--tinta);color:#cbd5f5;padding:32px 0;margin-top:20px}
-footer .wrap{display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center}
-footer a{color:#fff;text-decoration:none;font-weight:600}
-footer p{font-size:12px;opacity:.85}
+/* Landing do SuaCasaSuaVida · capa e miolo de revista: manchete, colunas, citação e índice */
+:root{--papel:#f7f3ea;--tinta:#1c1917;--verde:#047857;--verde2:#065f46;--ambar:#d97706;--mudo:#6b635a;--fio:#d6cfc2}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Source Serif 4",Georgia,serif;background:var(--papel);color:var(--tinta);font-size:18px;line-height:1.6}
+a{color:var(--verde2)}
+.w{max-width:1080px;margin:0 auto;padding:0 20px}
+.linha{display:flex;justify-content:space-between;font-family:Inter;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mudo);padding:14px 0 6px;border-bottom:1px solid var(--tinta)}
+.linha a{color:var(--mudo);text-decoration:none}
+.masthead{text-align:center;padding:14px 0;border-bottom:3px double var(--tinta)}
+.masthead h1{font-family:"Playfair Display";font-weight:900;font-size:clamp(30px,9.4vw,110px);line-height:.95;letter-spacing:-.02em}
+.masthead h1 em{color:var(--verde);font-style:italic}
+.capa{display:grid;grid-template-columns:1.3fr .7fr;gap:36px;padding:30px 0;border-bottom:1px solid var(--tinta)}.capa>*{min-width:0}
+.chapeu{font-family:Inter;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ambar);font-weight:700}
+.capa h2{font-family:"Playfair Display";font-weight:900;font-size:clamp(32px,5vw,50px);line-height:1.05;margin:8px 0 14px}
+.colunas{column-count:2;column-gap:28px;column-rule:1px solid var(--fio)}
+.colunas p:first-child::first-letter{font-family:"Playfair Display";float:left;font-size:64px;line-height:.85;padding:6px 8px 0 0;color:var(--verde)}
+.colunas p{margin-bottom:10px}
+.acoes{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+.btn{font-family:Inter;font-weight:700;font-size:14px;letter-spacing:.04em;min-height:48px;display:inline-flex;align-items:center;padding:0 20px;background:var(--tinta);color:var(--papel);text-decoration:none}
+.btn.sec{background:transparent;color:var(--tinta);border:1.5px solid var(--tinta)}
+.fone{border:1px solid var(--tinta);padding:10px;background:#fffdf8}
+.fone div{height:520px;overflow:hidden}
+.fone iframe{width:375px;height:780px;border:0;transform:scale(.667);transform-origin:0 0}
+.fone p{font-family:Inter;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mudo);margin-top:8px}
+blockquote{font-family:"Playfair Display";font-style:italic;font-size:clamp(24px,4vw,34px);line-height:1.25;text-align:center;padding:36px 8%;border-bottom:1px solid var(--tinta)}
+blockquote cite{display:block;font-family:Inter;font-style:normal;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mudo);margin-top:12px}
+.secoes{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-bottom:1px solid var(--tinta)}
+.secoes div{padding:20px 18px 20px 0;border-right:1px solid var(--fio)}.secoes div:last-child{border:none}
+.secoes h3{font-family:"Playfair Display";font-size:22px;margin:4px 0}
+.indice{padding:24px 0}
+.indice h3{font-family:"Playfair Display";font-size:26px;margin-bottom:8px}
+.indice a{display:flex;align-items:baseline;gap:8px;padding:8px 0;border-bottom:1px solid var(--fio);text-decoration:none;color:var(--tinta);min-height:44px}
+.indice a i{flex:1;border-bottom:1px dotted var(--mudo)}
+.indice a small{font-family:Inter;font-size:12px;color:var(--mudo)}
+footer{font-family:Inter;font-size:12.5px;color:var(--mudo);border-top:3px double var(--tinta);padding:18px 0 40px}
+@media(max-width:780px){.capa{grid-template-columns:1fr}.colunas{column-count:1}.secoes{grid-template-columns:1fr}.secoes div{border-right:none;border-bottom:1px solid var(--fio)}.indice a small{display:none}}
 </style>
 </head>
 <body>
-
-<nav class="nav">
-  <div class="wrap">
-    <a href="../index.html" class="nav-back">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-      Todos os projetos
-    </a>
-    <span class="nav-title">Grupo 4 · SuaCasaSuaVida</span>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap">
-    <div class="hero-top">
-      <img class="hero-logo" src="../assets/logos/g4-192.png" alt="Logo SuaCasaSuaVida">
-      <div>
-        <div class="hero-group">Grupo 4 · Customer Discovery</div>
-        <h1>SuaCasaSuaVida</h1>
+<div class="w">
+  <div class="linha"><span>Grupo 4 · Customer Discovery</span><a href="../index.html">Todos os projetos →</a></div>
+  <header class="masthead"><h1>SuaCasa<em>SuaVida</em></h1></header>
+  <section class="capa">
+    <div><span class="chapeu">Reportagem de capa</span>
+      <h2>O bairro que você ama cabe no seu bolso?</h2>
+      <div class="colunas">
+        <p>Bairros bem avaliados em serviços e segurança costumam ter imóveis mais caros. O comprador acaba escolhendo entre localização e parcela — muitas vezes depois de se encantar numa visita, e não antes.</p>
+        <p>O SuaCasaSuaVida coloca as duas análises lado a lado: quanto a família pode pagar, com Price e SAC, e quanto cada bairro vale segundo os critérios que <i>ela</i> considera importantes.</p>
+        <p>O resultado é uma nota para cada imóvel que combina bairro e orçamento, para negociar com dados na mão.</p>
       </div>
+      <div class="acoes"><a class="btn" href="app.html">Abrir o guia</a><a class="btn sec" href="Slides-SuaCasaSuaVida.html">Slides de defesa</a></div>
     </div>
-    <p class="pitch">App que ajuda a comprar uma casa: análise de bairro, análise da situação financeira e simulador de financiamento.</p>
-    <div class="hero-meta">
-      <div><b>Professor(a)</b>Prof. Pantaleão</div>
-      <div><b>Integrantes</b>Amanda Karoliny, Beatriz Cristina, Evander, Julimary</div>
-      <div><b>Código de campo</b>G4-&lt;nnn&gt;</div>
-    </div>
-    <div class="cta-row">
-      <a href="app.html" class="btn-cta">
-        Abrir o app
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a href="Slides-SuaCasaSuaVida.html" class="btn-secondary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        Ver slides de defesa
-      </a>
-    </div>
-  </div>
-</header>
-
-<main>
-  <section class="block">
-    <div class="wrap">
-      <div class="block-head">
-        <h2>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M15 3h6v6M10 14L21 3"/></svg>
-          Materiais do grupo
-        </h2>
-        <p>Toda a documentação produzida para a defesa e para a pesquisa de campo.</p>
-      </div>
-
-      <div class="doc-grid">
-        <a href="../assets/md-viewer.html?src=../Grupo4-SuaCasaSuaVida/README.md&voltar=./" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
-          <b>README do grupo</b>
-          <small>Integrantes, hipótese, roteiro de campo e pitch</small>
-        </a>
-
-        <a href="../assets/md-viewer.html?src=../Grupo4-SuaCasaSuaVida/formulario-app.md&voltar=./" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-          <b>Formulário de campo</b>
-          <small>20 perguntas em escala 1–5, código G4-&lt;nnn&gt;</small>
-        </a>
-
-        <a href="../assets/md-viewer.html?src=../Grupo4-SuaCasaSuaVida/ContextoApp.md&voltar=./" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg></div>
-          <b>Contexto do produto</b>
-          <small>Pitch, personas, jornada, MVP/v1/v2, KPIs e riscos</small>
-        </a>
-
-        <a href="../assets/md-viewer.html?src=../Grupo4-SuaCasaSuaVida/Pesquisa-Dados.md&voltar=./" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M15 3h6v6M10 14L21 3"/></svg></div>
-          <b>Pesquisa e dados</b>
-          <small>Dados oficiais + 12 artigos científicos com DOI</small>
-        </a>
-
-        <a href="Slides-SuaCasaSuaVida.pdf" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-          <b>Slides de defesa (PDF)</b>
-          <small>Versão para download e impressão</small>
-        </a>
-
-        <a href="Green%20Playful%20cartoon%20Financial%20Project%20Presentation.pdf" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M13 2v7h7"/></svg></div>
-          <b>PDF original da defesa</b>
-          <small>Material complementar do grupo</small>
-        </a>
-      </div>
-
-      <div class="team">
-        <span>Amanda Karoliny</span>
-        <span>Beatriz Cristina</span>
-        <span>Evander</span>
-        <span>Julimary</span>
-      </div>
-    </div>
+    <figure class="fone"><div><iframe src="app.html" title="SuaCasaSuaVida em funcionamento" loading="lazy"></iframe></div><p>Na edição: o app funcionando</p></figure>
   </section>
-</main>
-
-<footer>
-  <div class="wrap">
-    <a href="../index.html">← Voltar ao hub Customer Discovery</a>
-    <p>Grupo 4 · SuaCasaSuaVida · Cerrado Tech · Unifacc · 3º Semestre Tecnologia e Inovação, 2026</p>
-  </div>
-</footer>
-
+  <blockquote>“Decidir antes de visitar, e não depois de se apaixonar.”<cite>Princípio do produto</cite></blockquote>
+  <section class="secoes">
+    <div><span class="chapeu">Orçamento</span><h3>Quanto posso</h3><p>Regra dos 30% da renda, outras parcelas, entrada com FGTS e o imóvel máximo.</p></div>
+    <div><span class="chapeu">Multicritério</span><h3>Pesos e radar</h3><p>Segurança, transporte, escolas, saúde, comércio, lazer e preço — com os seus pesos.</p></div>
+    <div><span class="chapeu">Classificados</span><h3>Imóveis lado a lado</h3><p>Nota de 0 a 100: 60% bairro, 40% encaixe no orçamento, com a parcela de cada um.</p></div>
+  </section>
+  <section class="indice"><h3>Índice desta edição</h3>
+    <a href="../assets/md-viewer.html?src=../Grupo4-SuaCasaSuaVida/README.md&voltar=../Grupo4-SuaCasaSuaVida/">README do grupo<i></i><small>integrantes, hipótese e pitch</small></a>
+    <a href="../assets/md-viewer.html?src=../Grupo4-SuaCasaSuaVida/formulario-app.md&voltar=../Grupo4-SuaCasaSuaVida/">Formulário de campo<i></i><small>20 perguntas · G4-&lt;nnn&gt;</small></a>
+    <a href="../assets/md-viewer.html?src=../Grupo4-SuaCasaSuaVida/ContextoApp.md&voltar=../Grupo4-SuaCasaSuaVida/">Contexto do produto<i></i><small>personas, jornada, KPIs</small></a>
+    <a href="../assets/md-viewer.html?src=../Grupo4-SuaCasaSuaVida/Pesquisa-Dados.md&voltar=../Grupo4-SuaCasaSuaVida/">Pesquisa e dados<i></i><small>dados e artigos</small></a>
+    <a href="Slides-SuaCasaSuaVida.pdf">Slides em PDF<i></i><small>download</small></a>
+    <a href="Green%20Playful%20cartoon%20Financial%20Project%20Presentation.pdf">Apresentação original<i></i><small>PDF do grupo</small></a>
+    <a href="../coleta/">App de coleta<i></i><small>formulário offline</small></a>
+  </section>
+  <footer>Expediente — Amanda Karoliny, Beatriz Cristina, Evander e Julimary · orientação Prof. Pantaleão · Cerrado Tech · UNIFACC · Ciências Contábeis 3º semestre (VG), 2026</footer>
+</div>
 </body>
 </html>

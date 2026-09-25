@@ -3,203 +3,91 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dinheiro na Mão — Grupo 1 · Customer Discovery 3SemVG</title>
-<meta name="description" content="Programa presencial com apoio profissional, um sistema inteligente que organiza contas e datas, e uma bolsa-incentivo para quem coloca a vida financeira em ordem.">
 <meta name="theme-color" content="#083344">
-<link rel="icon" type="image/png" sizes="192x192" href="../assets/logos/g1-192.png">
-<link rel="apple-touch-icon" href="../assets/logos/g1-192.png">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Dinheiro na Mão — Grupo 1 · 3SemVG</title>
+<meta name="description" content="Dinheiro na Mão: programa público de orientação financeira presencial, com sistema de contas e bolsa-incentivo. Grupo 1 · Ciências Contábeis · UNIFACC.">
+<link rel="icon" type="image/png" href="../assets/logos/g1-96.png">
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;800&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
 <style>
-:root{
-  --acc:#0e7490; --acc2:#22d3ee; --tinta:#083344;
-  --surface:#fff; --surface-2:#f4f6fb; --ink:#0f172a; --ink-soft:#5b6478; --line:#e7e9f2;
-  --radius-lg:22px; --radius-md:16px;
-  --shadow-card:0 10px 30px -12px rgba(15,23,42,.18);
-  --shadow-hover:0 18px 40px -14px rgba(15,23,42,.28);
-}
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--surface-2);color:var(--ink);min-height:100dvh}
-h1,h2{font-family:'Space Grotesk',system-ui,sans-serif}
-a{color:inherit}
-img{display:block;max-width:100%}
-.wrap{max-width:920px;margin:0 auto;padding:0 20px}
-
-.nav{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.92);backdrop-filter:blur(10px)}
-.nav .wrap{display:flex;align-items:center;gap:12px;padding:12px 20px;color:#fff}
-.nav-back{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#c7cee8;text-decoration:none;flex-shrink:0}
-.nav-back svg{width:16px;height:16px}
-.nav-back:hover{color:#fff}
-.nav-title{margin-left:auto;font-size:13px;font-weight:700;opacity:.85}
-
-.hero{
-  position:relative;color:#fff;padding:52px 0 74px;overflow:hidden;
-  background:linear-gradient(160deg,var(--tinta) 0%,#0b1220 100%);
-}
-.hero::before{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(600px 320px at 85% 0%, color-mix(in srgb, var(--acc) 35%, transparent), transparent 60%);
-}
-.hero .wrap{position:relative;z-index:2}
-.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:22px}
-.hero-logo{width:64px;height:64px;border-radius:16px;box-shadow:0 8px 22px rgba(0,0,0,.35);flex-shrink:0}
-.hero-group{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--acc2)}
-.hero h1{font-size:clamp(24px,4.2vw,34px);font-weight:700;letter-spacing:-.01em;margin-top:2px}
-.hero p.pitch{margin-top:14px;font-size:15px;line-height:1.6;color:#c7cee8;max-width:600px}
-.hero-meta{display:flex;gap:22px;margin-top:26px;flex-wrap:wrap;font-size:12.5px;color:#9aa5c3}
-.hero-meta b{color:#fff;display:block;font-size:13px;margin-bottom:2px}
-
-.cta-row{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
-.btn-cta{
-  display:inline-flex;align-items:center;gap:8px;
-  background:linear-gradient(90deg,var(--acc),var(--acc2));color:#0b1220;
-  font-weight:700;font-size:14.5px;padding:13px 22px;border-radius:100px;text-decoration:none;
-  box-shadow:0 10px 24px -8px color-mix(in srgb, var(--acc) 60%, transparent);
-  transition:transform .15s;
-}
-.btn-cta:hover{transform:translateY(-2px)}
-.btn-cta svg{width:16px;height:16px}
-.btn-secondary{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;
-  font-weight:600;font-size:13.5px;padding:12px 18px;border-radius:100px;text-decoration:none;
-}
-.btn-secondary:hover{background:rgba(255,255,255,.14)}
-.btn-secondary svg{width:14px;height:14px}
-
-section.block{padding:44px 0}
-.block-head{margin-bottom:22px}
-.block-head h2{font-size:19px;font-weight:700;display:flex;align-items:center;gap:9px;color:var(--ink)}
-.block-head h2 svg{width:20px;height:20px;color:var(--acc)}
-.block-head p{font-size:13px;color:var(--ink-soft);margin-top:4px}
-
-.doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
-.doc-card{
-  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
-  padding:18px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:10px;
-  box-shadow:0 1px 3px rgba(15,23,42,.05);
-  transition:transform .15s,box-shadow .15s,border-color .15s;
-}
-.doc-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-card);border-color:var(--acc)}
-.doc-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
-  background:color-mix(in srgb, var(--acc) 14%, white);color:var(--acc)}
-.doc-icon svg{width:19px;height:19px}
-.doc-card b{font-size:14px;font-weight:700}
-.doc-card small{font-size:12px;color:var(--ink-soft);line-height:1.4}
-
-.team{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.team span{background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:100px;font-size:12.5px;font-weight:600}
-
-footer{background:var(--tinta);color:#cbd5f5;padding:32px 0;margin-top:20px}
-footer .wrap{display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center}
-footer a{color:#fff;text-decoration:none;font-weight:600}
-footer p{font-size:12px;opacity:.85}
+/* Landing do Dinheiro na Mão · portal de serviço público: faixa de governo, carteirinha, passos numerados, serviços em lista */
+:root{--ciano:#0e7490;--ciano2:#0b5568;--tinta:#083344;--claro:#ecfeff;--agua:#22d3ee;--txt:#0f172a;--mudo:#546274;--linha:#d5e3e8;--fundo:#f4f8f9}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Public Sans",system-ui,sans-serif;color:var(--txt);background:var(--fundo);line-height:1.6}
+h1,h2,h3{font-family:Merriweather,Georgia,serif}
+a{color:var(--ciano2)}
+.gov{background:var(--tinta);color:#cffafe;font-size:12.5px;padding:6px 0}
+.w{max-width:1040px;margin:0 auto;padding:0 18px}
+.gov .w{display:flex;justify-content:space-between;gap:10px}
+.barra{background:var(--ciano);color:#fff;padding:14px 0}
+.barra .w{display:flex;align-items:center;gap:12px}
+.barra img{width:42px;height:42px;border-radius:10px;background:#fff}
+.barra a{margin-left:auto;color:#fff;font-weight:600;font-size:14px}
+.migalha{font-size:13px;color:var(--mudo);padding:12px 0}
+.heroi{display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center;padding:12px 0 40px}
+h1{font-size:clamp(34px,6vw,54px);color:var(--tinta);line-height:1.1;font-weight:900}
+.lead{font-size:18.5px;margin:14px 0 20px;max-width:560px}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border-radius:8px;background:var(--ciano);color:#fff;text-decoration:none;font-weight:700;margin:0 8px 8px 0}
+.btn.sec{background:#fff;color:var(--ciano2);border:2px solid var(--ciano)}
+.carteira{background:linear-gradient(135deg,var(--ciano2),var(--ciano) 60%,#0891b2);color:#fff;border-radius:18px;padding:20px;position:relative;overflow:hidden;box-shadow:0 20px 40px -20px rgba(8,51,68,.6)}
+.carteira::after{content:"";position:absolute;right:-50px;top:-50px;width:180px;height:180px;border-radius:50%;border:26px solid rgba(255,255,255,.08)}
+.carteira small{letter-spacing:.14em;font-size:11.5px;opacity:.85}
+.carteira b{display:block;font-family:Merriweather;font-size:24px;margin:8px 0 18px}
+.carteira .fone{width:100%;height:420px;border-radius:14px;overflow:hidden;background:#fff}
+.carteira iframe{width:375px;height:740px;border:0;transform:scale(.567);transform-origin:0 0}
+@media(min-width:420px){.carteira iframe{width:100%;height:420px;transform:none}}
+.passos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;counter-reset:p;margin:18px 0 40px}
+.passo{background:#fff;border:1px solid var(--linha);border-top:4px solid var(--ciano);border-radius:8px;padding:18px}
+.passo::before{counter-increment:p;content:"Etapa " counter(p);font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--ciano);text-transform:uppercase}
+.passo h3{font-size:18px;margin:6px 0}
+h2{font-size:28px;color:var(--tinta);margin-top:10px}
+.servicos{background:#fff;border:1px solid var(--linha);border-radius:10px;margin:14px 0 40px}
+.servicos a{display:flex;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--linha);text-decoration:none;color:var(--txt);min-height:44px;align-items:center}
+.servicos a:last-child{border:none}
+.servicos a span{color:var(--mudo);font-size:14px}
+.servicos a b::after{content:" →";color:var(--ciano)}
+.equipe{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.equipe span{background:var(--claro);color:var(--ciano2);border-radius:999px;padding:6px 14px;font-weight:600}
+footer{background:var(--tinta);color:#cffafe;padding:22px 0;margin-top:40px;font-size:14px}
+@media(max-width:760px){.heroi{grid-template-columns:1fr}.servicos a span{display:none}}
 </style>
 </head>
 <body>
-
-<nav class="nav">
-  <div class="wrap">
-    <a href="../index.html" class="nav-back">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-      Todos os projetos
-    </a>
-    <span class="nav-title">Grupo 1 · Dinheiro na Mão</span>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap">
-    <div class="hero-top">
-      <img class="hero-logo" src="../assets/logos/g1-192.png" alt="Logo Dinheiro na Mão">
-      <div>
-        <div class="hero-group">Grupo 1 · Customer Discovery</div>
-        <h1>Dinheiro na Mão</h1>
-      </div>
+<div class="gov"><div class="w"><span>PROGRAMA PÚBLICO · PROPOSTA ACADÊMICA</span><span>UNIFACC · Ciências Contábeis</span></div></div>
+<div class="barra"><div class="w"><img src="../assets/logos/g1-96.png" alt=""><b>Dinheiro na Mão</b><a href="../index.html">Todos os projetos</a></div></div>
+<div class="w">
+  <p class="migalha">Início › Projetos › Grupo 1 · Dinheiro na Mão</p>
+  <section class="heroi">
+    <div>
+      <h1>Orientação financeira perto de casa, com gente de verdade.</h1>
+      <p class="lead">Um programa público em que agentes do bairro ajudam famílias a organizar contas e datas, apoiados por um sistema simples e por uma bolsa-incentivo para quem coloca a vida financeira em ordem.</p>
+      <a class="btn" href="app.html">Abrir o sistema</a><a class="btn sec" href="Slides-DinheiroNaMao.html">Slides de defesa</a>
     </div>
-    <p class="pitch">Programa presencial com apoio profissional, um sistema inteligente que organiza contas e datas, e uma bolsa-incentivo para quem coloca a vida financeira em ordem.</p>
-    <div class="hero-meta">
-      <div><b>Professor(a)</b>Profa. Olivia</div>
-      <div><b>Integrantes</b>Giselle, Evelin, Franciely, Mara Fernanda</div>
-      <div><b>Código de campo</b>G1-&lt;nnn&gt;</div>
-    </div>
-    <div class="cta-row">
-      <a href="app.html" class="btn-cta">
-        Abrir o app
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a href="Slides-DinheiroNaMao.html" class="btn-secondary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        Ver slides de defesa
-      </a>
-    </div>
-  </div>
-</header>
-
-<main>
-  <section class="block">
-    <div class="wrap">
-      <div class="block-head">
-        <h2>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M15 3h6v6M10 14L21 3"/></svg>
-          Materiais do grupo
-        </h2>
-        <p>Toda a documentação produzida para a defesa e para a pesquisa de campo.</p>
-      </div>
-
-      <div class="doc-grid">
-        <a href="../assets/md-viewer.html?src=../Grupo1-DinheiroNaMao/README.md&voltar=./" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
-          <b>README do grupo</b>
-          <small>Integrantes, hipótese, roteiro de campo e pitch</small>
-        </a>
-
-        <a href="../assets/md-viewer.html?src=../Grupo1-DinheiroNaMao/formulario-app.md&voltar=./" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-          <b>Formulário de campo</b>
-          <small>20 perguntas em escala 1–5, código G1-&lt;nnn&gt;</small>
-        </a>
-
-        <a href="../assets/md-viewer.html?src=../Grupo1-DinheiroNaMao/ContextoApp.md&voltar=./" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg></div>
-          <b>Contexto do produto</b>
-          <small>Pitch, personas, jornada, MVP/v1/v2, KPIs e riscos</small>
-        </a>
-
-        <a href="../assets/md-viewer.html?src=../Grupo1-DinheiroNaMao/Pesquisa-Dados.md&voltar=./" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M15 3h6v6M10 14L21 3"/></svg></div>
-          <b>Pesquisa e dados</b>
-          <small>Dados oficiais + 12 artigos científicos com DOI</small>
-        </a>
-
-        <a href="Slides-DinheiroNaMao.pdf" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-          <b>Slides de defesa (PDF)</b>
-          <small>Versão para download e impressão</small>
-        </a>
-
-        <a href="Dinheiro%20na%20Mao.pdf" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M13 2v7h7"/></svg></div>
-          <b>PDF original da defesa</b>
-          <small>Material complementar do grupo</small>
-        </a>
-      </div>
-
-      <div class="team">
-        <span>Giselle</span>
-        <span>Evelin</span>
-        <span>Franciely</span>
-        <span>Mara Fernanda</span>
-      </div>
-    </div>
+    <div class="carteira"><small>CARTEIRINHA DO PROGRAMA · PRÉVIA</small><b>Sistema do participante</b><div class="fone"><iframe src="app.html" title="Sistema Dinheiro na Mão" loading="lazy"></iframe></div></div>
   </section>
-</main>
 
-<footer>
-  <div class="wrap">
-    <a href="../index.html">← Voltar ao hub Customer Discovery</a>
-    <p>Grupo 1 · Dinheiro na Mão · Cerrado Tech · Unifacc · 3º Semestre Tecnologia e Inovação, 2026</p>
+  <h2>Como funciona</h2>
+  <div class="passos">
+    <div class="passo"><h3>Atendimento no bairro</h3><p>O agente financeiro recebe a família no posto (CRAS ou similar), sem julgamento.</p></div>
+    <div class="passo"><h3>Calendário das contas</h3><p>Todas as contas e vencimentos num só lugar, com aviso do que vence em 7 dias e do que está atrasado.</p></div>
+    <div class="passo"><h3>Metas e simulador</h3><p>Metas de reserva e simulação de parcelas pelos sistemas Price e SAC antes de assinar.</p></div>
+    <div class="passo"><h3>Bolsa-incentivo</h3><p>Quem comparece, mantém as contas em dia e guarda algum valor recebe a bolsa (regra a validar).</p></div>
   </div>
-</footer>
 
+  <h2>Documentos do projeto</h2>
+  <nav class="servicos">
+    <a href="../assets/md-viewer.html?src=../Grupo1-DinheiroNaMao/README.md&voltar=../Grupo1-DinheiroNaMao/"><b>README do grupo</b><span>integrantes, hipótese, roteiro e pitch</span></a>
+    <a href="../assets/md-viewer.html?src=../Grupo1-DinheiroNaMao/formulario-app.md&voltar=../Grupo1-DinheiroNaMao/"><b>Formulário de campo</b><span>20 perguntas · G1-&lt;nnn&gt;</span></a>
+    <a href="../assets/md-viewer.html?src=../Grupo1-DinheiroNaMao/ContextoApp.md&voltar=../Grupo1-DinheiroNaMao/"><b>Contexto do produto</b><span>personas, jornada, KPIs, LGPD</span></a>
+    <a href="../assets/md-viewer.html?src=../Grupo1-DinheiroNaMao/Pesquisa-Dados.md&voltar=../Grupo1-DinheiroNaMao/"><b>Pesquisa e dados</b><span>dados oficiais e artigos</span></a>
+    <a href="Slides-DinheiroNaMao.pdf"><b>Slides em PDF</b><span>para baixar</span></a>
+    <a href="Dinheiro%20na%20Mao.pdf"><b>Material original do grupo</b><span>apresentação inicial</span></a>
+    <a href="../coleta/"><b>App de coleta</b><span>formulário offline de campo</span></a>
+  </nav>
+
+  <h2>Equipe</h2>
+  <div class="equipe"><span>Giselle</span><span>Evelin</span><span>Franciely</span><span>Mara Fernanda</span></div>
+  <p style="color:var(--mudo)">Orientação: Profa. Olivia</p>
+</div>
+<footer><div class="w">Grupo 1 · Dinheiro na Mão · Cerrado Tech · UNIFACC · Ciências Contábeis 3º semestre (VG), 2026</div></footer>
 </body>
 </html>

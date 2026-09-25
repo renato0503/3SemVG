@@ -2,713 +2,263 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#047857">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<title>SuaCasaSuaVida — Encontre seu bairro e financie sua casa</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f7f3ea">
+<title>SuaCasaSuaVida — a casa certa no bairro certo</title>
 <link rel="manifest" href="manifest.json">
-<link rel="icon" type="image/png" sizes="192x192" href="../assets/logos/g4-192.png">
+<link rel="icon" type="image/png" href="../assets/logos/g4-96.png">
 <link rel="apple-touch-icon" href="../assets/logos/g4-192.png">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/identidade/temas.css">
-<link rel="stylesheet" href="../assets/kit/kit.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@500;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --accent:#047857;--accent-dark:#065f46;--accent-soft:#ecfdf5;
-  --accent2:#d97706;--tinta:#052e2b;--tinta2:#065f46;
-  --fonte:'Lato',Arial,sans-serif;--fonte-titulo:'Playfair Display',Georgia,serif;
-  --texto:#052e2b;--texto-suave:#047857;--linha:#d1fae5;--fundo:#f0fdf9;
-  --card:#ffffff;--ok:#16a34a;--alerta:#dc2626;--atencao:#d97706;
-  --nav-bg:#f0fdf9;--nav-icon-size:24px;--nav-radius:8px;
-}
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{height:100%}
-body{font-family:var(--fonte);background:var(--fundo);color:var(--texto);font-size:16px;overflow-x:hidden}
-.app{max-width:480px;margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;padding-bottom:80px}
-header.top{background:linear-gradient(135deg,var(--tinta) 0%,var(--tinta2) 100%);color:#fff;padding:14px 16px 44px;position:sticky;top:0;z-index:20}
-header.top .brand{display:flex;align-items:center;justify-content:space-between}
-header.top h1{font-size:17px;font-weight:700}
-header.top .sub{font-size:11px;opacity:.75;margin-top:2px}
-.badge-pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:11px;padding:3px 8px;border-radius:20px}
-main{flex:1;padding:0 16px}
-.screen{display:none;flex-direction:column;animation:fade .2s ease}
-.screen.active{display:flex}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.page-title{font-size:13px;font-weight:700;color:var(--texto-suave);text-transform:uppercase;letter-spacing:.07em;padding:16px 0 6px}
-.card{background:var(--card);border-radius:8px;box-shadow:0 1px 6px rgba(4,120,87,.08);border:1px solid #d1fae5;border-top:3px solid #047857}
-.card-title{font-family:'Playfair Display',Georgia,serif;font-size:17px;color:#052e2b}
-.card-sub{color:#047857}
-/* G4 distinctive: blueprint/real estate editorial */
-body{font-family:'Lato',Arial,sans-serif;background:#f7faf9;color:#052e2b}
-header.top{background:linear-gradient(135deg,#052e2b 0%,#064e3b 100%);border-bottom:3px solid #d97706}
-header.top h1{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:700}
-header.top .sub{color:#6ee7b7}
-.badge-pill{background:rgba(217,119,6,.15);border:1px solid rgba(217,119,6,.3);color:#d97706}
-.btn-primary{background:#047857;color:#fff;border-radius:6px}
-.btn-ghost{background:#fff;color:#047857;border:1.5px solid #047857;border-radius:6px}
-.btn-success{background:#16a34a;color:#fff;border-radius:6px}
-.nav-bottom{background:#f0fdf9;border-top:1px solid #d1fae5}
-.nav-item.active{color:#047857}
-.page-title{color:#047857;font-family:'Playfair Display',Georgia,serif;font-size:15px}
-.text-muted{color:#047857}
-header.top::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#047857 0%,#d97706 100%)}
-.btn{display:flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:12px;padding:14px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;transition:transform .05s;padding-top:calc(14px + env(safe-area-inset-top))}
-.btn:active{transform:scale(.975)}
-.btn-primary{background:var(--accent);color:#fff}
-.btn-primary:hover{background:var(--accent-dark)}
-.btn-ghost{background:#fff;color:var(--accent);border:1.5px solid var(--accent)}
-.btn-success{background:var(--ok);color:#fff}
-.btn-sm{padding:10px 14px;font-size:13px}
-.row{display:flex;gap:10px}
-.row>*{flex:1}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-.text-center{text-align:center}
-.text-muted{color:var(--texto-suave);font-size:13px}
-.mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mb-8{margin-bottom:8px}.mb-12{margin-bottom:12px}
-.flex-between{display:flex;align-items:center;justify-content:space-between}
-.kpi-big{text-align:center;padding:16px 0}
-.kpi-big .num{font-size:40px;font-weight:900;color:var(--accent);line-height:1}
-.kpi-big .label{font-size:12px;color:var(--texto-suave);margin-top:4px}
-.input-group{margin-bottom:12px}
-.input-group label{display:block;font-size:12px;font-weight:600;color:var(--texto-suave);margin-bottom:4px;letter-spacing:.04em}
-.form-input,.form-select,.form-textarea{width:100%;padding:12px 14px;border:1.5px solid var(--linha);border-radius:10px;font-size:15px;font-family:inherit;background:#fff;color:var(--texto);transition:border-color .15s}
-.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--accent)}
-select.form-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23047857' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
-input[type=range]{width:100%;accent-color:var(--accent)}
-.slider-val{font-size:13px;font-weight:700;color:var(--accent);text-align:right;margin-bottom:4px}
-.slider-wrap{margin-bottom:14px}
-.slider-wrap label{display:flex;justify-content:space-between;font-size:12px;color:var(--texto-suave);margin-bottom:6px}
-.sim-result{background:var(--accent-soft);border-radius:10px;padding:12px;text-align:center;margin-top:8px}
-.sim-result .val{font-size:26px;font-weight:900;color:var(--accent)}
-.sim-result .lbl{font-size:11px;color:var(--texto-suave)}
-.semaforo{display:flex;gap:4px;justify-content:center;margin:8px 0}
-.sem{width:24px;height:24px;border-radius:50%;border:2px solid #fff}
-.sem.red{background:#dc2626}
-.sem.yellow{background:#d97706}
-.sem.green{background:#16a34a}
-.nav-bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--linha);display:flex;z-index:30;padding-bottom:env(safe-area-inset-bottom)}
-.nav-bottom .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px;gap:3px;cursor:pointer;color:var(--texto-suave);transition:color .15s;border:none;background:none;font-size:11px;font-family:inherit}
-.nav-bottom .nav-item.active{color:var(--accent)}
-.nav-bottom .nav-icon{font-size:20px}
-.badge{background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px}
-.badge2{background:#fff7ed;color:var(--accent2);font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px}
-.alert-box{padding:12px 14px;border-radius:10px;font-size:13px;margin-bottom:10px}
-.alert-box.info{background:#eff6ff;color:#1d4ed8}
-.alert-box.ok{background:#f0fdf4;color:#166534}
-.alert-box.warn{background:#fffbeb;color:#92400e}
-.alert-box.danger{background:#fef2f2;color:#991b1b}
-.neighborhood-card{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;border:1.5px solid var(--linha)}
-.neighborhood-card.best{border-color:var(--accent);background:var(--accent-soft)}
-.nb-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.nb-name{font-size:15px;font-weight:700}
-.nb-score{font-size:20px;font-weight:900}
-.nb-score.good{color:var(--ok)}
-.nb-score.medium{color:var(--accent2)}
-.nb-score.bad{color:#dc2626}
-.score-bars{display:flex;flex-direction:column;gap:6px;margin-top:8px}
-.score-row{display:flex;align-items:center;gap:8px}
-.score-row .lbl{font-size:11px;color:var(--texto-suave);width:60px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.score-bar{flex:1;height:8px;background:var(--linha);border-radius:4px;overflow:hidden}
-.score-bar .fill{height:100%;border-radius:4px;transition:width .4s}
-.prop-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--linha)}
-.prop-item:last-child{border-bottom:none}
-.prop-item .icon{font-size:28px;flex-shrink:0}
-.prop-item .info{flex:1}
-.prop-item .name{font-size:14px;font-weight:600}
-.prop-item .meta{font-size:12px;color:var(--texto-suave)}
-.prop-item .price{font-size:15px;font-weight:700;color:var(--accent)}
-.toast-container{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);z-index:60;display:flex;flex-direction:column;gap:8px;pointer-events:none}
-.toast{background:var(--tinta);color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;animation:toastIn .25s ease}
-@keyframes toastIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.comparison-table{width:100%;border-collapse:collapse;font-size:13px}
-.comparison-table th{background:var(--accent-soft);color:var(--accent);padding:8px 10px;text-align:left;font-size:11px}
-.comparison-table td{padding:8px 10px;border-bottom:1px solid var(--linha);vertical-align:top}
-.comparison-table tr:last-child td{border-bottom:none}
-.best-cell{background:#dcfce7;color:#166534;font-weight:700}
-.brand{display:flex;align-items:center;gap:10px}
-.app-logo{width:38px;height:38px;border-radius:10px;object-fit:cover;box-shadow:0 2px 6px rgba(0,0,0,.25);flex-shrink:0}
+/* ===== SuaCasaSuaVida · revista de casa e finanças: papel creme, serifa editorial, fios finos, verde e âmbar ===== */
+:root{--papel:#f7f3ea;--tinta:#1c1917;--verde:#047857;--verde2:#065f46;--ambar:#d97706;--mudo:#6b635a;--fio:#d6cfc2;--branco:#fffdf8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Source Serif 4",Georgia,serif;background:var(--papel);color:var(--tinta);font-size:17px;line-height:1.55;min-height:100dvh}
+button,input,select{font:inherit;color:inherit}
+.cabeca{padding:calc(12px + env(safe-area-inset-top)) 16px 0;max-width:680px;margin:0 auto}
+.linha-ed{display:flex;justify-content:space-between;font-family:Inter;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mudo);border-bottom:1px solid var(--tinta);padding-bottom:6px}
+.titulo{display:flex;align-items:center;gap:10px;padding:10px 0 6px}
+.titulo img{width:34px;height:34px;border-radius:50%}
+.titulo h1{font-family:"Playfair Display",serif;font-weight:900;font-size:30px;letter-spacing:-.01em;line-height:1}
+.titulo h1 em{color:var(--verde);font-style:italic}
+nav.sumario{display:flex;gap:2px;overflow-x:auto;border-top:3px double var(--tinta);border-bottom:1px solid var(--tinta);scrollbar-width:none;position:sticky;top:0;background:var(--papel);z-index:5}
+nav.sumario a{flex:0 0 auto;font-family:Inter;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--mudo);padding:12px 10px;min-height:44px}
+nav.sumario a[aria-current=page]{color:var(--verde);box-shadow:inset 0 -3px 0 var(--verde)}
+main{max-width:680px;margin:0 auto;padding:16px 16px 50px}
+.tela{display:none}.tela.on{display:block;animation:fade .3s}
+@keyframes fade{from{opacity:0}}
+.chapeu{font-family:Inter;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ambar);font-weight:700}
+h2{font-family:"Playfair Display",serif;font-weight:900;font-size:32px;line-height:1.08;margin:4px 0 10px}
+h3{font-family:"Playfair Display",serif;font-size:21px;margin:18px 0 6px}
+.lead::first-letter{font-family:"Playfair Display";float:left;font-size:58px;line-height:.85;padding:6px 8px 0 0;color:var(--verde)}
+.fio{border-top:1px solid var(--fio);margin:16px 0}
+.destaque{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--tinta);border-bottom:1px solid var(--tinta);margin:14px 0}
+.destaque div{padding:12px 10px;border-right:1px solid var(--fio)}.destaque div:nth-child(2n){border-right:none}.destaque div:nth-child(n+3){border-top:1px solid var(--fio)}
+.destaque b{display:block;font-family:"Playfair Display";font-size:26px;color:var(--verde2)}.destaque span{font-family:Inter;font-size:11.5px;color:var(--mudo);text-transform:uppercase;letter-spacing:.06em}
+.campo{margin:12px 0}.campo label{display:flex;justify-content:space-between;font-family:Inter;font-size:13px;font-weight:700}
+.campo label output{color:var(--verde);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--verde);height:30px}
+.in{width:100%;min-height:46px;border:none;border-bottom:1.5px solid var(--tinta);background:transparent;padding:6px 2px;font-size:17px}
+.btn{font-family:Inter;font-weight:700;font-size:14px;letter-spacing:.04em;min-height:46px;padding:0 18px;border:1.5px solid var(--tinta);background:var(--tinta);color:var(--papel);cursor:pointer}
+.btn.sec{background:transparent;color:var(--tinta)}.btn.peq{min-height:38px;font-size:12.5px;padding:0 10px}
+.fila{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.fila>*{flex:1 1 auto}
+.tab{width:100%;border-collapse:collapse;font-size:15px;font-variant-numeric:tabular-nums}.tab th{font-family:Inter;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mudo);text-align:right;border-bottom:1px solid var(--tinta);padding:6px 4px}
+.tab td{text-align:right;padding:8px 4px;border-bottom:1px solid var(--fio)}.tab td:first-child,.tab th:first-child{text-align:left}
+.ranking{counter-reset:r}
+.bairro{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--fio);cursor:pointer}
+.bairro::before{counter-increment:r;content:counter(r);font-family:"Playfair Display";font-size:30px;font-weight:900;color:var(--fio);width:30px}
+.bairro b{font-family:"Playfair Display";font-size:19px}.bairro .nota{font-family:"Playfair Display";font-size:24px;color:var(--verde2)}
+.bairro input{width:22px;height:22px;accent-color:var(--verde)}
+.radar{width:100%;max-width:360px;display:block;margin:0 auto}
+.leg{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;font-family:Inter;font-size:12px}.leg span::before{content:"";display:inline-block;width:12px;height:12px;margin-right:5px;vertical-align:-1px;background:var(--c);opacity:.7}
+.imovel{border-top:1px solid var(--tinta);padding:12px 0}
+.imovel .top{display:flex;justify-content:space-between;gap:10px}
+.imovel b{font-family:"Playfair Display";font-size:20px}
+.selo{font-family:Inter;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid}
+.selo.ok{color:var(--verde);border-color:var(--verde)}.selo.no{color:#b91c1c;border-color:#b91c1c}.selo.mv{color:var(--ambar);border-color:var(--ambar)}
+.dica{padding:14px 0;border-bottom:1px solid var(--fio)}.dica h3{margin:0 0 4px}
+.nota-rod{font-family:Inter;font-size:11.5px;color:var(--mudo);margin-top:14px}
+#brinde{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--tinta);color:var(--papel);font-family:Inter;font-size:14px;padding:10px 16px;opacity:0;transition:.25s;pointer-events:none;z-index:30;max-width:90vw}
+#brinde.on{opacity:1}
+:focus-visible{outline:3px solid var(--ambar);outline-offset:2px}
 </style>
 </head>
-<body class="tema-g4">
-<div class="app">
-<header class="top">
-<div class="brand">
- <img class="app-logo" src="../assets/logos/g4-96.png" alt="Logo G4">
- <div>
-  <h1>SuaCasaSuaVida</h1>
-  <div class="sub" id="headerSub">Planeje sua casa própria</div>
- </div>
- <span class="badge-pill" id="headerBadge">Nível 1</span>
-</div>
+<body>
+<header class="cabeca">
+  <div class="linha-ed"><span>Edição de <span id="ed"></span></span><span>Várzea Grande · MT</span></div>
+  <div class="titulo"><img src="../assets/logos/g4-96.png" alt=""><h1>SuaCasa<em>SuaVida</em></h1></div>
 </header>
-
-<main>
-<!-- HOME / DASHBOARD -->
-<section class="screen active" id="screenHome">
-<div class="page-title">Visão Geral</div>
-<div class="kpi-grid mb-12">
- <div class="kpi-item">
-  <div class="val" id="dispRenda" style="color:var(--accent)">R$ 0</div>
-  <div class="lbl">Renda mensal</div>
- </div>
- <div class="kpi-item">
-  <div class="val" id="dispParcela" style="color:var(--accent2)">R$ 0</div>
-  <div class="lbl">Parcela máx.</div>
- </div>
-</div>
-<div class="card">
- <div class="flex-between mb-8">
-  <div class="card-title" style="margin:0">Capacidade de Pagamento</div>
-  <div id="semaforoHome"></div>
- </div>
- <div class="card-sub" id="semText">Informe sua renda e despesas para saber quanto pode pagar de parcela.</div>
-</div>
-<div class="card mt-12">
- <div class="card-title mb-8">Bairros Salvos</div>
- <div id="savedNeighborhoods"></div>
-</div>
-<div class="card mt-12">
- <div class="card-title mb-8">Imóveis Salvos</div>
- <div id="savedProps"></div>
-</div>
-</section>
-
-<!-- SIMULADOR -->
-<section class="screen" id="screenSimulador">
-<div class="page-title">Simulador de Financiamento</div>
-<div class="card">
- <div class="card-title">Quanto posso pagar?</div>
- <div class="slider-wrap">
-  <div class="slider-val" id="lblRenda">R$ 2.500</div>
-  <label>Renda mensal bruta</label>
-  <input type="range" id="slRenda" min="1000" max="30000" value="2500" step="100" oninput="updateSim()">
- </div>
- <div class="slider-wrap">
-  <div class="slider-val" id="lblDesp">R$ 800</div>
-  <label>Despesas fixas (aluguel, plano, outros)</label>
-  <input type="range" id="slDesp" min="0" max="15000" value="800" step="50" oninput="updateSim()">
- </div>
- <div class="slider-wrap">
-  <div class="slider-val" id="lblJuros">8% a.a.</div>
-  <label>Taxa de juros anual (%)</label>
-  <input type="range" id="slJuros" min="4" max="14" value="8" step="0.1" oninput="updateSim()">
- </div>
- <div class="slider-wrap">
-  <div class="slider-val" id="lblPrazo">30 anos</div>
-  <label>Prazo do financiamento</label>
-  <input type="range" id="slPrazo" min="5" max="35" value="30" step="1" oninput="updateSim()">
- </div>
- <div class="semaforo" id="semaforoSim"></div>
- <div class="alert-box ok mt-12" id="capMaxBox">
-  <strong>Parcela máxima (28% da renda):</strong><br>
-  <span style="font-size:20px;font-weight:900;color:var(--accent)" id="dispCapMax">R$ 0</span>
- </div>
-</div>
-<div class="card mt-12">
- <div class="card-title mb-8">Resultado da Simulação</div>
- <div class="grid-2">
-  <div>
-   <div class="card-title" style="font-size:13px">Price (parcela fixa)</div>
-   <div class="sim-result">
-    <div class="val" id="simPrice">—</div>
-    <div class="lbl">1ª parcela</div>
-   </div>
-   <div style="font-size:12px;color:var(--texto-suave);margin-top:6px">Total: <strong id="simPriceTotal">—</strong></div>
-  </div>
-  <div>
-   <div class="card-title" style="font-size:13px">SAC (parcela decrescente)</div>
-   <div class="sim-result">
-    <div class="val" id="simSAC">—</div>
-    <div class="lbl">1ª parcela</div>
-   </div>
-   <div style="font-size:12px;color:var(--texto-suave);margin-top:6px">Total: <strong id="simSACTotal">—</strong></div>
-  </div>
- </div>
- <div class="alert-box warn mt-12" style="font-size:12px">
-  <strong>Importante:</strong> Este é um simulador educativo. Os valores reais dependem de análise do banco, seguro MIP/DOE, FGTS e outros fatores. Procure um agente para oferta real.
- </div>
-</div>
-</section>
-
-<!-- BAIRROS -->
-<section class="screen" id="screenBairros">
-<div class="page-title">Análise de Bairros</div>
-<div id="neighborhoodsList"></div>
-<div class="card mt-12">
- <div class="card-title">Adicionar Bairro</div>
- <div class="input-group">
-  <label>NOME DO BAIRRO</label>
-  <input class="form-input" id="inputNbName" placeholder="Ex.: Centro, Jardim das Flores, Alphaville" maxlength="40">
- </div>
- <div class="grid-2">
-  <div class="input-group">
-   <label>Segurança (1–5)</label>
-   <input class="form-input" id="inputNbSeg" type="number" min="1" max="5" placeholder="1 a 5">
-  </div>
-  <div class="input-group">
-   <label>Comércio (1–5)</label>
-   <input class="form-input" id="inputNbCom" type="number" min="1" max="5" placeholder="1 a 5">
-  </div>
-  <div class="input-group">
-   <label>Transporte (1–5)</label>
-   <input class="form-input" id="inputNbTrans" type="number" min="1" max="5" placeholder="1 a 5">
-  </div>
-  <div class="input-group">
-   <label>Valorização (1–5)</label>
-   <input class="form-input" id="inputNbVal" type="number" min="1" max="5" placeholder="1 a 5">
-  </div>
- </div>
- <button class="btn btn-primary" id="btnAddNb" onclick="addNeighborhood()">Adicionar Bairro</button>
-</div>
-</section>
-
-<!-- COMPARAR -->
-<section class="screen" id="screenComparar">
-<div class="page-title">Comparar Imóveis</div>
-<div id="comparisonView"></div>
-<div class="card mt-12">
- <div class="card-title">Adicionar Imóvel</div>
- <div class="input-group">
-  <label>DESCRIÇÃO</label>
-  <input class="form-input" id="inputPropDesc" placeholder="Ex.: Casa 2q no Centro, 60m²" maxlength="60">
- </div>
- <div class="grid-2">
-  <div class="input-group">
-   <label>VALOR (R$)</label>
-   <input class="form-input" id="inputPropVal" type="number" step="1000" min="50000" placeholder="250000">
-  </div>
-  <div class="input-group">
-   <label>ENTRADA (R$)</label>
-   <input class="form-input" id="inputPropEntry" type="number" step="1000" min="0" placeholder="50000">
-  </div>
-  <div class="input-group">
-   <label>IPTU/MÊS (R$)</label>
-   <input class="form-input" id="inputPropIPTU" type="number" step="10" min="0" placeholder="200">
-  </div>
-  <div class="input-group">
-   <label>CONDOMÍNIO (R$)</label>
-   <input class="form-input" id="inputPropCond" type="number" step="10" min="0" placeholder="300">
-  </div>
- </div>
- <div class="input-group">
-  <label>BAIRRO</label>
-  <select class="form-input" id="inputPropNb">
-   <option value="">Selecione um bairro (ou "Novo")</option>
-  </select>
- </div>
- <button class="btn btn-primary" id="btnAddProp" onclick="addProperty()">Adicionar Imóvel</button>
-</div>
-</section>
-
-<!-- PERFIL -->
-<section class="screen" id="screenProfile">
-<div class="page-title">Meu Perfil</div>
-<div class="card" style="margin-bottom:12px;border-top-color:#d97706">
-  <div class="card-title">📋 Sobre o Trabalho Acadêmico</div>
-  <p style="font-size:13px;color:#047857;margin-bottom:12px;line-height:1.6">
-    O <strong>SuaCasaSuaVida</strong> faz parte da pesquisa de <strong>Customer Discovery</strong> da disciplina de Projeto Inovador (3º Semestre · Unifacc).
-    Os alunos foram a um shopping ouvir pessoas reais sobre a decisão de compra da casa própria.
-  </p>
-  <button class="btn btn-ghost btn-sm" id="btnSobreTrabalho" onclick="abrirSobreTrabalho()" style="border-color:#047857;color:#047857">
-    Ver contexto, formulário e referencial
-  </button>
-</div>
-<div class="card">
-  <div class="card-title">Como usar o SuaCasaSuaVida</div>
- <div class="alert-box info mb-8">
-  <strong>1. Simule</strong> — informe sua renda no Simulador para saber a parcela máxima.<br>
-  <strong>2. Analise bairros</strong> — adicione bairros e avalie por segurança, comércio, transporte e valorização.<br>
-  <strong>3. Compare imóveis</strong> — cadastre imóveis para comparar entrada, parcela e custo total.<br>
-  <strong>4. Planeje</strong> — saiba quanto guardar por mês para atingir a entrada ideal.
- </div>
-</div>
-<div class="card mt-12">
- <div class="card-title">Dicas</div>
- <ul style="font-size:13px;line-height:1.8;padding-left:16px">
-  <li>Parcela máxima = 28% da renda mensal (regra do BCB).</li>
-  <li>SAC tem parcela inicial maior, mas total de juros menor.</li>
-  <li>Entrada maior = parcela menor = menos juros totais.</li>
-  <li>Além da parcela, considere IPTU, condomínio, seguro e manutenção.</li>
- </ul>
-</div>
-<div class="card mt-12">
- <button class="btn btn-ghost" id="btnExportSCV" style="margin-bottom:8px">Exportar Dados 📤</button>
- <button class="btn btn-danger" id="btnResetSCV">Resetar Tudo 🗑️</button>
-</div>
-</section>
-</main>
-
-<nav class="nav-bottom" id="bottomNav">
-<button class="nav-item active" data-screen="Home"><span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg></span><span>Home</span></button>
-<button class="nav-item" data-screen="Simulador"><span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h8M8 14h2M14 14h2M8 18h2M14 18h2"/></svg></span><span>Simular</span></button>
-<button class="nav-item" data-screen="Bairros"><span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span>Bairros</span></button>
-<button class="nav-item" data-screen="Comparar"><span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg></span><span>Comparar</span></button>
-<button class="nav-item" data-screen="Profile"><span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></span><span>Perfil</span></button>
+<nav class="sumario" aria-label="Sumário">
+  <a href="#/visao">Visão geral</a><a href="#/capacidade">Quanto posso</a><a href="#/simulador">Simulador</a><a href="#/bairros">Bairros</a><a href="#/comparar">Comparar</a><a href="#/dicas">Dicas</a>
 </nav>
-</div>
-<div class="toast-container" id="toastContainer"></div>
+<main>
+  <section class="tela" id="t-visao">
+    <span class="chapeu">Capa</span><h2>A casa certa começa pela conta certa — e pelo bairro certo.</h2>
+    <p class="lead">Bairros bem servidos costumam ter imóveis mais caros. Este guia coloca lado a lado o quanto cabe no seu bolso e o quanto cada bairro vale para a sua vida, para você decidir antes de visitar, e não depois de se apaixonar.</p>
+    <div class="destaque"><div><b id="v-max"></b><span>imóvel máximo</span></div><div><b id="v-parc"></b><span>parcela que cabe</span></div><div><b id="v-bairro"></b><span>melhor bairro p/ você</span></div><div><b id="v-imovel"></b><span>imóvel mais indicado</span></div></div>
+    <p class="nota-rod">Notas dos bairros e imóveis são <b>ilustrativas</b> (a validar em campo). Tudo fica só neste aparelho.</p>
+  </section>
 
-<div class="modal-overlay" id="modalSobre" style="display:none">
-  <div class="modal-box" style="max-height:85dvh;overflow-y:auto;padding:20px">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-      <div style="font-size:16px;font-weight:700;color:#052e2b;font-family:'Playfair Display',Georgia,serif">Sobre o Trabalho</div>
-      <button onclick="fecharSobreTrabalho()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#047857">✕</button>
-    </div>
-    <div style="font-size:13px;line-height:1.7;color:#052e2b">
-      <div style="background:#ecfdf5;border-radius:10px;padding:12px;margin-bottom:14px;border-left:4px solid #047857">
-        <strong style="color:#047857">🏠 Contexto do Projeto</strong><br>
-        O <strong>SuaCasaSuaVida</strong> nasceu da defesa de projeto inovador sobre déficit habitacional e decisão de compra da casa própria. A ideia: um app que analisa o bairro (segurança, comércio, transporte, valorização) e simula o financiamento (Price/SAC) para ajudar o cidadão a entender quanto pode pagar antes de assinar. A pesquisa de campo aconteceu no shopping com formulário de 20 perguntas em escala 1–5.
-      </div>
-      <div style="background:#fffbeb;border-radius:10px;padding:12px;margin-bottom:14px;border-left:4px solid #d97706">
-        <strong style="color:#d97706">📊 Resultado do Formulário (Customer Discovery)</strong><br>
-        <span style="font-size:12px">A pesquisa de campo foi aplicada pelo grupo com apoio do app de coleta. As perguntas medem: percepção de capacidade financeira, interesse em comprar casa própria, conhecimento sobre financiamento e análise de bairro. Os códigos G4-<nnn> correlacionam cada resposta quantitativa com o áudio gravado no WhatsApp.</span>
-      </div>
-      <div style="background:#f0fdf4;border-radius:10px;padding:12px;margin-bottom:14px;border-left:4px solid #16a34a">
-        <strong style="color:#16a34a">📚 Referencial Teórico</strong><br>
-        <span style="font-size:12px">O trabalho tem base em 14 artigos peer-reviewed (2021–2026), incluindo: Fischer et al. (2024) sobre incerteza econômica; Szumilo & Vanino (2021) sobre acesso a crédito e affordability; Mathä et al. (2025) sobre transferências intergeracionais e homeownership; Sodini et al. (2023) sobre propriedade como investimento; Ha et al. (2021) sobre informação de bairro e decisão de compra. O arcabouço teórico inclui economia comportamental, teoria do prospecto e decisões sob incerteza.</span>
-      </div>
-      <div style="background:#ecfdf5;border-radius:10px;padding:12px;border-left:4px solid #047857">
-        <strong style="color:#047857">🎯 Hipótese de Campo</strong><br>
-        <span style="font-size:12px">A hipótese é que a maioria das pessoas não compra a casa própria por falta de clareza sobre quanto podem pagar e desconhecimento do bairro. O SuaCasaSuaVida resolve isso com simulação acessível e análise comparativa de bairros antes de comprometer-se com 30 anos de financiamento.</span>
-      </div>
-    </div>
-    <button class="btn btn-ghost btn-sm" onclick="fecharSobreTrabalho()" style="margin-top:14px;width:100%;border-color:#047857;color:#047857">Fechar</button>
-  </div>
-</div>
+  <section class="tela" id="t-capacidade">
+    <span class="chapeu">Orçamento</span><h2>Quanto posso pagar?</h2>
+    <div class="campo"><label for="c-renda">Renda familiar <output id="o-renda"></output></label><input type="range" id="c-renda" min="1500" max="30000" step="100" data-k="renda"></div>
+    <div class="campo"><label for="c-dividas">Outras parcelas mensais <output id="o-dividas"></output></label><input type="range" id="c-dividas" min="0" max="5000" step="50" data-k="dividas"></div>
+    <div class="campo"><label for="c-entrada">Entrada disponível (com FGTS) <output id="o-entrada"></output></label><input type="range" id="c-entrada" min="0" max="300000" step="1000" data-k="entrada"></div>
+    <div class="campo"><label for="c-juros">Juros ao ano <output id="o-juros"></output></label><input type="range" id="c-juros" min="4" max="14" step="0.1" data-k="juros"></div>
+    <div class="campo"><label for="c-prazo">Prazo <output id="o-prazo"></output></label><input type="range" id="c-prazo" min="10" max="35" step="1" data-k="prazo"></div>
+    <div class="fio"></div>
+    <p>Com a regra de comprometer no máximo <b>30% da renda</b> e já descontadas as outras parcelas, a primeira parcela pode ser de até <b id="cap-parc"></b>. Isso financia cerca de <b id="cap-fin"></b> (Price) e, com a entrada, permite um imóvel de até <b id="cap-max" style="color:var(--verde)"></b>.</p>
+  </section>
+
+  <section class="tela" id="t-simulador">
+    <span class="chapeu">Financiamento</span><h2>Price ou SAC?</h2>
+    <div class="campo"><label for="s-valor">Valor do imóvel <output id="o-valor"></output></label><input type="range" id="s-valor" min="80000" max="1200000" step="5000" data-k="valor"></div>
+    <p style="font-family:Inter;font-size:13px;color:var(--mudo)">Entrada, juros e prazo vêm da seção “Quanto posso”.</p>
+    <table class="tab" style="margin-top:10px"><tr><th></th><th>Price</th><th>SAC</th></tr>
+      <tr><td>Financiado</td><td id="t-fin" colspan="2" style="text-align:center"></td></tr>
+      <tr><td>1ª parcela</td><td id="t-p1"></td><td id="t-s1"></td></tr><tr><td>Última parcela</td><td id="t-pn"></td><td id="t-sn"></td></tr>
+      <tr><td>Total de juros</td><td id="t-pj"></td><td id="t-sj"></td></tr><tr><td>% da renda (1ª)</td><td id="t-pr"></td><td id="t-sr"></td></tr></table>
+    <svg id="curva" viewBox="0 0 320 130" style="width:100%;margin-top:14px" aria-label="Parcelas ao longo do tempo: Price constante, SAC decrescente"></svg>
+    <p id="sim-texto" style="margin-top:8px"></p>
+  </section>
+
+  <section class="tela" id="t-bairros">
+    <span class="chapeu">Análise multicritério</span><h2>O que pesa para você?</h2>
+    <p>Mova os pesos. O ranking e o radar mudam na hora. Marque até 3 bairros para comparar.</p>
+    <div id="pesos"></div>
+    <div class="fio"></div>
+    <div class="ranking" id="ranking"></div>
+    <svg class="radar" id="radar" viewBox="-130 -125 260 250" aria-label="Radar comparando os bairros marcados"></svg>
+    <div class="leg" id="radar-leg"></div>
+    <h3>Cadastrar bairro</h3>
+    <input class="in" id="nb-nome" placeholder="Nome do bairro" aria-label="Nome do novo bairro">
+    <div class="fila"><button class="btn" id="add-bairro">Adicionar com notas médias</button></div>
+    <p class="nota-rod">Notas de 1 a 5 ilustrativas. Na versão real: dados públicos (segurança, escolas, UBS, linhas de ônibus) e avaliação de moradores.</p>
+  </section>
+
+  <section class="tela" id="t-comparar">
+    <span class="chapeu">Classificados</span><h2>Imóveis lado a lado</h2>
+    <div id="imoveis"></div>
+    <h3>Anotar um imóvel visitado</h3>
+    <input class="in" id="ni-nome" placeholder="Ex.: Casa 2 quartos, rua X" aria-label="Descrição do imóvel">
+    <div class="fila"><input class="in" id="ni-preco" type="number" placeholder="Preço (R$)" aria-label="Preço"><select class="in" id="ni-bairro" aria-label="Bairro"></select></div>
+    <div class="fila"><button class="btn" id="add-imovel">Anotar imóvel</button></div>
+  </section>
+
+  <section class="tela" id="t-dicas">
+    <span class="chapeu">Serviço</span><h2>Antes de assinar</h2>
+    <div class="dica"><h3>Visite o bairro à noite e em dia de chuva</h3><p>Iluminação, alagamentos e barulho não aparecem na visita das 10h da manhã.</p></div>
+    <div class="dica"><h3>Some tudo que vem junto</h3><p>Condomínio, IPTU, seguro obrigatório e transporte até o trabalho entram na conta do mês.</p></div>
+    <div class="dica"><h3>Compare o custo efetivo total (CET)</h3><p>Duas propostas com a mesma taxa podem ter custos muito diferentes por causa de tarifas e seguros.</p></div>
+    <div class="dica"><h3>Confira as faixas do Minha Casa, Minha Vida</h3><p>Dependendo da renda, os juros são bem menores que os de mercado. Refaça a simulação com a taxa da sua faixa.</p></div>
+    <div class="dica"><h3>Peça a matrícula atualizada</h3><p>Ela mostra quem é o dono e se há dívidas ou penhoras sobre o imóvel.</p></div>
+    <div class="fio"></div>
+    <div class="fila"><button class="btn sec peq" id="exportar">Exportar dados</button><button class="btn sec peq" id="importar" data-teste="pular">Importar</button><button class="btn sec peq" id="zerar">Apagar tudo</button></div>
+    <p class="nota-rod">SuaCasaSuaVida · Grupo 4 · 3SemVG · UNIFACC-MT</p>
+  </section>
+</main>
+<div id="brinde" role="status" aria-live="polite"></div>
+
 <script>
-function abrirSobreTrabalho(){document.getElementById('modalSobre').style.display='flex';document.body.style.overflow='hidden'}
-function fecharSobreTrabalho(){document.getElementById('modalSobre').style.display='none';document.body.style.overflow=''}
-document.getElementById('modalSobre').onclick=function(e){if(e.target===this)fecharSobreTrabalho()};
-</script>
+/* ============================================================================
+   Construção do SuaCasaSuaVida: motor de decisão multicritério (MCDA aditivo).
+   Os pesos do usuário são normalizados; a nota de cada bairro é a soma ponderada
+   das notas por critério (o preço entra invertido). O mesmo motor classifica os
+   imóveis combinando a nota do bairro com o encaixe no orçamento. O radar é SVG
+   gerado a partir das coordenadas polares de cada critério.
+   ============================================================================ */
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const R$ = v => (+v || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+const k$ = v => 'R$ ' + Math.round(v / 1000) + ' mil';
+let tb; const brinde = m => { const e = $('#brinde'); e.textContent = m; e.classList.add('on'); clearTimeout(tb); tb = setTimeout(() => e.classList.remove('on'), 2200); };
 
-<script src="../assets/kit/kit.js" type="module"></script>
-<script type="module">
-import { fmtBRL, uid } from '../assets/kit/kit.js';
+const CRIT = [['seg', 'Segurança'], ['trans', 'Transporte'], ['esc', 'Escolas'], ['saude', 'Saúde'], ['com', 'Comércio'], ['lazer', 'Lazer'], ['preco', 'Preço acessível']];
+const CORES = ['#047857', '#d97706', '#7c3aed'];
+const CH = 'suacasasuavida:v2';
+const semente = () => ({
+  renda: 7000, dividas: 400, entrada: 40000, juros: 10.5, prazo: 30, valor: 280000,
+  pesos: { seg: 5, trans: 3, esc: 4, saude: 3, com: 2, lazer: 2, preco: 4 },
+  bairros: [
+    { id: 'b1', n: 'Centro Norte', seg: 3, trans: 5, esc: 4, saude: 4, com: 5, lazer: 3, preco: 2 },
+    { id: 'b2', n: 'Cristo Rei', seg: 3, trans: 4, esc: 4, saude: 4, com: 4, lazer: 3, preco: 3 },
+    { id: 'b3', n: 'Jardim Glória', seg: 4, trans: 3, esc: 3, saude: 3, com: 3, lazer: 4, preco: 3 },
+    { id: 'b4', n: 'Mapim', seg: 3, trans: 2, esc: 3, saude: 2, com: 2, lazer: 2, preco: 5 },
+    { id: 'b5', n: 'Parque do Lago', seg: 4, trans: 3, esc: 3, saude: 3, com: 3, lazer: 5, preco: 2 },
+  ],
+  marcados: ['b1', 'b4'],
+  imoveis: [{ id: 'i1', n: 'Casa 2 quartos com quintal', preco: 230000, b: 'b4' }, { id: 'i2', n: 'Apartamento 3 quartos', preco: 310000, b: 'b2' }, { id: 'i3', n: 'Sobrado 3 suítes', preco: 520000, b: 'b5' }, { id: 'i4', n: 'Casa 3 quartos perto do comércio', preco: 360000, b: 'b1' }]
+});
+let S; try { S = JSON.parse(localStorage.getItem(CH)); } catch (e) {} if (!S) S = semente();
+const salvar = () => localStorage.setItem(CH, JSON.stringify(S)); salvar();
 
-const NS = 'suacasa';
-function _k(k) { return NS + ':' + k; }
-const s = {
-  get(k, f) { try { const v = localStorage.getItem(_k(k)); return v == null ? f : JSON.parse(v); } catch { return f; } },
-  set(k, v) { try { localStorage.setItem(_k(k), JSON.stringify(v)); return true; } catch { return false; } }
-};
+/* ---------- motores ---------- */
+const im = () => Math.pow(1 + S.juros / 100, 1 / 12) - 1;
+const price = (pv, n = S.prazo * 12) => { const i = im(); return pv * i / (1 - Math.pow(1 + i, -n)); };
+const sacParc = (pv, k, n = S.prazo * 12) => pv / n + (pv - pv / n * k) * im();
+function capacidade() { const parc = Math.max(0, S.renda * .3 - S.dividas), i = im(), n = S.prazo * 12, fin = parc * (1 - Math.pow(1 + i, -n)) / i; return { parc, fin, max: fin + S.entrada }; }
+function notaBairro(b) { const soma = Object.values(S.pesos).reduce((a, x) => a + x, 0) || 1; return CRIT.reduce((a, [k]) => a + b[k] * S.pesos[k], 0) / soma; }
+function notaImovel(x) { const b = S.bairros.find(y => y.id === x.b), cap = capacidade().max, enc = x.preco <= cap ? 1 : Math.max(0, 1 - (x.preco - cap) / cap * 2);
+  return { bairro: b ? notaBairro(b) : 0, encaixe: enc, total: (b ? notaBairro(b) / 5 : 0) * 60 + enc * 40 }; }
 
-let state = s.get('state', {
-  neighborhoods: [],
-  properties: [],
-  renda: 2500,
-  despesas: 800,
-  saved: false
+/* ---------- telas ---------- */
+const ROT = { renda: v => R$(v), dividas: v => R$(v), entrada: v => R$(v), juros: v => v.toFixed(1).replace('.', ',') + '%', prazo: v => v + ' anos', valor: v => R$(v) };
+function sincronizar() { $$('[data-k]').forEach(el => { el.value = S[el.dataset.k]; const o = $('#o-' + el.dataset.k); if (o) o.textContent = ROT[el.dataset.k](S[el.dataset.k]); }); }
+function telaVisao() {
+  const c = capacidade(), best = [...S.bairros].sort((a, b) => notaBairro(b) - notaBairro(a))[0], imv = [...S.imoveis].sort((a, b) => notaImovel(b).total - notaImovel(a).total)[0];
+  $('#v-max').textContent = k$(c.max); $('#v-parc').textContent = R$(c.parc); $('#v-bairro').textContent = best ? best.n : '—'; $('#v-imovel').textContent = imv ? imv.n.split(' ').slice(0, 3).join(' ') : '—';
+}
+function telaCapacidade() { sincronizar(); const c = capacidade(); $('#cap-parc').textContent = R$(c.parc); $('#cap-fin').textContent = R$(c.fin); $('#cap-max').textContent = R$(c.max); }
+function telaSimulador() {
+  sincronizar(); const pv = Math.max(0, S.valor - S.entrada), n = S.prazo * 12, p = price(pv);
+  let sj = 0; for (let k = 0; k < n; k++) sj += sacParc(pv, k); sj -= pv;
+  $('#t-fin').textContent = R$(pv); $('#t-p1').textContent = $('#t-pn').textContent = R$(p); $('#t-s1').textContent = R$(sacParc(pv, 0)); $('#t-sn').textContent = R$(sacParc(pv, n - 1));
+  $('#t-pj').textContent = R$(p * n - pv); $('#t-sj').textContent = R$(sj); $('#t-pr').textContent = Math.round(p / S.renda * 100) + '%'; $('#t-sr').textContent = Math.round(sacParc(pv, 0) / S.renda * 100) + '%';
+  const max = sacParc(pv, 0) * 1.1 || 1, X = k => 30 + 280 * k / (n - 1), Y = v => 110 - 95 * v / max;
+  $('#curva').innerHTML = `<line x1="30" y1="110" x2="310" y2="110" stroke="#1c1917"/><line x1="30" y1="${Y(S.renda * .3)}" x2="310" y2="${Y(S.renda * .3)}" stroke="#b91c1c" stroke-dasharray="3 3"/><text x="310" y="${Y(S.renda * .3) - 3}" text-anchor="end" font-size="8" fill="#b91c1c" font-family="Inter">30% da renda</text>
+    <polyline points="${X(0)},${Y(p)} ${X(n - 1)},${Y(p)}" stroke="#d97706" stroke-width="2.5" fill="none"/><polyline points="${X(0)},${Y(sacParc(pv, 0))} ${X(n - 1)},${Y(sacParc(pv, n - 1))}" stroke="#047857" stroke-width="2.5" fill="none"/>
+    <text x="34" y="${Y(p) - 4}" font-size="9" fill="#d97706" font-family="Inter">Price</text><text x="34" y="${Y(sacParc(pv, 0)) - 4}" font-size="9" fill="#047857" font-family="Inter">SAC</text>
+    <text x="30" y="124" font-size="8" fill="#6b635a" font-family="Inter">ano 1</text><text x="310" y="124" text-anchor="end" font-size="8" fill="#6b635a" font-family="Inter">ano ${S.prazo}</text>`;
+  $('#sim-texto').innerHTML = `No SAC você começa pagando <b>${R$(sacParc(pv, 0) - p)}</b> a mais por mês, mas economiza <b>${R$(p * n - pv - sj)}</b> de juros no total. ${p > S.renda * .3 ? '<b style="color:#b91c1c">Mesmo na Price, a parcela passa de 30% da renda.</b>' : ''}`;
+}
+function telaBairros() {
+  $('#pesos').innerHTML = CRIT.map(([k, n]) => `<div class="campo"><label for="p-${k}">${n} <output>${'●'.repeat(S.pesos[k])}${'○'.repeat(5 - S.pesos[k])}</output></label><input type="range" id="p-${k}" min="0" max="5" data-peso="${k}" value="${S.pesos[k]}"></div>`).join('');
+  desenharRanking();
+}
+function desenharRanking() {
+  $('#ranking').innerHTML = [...S.bairros].sort((a, b) => notaBairro(b) - notaBairro(a)).map(b => `<label class="bairro"><span><b>${esc(b.n)}</b><br><span style="font-family:Inter;font-size:12px;color:var(--mudo)">${CRIT.map(([k, n]) => n.split(' ')[0] + ' ' + b[k]).join(' · ')}</span></span>
+    <span style="display:flex;align-items:center;gap:10px"><span class="nota">${notaBairro(b).toFixed(1).replace('.', ',')}</span><input type="checkbox" data-marca="${b.id}" ${S.marcados.includes(b.id) ? 'checked' : ''} aria-label="Comparar ${esc(b.n)} no radar"></span></label>`).join('');
+  radar();
+}
+function radar() {
+  const R = 95, N = CRIT.length, pt = (i, v) => { const a = -Math.PI / 2 + i * 2 * Math.PI / N; return [Math.cos(a) * R * v / 5, Math.sin(a) * R * v / 5]; };
+  let s = [1, 2, 3, 4, 5].map(v => `<polygon points="${CRIT.map((_, i) => pt(i, v).join(',')).join(' ')}" fill="none" stroke="#d6cfc2"/>`).join('');
+  s += CRIT.map(([k, n], i) => { const [x, y] = pt(i, 5), [tx, ty] = pt(i, 6.1); return `<line x1="0" y1="0" x2="${x}" y2="${y}" stroke="#d6cfc2"/><text x="${tx}" y="${ty}" text-anchor="middle" dominant-baseline="middle" font-size="9.5" font-family="Inter" fill="#1c1917" style="font-weight:${S.pesos[k] >= 4 ? 700 : 400}">${n.split(' ')[0]}</text>`; }).join('');
+  const marc = S.marcados.map(id => S.bairros.find(b => b.id === id)).filter(Boolean);
+  s += marc.map((b, j) => `<polygon points="${CRIT.map(([k], i) => pt(i, b[k]).join(',')).join(' ')}" fill="${CORES[j]}" fill-opacity=".22" stroke="${CORES[j]}" stroke-width="2"/>`).join('');
+  $('#radar').innerHTML = s; $('#radar-leg').innerHTML = marc.map((b, j) => `<span style="--c:${CORES[j]}">${esc(b.n)}</span>`).join('');
+}
+function telaComparar() {
+  const cap = capacidade();
+  $('#ni-bairro').innerHTML = S.bairros.map(b => `<option value="${b.id}">${esc(b.n)}</option>`).join('');
+  $('#imoveis').innerHTML = `<p style="font-family:Inter;font-size:13px;color:var(--mudo)">Seu limite: ${R$(cap.max)} · nota = 60% bairro + 40% encaixe no orçamento</p>` +
+    [...S.imoveis].sort((a, b) => notaImovel(b).total - notaImovel(a).total).map(x => { const nt = notaImovel(x), b = S.bairros.find(y => y.id === x.b), pv = Math.max(0, x.preco - S.entrada), p = price(pv);
+      const selo = x.preco <= cap.max ? '<span class="selo ok">cabe no orçamento</span>' : x.preco <= cap.max * 1.15 ? '<span class="selo mv">no limite</span>' : '<span class="selo no">acima do limite</span>';
+      return `<div class="imovel"><div class="top"><div><b>${esc(x.n)}</b><div style="font-family:Inter;font-size:13px;color:var(--mudo)">${esc(b ? b.n : '?')} · bairro ${nt.bairro.toFixed(1).replace('.', ',')}</div></div><div style="text-align:right"><b style="color:var(--verde2)">${Math.round(nt.total)}</b><div style="font-family:Inter;font-size:11px;color:var(--mudo)">de 100</div></div></div>
+      <p style="margin:6px 0">${R$(x.preco)} · parcela Price ${R$(p)} (${Math.round(p / S.renda * 100)}% da renda)</p>${selo} <button class="btn sec peq" data-rem="${x.id}" style="float:right">Remover</button></div>`; }).join('');
+}
+
+/* ---------- eventos ---------- */
+document.addEventListener('input', e => {
+  const k = e.target.dataset.k, pw = e.target.dataset.peso;
+  if (k) { S[k] = +e.target.value; salvar(); ({ capacidade: telaCapacidade, simulador: telaSimulador })[atual]?.(); }
+  if (pw) { S.pesos[pw] = +e.target.value; salvar(); e.target.previousElementSibling.querySelector('output').textContent = '●'.repeat(S.pesos[pw]) + '○'.repeat(5 - S.pesos[pw]); desenharRanking(); }
+});
+document.addEventListener('change', e => { const m = e.target.dataset.marca; if (!m) return;
+  if (e.target.checked) { if (S.marcados.length >= 3) { e.target.checked = false; return brinde('Compare até 3 bairros.'); } S.marcados.push(m); } else S.marcados = S.marcados.filter(x => x !== m); salvar(); radar(); });
+document.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.id === 'add-bairro') { const n = $('#nb-nome').value.trim(); if (!n) return brinde('Dê um nome ao bairro.'); S.bairros.push({ id: 'b' + Date.now(), n, seg: 3, trans: 3, esc: 3, saude: 3, com: 3, lazer: 3, preco: 3 }); $('#nb-nome').value = ''; salvar(); desenharRanking(); brinde('Bairro adicionado com notas 3.'); }
+  else if (b.id === 'add-imovel') { const n = $('#ni-nome').value.trim(), p = +$('#ni-preco').value; if (!n || !p) return brinde('Informe descrição e preço.'); S.imoveis.push({ id: 'i' + Date.now(), n, preco: p, b: $('#ni-bairro').value }); $('#ni-nome').value = $('#ni-preco').value = ''; salvar(); telaComparar(); brinde('Imóvel anotado.'); }
+  else if (b.dataset.rem) { S.imoveis = S.imoveis.filter(x => x.id !== b.dataset.rem); salvar(); telaComparar(); }
+  else if (b.id === 'exportar') Object.assign(document.createElement('a'), { href: URL.createObjectURL(new Blob([JSON.stringify({ app: 'suacasasuavida', dados: S })], { type: 'application/json' })), download: 'suacasasuavida.json' }).click();
+  else if (b.id === 'importar') { const i = Object.assign(document.createElement('input'), { type: 'file', accept: '.json' }); i.onchange = async () => { try { const j = JSON.parse(await i.files[0].text()); if (j.app !== 'suacasasuavida') throw 0; S = j.dados; salvar(); rota(); } catch (x) { brinde('Arquivo inválido.'); } }; i.click(); }
+  else if (b.id === 'zerar') { if (confirm('Apagar todos os dados?')) { S = semente(); salvar(); rota(); brinde('Dados apagados.'); } }
 });
 
-function toast(msg) {
-  const c = document.getElementById('toastContainer');
-  const el = document.createElement('div');
-  el.className = 'toast';
-  el.textContent = msg;
-  c.appendChild(el);
-  setTimeout(() => el.remove(), 2800);
+/* ---------- rotas ---------- */
+window.__rotas = ['#/visao', '#/capacidade', '#/simulador', '#/bairros', '#/comparar', '#/dicas'];
+const TELAS = { visao: telaVisao, capacidade: telaCapacidade, simulador: telaSimulador, bairros: telaBairros, comparar: telaComparar, dicas: () => {} };
+let atual = 'visao';
+function rota() {
+  const n = (location.hash.match(/^#\/(\w+)/) || [])[1]; atual = TELAS[n] ? n : 'visao';
+  $$('.tela').forEach(t => t.classList.toggle('on', t.id === 't-' + atual));
+  $$('nav.sumario a').forEach(a => a.getAttribute('href') === '#/' + atual ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+  TELAS[atual](); scrollTo(0, 0);
+  $("#ed").textContent = new Date().toLocaleDateString("pt-BR", { month: "long" }) + " de " + new Date().getFullYear();
 }
-
-function fmt(v) { return fmtBRL(v || 0); }
-
-function showScreen(name) {
-  document.querySelectorAll('.screen').forEach(x => x.classList.remove('active'));
-  document.getElementById('screen' + name).classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.screen === name));
-  if (name === 'Home') renderHome();
-  if (name === 'Simulador') updateSim();
-  if (name === 'Bairros') renderNeighborhoods();
-  if (name === 'Comparar') renderComparison();
-}
-
-function getCapMax() {
-  return Math.round(state.renda * 0.28);
-}
-
-function getSemaforo(capMax, parcela) {
-  if (!capMax || !parcela) return 'empty';
-  const ratio = parcela / capMax;
-  if (ratio <= 0.8) return 'green';
-  if (ratio <= 1.0) return 'yellow';
-  return 'red';
-}
-
-function renderSemaforo(containerId, tipo, capMax, parcela) {
-  const el = document.getElementById(containerId);
-  if (!el) return;
-  if (tipo === 'home') {
-    const cap = getCapMax();
-    const sem = getSemaforo(cap, cap);
-    el.innerHTML = `<div class="sem ${sem}"></div>`;
-    return;
-  }
-  const sem = getSemaforo(capMax, parcela);
-  el.innerHTML = `<div class="sem ${sem}"></div>`;
-}
-
-function renderHome() {
-  const capMax = getCapMax();
-  document.getElementById('dispRenda').textContent = fmt(state.renda);
-  document.getElementById('dispParcela').textContent = fmt(capMax);
-  renderSemaforo('semaforoHome', 'home');
-  document.getElementById('semText').textContent = 'Parcela máxima recomendada: ' + fmt(capMax) + ' (28% da renda)';
-
-  // Saved neighborhoods
-  const nbEl = document.getElementById('savedNeighborhoods');
-  if (!state.neighborhoods.length) {
-    nbEl.innerHTML = '<div class="text-muted" style="font-size:13px;text-align:center;padding:12px">Nenhum bairro salvo. Vá em Bairros para adicionar!</div>';
-  } else {
-    nbEl.innerHTML = state.neighborhoods.slice(0, 3).map(nb => {
-      const score = calcScore(nb);
-      const cls = score >= 4 ? 'good' : score >= 2.5 ? 'medium' : 'bad';
-      return `<div class="neighborhood-card ${score >= 4 ? 'best' : ''}" style="margin-bottom:8px;padding:12px">
-       <div class="flex-between">
-        <strong>${nb.name}</strong>
-        <span class="nb-score ${cls}">${score.toFixed(1)}</span>
-       </div>
-      </div>`;
-    }).join('');
-  }
-
-  // Saved properties
-  const propEl = document.getElementById('savedProps');
-  if (!state.properties.length) {
-    propEl.innerHTML = '<div class="text-muted" style="font-size:13px;text-align:center;padding:12px">Nenhum imóvel salvo. Vá em Comparar para adicionar!</div>';
-  } else {
-    propEl.innerHTML = state.properties.slice(0, 3).map(p => `<div class="prop-item">
-     <div class="icon">🏠</div>
-     <div class="info">
-      <div class="name">${p.desc}</div>
-      <div class="meta">${p.nb || 'Bairro não informado'}</div>
-     </div>
-     <div class="price">${fmt(p.valor)}</div>
-    </div>`).join('');
-  }
-}
-
-function calcScore(nb) {
-  return ((nb.seg || 3) + (nb.com || 3) + (nb.trans || 3) + (nb.val || 3)) / 4;
-}
-
-function updateSim() {
-  const renda = parseInt(document.getElementById('slRenda').value);
-  const desp = parseInt(document.getElementById('slDesp').value);
-  const juros = parseFloat(document.getElementById('slJuros').value);
-  const prazo = parseInt(document.getElementById('slPrazo').value);
-
-  document.getElementById('lblRenda').textContent = fmt(renda);
-  document.getElementById('lblDesp').textContent = fmt(desp);
-  document.getElementById('lblJuros').textContent = juros.toFixed(1) + '% a.a.';
-  document.getElementById('lblPrazo').textContent = prazo + ' anos';
-
-  state.renda = renda;
-  state.despesas = desp;
-  s.set('state', state);
-
-  const capMax = Math.round(renda * 0.28);
-  document.getElementById('dispCapMax').textContent = fmt(capMax);
-
-  const parcelaSugerida = Math.round(renda * 0.28);
-
-  const i = juros / 100 / 12;
-  const p = prazo * 12;
-
-  let priceParcela = 0, priceTotal = 0;
-  if (i > 0 && p > 0) {
-    priceParcela = parcelaSugerida * (i * Math.pow(1 + i, p)) / (Math.pow(1 + i, p) - 1);
-    priceTotal = priceParcela * p;
-  } else {
-    priceParcela = parcelaSugerida;
-    priceTotal = parcelaSugerida * p;
-  }
-
-  let sacParcela = 0, sacTotal = 0;
-  if (i > 0 && p > 0) {
-    const principal = parcelaSugerida * ((Math.pow(1 + i, p) - 1) / (i * Math.pow(1 + i, p)));
-    sacParcela = principal / p + principal * i;
-    sacTotal = principal * (1 + i * (p + 1) / 2);
-  } else {
-    sacParcela = parcelaSugerida;
-    sacTotal = parcelaSugerida * p;
-  }
-
-  document.getElementById('simPrice').textContent = fmt(priceParcela);
-  document.getElementById('simPriceTotal').textContent = fmt(priceTotal);
-  document.getElementById('simSAC').textContent = fmt(sacParcela);
-  document.getElementById('simSACTotal').textContent = fmt(sacTotal);
-
-  renderSemaforo('semaforoSim', 'sim', capMax, priceParcela);
-}
-
-function addNeighborhood() {
-  const name = document.getElementById('inputNbName').value.trim();
-  const seg = parseInt(document.getElementById('inputNbSeg').value) || 3;
-  const com = parseInt(document.getElementById('inputNbCom').value) || 3;
-  const trans = parseInt(document.getElementById('inputNbTrans').value) || 3;
-  const val = parseInt(document.getElementById('inputNbVal').value) || 3;
-  if (!name) { toast('Digite o nome do bairro!'); return; }
-  const nb = { id: uid(), name, seg, com, trans, val };
-  state.neighborhoods.push(nb);
-  s.set('state', state);
-  document.getElementById('inputNbName').value = '';
-  document.getElementById('inputNbSeg').value = '';
-  document.getElementById('inputNbCom').value = '';
-  document.getElementById('inputNbTrans').value = '';
-  document.getElementById('inputNbVal').value = '';
-  toast('Bairro adicionado!');
-  renderNeighborhoods();
-}
-
-function renderNeighborhoods() {
-  const el = document.getElementById('neighborhoodsList');
-  if (!state.neighborhoods.length) {
-    el.innerHTML = '<div class="card"><div class="text-muted text-center" style="padding:24px">Nenhum bairro cadastrado. Adicione o primeiro!</div></div>';
-    return;
-  }
-  const sorted = [...state.neighborhoods].sort((a, b) => calcScore(b) - calcScore(a));
-  el.innerHTML = sorted.map(nb => {
-    const score = calcScore(nb);
-    const cls = score >= 4 ? 'good' : score >= 2.5 ? 'medium' : 'bad';
-    const rows = [
-      ['🛡️ Segurança', nb.seg, '#dc2626'],
-      ['🛒 Comércio', nb.com, '#d97706'],
-      ['🚌 Transporte', nb.trans, '#047857'],
-      ['📈 Valorização', nb.val, '#7c3aed'],
-    ];
-    return `<div class="neighborhood-card ${score >= 4 ? 'best' : ''}">
-     <div class="nb-header">
-      <div class="nb-name">${nb.name}</div>
-      <div class="nb-score ${cls}">${score.toFixed(1)}</div>
-     </div>
-     <div class="score-bars">
-      ${rows.map(([label, val, color]) => `<div class="score-row">
-       <span class="score-row .lbl">${label}</span>
-       <div class="score-bar"><div class="fill" style="width:${(val/5*100)}%;background:${color}"></div></div>
-       <span style="font-size:11px;font-weight:700;width:16px;text-align:right">${val}</span>
-      </div>`).join('')}
-     </div>
-     <button class="btn btn-sm btn-ghost mt-8" onclick="remNb('${nb.id}')" style="width:100%">Remover</button>
-    </div>`;
-  }).join('');
-}
-
-window.remNb = function(id) {
-  if (!confirm('Remover este bairro?')) return;
-  state.neighborhoods = state.neighborhoods.filter(n => n.id !== id);
-  s.set('state', state);
-  renderNeighborhoods();
-  toast('Bairro removido');
-};
-
-function addProperty() {
-  const desc = document.getElementById('inputPropDesc').value.trim();
-  const valor = parseFloat(document.getElementById('inputPropVal').value) || 0;
-  const entrada = parseFloat(document.getElementById('inputPropEntry').value) || 0;
-  const iptu = parseFloat(document.getElementById('inputPropIPTU').value) || 0;
-  const cond = parseFloat(document.getElementById('inputPropCond').value) || 0;
-  const nb = document.getElementById('inputPropNb').value;
-  if (!desc || !valor) { toast('Preencha descrição e valor!'); return; }
-  const prop = { id: uid(), desc, valor, entrada, iptu, cond, nb };
-  state.properties.push(prop);
-  s.set('state', state);
-  document.getElementById('inputPropDesc').value = '';
-  document.getElementById('inputPropVal').value = '';
-  document.getElementById('inputPropEntry').value = '';
-  document.getElementById('inputPropIPTU').value = '';
-  document.getElementById('inputPropCond').value = '';
-  toast('Imóvel adicionado!');
-  renderComparison();
-}
-
-function renderComparison() {
-  // Update neighborhood dropdown
-  const nbSel = document.getElementById('inputPropNb');
-  nbSel.innerHTML = '<option value="">Novo / Não listado</option>' +
-    state.neighborhoods.map(n => `<option value="${n.name}">${n.name}</option>`).join('');
-
-  const el = document.getElementById('comparisonView');
-  if (!state.properties.length) {
-    el.innerHTML = '<div class="card"><div class="text-muted text-center" style="padding:24px">Nenhum imóvel salvo. Adicione o primeiro!</div></div>';
-    return;
-  }
-
-  // Build comparison table
-  const capMax = Math.round(state.renda * 0.28);
-  const juros = parseFloat(document.getElementById('slJuros').value || 8) / 100 / 12;
-  const prazo = parseInt(document.getElementById('slPrazo').value || 30) * 12;
-
-  el.innerHTML = `<div class="card" style="overflow-x:auto">
-   <table class="comparison-table">
-    <thead>
-     <tr>
-      <th>Imóvel</th>
-      <th>Valor</th>
-      <th>Entrada</th>
-      <th>Financiado</th>
-      <th>Parcela (Price)</th>
-      <th>IPTU+Cond</th>
-      <th>Custo Total</th>
-     </tr>
-    </thead>
-    <tbody>
-     ${state.properties.map(p => {
-       const financiado = p.valor - p.entrada;
-       let parcPrice = 0;
-       if (juros > 0 && prazo > 0 && financiado > 0) {
-         parcPrice = financiado * (juros * Math.pow(1 + juros, prazo)) / (Math.pow(1 + juros, prazo) - 1);
-       } else {
-         parcPrice = financiado / prazo;
-       }
-       const custoTotal = parcPrice * prazo + p.entrada + (p.iptu + p.cond) * prazo;
-       const parcTotal = parcPrice + p.iptu + p.cond;
-       const isAffordable = parcTotal <= capMax;
-       return `<tr>
-        <td><strong>${p.desc}</strong><br><small style="color:var(--texto-suave)">${p.nb || 'Bairro não informado'}</small></td>
-        <td>${fmt(p.valor)}</td>
-        <td>${fmt(p.entrada)}</td>
-        <td class="${isAffordable ? 'best-cell' : ''}">${fmt(financiado)}</td>
-        <td class="${isAffordable ? 'best-cell' : ''}">${fmt(parcPrice)}<br><small style="color:var(--texto-suave)">${fmt(parcTotal)} c/ taxas</small></td>
-        <td>${fmt(p.iptu + p.cond)}/mês</td>
-        <td>${fmt(custoTotal)}</td>
-       </tr>`;
-     }).join('')}
-    </tbody>
-   </table>
-  </div>`;
-}
-
-document.getElementById('btnAddProp').onclick = addProperty;
-
-document.getElementById('btnExportSCV').onclick = () => {
-  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
-  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-  a.download = 'suacasa_dados.json'; a.click();
-  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-};
-
-document.getElementById('btnResetSCV').onclick = () => {
-  if (confirm('Apagar TODOS os dados?')) {
-    localStorage.clear();
-    state = { neighborhoods: [], properties: [], renda: 2500, despesas: 800, saved: true };
-    s.set('state', state);
-    toast('Dados resetados.');
-    showScreen('Home');
-  }
-};
-
-document.querySelectorAll('.nav-item').forEach(n => { n.onclick = () => showScreen(n.dataset.screen); });
-
-// Init
-document.getElementById('slRenda').value = state.renda;
-document.getElementById('slDesp').value = state.despesas;
-
-renderHome();
-updateSim();
-
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
-}
+addEventListener('hashchange', rota); rota();
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('sw.js').catch(() => {});
 </script>
 </body>
 </html>

@@ -3,204 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vida no Controle — Grupo 6 · Customer Discovery 3SemVG</title>
-<meta name="description" content="Plataforma gratuita que organiza a renda familiar, encontra oportunidades de economia e lê o cupom fiscal do mercado — só para Várzea Grande.">
-<meta name="theme-color" content="#431407">
-<link rel="icon" type="image/png" sizes="192x192" href="../assets/logos/g6-192.png">
-<link rel="apple-touch-icon" href="../assets/logos/g6-192.png">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#ea580c">
+<title>Vida no Controle — Grupo 6 · 3SemVG</title>
+<meta name="description" content="Vida no Controle: finanças do mês, lista de compras e comparador de preços a partir do cupom fiscal. Grupo 6 · UNIFACC.">
+<link rel="icon" type="image/png" href="../assets/logos/g6-96.png">
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
-:root{
-  --acc:#ea580c; --acc2:#16a34a; --tinta:#431407;
-  --surface:#fff; --surface-2:#f4f6fb; --ink:#0f172a; --ink-soft:#5b6478; --line:#e7e9f2;
-  --radius-lg:22px; --radius-md:16px;
-  --shadow-card:0 10px 30px -12px rgba(15,23,42,.18);
-  --shadow-hover:0 18px 40px -14px rgba(15,23,42,.28);
-}
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--surface-2);color:var(--ink);min-height:100dvh}
-h1,h2{font-family:'Space Grotesk',system-ui,sans-serif}
-a{color:inherit}
-img{display:block;max-width:100%}
-.wrap{max-width:920px;margin:0 auto;padding:0 20px}
-
-.nav{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.92);backdrop-filter:blur(10px)}
-.nav .wrap{display:flex;align-items:center;gap:12px;padding:12px 20px;color:#fff}
-.nav-back{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#c7cee8;text-decoration:none;flex-shrink:0}
-.nav-back svg{width:16px;height:16px}
-.nav-back:hover{color:#fff}
-.nav-title{margin-left:auto;font-size:13px;font-weight:700;opacity:.85}
-
-.hero{
-  position:relative;color:#fff;padding:52px 0 74px;overflow:hidden;
-  background:linear-gradient(160deg,var(--tinta) 0%,#0b1220 100%);
-}
-.hero::before{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(600px 320px at 85% 0%, color-mix(in srgb, var(--acc) 35%, transparent), transparent 60%);
-}
-.hero .wrap{position:relative;z-index:2}
-.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:22px}
-.hero-logo{width:64px;height:64px;border-radius:16px;box-shadow:0 8px 22px rgba(0,0,0,.35);flex-shrink:0}
-.hero-group{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--acc2)}
-.hero h1{font-size:clamp(24px,4.2vw,34px);font-weight:700;letter-spacing:-.01em;margin-top:2px}
-.hero p.pitch{margin-top:14px;font-size:15px;line-height:1.6;color:#c7cee8;max-width:600px}
-.hero-meta{display:flex;gap:22px;margin-top:26px;flex-wrap:wrap;font-size:12.5px;color:#9aa5c3}
-.hero-meta b{color:#fff;display:block;font-size:13px;margin-bottom:2px}
-
-.cta-row{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
-.btn-cta{
-  display:inline-flex;align-items:center;gap:8px;
-  background:linear-gradient(90deg,var(--acc),var(--acc2));color:#0b1220;
-  font-weight:700;font-size:14.5px;padding:13px 22px;border-radius:100px;text-decoration:none;
-  box-shadow:0 10px 24px -8px color-mix(in srgb, var(--acc) 60%, transparent);
-  transition:transform .15s;
-}
-.btn-cta:hover{transform:translateY(-2px)}
-.btn-cta svg{width:16px;height:16px}
-.btn-secondary{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;
-  font-weight:600;font-size:13.5px;padding:12px 18px;border-radius:100px;text-decoration:none;
-}
-.btn-secondary:hover{background:rgba(255,255,255,.14)}
-.btn-secondary svg{width:14px;height:14px}
-
-section.block{padding:44px 0}
-.block-head{margin-bottom:22px}
-.block-head h2{font-size:19px;font-weight:700;display:flex;align-items:center;gap:9px;color:var(--ink)}
-.block-head h2 svg{width:20px;height:20px;color:var(--acc)}
-.block-head p{font-size:13px;color:var(--ink-soft);margin-top:4px}
-
-.doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
-.doc-card{
-  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
-  padding:18px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:10px;
-  box-shadow:0 1px 3px rgba(15,23,42,.05);
-  transition:transform .15s,box-shadow .15s,border-color .15s;
-}
-.doc-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-card);border-color:var(--acc)}
-.doc-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
-  background:color-mix(in srgb, var(--acc) 14%, white);color:var(--acc)}
-.doc-icon svg{width:19px;height:19px}
-.doc-card b{font-size:14px;font-weight:700}
-.doc-card small{font-size:12px;color:var(--ink-soft);line-height:1.4}
-
-.team{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.team span{background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:100px;font-size:12.5px;font-weight:600}
-
-footer{background:var(--tinta);color:#cbd5f5;padding:32px 0;margin-top:20px}
-footer .wrap{display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center}
-footer a{color:#fff;text-decoration:none;font-weight:600}
-footer p{font-size:12px;opacity:.85}
+/* Landing do Vida no Controle · a página inteira é um cupom fiscal comprido saindo da impressora */
+:root{--lar:#ea580c;--papel:#fffef8;--tinta:#1f1a17;--mudo:#78716c;--verde:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Space Mono",monospace;background:var(--lar);color:var(--tinta);font-size:15.5px;line-height:1.55;
+  background-image:linear-gradient(135deg,rgba(255,255,255,.07) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.07) 50%,rgba(255,255,255,.07) 75%,transparent 75%);background-size:34px 34px}
+a{color:var(--tinta)}
+.impressora{max-width:700px;margin:24px auto 0;height:26px;background:var(--tinta);border-radius:12px 12px 4px 4px;position:relative}
+.impressora::after{content:"";position:absolute;left:6%;right:6%;bottom:-4px;height:8px;background:#000;border-radius:4px}
+.cupom{max-width:640px;margin:0 auto 50px;background:var(--papel);padding:26px 26px 40px;box-shadow:0 20px 40px -20px rgba(0,0,0,.5);animation:sai 1.1s ease-out;
+  -webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/18px 51% repeat-x,linear-gradient(#000 0 0) top/100% calc(100% - 9px) no-repeat;
+  mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/18px 51% repeat-x,linear-gradient(#000 0 0) top/100% calc(100% - 9px) no-repeat}
+@keyframes sai{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+@media(prefers-reduced-motion:reduce){.cupom{animation:none}}
+.c{text-align:center}
+.pont{border-top:2px dashed var(--tinta);margin:14px 0}
+h1{font-family:"Bebas Neue";font-weight:400;font-size:clamp(46px,11vw,76px);letter-spacing:.04em;line-height:.95}
+h2{font-family:"Bebas Neue";font-weight:400;font-size:30px;letter-spacing:.06em}
+.lin{display:flex;justify-content:space-between;gap:10px;padding:3px 0}
+.lin span:first-child{flex:1}
+.lin a{text-decoration:none}.lin a:hover{background:#fde68a}
+.total{display:flex;justify-content:space-between;font-family:"Bebas Neue";font-size:40px;letter-spacing:.04em}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:0 18px;background:var(--tinta);color:var(--papel);text-decoration:none;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin:4px}
+.btn.sec{background:transparent;color:var(--tinta);border:2px solid var(--tinta)}
+.fone{width:290px;height:560px;margin:10px auto;border:3px solid var(--tinta);border-radius:34px;overflow:hidden;background:var(--lar)}
+.fone iframe{width:375px;height:724px;border:0;transform:scale(.7573);transform-origin:0 0}
+.patro{border:2px solid var(--tinta);padding:12px;position:relative;margin:14px 0}
+.patro b{position:absolute;top:-11px;left:10px;background:var(--lar);color:#fff;font-size:11px;padding:1px 6px;letter-spacing:.08em}
+.cod{font-family:"Bebas Neue";font-size:50px;letter-spacing:.3em;text-align:center;margin-top:14px;background:repeating-linear-gradient(90deg,var(--tinta) 0 2px,transparent 2px 3px,var(--tinta) 3px 6px,transparent 6px 8px);-webkit-background-clip:text;background-clip:text;color:transparent}
+small{color:var(--mudo)}
 </style>
 </head>
 <body>
-
-<nav class="nav">
-  <div class="wrap">
-    <a href="../index.html" class="nav-back">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-      Todos os projetos
-    </a>
-    <span class="nav-title">Grupo 6 · Vida no Controle</span>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap">
-    <div class="hero-top">
-      <img class="hero-logo" src="../assets/logos/g6-192.png" alt="Logo Vida no Controle">
-      <div>
-        <div class="hero-group">Grupo 6 · Customer Discovery</div>
-        <h1>Vida no Controle</h1>
-      </div>
-    </div>
-    <p class="pitch">Plataforma gratuita que organiza a renda familiar, encontra oportunidades de economia e lê o cupom fiscal do mercado — só para Várzea Grande.</p>
-    <div class="hero-meta">
-      <div><b>Professor(a)</b>Prof. Renato</div>
-      <div><b>Integrantes</b>Hitalo, Rhaissa, Fernanda, Emilly, Yasmin</div>
-      <div><b>Código de campo</b>G6-&lt;nnn&gt;</div>
-    </div>
-    <div class="cta-row">
-      <a href="app.html" class="btn-cta">
-        Abrir o app
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a href="Slides-VidaNoControle.html" class="btn-secondary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        Ver slides de defesa
-      </a>
-    </div>
-  </div>
-</header>
-
-<main>
-  <section class="block">
-    <div class="wrap">
-      <div class="block-head">
-        <h2>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M15 3h6v6M10 14L21 3"/></svg>
-          Materiais do grupo
-        </h2>
-        <p>Toda a documentação produzida para a defesa e para a pesquisa de campo.</p>
-      </div>
-
-      <div class="doc-grid">
-        <a href="../assets/md-viewer.html?src=../Grupo6-VidaNoControle/README.md&voltar=./" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
-          <b>README do grupo</b>
-          <small>Integrantes, hipótese, roteiro de campo e pitch</small>
-        </a>
-
-        <a href="../assets/md-viewer.html?src=../Grupo6-VidaNoControle/formulario-app.md&voltar=./" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-          <b>Formulário de campo</b>
-          <small>20 perguntas em escala 1–5, código G6-&lt;nnn&gt;</small>
-        </a>
-
-        <a href="../assets/md-viewer.html?src=../Grupo6-VidaNoControle/ContextoApp.md&voltar=./" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg></div>
-          <b>Contexto do produto</b>
-          <small>Pitch, personas, jornada, MVP/v1/v2, KPIs e riscos</small>
-        </a>
-
-        <a href="../assets/md-viewer.html?src=../Grupo6-VidaNoControle/Pesquisa-Dados.md&voltar=./" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M15 3h6v6M10 14L21 3"/></svg></div>
-          <b>Pesquisa e dados</b>
-          <small>Dados oficiais + 12 artigos científicos com DOI</small>
-        </a>
-
-        <a href="Slides-VidaNoControle.pdf" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-          <b>Slides de defesa (PDF)</b>
-          <small>Versão para download e impressão</small>
-        </a>
-
-        <a href="vida_no_controle_vg.html" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M13 2v7h7"/></svg></div>
-          <b>Site institucional do projeto</b>
-          <small>Material complementar do grupo</small>
-        </a>
-      </div>
-
-      <div class="team">
-        <span>Hitalo</span>
-        <span>Rhaissa</span>
-        <span>Fernanda</span>
-        <span>Emilly</span>
-        <span>Yasmin</span>
-      </div>
-    </div>
-  </section>
+<div class="impressora" aria-hidden="true"></div>
+<main class="cupom">
+  <div class="c"><img src="../assets/logos/g6-96.png" alt="" width="56" height="56" style="border-radius:50%"><h1>VIDA NO CONTROLE</h1><small>GRUPO 6 · CUSTOMER DISCOVERY · CNPJ DA IDEIA: 000.000.006/2026</small></div>
+  <div class="pont"></div>
+  <p>Cada compra deixa um cupom. O Vida no Controle transforma esses cupons em controle do mês, lista de compras e comparação de preços entre mercados próximos — de graça, com ofertas patrocinadas sempre identificadas.</p>
+  <div class="c" style="margin-top:14px"><a class="btn" href="app.html">Abrir o app</a><a class="btn sec" href="Slides-VidaNoControle.html">Slides</a></div>
+  <div class="pont"></div>
+  <h2>ITENS DO PRODUTO</h2>
+  <div class="lin"><span>001 EXTRATO DO MÊS (RECEITAS × DESPESAS)</span><span>✓</span></div>
+  <div class="lin"><span>002 LEITURA DO TEXTO DA NFC-e</span><span>✓</span></div>
+  <div class="lin"><span>003 LISTA DE COMPRAS</span><span>✓</span></div>
+  <div class="lin"><span>004 RANKING DE PREÇO POR PRODUTO</span><span>SIMULADO</span></div>
+  <div class="lin"><span>005 OFERTAS PATROCINADAS IDENTIFICADAS</span><span>✓</span></div>
+  <div class="lin"><span>006 LEITURA POR CÂMERA (OCR)</span><span>PRÓXIMA VERSÃO</span></div>
+  <div class="pont"></div>
+  <div class="total"><span>CUSTO P/ USUÁRIO</span><span>R$ 0,00</span></div>
+  <div class="patro"><b>COMO SE PAGA</b>Ofertas de mercados parceiros, sempre marcadas como PATROCINADO. Dados de compra só de forma agregada e anônima, com personalização desligada por padrão.</div>
+  <div class="pont"></div>
+  <div class="fone"><iframe src="app.html" title="Vida no Controle em funcionamento" loading="lazy"></iframe></div>
+  <div class="pont"></div>
+  <h2>DOCUMENTOS</h2>
+  <div class="lin"><a href="../assets/md-viewer.html?src=../Grupo6-VidaNoControle/README.md&voltar=../Grupo6-VidaNoControle/">› README DO GRUPO</a><small>pitch</small></div>
+  <div class="lin"><a href="../assets/md-viewer.html?src=../Grupo6-VidaNoControle/formulario-app.md&voltar=../Grupo6-VidaNoControle/">› FORMULÁRIO DE CAMPO</a><small>G6-&lt;nnn&gt;</small></div>
+  <div class="lin"><a href="../assets/md-viewer.html?src=../Grupo6-VidaNoControle/ContextoApp.md&voltar=../Grupo6-VidaNoControle/">› CONTEXTO DO PRODUTO</a><small>KPIs</small></div>
+  <div class="lin"><a href="../assets/md-viewer.html?src=../Grupo6-VidaNoControle/Pesquisa-Dados.md&voltar=../Grupo6-VidaNoControle/">› PESQUISA E DADOS</a><small>artigos</small></div>
+  <div class="lin"><a href="Slides-VidaNoControle.pdf">› SLIDES EM PDF</a><small>download</small></div>
+  <div class="lin"><a href="vida_no_controle_vg.html">› PROTÓTIPO ORIGINAL DO GRUPO</a><small>1ª versão</small></div>
+  <div class="lin"><a href="../coleta/">› APP DE COLETA</a><small>offline</small></div>
+  <div class="pont"></div>
+  <div class="c"><small>OPERADORES: HITALO · RHAISSA · FERNANDA · EMILLY · YASMIN<br>ORIENTAÇÃO: PROF. RENATO<br>CERRADO TECH · UNIFACC · CIÊNCIAS CONTÁBEIS 3º SEM. (VG) · 2026</small></div>
+  <div class="cod">CONTROLE</div>
+  <p class="c"><a href="../index.html">‹ voltar a todos os projetos</a></p>
 </main>
-
-<footer>
-  <div class="wrap">
-    <a href="../index.html">← Voltar ao hub Customer Discovery</a>
-    <p>Grupo 6 · Vida no Controle · Cerrado Tech · Unifacc · 3º Semestre Tecnologia e Inovação, 2026</p>
-  </div>
-</footer>
-
 </body>
 </html>

@@ -2,598 +2,262 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#ea580c">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<title>Vida no Controle</title>
+<title>Vida no Controle — cada cupom conta</title>
 <link rel="manifest" href="manifest.json">
-<link rel="icon" type="image/png" sizes="192x192" href="../assets/logos/g6-192.png">
+<link rel="icon" type="image/png" href="../assets/logos/g6-96.png">
 <link rel="apple-touch-icon" href="../assets/logos/g6-192.png">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/identidade/temas.css">
-<link rel="stylesheet" href="../assets/kit/kit.css">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
-:root{
-  --accent:#ea580c;--accent-dark:#9a3412;--accent-soft:#fff7ed;
-  --accent2:#16a34a;--tinta:#431407;--tinta2:#9a3412;
-  --fonte:'Poppins',Arial,sans-serif;--fonte-titulo:'Poppins',Arial,sans-serif;
-  --texto:#431407;--texto-suave:#9a3412;--linha:#fed7aa;--fundo:#fffaf5;
-  --card:#ffffff;--ok:#16a34a;--alerta:#dc2626;--atencao:#d97706;
-}
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{height:100%}
-body{font-family:var(--fonte);background:var(--fundo);color:var(--texto);font-size:16px;overflow-x:hidden}
-.app{max-width:480px;margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;padding-bottom:80px}
-header.top{background:linear-gradient(135deg,var(--tinta) 0%,var(--tinta2) 100%);color:#fff;padding:14px 16px 40px;position:sticky;top:0;z-index:20}
-header.top .brand{display:flex;align-items:center;justify-content:space-between}
-header.top h1{font-size:17px;font-weight:700;font-family:var(--fonte-titulo)}
-header.top .sub{font-size:11px;opacity:.75;margin-top:2px}
-.badge-pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:11px;padding:3px 8px;border-radius:20px}
-main{flex:1;padding:0 16px}
-.screen{display:none;flex-direction:column;animation:fade .2s ease}
-.screen.active{display:flex}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.page-title{font-size:13px;font-weight:700;color:var(--texto-suave);text-transform:uppercase;letter-spacing:.07em;padding:16px 0 6px}
-.card{background:var(--card);border-radius:16px;padding:16px;box-shadow:0 1px 4px rgba(234,88,12,.08);margin-bottom:12px}
-.card-title{font-size:16px;font-weight:700;margin-bottom:6px;color:var(--tinta)}
-.card-sub{font-size:13px;color:var(--texto-suave)}
-
-/* G6 distinctive: local market, warm, bold, trustworthy */
-body{font-family:'Poppins',Arial,sans-serif;background:#fffaf5;color:#431407}
-header.top{background:linear-gradient(135deg,#431407 0%,#9a3412 100%);border-bottom:3px solid #ea580c;position:relative;overflow:hidden}
-header.top h1{font-family:'Poppins',Arial,sans-serif;font-weight:700;font-size:18px;color:#fffaf5}
-header.top .sub{color:#fed7aa}
-.badge-pill{background:rgba(234,88,12,.15);border:1px solid rgba(234,88,12,.3);color:#ea580c;font-weight:600}
-.card{background:#fff;border-radius:14px;box-shadow:0 3px 12px rgba(234,88,12,.1);border:1px solid #fed7aa}
-.card-title{font-family:'Poppins',Arial,sans-serif;font-weight:700;color:#431407}
-.card-sub{color:#9a3412}
-.btn{border-radius:12px;font-family:'Poppins',Arial,sans-serif;font-weight:600}
-.btn-primary{background:linear-gradient(135deg,#ea580c,#d4521e);color:#fff;box-shadow:0 4px 12px rgba(234,88,12,.25)}
-.btn-ghost{background:#fff;color:#ea580c;border:2px solid #ea580c;border-radius:12px}
-.btn-success{background:#16a34a;color:#fff;border-radius:12px}
-.nav-bottom{background:#fffaf5;border-top:1px solid #fed7aa}
-.nav-item.active{color:#ea580c;font-weight:700}
-.page-title{color:#ea580c;font-weight:700;text-transform:none;font-size:14px;letter-spacing:0}
-.text-muted{color:#9a3412}
-header.top::before{content:'';position:absolute;top:0;right:0;width:80px;height:80px;background:rgba(234,88,12,.08);border-radius:0 0 0 80px}
-.btn{display:flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:12px;padding:14px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;transition:transform .05s;padding-top:calc(14px + env(safe-area-inset-top))}
-.btn:active{transform:scale(.975)}
-.btn-primary{background:var(--accent);color:#fff}
-.btn-ghost{background:#fff;color:var(--accent);border:1.5px solid var(--accent)}
-.btn-success{background:var(--ok);color:#fff}
-.btn-sm{padding:10px 14px;font-size:13px}
-.row{display:flex;gap:10px}
-.row>*{flex:1}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-.text-center{text-align:center}
-.text-muted{color:var(--texto-suave);font-size:13px}
-.mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mb-8{margin-bottom:8px}.mb-12{margin-bottom:12px}
-.flex-between{display:flex;align-items:center;justify-content:space-between}
-.kpi-big{text-align:center;padding:16px 0}
-.kpi-big .num{font-size:40px;font-weight:900;color:var(--accent);line-height:1}
-.kpi-big .label{font-size:12px;color:var(--texto-suave);margin-top:4px}
-.input-group{margin-bottom:12px}
-.input-group label{display:block;font-size:12px;font-weight:600;color:var(--texto-suave);margin-bottom:4px;letter-spacing:.04em}
-.form-input,.form-select,.form-textarea{width:100%;padding:12px 14px;border:1.5px solid var(--linha);border-radius:10px;font-size:15px;font-family:inherit;background:#fff;color:var(--texto);transition:border-color .15s}
-.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--accent)}
-select.form-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239a3412' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
-textarea.form-textarea{resize:none}
-.nav-bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--linha);display:flex;z-index:30;padding-bottom:env(safe-area-inset-bottom)}
-.nav-bottom .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px;gap:3px;cursor:pointer;color:var(--texto-suave);transition:color .15s;border:none;background:none;font-size:11px;font-family:inherit}
-.nav-bottom .nav-item.active{color:var(--accent)}
-.nav-bottom .nav-icon{font-size:20px}
-.badge{background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px}
-.alert-box{padding:12px 14px;border-radius:10px;font-size:13px;margin-bottom:10px}
-.alert-box.info{background:#fff7ed;color:#9a3412}
-.alert-box.ok{background:#f0fdf4;color:#166534}
-.alert-box.warn{background:#fffbeb;color:#92400e}
-.item-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--linha)}
-.item-row:last-child{border-bottom:none}
-.item-row .icon-cat{width:36px;height:36px;border-radius:8px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.item-row .info{flex:1}
-.item-row .nome{font-size:14px;font-weight:600}
-.item-row .meta{font-size:12px;color:var(--texto-suave)}
-.item-row .valor{font-size:15px;font-weight:700;color:var(--accent)}
-.item-row .valor.receita{color:var(--ok)}
-.grafico-wrap{margin:12px 0}
-.bar-svg{display:flex;flex-direction:column;gap:6px}
-.bar-row{display:flex;align-items:center;gap:8px}
-.bar-label{font-size:11px;color:var(--texto-suave);width:70px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:right}
-.bar-bg{height:14px;background:var(--linha);border-radius:7px;flex:1;overflow:hidden}
-.bar-fill{height:100%;border-radius:7px;background:var(--accent);transition:width .4s}
-.toast-container{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);z-index:60;display:flex;flex-direction:column;gap:8px;pointer-events:none}
-.toast{background:var(--tinta);color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;animation:toastIn .25s ease}
-@keyframes toastIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.compare-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;border:1.5px solid var(--linha);margin-bottom:8px;background:#fff}
-.compare-item.best{border-color:var(--ok);background:#f0fdf4}
-.compare-item .rank{font-size:18px;font-weight:900;width:28px;text-align:center;flex-shrink:0}
-.compare-item .info{flex:1}
-.compare-item .preco{font-size:17px;font-weight:900;color:var(--accent)}
-.compare-item.best .preco{color:var(--ok)}
-.mercado-tag{font-size:11px;color:var(--texto-suave);background:var(--linha);padding:2px 6px;border-radius:4px}
-.brand{display:flex;align-items:center;gap:10px}
-.app-logo{width:38px;height:38px;border-radius:10px;object-fit:cover;box-shadow:0 2px 6px rgba(0,0,0,.25);flex-shrink:0}
+/* ===== Vida no Controle · estética de cupom fiscal: papel térmico, serrilha, tipografia de impressora ===== */
+:root{--lar:#ea580c;--lar2:#9a3412;--papel:#fffef8;--tinta:#1f1a17;--mudo:#78716c;--verde:#16a34a;--verm:#dc2626;--pontil:#d6d3d1}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Space Mono",ui-monospace,monospace;background:var(--lar);color:var(--tinta);min-height:100dvh;padding-bottom:calc(84px + env(safe-area-inset-bottom));font-size:15px;
+  background-image:linear-gradient(135deg,rgba(255,255,255,.06) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.06) 50%,rgba(255,255,255,.06) 75%,transparent 75%);background-size:28px 28px}
+button,input,select,textarea{font:inherit;color:inherit}
+.topo{display:flex;align-items:center;gap:10px;padding:calc(12px + env(safe-area-inset-top)) 16px 8px;color:#fff;max-width:560px;margin:0 auto}
+.topo img{width:38px;height:38px;border-radius:50%;background:#fff}
+.topo h1{font-family:"Bebas Neue";font-size:30px;letter-spacing:.04em;font-weight:400;line-height:1}
+main{max-width:560px;margin:0 auto;padding:6px 14px}
+.tela{display:none}.tela.on{display:block;animation:imprime .45s ease-out}
+@keyframes imprime{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+.cupom{background:var(--papel);padding:18px 16px 26px;margin:12px 0 22px;position:relative;box-shadow:0 10px 20px -12px rgba(0,0,0,.4);
+  -webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/16px 51% repeat-x,linear-gradient(#000 0 0) top/100% calc(100% - 8px) no-repeat;
+  mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/16px 51% repeat-x,linear-gradient(#000 0 0) top/100% calc(100% - 8px) no-repeat}
+.cab{text-align:center;border-bottom:1.5px dashed var(--tinta);padding-bottom:8px;margin-bottom:8px}
+.cab b{font-family:"Bebas Neue";font-size:26px;font-weight:400;letter-spacing:.06em;display:block}
+.cab small{color:var(--mudo);font-size:11.5px}
+.lin{display:flex;justify-content:space-between;gap:8px;padding:3px 0;font-size:14px}
+.lin span:first-child{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.pont{border-top:1.5px dashed var(--tinta);margin:8px 0}
+.total{display:flex;justify-content:space-between;align-items:baseline;font-family:"Bebas Neue";font-size:34px;letter-spacing:.04em}
+.pos{color:var(--verde)}.neg{color:var(--verm)}
+.barra{height:8px;background:repeating-linear-gradient(90deg,rgba(31,26,23,.15) 0 2px,transparent 2px 4px);margin:2px 0 6px}
+.barra i{display:block;height:100%;background:var(--lar)}
+.cod{font-family:"Bebas Neue";font-size:40px;letter-spacing:.3em;text-align:center;line-height:1;margin-top:8px;opacity:.85;
+  background:repeating-linear-gradient(90deg,var(--tinta) 0 2px,transparent 2px 3px,var(--tinta) 3px 6px,transparent 6px 8px);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{min-height:46px;border:1.5px solid var(--tinta);background:var(--tinta);color:var(--papel);font-weight:700;padding:0 12px;cursor:pointer;text-transform:uppercase;font-size:13px;letter-spacing:.04em}
+.btn.sec{background:transparent;color:var(--tinta)}.btn.peq{min-height:38px;font-size:11.5px;padding:0 8px}
+.fila{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.fila>*{flex:1 1 auto}
+.in{width:100%;min-height:44px;border:1.5px solid var(--tinta);background:#fff;padding:6px 8px;font-size:15px}
+textarea.in{min-height:150px;font-size:12.5px}
+label{display:block;font-size:12px;color:var(--mudo);margin:8px 0 2px;text-transform:uppercase}
+.seg{display:flex;border:1.5px solid var(--tinta)}.seg button{flex:1;min-height:42px;border:none;background:transparent;cursor:pointer;font-weight:700}.seg button[aria-pressed=true]{background:var(--tinta);color:var(--papel)}
+.item-lista{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px dotted var(--pontil)}
+.item-lista input[type=checkbox]{width:22px;height:22px;accent-color:var(--lar)}
+.item-lista.ok span{text-decoration:line-through;color:var(--mudo)}
+.rank{display:grid;grid-template-columns:22px 1fr auto;gap:6px;padding:4px 0;font-size:14px}.rank .p{font-weight:700}
+.rank.top .p{color:var(--verde)}
+.patro{border:2px solid var(--tinta);padding:12px;margin:10px 0;position:relative}
+.patro .tag{position:absolute;top:-10px;left:10px;background:var(--lar);color:#fff;font-size:10.5px;font-weight:700;padding:1px 6px;letter-spacing:.08em}
+.aviso{font-size:12px;color:var(--mudo);border:1px dashed var(--mudo);padding:8px;margin:8px 0}
+nav.baixo{position:fixed;left:0;right:0;bottom:0;background:var(--tinta);display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom);z-index:10}
+nav.baixo a{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10.5px;text-transform:uppercase;color:#a8a29e;text-decoration:none;padding:8px 0;min-height:60px}
+nav.baixo a span{font-size:19px}
+nav.baixo a[aria-current=page]{color:#fff;box-shadow:inset 0 3px 0 var(--lar)}
+#brinde{position:fixed;left:50%;top:14px;transform:translateX(-50%);background:var(--papel);border:2px solid var(--tinta);padding:10px 14px;font-weight:700;opacity:0;transition:.25s;pointer-events:none;z-index:30;max-width:90vw}
+#brinde.on{opacity:1}
+:focus-visible{outline:3px solid #fde047;outline-offset:2px}
+[hidden]{display:none!important}
 </style>
 </head>
-<body class="tema-g6">
-<div class="app">
-<header class="top">
-<div class="brand">
- <img class="app-logo" src="../assets/logos/g6-96.png" alt="Logo G6">
- <div>
-  <h1>Vida no Controle</h1>
-  <div class="sub" id="mesAtual">Setembro 2026</div>
- </div>
- <span class="badge-pill" id="saldoPill">R$ 0</span>
-</div>
-</header>
-
+<body>
+<header class="topo"><img src="../assets/logos/g6-96.png" alt=""><h1>Vida no Controle</h1></header>
 <main>
-<!-- DASHBOARD -->
-<section class="screen active" id="screenHome">
-<div class="page-title">Resumo do Mês</div>
-<div class="kpi-grid">
- <div class="kpi-item">
-  <div class="val" id="totalReceitas" style="color:var(--ok)">R$ 0</div>
-  <div class="lbl">Receitas</div>
- </div>
- <div class="kpi-item">
-  <div class="val" id="totalDespesas" style="color:var(--alerta)">R$ 0</div>
-  <div class="lbl">Despesas</div>
- </div>
-</div>
-<div class="card">
- <div class="grafico-wrap" id="graficoDespesas"></div>
-</div>
-<div class="card mt-12">
- <div class="flex-between mb-8">
-  <div class="card-title" style="margin:0">Receitas</div>
-  <span class="badge" id="receitasCount">0</span>
- </div>
- <div id="receitasList"></div>
- <button class="btn btn-sm btn-ghost mt-8" onclick="showScreen('Add')">+ Nova Receita</button>
-</div>
-<div class="card mt-12">
- <div class="flex-between mb-8">
-  <div class="card-title" style="margin:0">Despesas</div>
-  <span class="badge" id="despesasCount">0</span>
- </div>
- <div id="despesasList"></div>
- <button class="btn btn-sm btn-ghost mt-8" onclick="showScreen('Add')">+ Nova Despesa</button>
-</div>
-</section>
+  <section class="tela" id="t-extrato">
+    <div class="cupom"><div class="cab"><b>EXTRATO DO MÊS</b><small id="ex-mes"></small></div>
+      <div class="lin"><span>RECEITAS</span><span class="pos" id="ex-rec"></span></div><div class="lin"><span>DESPESAS</span><span class="neg" id="ex-desp"></span></div>
+      <div class="pont"></div><div class="total"><span>SALDO</span><span id="ex-saldo"></span></div>
+      <div class="pont"></div><div id="ex-cats"></div>
+      <div class="pont"></div><div id="ex-lanc"></div>
+      <div class="cod">VIDA</div></div>
+    <div class="cupom"><div class="cab"><b>NOVO LANÇAMENTO</b></div>
+      <div class="seg" role="group" aria-label="Tipo"><button data-tipo="d" aria-pressed="true">Despesa</button><button data-tipo="r" aria-pressed="false">Receita</button></div>
+      <label for="l-desc">Descrição</label><input class="in" id="l-desc" placeholder="Ex.: Salário, Farmácia">
+      <div class="fila" style="margin-top:0"><div style="flex:1"><label for="l-valor">Valor R$</label><input class="in" id="l-valor" type="number" inputmode="decimal"></div><div style="flex:1"><label for="l-cat">Categoria</label><select class="in" id="l-cat"></select></div></div>
+      <div class="fila"><button class="btn" id="lancar">Lançar</button></div></div>
+  </section>
 
-<!-- ADICIONAR TRANSAÇÃO -->
-<section class="screen" id="screenAdd">
-<div class="page-title">Nova Transação</div>
-<div class="card">
- <div class="input-group">
-  <label>DESCRIÇÃO</label>
-  <input class="form-input" id="inputDesc" placeholder="Ex.: Salário, Mercado, Uber" maxlength="50">
- </div>
- <div class="input-group">
-  <label>TIPO</label>
-  <select class="form-input" id="inputTipo" onchange="toggleTipo()">
-   <option value="receita">🔵 Receita (entrada de dinheiro)</option>
-   <option value="despesa">🟠 Despesa (gasto)</option>
-  </select>
- </div>
- <div class="input-group">
-  <label>VALOR (R$)</label>
-  <input class="form-input" id="inputValor" type="number" step="0.01" min="0" placeholder="0,00">
- </div>
- <div class="input-group">
-  <label>CATEGORIA</label>
-  <select class="form-input" id="inputCat">
-   <option value="salario">💰 Salário / Renda</option>
-   <option value="beneficio">🪙 Benefício / Bolsa</option>
-   <option value="extra">📈 Extra / Freelance</option>
-   <option value="alimentacao">🍔 Alimentação</option>
-   <option value="transporte">🚗 Transporte</option>
-   <option value="moradia">🏠 Moradia</option>
-   <option value="lazer">🎮 Lazer</option>
-   <option value="saude">🏥 Saúde</option>
-   <option value="educacao">📚 Educação</option>
-   <option value="outro">📦 Outro</option>
-  </select>
- </div>
- <div class="input-group">
-  <label>DATA</label>
-  <input class="form-input" id="inputData" type="date">
- </div>
- <button class="btn btn-primary" id="btnAddTrans">Salvar</button>
- <button class="btn btn-ghost mt-8" onclick="showScreen('Home')">Cancelar</button>
-</div>
-</section>
+  <section class="tela" id="t-cupom">
+    <div class="cupom"><div class="cab"><b>LER CUPOM FISCAL</b><small>cole o texto da NFC-e (consulta da SEFAZ ou cupom impresso)</small></div>
+      <textarea class="in" id="nfce" aria-label="Texto do cupom fiscal"></textarea>
+      <div class="fila"><button class="btn sec" id="exemplo-nfce">Colar exemplo</button><button class="btn" id="ler">Ler cupom</button></div>
+      <p class="aviso">Sem leitura de câmera (OCR) nesta versão. O texto é interpretado no aparelho.</p></div>
+    <div class="cupom" id="lido" hidden></div>
+  </section>
 
-<!-- LISTA COMPLETA -->
-<section class="screen" id="screenLista">
-<div class="page-title">Todas as Transações</div>
-<div class="flex-between mb-12">
- <select class="form-input" id="filterCat" onchange="renderLista()" style="margin:0">
-  <option value="todas">Todas categorias</option>
-  <option value="salario">💰 Salário</option><option value="alimentacao">🍔 Alimentação</option>
-  <option value="transporte">🚗 Transporte</option><option value="moradia">🏠 Moradia</option>
-  <option value="lazer">🎮 Lazer</option><option value="saude">🏥 Saúde</option>
-  <option value="educacao">📚 Educação</option><option value="outro">📦 Outro</option>
- </select>
-</div>
-<div class="card" id="allTransList"></div>
-</section>
+  <section class="tela" id="t-lista">
+    <div class="cupom"><div class="cab"><b>LISTA DE COMPRAS</b><small id="li-est"></small></div>
+      <div id="lista"></div>
+      <div class="fila"><input class="in" id="li-novo" list="produtos" placeholder="Adicionar item" aria-label="Novo item" style="flex:3"><button class="btn" id="li-add">+</button></div>
+      <datalist id="produtos"></datalist>
+      <div class="fila"><button class="btn sec peq" id="li-limpar">Tirar marcados</button><button class="btn sec peq" data-ir="#/comparar">Onde comprar?</button></div></div>
+  </section>
 
-<!-- CUPOM FISCAL -->
-<section class="screen" id="screenCupom">
-<div class="page-title">Ler Cupom Fiscal</div>
-<div class="card">
- <div class="card-title">Cole o texto do cupom</div>
- <div class="card-sub mb-12">Copie o texto do cupom fiscal e cole aqui para conferir os preços.</div>
- <div class="input-group">
-  <label>TEXTO DO CUPOM</label>
-  <textarea class="form-textarea" id="inputCupom" placeholder="Cole aqui o texto do cupom fiscal..." rows="10"></textarea>
- </div>
- <button class="btn btn-primary" id="btnLerCupom" onclick="lerCupom()">Conferir Preços 🔍</button>
-</div>
-<div id="cupomResult"></div>
-</section>
+  <section class="tela" id="t-comparar">
+    <div class="cupom"><div class="cab"><b>ONDE ESTÁ MAIS BARATO</b><small>mercados próximos · preços SIMULADOS</small></div>
+      <div id="cesta"></div><div class="pont"></div>
+      <label for="cmp-prod">Ranking por produto</label><select class="in" id="cmp-prod"></select>
+      <div id="ranking" style="margin-top:6px"></div>
+      <p class="aviso">Na versão real, os preços viriam de cupons compartilhados pelos usuários de forma agregada e anônima. “Você pagou” vem dos seus cupons lidos.</p></div>
+  </section>
 
-<!-- COMPARADOR -->
-<section class="screen" id="screenComparador">
-<div class="page-title">Comparador de Preços</div>
-<div class="card">
- <div class="card-title">Compare preços de mercados próximos</div>
- <div class="card-sub mb-12">Selecione os produtos para comparar preços entre mercados.</div>
- <div class="input-group">
-  <label>PRODUTO A COMPARAR</label>
-  <input class="form-input" id="inputProd" placeholder="Ex.: Arroz 5kg, Feijão, Leite" maxlength="50">
- </div>
- <div class="input-group">
-  <label>MERCADO</label>
-  <select class="form-input" id="inputMercado">
-   <option value="atacadao">Atacadão</option>
-   <option value="carrefour">Carrefour</option>
-   <option value="wendhausen">Wendhausen</option>
-   <option value="emporio">Empório</option>
-  </select>
- </div>
- <div class="input-group">
-  <label>PREÇO (R$)</label>
-  <input class="form-input" id="inputPreco" type="number" step="0.01" min="0" placeholder="0,00">
- </div>
- <button class="btn btn-primary" id="btnAddCompare" onclick="addComparacao()">Adicionar à Lista</button>
-</div>
-<div id="comparacaoList"></div>
-<div class="card mt-12">
- <div class="card-title">Ranking por Produto</div>
- <div id="rankingList"></div>
-</div>
-</section>
-
-<!-- PERFIL -->
-<section class="screen" id="screenProfile">
-<div class="page-title">Meu Perfil</div>
-<div class="card" style="margin-bottom:12px;border-left:4px solid #16a34a">
-  <div class="card-title">📋 Sobre o Trabalho Acadêmico</div>
-  <p style="font-size:13px;color:#9a3412;margin-bottom:12px;line-height:1.6">
-    O <strong>Vida no Controle</strong> faz parte da pesquisa de <strong>Customer Discovery</strong> da disciplina de Projeto Inovador (3º Semestre · Unifacc).
-    Os alunos foram a um shopping ouvir famílias de Várzea Grande sobre orçamento, compras e cupom fiscal.
-  </p>
-  <button class="btn btn-primary btn-sm" id="btnSobreTrabalho" onclick="abrirSobreTrabalho()">
-    Ver contexto, formulário e referencial
-  </button>
-</div>
-<div class="card" style="margin-bottom:12px;border-left:4px solid #ea580c">
-  <div class="card-title">🌐 Site do Projeto</div>
-  <p style="font-size:13px;color:#9a3412;margin-bottom:12px;line-height:1.6">
-    O site oficial do <strong>Vida no Controle</strong> com todas as funcionalidades do projeto conceitual: orçamento, cashback, reserva e proteção de crédito.
-  </p>
-  <a href="vida_no_controle_vg.html" target="_blank" class="btn btn-ghost btn-sm" style="display:flex;text-decoration:none">
-    Abrir site do projeto →
-  </a>
-</div>
-<div class="card">
-  <div class="card-title">Estatísticas</div>
- <div id="profileStats"></div>
-</div>
-<div class="card mt-12">
- <div class="alert-box info mb-8">
-  <strong>💡 Dica:</strong> Registre todas as suas receitas e despesas para ter controle real do seu dinheiro. Quanto mais detalhado, melhor!
- </div>
-</div>
-<div class="card mt-12">
- <button class="btn btn-ghost" id="btnExportVNC" style="margin-bottom:8px">Exportar Dados 📤</button>
- <button class="btn btn-danger" id="btnResetVNC">Resetar Tudo 🗑️</button>
-</div>
-</section>
+  <section class="tela" id="t-ofertas">
+    <div class="cupom"><div class="cab"><b>OFERTAS</b><small>é assim que o app continua gratuito</small></div>
+      <div id="ofertas"></div>
+      <div class="pont"></div>
+      <label class="item-lista" style="text-transform:none;font-size:14px;color:var(--tinta)"><input type="checkbox" id="personalizar"> Usar meu histórico de compras (agregado, sem nome/CPF) para escolher ofertas</label>
+      <p class="aviso" id="transp"></p></div>
+    <div class="cupom"><div class="cab"><b>SEUS DADOS</b></div>
+      <div class="fila"><button class="btn sec peq" id="exportar">Exportar</button><button class="btn sec peq" id="importar" data-teste="pular">Importar</button><button class="btn sec peq" id="zerar">Apagar tudo</button></div>
+      <p style="text-align:center;font-size:11px;color:var(--mudo);margin-top:10px">VIDA NO CONTROLE · GRUPO 6 · 3SEMVG · UNIFACC-MT</p></div>
+  </section>
 </main>
+<nav class="baixo" aria-label="Seções"><a href="#/extrato"><span>🧾</span>Extrato</a><a href="#/cupom"><span>📥</span>Cupom</a><a href="#/lista"><span>📝</span>Lista</a><a href="#/comparar"><span>⚖️</span>Comparar</a><a href="#/ofertas"><span>🏷️</span>Ofertas</a></nav>
+<div id="brinde" role="status" aria-live="polite"></div>
 
-<nav class="nav-bottom" id="bottomNav">
-<button class="nav-item active" data-screen="Home"><span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="20" height="16" rx="2"/><path d="M3 9h20"/><path d="M9 5V3M17 5V3"/></svg></span><span>Home</span></button>
-<button class="nav-item" data-screen="Lista"><span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span><span>Lista</span></button>
-<button class="nav-item" data-screen="Cupom"><span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h8l2 4-2 4H4a2 2 0 01-2-2V6a2 2 0 012-2z"/><path d="M22 4h-8l-2 4 2 4h8a2 2 0 002-2V6a2 2 0 00-2-2z"/><path d="M13 12v8M10 15h6"/></svg></span><span>Cupom</span></button>
-<button class="nav-item" data-screen="Comparador"><span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20V4M19 20V10"/><path d="M4 8l3-3 3 3M4 20l3-3 3 3"/><path d="M16 10l3-3 3 3"/></svg></span><span>Comparar</span></button>
-<button class="nav-item" data-screen="Profile"><span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="10" r="5"/><path d="M4 22c0-5 4-9 9-9s9 4 9 9"/></svg></span><span>Perfil</span></button>
-</nav>
-</div>
-<div class="toast-container" id="toastContainer"></div>
-
-<div class="modal-overlay" id="modalSobre" style="display:none">
-  <div class="modal-box" style="max-height:85dvh;overflow-y:auto;padding:20px;border-radius:18px">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-      <div style="font-size:16px;font-weight:700;color:#431407;font-family:'Poppins',Arial,sans-serif">Sobre o Trabalho</div>
-      <button onclick="fecharSobreTrabalho()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#9a3412">✕</button>
-    </div>
-    <div style="font-size:13px;line-height:1.7;color:#431407">
-      <div style="background:#fff7ed;border-radius:12px;padding:14px;margin-bottom:14px;border-left:4px solid #ea580c">
-        <strong style="color:#ea580c">🛒 Contexto do Projeto</strong><br>
-        O <strong>Vida no Controle</strong> nasceu da defesa de projeto inovador sobre organização financeira familiar e economia no supermercado. A ideia: um app gratuito que organiza a renda familiar, compara preços entre supermercados de Várzea Grande e lê o cupom fiscal para identificar erros de preço. O supermercado local seria o sponsor. A pesquisa de campo aconteceu no shopping com formulário de 20 perguntas em escala 1–5.
-      </div>
-      <div style="background:#f0fdf4;border-radius:12px;padding:14px;margin-bottom:14px;border-left:4px solid #16a34a">
-        <strong style="color:#16a34a">📊 Resultado do Formulário (Customer Discovery)</strong><br>
-        <span style="font-size:12px">A pesquisa de campo foi aplicada pelo grupo com apoio do app de coleta. As perguntas medem: controle do orçamento familiar, frequência de comparação de preços, uso do cupom fiscal, conhecimento sobre economia e interesse em reserva financeira. Os códigos G6-<nnn> correlacionam cada resposta quantitativa com o áudio gravado no WhatsApp.</span>
-      </div>
-      <div style="background:#fffbeb;border-radius:12px;padding:14px;margin-bottom:14px;border-left:4px solid #d97706">
-        <strong style="color:#d97706">📚 Referencial Teórico</strong><br>
-        <span style="font-size:12px">O trabalho tem base em 14 artigos peer-reviewed (2021–2026), incluindo: Singh et al. (2022) sobre budgeting apps e aumento de savings; Lindblom et al. (2023) sobre comparação de preços e transparência; Nyström et al. (2021) sobre gamificação e engajamento financeiro; Garcia et al. (2023) sobre resiliência financeira em baixa renda; Ming et al. (2024) sobre time poverty e planejamento financeiro. O arcabouço teórico inclui nudge theory, behavioral economics e financial wellbeing.</span>
-      </div>
-      <div style="background:#fff7ed;border-radius:12px;padding:14px;border-left:4px solid #ea580c">
-        <strong style="color:#ea580c">🎯 Hipótese de Campo</strong><br>
-        <span style="font-size:12px">A hipótese é que famílias de Várzea Grande perdem dinheiro por não comparar preços entre supermercados e por não conferir o cupom fiscal. O Vida no Controle quer transformar o ato de ir ao mercado em ferramenta de educação financeira prática — lendo o cupom, comparando preços e construindo reserva aos poucos.</span>
-      </div>
-    </div>
-    <button class="btn btn-ghost btn-sm" onclick="fecharSobreTrabalho()" style="margin-top:14px;width:100%;border-color:#ea580c;color:#ea580c">Fechar</button>
-  </div>
-</div>
 <script>
-function abrirSobreTrabalho(){document.getElementById('modalSobre').style.display='flex';document.body.style.overflow='hidden'}
-function fecharSobreTrabalho(){document.getElementById('modalSobre').style.display='none';document.body.style.overflow=''}
-document.getElementById('modalSobre').onclick=function(e){if(e.target===this)fecharSobreTrabalho()};
-</script>
+/* ============================================================================
+   Construção do Vida no Controle: um intérprete de texto de NFC-e (tokenizador por
+   expressões regulares que reconhece o formato da consulta da SEFAZ e o do cupom
+   impresso) alimenta um livro-caixa. Os itens lidos são normalizados para um
+   catálogo de produtos, o que liga o cupom à lista de compras e ao comparador.
+   ============================================================================ */
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const R$ = v => (+v || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+const num = s => parseFloat(String(s).replace(/\./g, '').replace(',', '.')) || 0;
+let tb; const brinde = m => { const e = $('#brinde'); e.textContent = m; e.classList.add('on'); clearTimeout(tb); tb = setTimeout(() => e.classList.remove('on'), 2200); };
 
-<script src="../assets/kit/kit.js" type="module"></script>
-<script type="module">
-import { fmtBRL, uid } from '../assets/kit/kit.js';
+const CATS = { d: ['Mercado', 'Moradia', 'Transporte', 'Saúde', 'Educação', 'Lazer', 'Contas', 'Outros'], r: ['Salário', 'Extra', 'Benefício', 'Outros'] };
+const PRODUTOS = [['arroz', 'Arroz 5 kg', /arroz/i, 26], ['feijao', 'Feijão 1 kg', /feij/i, 8.5], ['oleo', 'Óleo de soja 900 ml', /oleo|óleo/i, 7.2], ['cafe', 'Café 500 g', /caf[eé]/i, 19], ['leite', 'Leite 1 L', /leite/i, 5.4], ['acucar', 'Açúcar 2 kg', /a[cç][uú]car/i, 9.8], ['frango', 'Frango (kg)', /frango/i, 13.5], ['ovos', 'Ovos (dúzia)', /ovo/i, 11], ['pao', 'Pão francês (kg)', /p[aã]o/i, 16], ['sabao', 'Sabão em pó 1 kg', /sab[aã]o/i, 14]];
+const MERCADOS = [['Atacadão do Bairro', .93], ['Mercado Esquina', 1.06], ['Super Preço Bom', .98], ['Rede Família', 1.02]];
+// preço simulado e estável por mercado/produto
+const preco = (pi, mi) => { const h = Math.sin((pi + 1) * 12.9898 + (mi + 1) * 78.233) * 43758.5453; return +(PRODUTOS[pi][3] * MERCADOS[mi][1] * (0.94 + (h - Math.floor(h)) * .12)).toFixed(2); };
+const OFERTAS = [{ m: 'Atacadão do Bairro', t: 'Leve 3 pacotes de café e pague 2', cat: 'cafe' }, { m: 'Rede Família', t: 'Frango congelado com 15% de desconto às quartas', cat: 'frango' }, { m: 'Farmácia Parceira', t: 'Genéricos com 20% no app', cat: null }];
+const EXEMPLO_NFCE = `SUPER PRECO BOM LTDA
+CNPJ: 12.345.678/0001-90
+AV. COUTO MAGALHAES, 1500 - VARZEA GRANDE - MT
+Documento Auxiliar da Nota Fiscal de Consumidor Eletrônica
+ARROZ TIPO 1 5KG (Código: 7891234500011) Qtde.:1 UN: UN Vl. Unit.: 25,49 Vl. Total 25,49
+FEIJAO CARIOCA 1KG (Código: 7891234500028) Qtde.:2 UN: UN Vl. Unit.: 8,29 Vl. Total 16,58
+CAFE TORRADO 500G (Código: 7891234500035) Qtde.:1 UN: UN Vl. Unit.: 18,90 Vl. Total 18,90
+002 7891234500042 LEITE UHT INTEGRAL 1L 6 UN X 5,19 31,14
+PEITO DE FRANGO KG (Código: 2000100) Qtde.:1,254 UN: KG Vl. Unit.: 12,99 Vl. Total 16,29
+Qtd. total de itens: 5
+Valor total R$: 108,40
+Valor a pagar R$: 108,40
+Emissão: 20/09/2026 18:42:10`;
 
-const NS = 'vnc';
-function _k(k) { return NS + ':' + k; }
-const s = {
-  get(k, f) { try { const v = localStorage.getItem(_k(k)); return v == null ? f : JSON.parse(v); } catch { return f; } },
-  set(k, v) { try { localStorage.setItem(_k(k), JSON.stringify(v)); return true; } catch { return false; } }
-};
+/* ---------- estado ---------- */
+const CH = 'vidanocontrole:v2';
+const semente = () => { const h = new Date(), d = n => new Date(h.getFullYear(), h.getMonth(), n).toISOString();
+  return { tipo: 'd', lanc: [{ id: 'l1', t: 'r', desc: 'Salário', cat: 'Salário', v: 2600, q: d(5) }, { id: 'l2', t: 'd', desc: 'Aluguel', cat: 'Moradia', v: 900, q: d(6) }, { id: 'l3', t: 'd', desc: 'Energia', cat: 'Contas', v: 170, q: d(10) }, { id: 'l4', t: 'd', desc: 'Ônibus', cat: 'Transporte', v: 120, q: d(12) }],
+    lista: [{ p: 'arroz', ok: false }, { p: 'feijao', ok: false }, { p: 'cafe', ok: false }, { p: 'leite', ok: true }], pagou: {}, personalizar: false, cupons: [] }; };
+let S; try { S = JSON.parse(localStorage.getItem(CH)); } catch (e) {} if (!S) S = semente();
+const salvar = () => localStorage.setItem(CH, JSON.stringify(S)); salvar();
+const doMes = () => { const k = new Date().toISOString().slice(0, 7); return S.lanc.filter(l => l.q.slice(0, 7) === k); };
 
-let trans = s.get('trans', []);
-let comparacoes = s.get('comparacoes', []);
-
-function toast(msg) {
-  const c = document.getElementById('toastContainer');
-  const el = document.createElement('div');
-  el.className = 'toast';
-  el.textContent = msg;
-  c.appendChild(el);
-  setTimeout(() => el.remove(), 2800);
-}
-
-function fmt(v) { return fmtBRL(v); }
-
-function showScreen(name) {
-  document.querySelectorAll('.screen').forEach(x => x.classList.remove('active'));
-  document.getElementById('screen' + name).classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.screen === name));
-  if (name === 'Home') renderHome();
-  if (name === 'Lista') renderLista();
-  if (name === 'Profile') renderProfile();
-  if (name === 'Comparador') renderComparacoes();
-}
-
-const CAT_ICONS = {salario:'💰',beneficio:'🪙',extra:'📈',alimentacao:'🍔',transporte:'🚗',moradia:'🏠',lazer:'🎮',saude:'🏥',educacao:'📚',outro:'📦'};
-
-function renderHome() {
-  const now = new Date();
-  const mes = now.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
-  document.getElementById('mesAtual').textContent = mes.charAt(0).toUpperCase() + mes.slice(1);
-
-  const mesAtual = now.getMonth();
-  const anoAtual = now.getFullYear();
-  const doMes = trans.filter(t => {
-    const d = new Date(t.data);
-    return d.getMonth() === mesAtual && d.getFullYear() === anoAtual;
+/* ---------- intérprete de NFC-e ---------- */
+function interpretar(txt) {
+  const linhas = txt.split(/\r?\n/).map(l => l.trim()).filter(Boolean), itens = [];
+  const reSefaz = /^(.+?)\s*\(C[óo]digo:\s*\w+\)\s*Qtde\.?:\s*([\d.,]+)\s*UN:\s*(\w+)\s*Vl\.?\s*Unit\.?:\s*([\d.,]+)\s*Vl\.?\s*Total\s*([\d.,]+)/i;
+  const reImpresso = /^\d{1,3}\s+\d{4,14}\s+(.+?)\s+([\d.,]+)\s*(UN|KG|L|CX|PC)\s*[xX*]\s*([\d.,]+)\s+([\d.,]+)$/i;
+  let loja = '', cnpj = '', total = 0, data = null;
+  linhas.forEach((l, i) => {
+    let m;
+    if ((m = l.match(reSefaz))) itens.push({ nome: m[1], qt: num(m[2]), un: m[3], unit: num(m[4]), tot: num(m[5]) });
+    else if ((m = l.match(reImpresso))) itens.push({ nome: m[1], qt: num(m[2]), un: m[3], unit: num(m[4]), tot: num(m[5]) });
+    else if ((m = l.match(/CNPJ:?\s*([\d./-]{14,18})/i))) cnpj = m[1];
+    else if ((m = l.match(/Valor\s+(a\s+pagar|total)\s*R\$:?\s*([\d.,]+)/i))) total = num(m[2]);
+    else if ((m = l.match(/(\d{2})\/(\d{2})\/(\d{4})/))) data = new Date(+m[3], +m[2] - 1, +m[1]);
+    if (i === 0 && !/cnpj|documento/i.test(l)) loja = l;
   });
+  itens.forEach(it => { const k = PRODUTOS.findIndex(p => p[2].test(it.nome)); it.prod = k >= 0 ? PRODUTOS[k][0] : null; });
+  const soma = +itens.reduce((a, x) => a + x.tot, 0).toFixed(2);
+  return { loja: loja || 'Estabelecimento', cnpj, itens, total: total || soma, soma, data: data || new Date() };
+}
+let ultimoLido = null;
 
-  const receitas = doMes.filter(t => t.tipo === 'receita').reduce((a, t) => a + t.valor, 0);
-  const despesas = doMes.filter(t => t.tipo === 'despesa').reduce((a, t) => a + t.valor, 0);
-  const saldo = receitas - despesas;
-
-  document.getElementById('totalReceitas').textContent = fmt(receitas);
-  document.getElementById('totalDespesas').textContent = fmt(despesas);
-  document.getElementById('saldoPill').textContent = fmt(saldo);
-  document.getElementById('saldoPill').style.color = saldo >= 0 ? '#86efac' : '#fca5a5';
-
-  document.getElementById('receitasCount').textContent = doMes.filter(t => t.tipo === 'receita').length;
-  document.getElementById('despesasCount').textContent = doMes.filter(t => t.tipo === 'despesa').length;
-
-  // Gráfico de despesas por categoria
-  const cats = {};
-  doMes.filter(t => t.tipo === 'despesa').forEach(t => {
-    cats[t.cat] = (cats[t.cat] || 0) + t.valor;
-  });
-  const totalCats = Object.values(cats).reduce((a, v) => a + v, 0);
-  const grafEl = document.getElementById('graficoDespesas');
-  if (totalCats === 0) {
-    grafEl.innerHTML = '<div class="text-muted text-center" style="padding:16px">Nenhuma despesa registrada.</div>';
-  } else {
-    const sorted = Object.entries(cats).sort((a, b) => b[1] - a[1]);
-    grafEl.innerHTML = '<div class="bar-svg">' + sorted.map(([cat, val]) => {
-      const pct = Math.round((val / totalCats) * 100);
-      return `<div class="bar-row">
-       <span class="bar-label">${CAT_ICONS[cat] || '📦'} ${cat}</span>
-       <div class="bar-bg"><div class="bar-fill" style="width:${pct}%"></div></div>
-       <span style="font-size:11px;color:var(--texto-suave);width:40px">${pct}%</span>
-      </div>`;
-    }).join('') + '</div>';
-  }
-
-  // Listas
-  const recList = doMes.filter(t => t.tipo === 'receita').slice(-5).reverse();
-  const despList = doMes.filter(t => t.tipo === 'despesa').slice(-5).reverse();
-
-  document.getElementById('receitasList').innerHTML = !recList.length
-    ? '<div class="text-muted" style="font-size:13px;text-align:center;padding:12px">Nenhuma receita este mês.</div>'
-    : recList.map(t => `<div class="item-row">
-     <div class="icon-cat">${CAT_ICONS[t.cat] || '📦'}</div>
-     <div class="info"><div class="nome">${t.desc}</div><div class="meta">${new Date(t.data).toLocaleDateString('pt-BR')}</div></div>
-     <div class="valor receita">+${fmt(t.valor)}</div>
-    </div>`).join('');
-
-  document.getElementById('despesasList').innerHTML = !despList.length
-    ? '<div class="text-muted" style="font-size:13px;text-align:center;padding:12px">Nenhuma despesa este mês.</div>'
-    : despList.map(t => `<div class="item-row">
-     <div class="icon-cat">${CAT_ICONS[t.cat] || '📦'}</div>
-     <div class="info"><div class="nome">${t.desc}</div><div class="meta">${new Date(t.data).toLocaleDateString('pt-BR')}</div></div>
-     <div class="valor">-${fmt(t.valor)}</div>
-    </div>`).join('');
+/* ---------- telas ---------- */
+function telaExtrato() {
+  const m = doMes(), rec = m.filter(l => l.t === 'r').reduce((a, l) => a + l.v, 0), desp = m.filter(l => l.t === 'd').reduce((a, l) => a + l.v, 0);
+  $('#ex-mes').textContent = new Date().toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' }).toUpperCase() + ' · ' + m.length + ' LANÇAMENTOS';
+  $('#ex-rec').textContent = R$(rec); $('#ex-desp').textContent = R$(desp); const s = rec - desp; $('#ex-saldo').textContent = R$(s); $('#ex-saldo').className = s >= 0 ? 'pos' : 'neg';
+  const cats = {}; m.filter(l => l.t === 'd').forEach(l => cats[l.cat] = (cats[l.cat] || 0) + l.v);
+  $('#ex-cats').innerHTML = Object.entries(cats).sort((a, b) => b[1] - a[1]).map(([c, v]) => `<div class="lin"><span>${esc(c.toUpperCase())}</span><span>${R$(v)}</span></div><div class="barra"><i style="width:${v / desp * 100}%"></i></div>`).join('') || '<div class="lin"><span>SEM DESPESAS</span></div>';
+  $('#ex-lanc').innerHTML = [...m].sort((a, b) => b.q.localeCompare(a.q)).map(l => `<div class="lin"><span>${new Date(l.q).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })} ${esc(l.desc)}</span><span class="${l.t === 'r' ? 'pos' : 'neg'}">${l.t === 'r' ? '+' : '−'}${R$(l.v)}</span><button class="btn sec peq" data-rem="${l.id}" aria-label="Remover ${esc(l.desc)}" style="min-height:30px;padding:0 6px">×</button></div>`).join('');
+  $$('[data-tipo]').forEach(b => b.setAttribute('aria-pressed', b.dataset.tipo === S.tipo));
+  $('#l-cat').innerHTML = CATS[S.tipo].map(c => `<option>${c}</option>`).join('');
+}
+function mostrarLido(r) {
+  const el = $('#lido'); el.hidden = false; const conf = Math.abs(r.soma - r.total) < .05;
+  el.innerHTML = `<div class="cab"><b>${esc(r.loja)}</b><small>${esc(r.cnpj)} · ${r.data.toLocaleDateString('pt-BR')}</small></div>
+    ${r.itens.map(i => `<div class="lin"><span>${esc(i.nome)}</span><span>${R$(i.tot)}</span></div><div class="lin" style="font-size:12px;color:var(--mudo)"><span>${String(i.qt).replace('.', ',')} ${esc(i.un)} × ${R$(i.unit)}</span><span>${i.prod ? '→ ' + PRODUTOS.find(p => p[0] === i.prod)[1] : 'não catalogado'}</span></div>`).join('')}
+    <div class="pont"></div><div class="total"><span>TOTAL</span><span>${R$(r.total)}</span></div>
+    <p style="font-size:12px;color:${conf ? 'var(--verde)' : 'var(--verm)'}">${r.itens.length} itens lidos · soma ${R$(r.soma)} ${conf ? '✓ confere' : '≠ total do cupom — confira'}</p>
+    <div class="fila"><button class="btn" id="lancar-cupom">Lançar como despesa</button></div>`;
+}
+function telaLista() {
+  const faltam = S.lista.filter(i => !i.ok), est = faltam.reduce((a, i) => { const k = PRODUTOS.findIndex(p => p[0] === i.p); return a + (k >= 0 ? Math.min(...MERCADOS.map((_, m) => preco(k, m))) : 0); }, 0);
+  $('#li-est').textContent = `${faltam.length} ITENS · ESTIMATIVA ${R$(est)} (menor preço simulado)`;
+  $('#lista').innerHTML = S.lista.map((i, n) => { const p = PRODUTOS.find(x => x[0] === i.p); return `<label class="item-lista ${i.ok ? 'ok' : ''}"><input type="checkbox" data-li="${n}" ${i.ok ? 'checked' : ''}><span style="flex:1">${esc(p ? p[1] : i.p)}</span>${S.pagou[i.p] ? `<small style="color:var(--mudo)">pagou ${R$(S.pagou[i.p])}</small>` : ''}</label>`; }).join('') || '<p>Lista vazia.</p>';
+  $('#produtos').innerHTML = PRODUTOS.map(p => `<option value="${p[1]}">`).join('');
+}
+function telaComparar() {
+  const itens = S.lista.filter(i => !i.ok).map(i => PRODUTOS.findIndex(p => p[0] === i.p)).filter(k => k >= 0);
+  const cestas = MERCADOS.map((m, mi) => [m[0], itens.reduce((a, k) => a + preco(k, mi), 0)]).sort((a, b) => a[1] - b[1]);
+  $('#cesta').innerHTML = `<label>Sua lista (${itens.length} itens) em cada mercado</label>` + cestas.map(([n, v], i) => `<div class="rank ${i === 0 ? 'top' : ''}"><span>${i + 1}º</span><span>${esc(n)}</span><span class="p">${R$(v)}</span></div>`).join('') +
+    (itens.length && cestas.length > 1 ? `<p style="font-size:13px;margin-top:4px">Economia comprando no 1º: <b class="pos">${R$(cestas.at(-1)[1] - cestas[0][1])}</b></p>` : '');
+  if (!$('#cmp-prod').options.length) $('#cmp-prod').innerHTML = PRODUTOS.map((p, i) => `<option value="${i}">${p[1]}</option>`).join('');
+  const k = +$('#cmp-prod').value || 0, rk = MERCADOS.map((m, mi) => [m[0], preco(k, mi)]).sort((a, b) => a[1] - b[1]), pg = S.pagou[PRODUTOS[k][0]];
+  $('#ranking').innerHTML = rk.map(([n, v], i) => `<div class="rank ${i === 0 ? 'top' : ''}"><span>${i + 1}º</span><span>${esc(n)}</span><span class="p">${R$(v)}</span></div>`).join('') + (pg ? `<div class="rank"><span>★</span><span>Você pagou (seu cupom)</span><span class="p">${R$(pg)}</span></div>` : '');
+}
+function telaOfertas() {
+  const hist = new Set(Object.keys(S.pagou).concat(S.lista.map(i => i.p)));
+  const ord = S.personalizar ? [...OFERTAS].sort((a, b) => hist.has(b.cat) - hist.has(a.cat)) : OFERTAS;
+  $('#ofertas').innerHTML = ord.map(o => `<div class="patro"><span class="tag">PATROCINADO</span><b>${esc(o.m)}</b><p>${esc(o.t)}</p>${S.personalizar && hist.has(o.cat) ? '<small style="color:var(--mudo)">Mostrado por causa de itens da sua lista/cupons</small>' : ''}</div>`).join('');
+  $('#personalizar').checked = S.personalizar;
+  $('#transp').textContent = S.personalizar ? 'Personalização ligada: usamos só categorias de produto, agregadas. Nunca vendemos nome, CPF ou cupons individuais. Desligue quando quiser.' : 'Personalização desligada: as ofertas são as mesmas para todos. Ofertas pagas sempre aparecem marcadas como PATROCINADO.';
 }
 
-function toggleTipo() {
-  const tipo = document.getElementById('inputTipo').value;
-  const cat = document.getElementById('inputCat');
-  if (tipo === 'receita') {
-    cat.innerHTML = '<option value="salario">💰 Salário / Renda</option><option value="beneficio">🪙 Benefício / Bolsa</option><option value="extra">📈 Extra / Freelance</option><option value="outro">📦 Outro</option>';
-  } else {
-    cat.innerHTML = '<option value="alimentacao">🍔 Alimentação</option><option value="transporte">🚗 Transporte</option><option value="moradia">🏠 Moradia</option><option value="lazer">🎮 Lazer</option><option value="saude">🏥 Saúde</option><option value="educacao">📚 Educação</option><option value="outro">📦 Outro</option>';
-  }
+/* ---------- eventos ---------- */
+document.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.tipo) { S.tipo = b.dataset.tipo; salvar(); telaExtrato(); }
+  else if (b.id === 'lancar') { const d = $('#l-desc').value.trim(), v = num($('#l-valor').value); if (!d || !v) return brinde('DESCRIÇÃO E VALOR'); S.lanc.push({ id: 'l' + Date.now(), t: S.tipo, desc: d, cat: $('#l-cat').value, v, q: new Date().toISOString() }); $('#l-desc').value = $('#l-valor').value = ''; salvar(); telaExtrato(); brinde('LANÇADO ✓'); }
+  else if (b.dataset.rem) { S.lanc = S.lanc.filter(l => l.id !== b.dataset.rem); salvar(); telaExtrato(); }
+  else if (b.id === 'exemplo-nfce') $('#nfce').value = EXEMPLO_NFCE;
+  else if (b.id === 'ler') { const t = $('#nfce').value.trim(); if (!t) return brinde('COLE O TEXTO DO CUPOM'); ultimoLido = interpretar(t); if (!ultimoLido.itens.length) { $('#lido').hidden = true; return brinde('NENHUM ITEM RECONHECIDO'); } mostrarLido(ultimoLido); }
+  else if (b.id === 'lancar-cupom') { const r = ultimoLido; S.lanc.push({ id: 'l' + Date.now(), t: 'd', desc: r.loja.slice(0, 28), cat: 'Mercado', v: r.total, q: r.data.toISOString() });
+    r.itens.forEach(i => { if (i.prod) S.pagou[i.prod] = i.unit; }); S.cupons.push({ loja: r.loja, total: r.total, q: r.data.toISOString(), n: r.itens.length });
+    S.lista.forEach(l => { if (r.itens.some(i => i.prod === l.p)) l.ok = true; }); salvar(); brinde('CUPOM LANÇADO · LISTA ATUALIZADA'); location.hash = '#/extrato'; }
+  else if (b.id === 'li-add') { const v = $('#li-novo').value.trim(); if (!v) return; const p = PRODUTOS.find(x => x[1] === v || x[2].test(v)); S.lista.push({ p: p ? p[0] : v, ok: false }); $('#li-novo').value = ''; salvar(); telaLista(); }
+  else if (b.id === 'li-limpar') { S.lista = S.lista.filter(i => !i.ok); salvar(); telaLista(); }
+  else if (b.dataset.ir) location.hash = b.dataset.ir;
+  else if (b.id === 'exportar') Object.assign(document.createElement('a'), { href: URL.createObjectURL(new Blob([JSON.stringify({ app: 'vidanocontrole', dados: S })], { type: 'application/json' })), download: 'vida-no-controle.json' }).click();
+  else if (b.id === 'importar') { const i = Object.assign(document.createElement('input'), { type: 'file', accept: '.json' }); i.onchange = async () => { try { const j = JSON.parse(await i.files[0].text()); if (j.app !== 'vidanocontrole') throw 0; S = j.dados; salvar(); rota(); } catch (x) { brinde('ARQUIVO INVÁLIDO'); } }; i.click(); }
+  else if (b.id === 'zerar') { if (confirm('Apagar lançamentos, lista e cupons?')) { S = semente(); salvar(); rota(); } }
+});
+document.addEventListener('change', e => {
+  if (e.target.dataset.li != null) { S.lista[+e.target.dataset.li].ok = e.target.checked; salvar(); telaLista(); }
+  else if (e.target.id === 'cmp-prod') telaComparar();
+  else if (e.target.id === 'personalizar') { S.personalizar = e.target.checked; salvar(); telaOfertas(); }
+});
+$('#li-novo').addEventListener('keydown', e => { if (e.key === 'Enter') $('#li-add').click(); });
+
+/* ---------- rotas ---------- */
+window.__rotas = ['#/extrato', '#/cupom', '#/lista', '#/comparar', '#/ofertas'];
+const TELAS = { extrato: telaExtrato, cupom: () => {}, lista: telaLista, comparar: telaComparar, ofertas: telaOfertas };
+function rota() {
+  const n = (location.hash.match(/^#\/(\w+)/) || [])[1], nome = TELAS[n] ? n : 'extrato';
+  $$('.tela').forEach(t => t.classList.toggle('on', t.id === 't-' + nome));
+  $$('nav.baixo a').forEach(a => a.getAttribute('href') === '#/' + nome ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+  TELAS[nome](); scrollTo(0, 0);
 }
-
-let editingId = null;
-
-document.getElementById('btnAddTrans').onclick = () => {
-  const desc = document.getElementById('inputDesc').value.trim();
-  const tipo = document.getElementById('inputTipo').value;
-  const cat = document.getElementById('inputCat').value;
-  const valor = parseFloat(document.getElementById('inputValor').value) || 0;
-  const data = document.getElementById('inputData').value;
-  if (!desc || !valor || !data) { toast('Preencha todos os campos!'); return; }
-  if (editingId) {
-    const idx = trans.findIndex(x => x.id === editingId);
-    if (idx >= 0) trans[idx] = { ...trans[idx], desc, tipo, cat, valor, data };
-    editingId = null;
-    toast('Atualizado!');
-  } else {
-    trans.push({ id: uid(), desc, tipo, cat, valor, data });
-    toast('Adicionado!');
-  }
-  s.set('trans', trans);
-  showScreen('Home');
-};
-
-function renderLista() {
-  const cat = document.getElementById('filterCat').value;
-  let list = [...trans].sort((a, b) => new Date(b.data) - new Date(a.data));
-  if (cat !== 'todas') list = list.filter(t => t.cat === cat);
-  const el = document.getElementById('allTransList');
-  if (!list.length) {
-    el.innerHTML = '<div class="text-muted" style="font-size:13px;text-align:center;padding:16px">Nenhuma transação encontrada.</div>';
-    return;
-  }
-  el.innerHTML = list.map(t => `<div class="item-row">
-   <div class="icon-cat">${CAT_ICONS[t.cat] || '📦'}</div>
-   <div class="info"><div class="nome">${t.desc}</div><div class="meta">${new Date(t.data).toLocaleDateString('pt-BR')} · ${t.tipo === 'receita' ? 'Receita' : 'Despesa'}</div></div>
-   <div class="valor ${t.tipo === 'receita' ? 'receita' : ''}">${t.tipo === 'receita' ? '+' : '-'}${fmt(t.valor)}</div>
-  </div>`).join('');
-}
-
-function lerCupom() {
-  const texto = document.getElementById('inputCupom').value.trim();
-  const el = document.getElementById('cupomResult');
-  if (!texto) { toast('Cole o texto do cupom primeiro!'); return; }
-  const lines = texto.split('\n').filter(l => l.trim());
-  const precos = lines.filter(l => /R?\$?\s*[\d]+[.,][\d]{2}/.test(l));
-  if (!precos.length) {
-    el.innerHTML = '<div class="card mt-12"><div class="alert-box warn">Não foi possível identificar preços no texto. Tente colar o cupom integralmente.</div></div>';
-    return;
-  }
-  el.innerHTML = '<div class="card mt-12"><div class="card-title mb-8">Itens identificados</div>' + precos.slice(0, 15).map(p => `<div class="item-row"><div class="info"><div class="nome" style="font-size:13px">${p.trim().substring(0, 60)}</div></div></div>`).join('') + '</div>';
-  toast('Cupom conferido!');
-}
-
-const MERCADOS = {atacadao:'Atacadão',carrefour:'Carrefour',wendhausen:'Wendhausen',emporio:'Empório'};
-
-function addComparacao() {
-  const prod = document.getElementById('inputProd').value.trim();
-  const mercado = document.getElementById('inputMercado').value;
-  const preco = parseFloat(document.getElementById('inputPreco').value) || 0;
-  if (!prod || !preco) { toast('Preencha produto e preço!'); return; }
-  comparacoes.push({ id: uid(), prod, mercado, preco });
-  s.set('comparacoes', comparacoes);
-  document.getElementById('inputProd').value = '';
-  document.getElementById('inputPreco').value = '';
-  toast('Adicionado!');
-  renderComparacoes();
-}
-
-function renderComparacoes() {
-  const byProd = {};
-  comparacoes.forEach(c => {
-    if (!byProd[c.prod]) byProd[c.prod] = [];
-    byProd[c.prod].push(c);
-  });
-
-  const rankingEl = document.getElementById('rankingList');
-  rankingEl.innerHTML = Object.entries(byProd).map(([prod, items]) => {
-    const sorted = items.sort((a, b) => a.preco - b.preco);
-    return `<div style="margin-bottom:16px">
-     <div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:6px">${prod}</div>
-     ${sorted.map((item, i) => `<div class="compare-item ${i === 0 ? 'best' : ''}">
-      <div class="rank">${i === 0 ? '✅' : i + 1}</div>
-      <div class="info">
-       <div class="nome" style="font-size:13px">${MERCADOS[item.mercado] || item.mercado}</div>
-      </div>
-      <div class="preco">${fmt(item.preco)}</div>
-     </div>`).join('')}
-    </div>`;
-  }).join('') || '<div class="text-muted">Adicione produtos para comparar.</div>';
-
-  document.getElementById('comparacaoList').innerHTML = comparacoes.slice(-5).reverse().map(c => `<div class="item-row">
-   <div class="icon-cat">🛒</div>
-   <div class="info"><div class="nome">${c.prod}</div><div class="meta">${MERCADOS[c.mercado]}</div></div>
-   <div class="valor">${fmt(c.preco)}</div>
-  </div>`).join('') || '<div class="text-muted" style="padding:12px;font-size:13px">Nenhum produto adicionado.</div>';
-}
-
-function renderProfile() {
-  const totalRec = trans.filter(t => t.tipo === 'receita').reduce((a, t) => a + t.valor, 0);
-  const totalDesp = trans.filter(t => t.tipo === 'despesa').reduce((a, t) => a + t.valor, 0);
-  document.getElementById('profileStats').innerHTML = `<div class="grid-3">
-   <div class="kpi-big"><div class="num" style="font-size:28px">${trans.length}</div><div class="label">transações</div></div>
-   <div class="kpi-big"><div class="num" style="font-size:28px;color:var(--ok)">${fmt(totalRec)}</div><div class="label">total receitas</div></div>
-   <div class="kpi-big"><div class="num" style="font-size:28px;color:var(--accent)">${fmt(totalDesp)}</div><div class="label">total despesas</div></div>
-  </div>`;
-}
-
-document.getElementById('btnExportVNC').onclick = () => {
-  const data = { trans, comparacoes };
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-  a.download = 'vida_no_controle.json'; a.click();
-};
-
-document.getElementById('btnResetVNC').onclick = () => {
-  if (confirm('Apagar TODOS os dados?')) {
-    localStorage.clear();
-    trans = []; comparacoes = [];
-    toast('Dados apagados.');
-    showScreen('Home');
-  }
-};
-
-document.querySelectorAll('.nav-item').forEach(n => { n.onclick = () => showScreen(n.dataset.screen); });
-
-document.getElementById('inputData').value = new Date().toISOString().slice(0, 10);
-
-renderHome();
-
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
-}
+addEventListener('hashchange', rota); rota();
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('sw.js').catch(() => {});
 </script>
 </body>
 </html>

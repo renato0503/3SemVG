@@ -3,203 +3,86 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LifePath — Grupo 2 · Customer Discovery 3SemVG</title>
-<meta name="description" content="Mentor de carreira e finanças com três trilhas (vocacional, acadêmica, empreendedora) e simulação de decisões financeiras ao longo do tempo.">
-<meta name="theme-color" content="#1a0e2e">
-<link rel="icon" type="image/png" sizes="192x192" href="../assets/logos/g2-192.png">
-<link rel="apple-touch-icon" href="../assets/logos/g2-192.png">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#140a24">
+<title>LifePath — Grupo 2 · 3SemVG</title>
+<meta name="description" content="LifePath: mentor de carreira e finanças para jovens, com trilhas, decisões simuladas e missões. Grupo 2 · UNIFACC.">
+<link rel="icon" type="image/png" href="../assets/logos/g2-96.png">
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  --acc:#ff6b35; --acc2:#7b2ff7; --tinta:#1a0e2e;
-  --surface:#fff; --surface-2:#f4f6fb; --ink:#0f172a; --ink-soft:#5b6478; --line:#e7e9f2;
-  --radius-lg:22px; --radius-md:16px;
-  --shadow-card:0 10px 30px -12px rgba(15,23,42,.18);
-  --shadow-hover:0 18px 40px -14px rgba(15,23,42,.28);
-}
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--surface-2);color:var(--ink);min-height:100dvh}
-h1,h2{font-family:'Space Grotesk',system-ui,sans-serif}
-a{color:inherit}
-img{display:block;max-width:100%}
-.wrap{max-width:920px;margin:0 auto;padding:0 20px}
-
-.nav{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.92);backdrop-filter:blur(10px)}
-.nav .wrap{display:flex;align-items:center;gap:12px;padding:12px 20px;color:#fff}
-.nav-back{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#c7cee8;text-decoration:none;flex-shrink:0}
-.nav-back svg{width:16px;height:16px}
-.nav-back:hover{color:#fff}
-.nav-title{margin-left:auto;font-size:13px;font-weight:700;opacity:.85}
-
-.hero{
-  position:relative;color:#fff;padding:52px 0 74px;overflow:hidden;
-  background:linear-gradient(160deg,var(--tinta) 0%,#0b1220 100%);
-}
-.hero::before{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(600px 320px at 85% 0%, color-mix(in srgb, var(--acc) 35%, transparent), transparent 60%);
-}
-.hero .wrap{position:relative;z-index:2}
-.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:22px}
-.hero-logo{width:64px;height:64px;border-radius:16px;box-shadow:0 8px 22px rgba(0,0,0,.35);flex-shrink:0}
-.hero-group{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--acc2)}
-.hero h1{font-size:clamp(24px,4.2vw,34px);font-weight:700;letter-spacing:-.01em;margin-top:2px}
-.hero p.pitch{margin-top:14px;font-size:15px;line-height:1.6;color:#c7cee8;max-width:600px}
-.hero-meta{display:flex;gap:22px;margin-top:26px;flex-wrap:wrap;font-size:12.5px;color:#9aa5c3}
-.hero-meta b{color:#fff;display:block;font-size:13px;margin-bottom:2px}
-
-.cta-row{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
-.btn-cta{
-  display:inline-flex;align-items:center;gap:8px;
-  background:linear-gradient(90deg,var(--acc),var(--acc2));color:#0b1220;
-  font-weight:700;font-size:14.5px;padding:13px 22px;border-radius:100px;text-decoration:none;
-  box-shadow:0 10px 24px -8px color-mix(in srgb, var(--acc) 60%, transparent);
-  transition:transform .15s;
-}
-.btn-cta:hover{transform:translateY(-2px)}
-.btn-cta svg{width:16px;height:16px}
-.btn-secondary{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;
-  font-weight:600;font-size:13.5px;padding:12px 18px;border-radius:100px;text-decoration:none;
-}
-.btn-secondary:hover{background:rgba(255,255,255,.14)}
-.btn-secondary svg{width:14px;height:14px}
-
-section.block{padding:44px 0}
-.block-head{margin-bottom:22px}
-.block-head h2{font-size:19px;font-weight:700;display:flex;align-items:center;gap:9px;color:var(--ink)}
-.block-head h2 svg{width:20px;height:20px;color:var(--acc)}
-.block-head p{font-size:13px;color:var(--ink-soft);margin-top:4px}
-
-.doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
-.doc-card{
-  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
-  padding:18px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:10px;
-  box-shadow:0 1px 3px rgba(15,23,42,.05);
-  transition:transform .15s,box-shadow .15s,border-color .15s;
-}
-.doc-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-card);border-color:var(--acc)}
-.doc-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
-  background:color-mix(in srgb, var(--acc) 14%, white);color:var(--acc)}
-.doc-icon svg{width:19px;height:19px}
-.doc-card b{font-size:14px;font-weight:700}
-.doc-card small{font-size:12px;color:var(--ink-soft);line-height:1.4}
-
-.team{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.team span{background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:100px;font-size:12.5px;font-weight:600}
-
-footer{background:var(--tinta);color:#cbd5f5;padding:32px 0;margin-top:20px}
-footer .wrap{display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center}
-footer a{color:#fff;text-decoration:none;font-weight:600}
-footer p{font-size:12px;opacity:.85}
+/* Landing do LifePath · noite roxa, tipografia grande, três trilhas como cartões inclinados e uma linha do tempo de idades */
+:root{--noite:#140a24;--roxo:#7b2ff7;--lar:#ff6b35;--lar2:#ffb38a;--txt:#f3eefc;--mudo:#a99cc4;--linha:rgba(255,255,255,.1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:#140a24}
+body{font-family:Sora,system-ui,sans-serif;color:var(--txt);background:radial-gradient(90% 50% at 70% 0%,#3b1a70,var(--noite) 70%) fixed;line-height:1.55;overflow-x:hidden}
+a{color:var(--lar2)}
+.w{max-width:1060px;margin:0 auto;padding:0 18px}
+.topo{display:flex;align-items:center;gap:10px;padding:18px 0}
+.topo img{width:36px;height:36px;border-radius:10px}
+.topo a{margin-left:auto;text-decoration:none;font-size:14px}
+.heroi{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center;padding:30px 0}
+h1{font-size:clamp(40px,8vw,82px);line-height:1;font-weight:800;letter-spacing:-.03em}
+h1 span{background:linear-gradient(90deg,var(--roxo),var(--lar));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:19px;color:#d9cff0;margin:18px 0 24px;max-width:560px}
+.btn{display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:16px;background:linear-gradient(90deg,var(--roxo),var(--lar));color:#fff;text-decoration:none;font-weight:800;margin:0 8px 8px 0}
+.btn.sec{background:rgba(255,255,255,.08);border:1px solid var(--linha)}
+.fone{justify-self:center;width:280px;height:580px;border-radius:44px;padding:10px;background:linear-gradient(135deg,var(--roxo),var(--lar));box-shadow:0 40px 80px -30px rgba(123,47,247,.7)}
+.fone div{width:260px;height:560px;border-radius:36px;overflow:hidden;background:var(--noite)}
+.fone iframe{width:375px;height:808px;border:0;transform:scale(.6934);transform-origin:0 0}
+h2{font-size:34px;font-weight:800;margin:60px 0 18px;letter-spacing:-.02em}
+.trilhas{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.trilha{border:1px solid var(--linha);border-radius:28px;padding:22px;background:linear-gradient(160deg,#2d1a52,#1b0f33);transition:transform .3s}
+.trilha:nth-child(1){transform:rotate(-2deg)}.trilha:nth-child(3){transform:rotate(2deg)}.trilha:hover{transform:rotate(0) translateY(-6px)}
+.trilha .e{font-size:40px}.trilha h3{font-size:22px;margin:8px 0}.trilha p{color:#d9cff0}
+.idades{display:flex;justify-content:space-between;position:relative;margin:30px 0 10px;padding-top:26px}
+.idades::before{content:"";position:absolute;top:8px;left:0;right:0;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--roxo),var(--lar))}
+.idades div{position:relative;text-align:center;font-size:13px;color:var(--mudo);flex:1}
+.idades div::before{content:"";position:absolute;top:-24px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--noite);border:3px solid var(--lar2)}
+.idades b{display:block;color:var(--txt);font-size:16px}
+.mats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.mats a{display:block;padding:16px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid var(--linha);text-decoration:none;color:var(--txt);min-height:44px}
+.mats a:hover{border-color:var(--lar)}
+.mats small{display:block;color:var(--mudo)}
+footer{padding:40px 0;color:var(--mudo);font-size:14px}
+@media(max-width:760px){.heroi{grid-template-columns:1fr}.idades div:nth-child(even){display:none}}
 </style>
 </head>
 <body>
-
-<nav class="nav">
-  <div class="wrap">
-    <a href="../index.html" class="nav-back">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-      Todos os projetos
-    </a>
-    <span class="nav-title">Grupo 2 · LifePath</span>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap">
-    <div class="hero-top">
-      <img class="hero-logo" src="../assets/logos/g2-192.png" alt="Logo LifePath">
-      <div>
-        <div class="hero-group">Grupo 2 · Customer Discovery</div>
-        <h1>LifePath</h1>
-      </div>
-    </div>
-    <p class="pitch">Mentor de carreira e finanças com três trilhas (vocacional, acadêmica, empreendedora) e simulação de decisões financeiras ao longo do tempo.</p>
-    <div class="hero-meta">
-      <div><b>Professor(a)</b>Profa. Olivia</div>
-      <div><b>Integrantes</b>Maria Eloise, Izabelli, Talita, Nicolli</div>
-      <div><b>Código de campo</b>G2-&lt;nnn&gt;</div>
-    </div>
-    <div class="cta-row">
-      <a href="app.html" class="btn-cta">
-        Abrir o app
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a href="Slides-Lifepath.html" class="btn-secondary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        Ver slides de defesa
-      </a>
-    </div>
-  </div>
-</header>
-
-<main>
-  <section class="block">
-    <div class="wrap">
-      <div class="block-head">
-        <h2>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M15 3h6v6M10 14L21 3"/></svg>
-          Materiais do grupo
-        </h2>
-        <p>Toda a documentação produzida para a defesa e para a pesquisa de campo.</p>
-      </div>
-
-      <div class="doc-grid">
-        <a href="../assets/md-viewer.html?src=../Grupo2-LifePath/README.md&voltar=./" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
-          <b>README do grupo</b>
-          <small>Integrantes, hipótese, roteiro de campo e pitch</small>
-        </a>
-
-        <a href="../assets/md-viewer.html?src=../Grupo2-LifePath/formulario-app.md&voltar=./" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-          <b>Formulário de campo</b>
-          <small>20 perguntas em escala 1–5, código G2-&lt;nnn&gt;</small>
-        </a>
-
-        <a href="../assets/md-viewer.html?src=../Grupo2-LifePath/ContextoApp.md&voltar=./" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg></div>
-          <b>Contexto do produto</b>
-          <small>Pitch, personas, jornada, MVP/v1/v2, KPIs e riscos</small>
-        </a>
-
-        <a href="../assets/md-viewer.html?src=../Grupo2-LifePath/Pesquisa-Dados.md&voltar=./" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M15 3h6v6M10 14L21 3"/></svg></div>
-          <b>Pesquisa e dados</b>
-          <small>Dados oficiais + 12 artigos científicos com DOI</small>
-        </a>
-
-        <a href="Slides-Lifepath.pdf" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-          <b>Slides de defesa (PDF)</b>
-          <small>Versão para download e impressão</small>
-        </a>
-
-        <a href="LifePath%20x%20Nubank%20-%20Simulador%20da%20Vida%20Real.pptx" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M13 2v7h7"/></svg></div>
-          <b>Apresentação original (PPTX)</b>
-          <small>Material complementar do grupo</small>
-        </a>
-      </div>
-
-      <div class="team">
-        <span>Maria Eloise</span>
-        <span>Izabelli</span>
-        <span>Talita</span>
-        <span>Nicolli</span>
-      </div>
-    </div>
+<div class="w">
+  <header class="topo"><img src="../assets/logos/g2-96.png" alt=""><b>LifePath</b><a href="../index.html">← todos os projetos</a></header>
+  <section class="heroi">
+    <div><p style="color:var(--lar2);font-weight:600">Grupo 2 · Customer Discovery</p>
+      <h1>Cada escolha de carreira <span>vira dinheiro</span> no futuro.</h1>
+      <p class="lead">O LifePath é um mentor para jovens de 18 a 34 anos: escolha uma trilha, decida deslizando cartões e veja como cada decisão muda os próximos 10 anos.</p>
+      <a class="btn" href="app.html">Começar minha trilha</a><a class="btn sec" href="Slides-Lifepath.html">Slides de defesa</a></div>
+    <div class="fone"><div><iframe src="app.html" title="LifePath em funcionamento" loading="lazy"></iframe></div></div>
   </section>
-</main>
 
-<footer>
-  <div class="wrap">
-    <a href="../index.html">← Voltar ao hub Customer Discovery</a>
-    <p>Grupo 2 · LifePath · Cerrado Tech · Unifacc · 3º Semestre Tecnologia e Inovação, 2026</p>
+  <h2>Três trilhas para três realidades</h2>
+  <div class="trilhas">
+    <div class="trilha"><span class="e">🛠️</span><h3>Vocacional</h3><p>Curso técnico, primeiro emprego, promoção. Para quem quer entrar rápido no mercado.</p></div>
+    <div class="trilha"><span class="e">🎓</span><h3>Acadêmica</h3><p>Enem, faculdade, estágio e CLT. FIES ou EAD? O simulador mostra o custo total.</p></div>
+    <div class="trilha"><span class="e">🚀</span><h3>Empreendedora</h3><p>MEI, primeiros clientes e caixa. Crédito para produzir ou crescer devagar?</p></div>
   </div>
-</footer>
 
+  <h2>Do cartão ao gráfico</h2>
+  <div class="idades"><div><b>19</b>trilha</div><div><b>20</b>decide</div><div><b>22</b>missões</div><div><b>25</b>projeção</div><div><b>29</b>perfil</div></div>
+  <p style="color:#d9cff0;max-width:700px">O motor simula ano a ano o caminho das suas escolhas e o caminho oposto, lado a lado. O mentor explica cada decisão com roteiros definidos — sem modelo de linguagem conectado nesta fase.</p>
+
+  <h2>Materiais</h2>
+  <div class="mats">
+    <a href="../assets/md-viewer.html?src=../Grupo2-LifePath/README.md&voltar=../Grupo2-LifePath/">README do grupo<small>integrantes, hipótese e pitch</small></a>
+    <a href="../assets/md-viewer.html?src=../Grupo2-LifePath/formulario-app.md&voltar=../Grupo2-LifePath/">Formulário de campo<small>20 perguntas · G2-&lt;nnn&gt;</small></a>
+    <a href="../assets/md-viewer.html?src=../Grupo2-LifePath/ContextoApp.md&voltar=../Grupo2-LifePath/">Contexto do produto<small>personas, jornada, KPIs</small></a>
+    <a href="../assets/md-viewer.html?src=../Grupo2-LifePath/Pesquisa-Dados.md&voltar=../Grupo2-LifePath/">Pesquisa e dados<small>dados oficiais e artigos</small></a>
+    <a href="Slides-Lifepath.pdf">Slides (PDF)<small>para baixar</small></a>
+    <a href="LifePath%20x%20Nubank%20-%20Simulador%20da%20Vida%20Real.pptx">Apresentação original<small>arquivo .pptx do grupo</small></a>
+    <a href="../coleta/">App de coleta<small>formulário offline</small></a>
+  </div>
+
+  <h2>Equipe</h2>
+  <p>Izabelli · Maria Eloise · Talita · Nicolli — orientação Profa. Olivia</p>
+  <footer>Grupo 2 · LifePath · Cerrado Tech · UNIFACC · Ciências Contábeis 3º semestre (VG), 2026</footer>
+</div>
 </body>
 </html>

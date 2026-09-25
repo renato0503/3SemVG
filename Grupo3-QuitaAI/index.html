@@ -3,203 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quita.AI — Grupo 3 · Customer Discovery 3SemVG</title>
-<meta name="description" content="Jogo que a família toda joga e ganha bônus por controlar impulsos de compra — fases, prêmios e financiamento por editais de tecnologia.">
 <meta name="theme-color" content="#1e1b4b">
-<link rel="icon" type="image/png" sizes="192x192" href="../assets/logos/g3-192.png">
-<link rel="apple-touch-icon" href="../assets/logos/g3-192.png">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Quita.AI — Grupo 3 · 3SemVG</title>
+<meta name="description" content="Quita.AI: a família joga junta contra a compra por impulso. Grupo 3 · Ciências Contábeis · UNIFACC.">
+<link rel="icon" type="image/png" href="../assets/logos/g3-96.png">
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 <style>
-:root{
-  --acc:#7c3aed; --acc2:#facc15; --tinta:#1e1b4b;
-  --surface:#fff; --surface-2:#f4f6fb; --ink:#0f172a; --ink-soft:#5b6478; --line:#e7e9f2;
-  --radius-lg:22px; --radius-md:16px;
-  --shadow-card:0 10px 30px -12px rgba(15,23,42,.18);
-  --shadow-hover:0 18px 40px -14px rgba(15,23,42,.28);
-}
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--surface-2);color:var(--ink);min-height:100dvh}
-h1,h2{font-family:'Space Grotesk',system-ui,sans-serif}
-a{color:inherit}
-img{display:block;max-width:100%}
-.wrap{max-width:920px;margin:0 auto;padding:0 20px}
-
-.nav{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.92);backdrop-filter:blur(10px)}
-.nav .wrap{display:flex;align-items:center;gap:12px;padding:12px 20px;color:#fff}
-.nav-back{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#c7cee8;text-decoration:none;flex-shrink:0}
-.nav-back svg{width:16px;height:16px}
-.nav-back:hover{color:#fff}
-.nav-title{margin-left:auto;font-size:13px;font-weight:700;opacity:.85}
-
-.hero{
-  position:relative;color:#fff;padding:52px 0 74px;overflow:hidden;
-  background:linear-gradient(160deg,var(--tinta) 0%,#0b1220 100%);
-}
-.hero::before{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(600px 320px at 85% 0%, color-mix(in srgb, var(--acc) 35%, transparent), transparent 60%);
-}
-.hero .wrap{position:relative;z-index:2}
-.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:22px}
-.hero-logo{width:64px;height:64px;border-radius:16px;box-shadow:0 8px 22px rgba(0,0,0,.35);flex-shrink:0}
-.hero-group{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--acc2)}
-.hero h1{font-size:clamp(24px,4.2vw,34px);font-weight:700;letter-spacing:-.01em;margin-top:2px}
-.hero p.pitch{margin-top:14px;font-size:15px;line-height:1.6;color:#c7cee8;max-width:600px}
-.hero-meta{display:flex;gap:22px;margin-top:26px;flex-wrap:wrap;font-size:12.5px;color:#9aa5c3}
-.hero-meta b{color:#fff;display:block;font-size:13px;margin-bottom:2px}
-
-.cta-row{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
-.btn-cta{
-  display:inline-flex;align-items:center;gap:8px;
-  background:linear-gradient(90deg,var(--acc),var(--acc2));color:#0b1220;
-  font-weight:700;font-size:14.5px;padding:13px 22px;border-radius:100px;text-decoration:none;
-  box-shadow:0 10px 24px -8px color-mix(in srgb, var(--acc) 60%, transparent);
-  transition:transform .15s;
-}
-.btn-cta:hover{transform:translateY(-2px)}
-.btn-cta svg{width:16px;height:16px}
-.btn-secondary{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;
-  font-weight:600;font-size:13.5px;padding:12px 18px;border-radius:100px;text-decoration:none;
-}
-.btn-secondary:hover{background:rgba(255,255,255,.14)}
-.btn-secondary svg{width:14px;height:14px}
-
-section.block{padding:44px 0}
-.block-head{margin-bottom:22px}
-.block-head h2{font-size:19px;font-weight:700;display:flex;align-items:center;gap:9px;color:var(--ink)}
-.block-head h2 svg{width:20px;height:20px;color:var(--acc)}
-.block-head p{font-size:13px;color:var(--ink-soft);margin-top:4px}
-
-.doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
-.doc-card{
-  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
-  padding:18px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:10px;
-  box-shadow:0 1px 3px rgba(15,23,42,.05);
-  transition:transform .15s,box-shadow .15s,border-color .15s;
-}
-.doc-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-card);border-color:var(--acc)}
-.doc-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
-  background:color-mix(in srgb, var(--acc) 14%, white);color:var(--acc)}
-.doc-icon svg{width:19px;height:19px}
-.doc-card b{font-size:14px;font-weight:700}
-.doc-card small{font-size:12px;color:var(--ink-soft);line-height:1.4}
-
-.team{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.team span{background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:100px;font-size:12.5px;font-weight:600}
-
-footer{background:var(--tinta);color:#cbd5f5;padding:32px 0;margin-top:20px}
-footer .wrap{display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center}
-footer a{color:#fff;text-decoration:none;font-weight:600}
-footer p{font-size:12px;opacity:.85}
+/* Landing do Quita.AI · tela de título de videogame: "insert coin", fases, placar e créditos */
+:root{--fundo:#1e1b4b;--roxo:#7c3aed;--ouro:#facc15;--verde:#4ade80;--verm:#f87171;--branco:#f5f3ff;--cinza:#a5b4fc}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:VT323,monospace;font-size:23px;line-height:1.2;color:var(--branco);background:var(--fundo) radial-gradient(#312e81 1px,transparent 1px) 0 0/12px 12px}
+a{color:var(--ouro)}
+.t{font-family:"Press Start 2P",monospace}
+.w{max-width:980px;margin:0 auto;padding:0 18px}
+.topo{display:flex;align-items:center;gap:10px;padding:16px 0}
+.topo img{width:36px;height:36px;image-rendering:pixelated}
+.topo a{margin-left:auto;font-size:20px}
+.titulo{text-align:center;padding:40px 0 20px}
+.titulo h1{font-family:"Press Start 2P";font-size:clamp(34px,9vw,76px);color:var(--ouro);text-shadow:4px 4px 0 #000,8px 8px 0 var(--roxo)}
+.titulo p{font-size:26px;margin:22px auto;max-width:640px}
+.pisca{font-family:"Press Start 2P";font-size:14px;color:var(--verde);animation:pisca 1s steps(2) infinite}
+@keyframes pisca{50%{opacity:0}}
+.btn{display:inline-block;font-family:"Press Start 2P";font-size:12px;padding:16px 18px;margin:8px;background:var(--ouro);color:#000;text-decoration:none;box-shadow:inset -4px -4px 0 #ca8a04,inset 4px 4px 0 #fef08a,0 0 0 4px #000}
+.btn.sec{background:var(--roxo);color:#fff;box-shadow:inset -4px -4px 0 #4c1d95,inset 4px 4px 0 #a78bfa,0 0 0 4px #000}
+.arcade{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;margin:40px 0}
+.maquina{width:300px;padding:20px 16px 30px;background:#2e1065;box-shadow:0 0 0 4px #000,inset 0 0 0 6px var(--roxo);justify-self:center}
+.maquina .tela{width:268px;height:520px;overflow:hidden;box-shadow:0 0 0 4px #000}
+.maquina iframe{width:375px;height:728px;border:0;transform:scale(.7147);transform-origin:0 0}
+.maquina .t{font-size:10px;text-align:center;color:var(--ouro);margin-bottom:10px}
+h2{font-family:"Press Start 2P";font-size:16px;color:var(--ouro);margin:36px 0 14px;line-height:1.5}
+.fases{list-style:none}
+.fases li{display:flex;gap:14px;align-items:center;padding:10px 0;border-bottom:3px dashed #4338ca}
+.fases li b{font-family:"Press Start 2P";font-size:12px;background:var(--ouro);color:#000;padding:8px 10px;box-shadow:0 0 0 3px #000}
+.caixa{background:#312e81;padding:14px;box-shadow:0 0 0 4px #000;margin:14px 4px}
+.menu a{display:flex;justify-content:space-between;gap:10px;padding:8px 4px;text-decoration:none;color:var(--branco);min-height:44px;align-items:center}
+.menu a:hover,.menu a:focus{background:var(--roxo)}
+.menu a::before{content:"▶";color:var(--ouro);margin-right:8px;opacity:0}.menu a:hover::before,.menu a:focus::before{opacity:1}
+.menu a span:last-child{color:var(--cinza)}
+.creditos{text-align:center;padding:30px 0 50px}
+@media(max-width:760px){.arcade{grid-template-columns:1fr}.menu a span:last-child{display:none}}
 </style>
 </head>
 <body>
-
-<nav class="nav">
-  <div class="wrap">
-    <a href="../index.html" class="nav-back">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-      Todos os projetos
-    </a>
-    <span class="nav-title">Grupo 3 · Quita.AI</span>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap">
-    <div class="hero-top">
-      <img class="hero-logo" src="../assets/logos/g3-192.png" alt="Logo Quita.AI">
-      <div>
-        <div class="hero-group">Grupo 3 · Customer Discovery</div>
-        <h1>Quita.AI</h1>
-      </div>
-    </div>
-    <p class="pitch">Jogo que a família toda joga e ganha bônus por controlar impulsos de compra — fases, prêmios e financiamento por editais de tecnologia.</p>
-    <div class="hero-meta">
-      <div><b>Professor(a)</b>Prof. Péricles</div>
-      <div><b>Integrantes</b>Creuza, Daniela, Gilmara, Jakeline</div>
-      <div><b>Código de campo</b>G3-&lt;nnn&gt;</div>
-    </div>
-    <div class="cta-row">
-      <a href="app.html" class="btn-cta">
-        Abrir o app
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a href="Slides-QuitaAI.html" class="btn-secondary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        Ver slides de defesa
-      </a>
-    </div>
-  </div>
-</header>
-
-<main>
-  <section class="block">
-    <div class="wrap">
-      <div class="block-head">
-        <h2>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M15 3h6v6M10 14L21 3"/></svg>
-          Materiais do grupo
-        </h2>
-        <p>Toda a documentação produzida para a defesa e para a pesquisa de campo.</p>
-      </div>
-
-      <div class="doc-grid">
-        <a href="../assets/md-viewer.html?src=../Grupo3-QuitaAI/README.md&voltar=./" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
-          <b>README do grupo</b>
-          <small>Integrantes, hipótese, roteiro de campo e pitch</small>
-        </a>
-
-        <a href="../assets/md-viewer.html?src=../Grupo3-QuitaAI/formulario-app.md&voltar=./" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-          <b>Formulário de campo</b>
-          <small>20 perguntas em escala 1–5, código G3-&lt;nnn&gt;</small>
-        </a>
-
-        <a href="../assets/md-viewer.html?src=../Grupo3-QuitaAI/ContextoApp.md&voltar=./" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg></div>
-          <b>Contexto do produto</b>
-          <small>Pitch, personas, jornada, MVP/v1/v2, KPIs e riscos</small>
-        </a>
-
-        <a href="../assets/md-viewer.html?src=../Grupo3-QuitaAI/Pesquisa-Dados.md&voltar=./" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M15 3h6v6M10 14L21 3"/></svg></div>
-          <b>Pesquisa e dados</b>
-          <small>Dados oficiais + 12 artigos científicos com DOI</small>
-        </a>
-
-        <a href="Slides-QuitaAI.pdf" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-          <b>Slides de defesa (PDF)</b>
-          <small>Versão para download e impressão</small>
-        </a>
-
-        <a href="Quit_AI.pdf" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M13 2v7h7"/></svg></div>
-          <b>PDF original da defesa</b>
-          <small>Material complementar do grupo</small>
-        </a>
-      </div>
-
-      <div class="team">
-        <span>Creuza</span>
-        <span>Daniela</span>
-        <span>Gilmara</span>
-        <span>Jakeline</span>
-      </div>
-    </div>
+<div class="w">
+  <header class="topo"><img src="../assets/logos/g3-96.png" alt=""><span class="t" style="font-size:12px">QUITA.AI</span><a href="../index.html">◀ todos os projetos</a></header>
+  <section class="titulo">
+    <p class="t" style="font-size:11px;color:var(--cinza)">GRUPO 3 · CUSTOMER DISCOVERY</p>
+    <h1>QUITA.AI</h1>
+    <p>A família joga junta contra a compra por impulso. Cada vontade resistida vira ponto, fase e conquista em equipe.</p>
+    <p class="pisca">PRESS START</p>
+    <div style="margin-top:18px"><a class="btn" href="app.html">▶ JOGAR</a><a class="btn sec" href="Slides-QuitaAI.html">SLIDES</a></div>
   </section>
-</main>
 
-<footer>
-  <div class="wrap">
-    <a href="../index.html">← Voltar ao hub Customer Discovery</a>
-    <p>Grupo 3 · Quita.AI · Cerrado Tech · Unifacc · 3º Semestre Tecnologia e Inovação, 2026</p>
-  </div>
-</footer>
+  <section class="arcade">
+    <div>
+      <h2>COMO SE JOGA</h2>
+      <ul class="fases">
+        <li><b>1</b>Crie a sala da família e cadastre os jogadores</li>
+        <li><b>2</b>Deu vontade de comprar? Faça a pausa de 10 segundos contra o monstro da tentação</li>
+        <li><b>3</b>Resistiu? Ganhe pontos e avance no mapa de fases</li>
+        <li><b>4</b>Cumpra missões semanais e dispute o placar em casa</li>
+        <li><b>5</b>Troque pontos por prêmios (os de parceiros são hipóteses a validar)</li>
+      </ul>
+    </div>
+    <div class="maquina"><p class="t">INSERT COIN</p><div class="tela"><iframe src="app.html" title="Quita.AI em funcionamento" loading="lazy"></iframe></div></div>
+  </section>
 
+  <h2>SELECT: MATERIAIS</h2>
+  <nav class="caixa menu">
+    <a href="../assets/md-viewer.html?src=../Grupo3-QuitaAI/README.md&voltar=../Grupo3-QuitaAI/"><span>README DO GRUPO</span><span>integrantes, hipótese, pitch</span></a>
+    <a href="../assets/md-viewer.html?src=../Grupo3-QuitaAI/formulario-app.md&voltar=../Grupo3-QuitaAI/"><span>FORMULÁRIO DE CAMPO</span><span>20 perguntas · G3-&lt;nnn&gt;</span></a>
+    <a href="../assets/md-viewer.html?src=../Grupo3-QuitaAI/ContextoApp.md&voltar=../Grupo3-QuitaAI/"><span>CONTEXTO DO PRODUTO</span><span>personas, jornada, KPIs</span></a>
+    <a href="../assets/md-viewer.html?src=../Grupo3-QuitaAI/Pesquisa-Dados.md&voltar=../Grupo3-QuitaAI/"><span>PESQUISA E DADOS</span><span>dados e artigos</span></a>
+    <a href="Slides-QuitaAI.pdf"><span>SLIDES EM PDF</span><span>download</span></a>
+    <a href="Quit_AI.pdf"><span>MATERIAL ORIGINAL</span><span>apresentação do grupo</span></a>
+    <a href="../coleta/"><span>APP DE COLETA</span><span>formulário offline</span></a>
+  </nav>
+
+  <section class="creditos">
+    <h2>CRÉDITOS</h2>
+    <p>CREUZA · DANIELA · GILMARA · JAKELINE</p>
+    <p style="color:var(--cinza)">Orientação: Prof. Péricles</p>
+    <p style="color:var(--cinza);margin-top:18px;font-size:19px">Cerrado Tech · UNIFACC · Ciências Contábeis 3º semestre (VG), 2026</p>
+  </section>
+</div>
 </body>
 </html>

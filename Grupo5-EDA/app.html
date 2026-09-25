@@ -2,622 +2,288 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#4f5bd5">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>EDA — Endividados Anônimos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#eef0fb">
+<title>EDA — espaço seguro, um dia de cada vez</title>
 <link rel="manifest" href="manifest.json">
-<link rel="icon" type="image/png" sizes="192x192" href="../assets/logos/g5-192.png">
+<link rel="icon" type="image/png" href="../assets/logos/g5-96.png">
 <link rel="apple-touch-icon" href="../assets/logos/g5-192.png">
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/identidade/temas.css">
-<link rel="stylesheet" href="../assets/kit/kit.css">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;1,500&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --accent:#4f5bd5;--accent-dark:#3b45a8;--accent-soft:#eef2ff;
-  --accent2:#93c5fd;--tinta:#1e2235;--tinta2:#3730a3;
-  --fonte:'Quicksand',Arial,sans-serif;--fonte-titulo:'Quicksand',Arial,sans-serif;
-  --texto:#1e2235;--texto-suave:#6366f1;--linha:#e0e7ff;--fundo:#f8f7ff;
-  --card:#ffffff;--ok:#22c55e;--alerta:#f43f5e;--atencao:#f59e0b;
-  --nav-bg:#f8f7ff;--nav-icon-size:26px;--nav-radius:50px;
-}
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{height:100%}
-body{font-family:var(--fonte);background:var(--fundo);color:var(--texto);font-size:16px;overflow-x:hidden}
-.app{max-width:480px;margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;padding-bottom:80px}
-header.top{background:linear-gradient(135deg,var(--tinta) 0%,var(--tinta2) 100%);color:#fff;padding:14px 16px 40px;position:sticky;top:0;z-index:20}
-header.top .brand{display:flex;align-items:center;justify-content:space-between}
-header.top h1{font-size:17px;font-weight:700;font-family:var(--fonte-titulo)}
-header.top .sub{font-size:11px;opacity:.75;margin-top:2px}
-.badge-pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:11px;padding:3px 8px;border-radius:20px}
-.progress-bar{height:4px;background:rgba(255,255,255,.2);border-radius:4px;margin-top:10px;overflow:hidden}
-.progress-bar i{display:block;height:100%;width:0;background:var(--accent2);transition:width .3s}
-main{flex:1;padding:0 16px}
-.screen{display:none;flex-direction:column;animation:fade .2s ease}
-.screen.active{display:flex}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.page-title{font-size:13px;font-weight:700;color:var(--texto-suave);text-transform:uppercase;letter-spacing:.07em;padding:16px 0 6px}
-.card{background:#fff;border-radius:20px;box-shadow:0 2px 12px rgba(79,91,213,.08);border:1px solid #e0e7ff}
-.card-title{font-family:'Quicksand',Arial,sans-serif;font-weight:700;color:#1e2235}
-.card-sub{color:#6366f1}
-/* G5 distinctive: soft, calm, safe, non-judgmental */
-body{font-family:'Quicksand',Arial,sans-serif;background:#f8f7ff;color:#1e2235}
-header.top{background:linear-gradient(135deg,#1e2235 0%,#3730a3 100%);border-bottom:3px solid #93c5fd}
-header.top h1{font-family:'Quicksand',Arial,sans-serif;font-weight:700;font-size:17px;color:#f8f7ff}
-header.top .sub{color:#c7d2fe}
-.badge-pill{background:rgba(147,197,253,.2);border:1px solid rgba(147,197,253,.4);color:#93c5fd}
-.btn{border-radius:50px;font-family:'Quicksand',Arial,sans-serif;font-weight:600}
-.btn-primary{background:linear-gradient(135deg,#4f5bd5,#6366f1);color:#fff;border-radius:50px;box-shadow:0 4px 14px rgba(79,91,213,.3)}
-.btn-ghost{background:#fff;color:#4f5bd5;border:2px solid #e0e7ff;border-radius:50px}
-.btn-success{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;border-radius:50px;box-shadow:0 4px 14px rgba(34,197,94,.2)}
-.nav-bottom{background:#f8f7ff;border-top:1px solid #e0e7ff;padding:8px 16px}
-.nav-item.active{color:#4f5bd5}
-.nav-item{color:#6366f1;border-radius:50px;padding:8px 12px}
-.page-title{color:#4f5bd5;font-weight:700;font-size:14px;letter-spacing:.05em}
-.text-muted{color:#6366f1}
-header.top::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(147,197,253,.1) 0%,transparent 60%)}
-.btn{display:flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:12px;padding:14px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;transition:transform .05s,background .15s;padding-top:calc(14px + env(safe-area-inset-top))}
-.btn:active{transform:scale(.975)}
-.btn-primary{background:var(--accent);color:#fff}
-.btn-primary:hover{background:var(--accent-dark)}
-.btn-ghost{background:#fff;color:var(--accent);border:1.5px solid var(--accent)}
-.btn-success{background:var(--ok);color:#fff}
-.btn-danger{background:#fff;color:var(--alerta);border:1.5px solid #fca5a5}
-.btn-sm{padding:10px 14px;font-size:13px}
-.row{display:flex;gap:10px}
-.row>*{flex:1}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.text-center{text-align:center}
-.text-muted{color:var(--texto-suave);font-size:13px}
-.mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mb-8{margin-bottom:8px}.mb-12{margin-bottom:12px}
-.flex-between{display:flex;align-items:center;justify-content:space-between}
-.kpi-big{text-align:center;padding:16px 0}
-.kpi-big .num{font-size:48px;font-weight:900;color:var(--accent);line-height:1;font-family:var(--fonte-titulo)}
-.kpi-big .label{font-size:12px;color:var(--texto-suave);margin-top:4px;letter-spacing:.04em}
-.emoji-big{font-size:64px;text-align:center;margin-bottom:8px}
-.input-group{margin-bottom:12px}
-.input-group label{display:block;font-size:12px;font-weight:600;color:var(--texto-suave);margin-bottom:4px;letter-spacing:.04em}
-.form-input,.form-select,.form-textarea{width:100%;padding:12px 14px;border:1.5px solid var(--linha);border-radius:10px;font-size:15px;font-family:inherit;background:#fff;color:var(--texto);transition:border-color .15s}
-.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--accent)}
-.empty-state{text-align:center;padding:40px 20px;color:var(--texto-suave)}
-.empty-state .icon{font-size:48px;margin-bottom:12px}
-.empty-state .msg{font-size:15px;font-weight:600;color:var(--texto)}
-.empty-state .sub{font-size:13px}
-.nav-bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--linha);display:flex;z-index:30;padding-bottom:env(safe-area-inset-bottom)}
-.nav-bottom .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px;gap:3px;cursor:pointer;color:var(--texto-suave);transition:color .15s;border:none;background:none;font-size:11px;font-family:inherit}
-.nav-bottom .nav-item.active{color:var(--accent)}
-.nav-bottom .nav-item .nav-icon{font-size:20px}
-.badge{background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px}
-.alert-box{padding:12px 14px;border-radius:10px;font-size:13px;margin-bottom:10px}
-.alert-box.info{background:#eff6ff;color:#1d4ed8}
-.alert-box.warn{background:#fffbeb;color:#92400e}
-.alert-box.ok{background:#f0fdf4;color:#166534}
-.alert-box.emergency{background:#fef2f2;color:#991b1b;border-left:4px solid #dc2626}
-.msg-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--linha)}
-.msg-item .avatar{width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0}
-.msg-item .bubble{flex:1;background:var(--accent-soft);border-radius:12px;padding:10px 12px}
-.msg-item .name{font-size:12px;font-weight:700;color:var(--accent);margin-bottom:2px}
-.msg-item .text{font-size:14px;line-height:1.45;color:var(--texto)}
-.msg-item .time{font-size:11px;color:var(--texto-suave);margin-top:4px}
-.humor-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:12px}
-.humor-btn{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 4px;border:1.5px solid var(--linha);border-radius:12px;background:#fff;cursor:pointer;font-size:11px;color:var(--texto-suave);transition:all .15s}
-.humor-btn.selected{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
-.humor-btn .emo{font-size:28px}
-.breathing-circle{width:120px;height:120px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin:20px auto;transition:transform 4s ease-in-out}
-.breathing-circle .inner{font-size:16px;font-weight:600;color:var(--accent);text-align:center}
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;display:none;align-items:center;justify-content:center;padding:16px}
-.modal-overlay.open{display:flex}
-.modal-box{background:#fff;border-radius:16px;width:100%;max-width:400px;max-height:90dvh;overflow-y:auto;padding:20px}
-.modal-title{font-size:18px;font-weight:700;margin-bottom:12px}
-.modal-close{float:right;background:none;border:none;font-size:22px;cursor:pointer;color:var(--texto-suave);padding:4px}
-.toast-container{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);z-index:60;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none}
-.toast{background:var(--tinta);color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;animation:toastIn .25s ease;white-space:nowrap}
-@keyframes toastIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.truncate{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.section-title{font-size:12px;font-weight:700;color:var(--texto-suave);text-transform:uppercase;letter-spacing:.06em;margin:16px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--linha)}
-.brand{display:flex;align-items:center;gap:10px}
-.app-logo{width:38px;height:38px;border-radius:10px;object-fit:cover;box-shadow:0 2px 6px rgba(0,0,0,.25);flex-shrink:0}
+/* ===== EDA · calma e privacidade: lavanda, cantos macios, muito respiro; diário trancado e cifrado no aparelho ===== */
+:root{--fundo:#eef0fb;--card:#fff;--anil:#4f5bd5;--anil2:#3b45a8;--ceu:#93c5fd;--txt:#1e2235;--mudo:#646b8a;--linha:#dfe2f3;--ok:#10b981;--alerta:#e11d48;--sol:#fde68a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Figtree,system-ui,sans-serif;background:var(--fundo);color:var(--txt);min-height:100dvh;padding-bottom:calc(80px + env(safe-area-inset-bottom));line-height:1.5}
+button,input,textarea{font:inherit;color:inherit}
+h1,h2{font-family:Lora,Georgia,serif;font-weight:600}
+.topo{display:flex;align-items:center;gap:10px;padding:calc(12px + env(safe-area-inset-top)) 18px 6px;max-width:560px;margin:0 auto}
+.topo img{width:34px;height:34px;border-radius:50%}
+.topo .quem{font-size:13px;color:var(--mudo)}.topo .quem b{display:block;color:var(--txt);font-size:15px}
+.topo button{margin-left:auto;width:44px;height:44px;border-radius:50%;border:none;background:var(--card);cursor:pointer;font-size:18px}
+.sos{display:block;max-width:560px;margin:4px auto 0;padding:0 18px;font-size:13px;color:var(--mudo)}.sos a{color:var(--alerta);font-weight:700}
+main{max-width:560px;margin:0 auto;padding:10px 18px}
+.tela{display:none}.tela.on{display:block;animation:surge .35s ease-out}
+@keyframes surge{from{opacity:0;transform:translateY(6px)}}
+h2{font-size:25px;margin:6px 0 4px}
+.sub{color:var(--mudo);font-size:15px;margin-bottom:12px}
+.card{background:var(--card);border-radius:24px;padding:18px;margin-bottom:14px;box-shadow:0 1px 2px rgba(30,34,53,.04)}
+.card h3{font-size:16px;margin-bottom:10px}
+.humores{display:flex;justify-content:space-between;gap:6px}
+.humores button{flex:1;aspect-ratio:1;max-width:60px;border-radius:50%;border:2px solid transparent;background:var(--fundo);font-size:26px;cursor:pointer}
+.humores button[aria-pressed=true]{border-color:var(--anil);background:#e0e4ff;transform:scale(1.08)}
+.opcoes{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opcoes button{min-height:52px;border-radius:16px;border:2px solid var(--linha);background:var(--card);cursor:pointer;font-weight:600;font-size:14.5px;padding:6px}
+.opcoes button[aria-pressed=true]{border-color:var(--anil);background:#e0e4ff;color:var(--anil2)}
+input[type=range]{width:100%;accent-color:var(--anil);height:30px}
+textarea,.in{width:100%;border:2px solid var(--linha);border-radius:16px;padding:12px;background:var(--card);font-size:16px;min-height:48px}
+textarea{min-height:80px;resize:vertical}
+.btn{min-height:50px;border:none;border-radius:999px;background:var(--anil);color:#fff;font-weight:700;padding:0 22px;cursor:pointer}
+.btn.sec{background:var(--card);color:var(--anil2);border:2px solid var(--linha)}.btn.peq{min-height:40px;font-size:14px;padding:0 14px}
+.fila{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.fila>*{flex:1 1 auto}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.kpis div{background:var(--card);border-radius:20px;padding:12px;text-align:center}.kpis b{display:block;font-family:Lora;font-size:26px;color:var(--anil)}.kpis span{font-size:12px;color:var(--mudo)}
+.dia{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--linha)}.dia:last-child{border:none}
+.dia .e{font-size:26px}.dia small{color:var(--mudo)}
+.post{background:var(--fundo);border-radius:4px 20px 20px 20px;padding:12px 14px;margin-bottom:10px}
+.post.meu{background:#e0e4ff;border-radius:20px 4px 20px 20px;margin-left:24px}
+.post .de{font-size:12.5px;font-weight:700;color:var(--anil2)}
+.post .forca{border:none;background:none;color:var(--mudo);font-size:13px;cursor:pointer;min-height:36px;padding:0}
+.aviso{border-radius:16px;padding:12px 14px;font-size:14.5px;margin:10px 0}
+.aviso.risco{background:#ffe4e6;color:#881337}.aviso.bloq{background:#fef3c7;color:#78350f}.aviso.info{background:#e0f2fe;color:#075985}
+.bolha{width:210px;height:210px;margin:20px auto;border-radius:50%;background:radial-gradient(circle at 35% 30%,#c7d2fe,var(--anil));display:grid;place-items:center;color:#fff;font-family:Lora;font-size:22px;transform:scale(.6);transition:transform 4s ease-in-out;box-shadow:0 0 0 20px rgba(79,91,213,.08),0 0 0 44px rgba(79,91,213,.05)}
+.contato{display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--linha);text-decoration:none;color:inherit}
+.contato .n{font-family:Lora;font-size:24px;color:var(--alerta);min-width:64px;text-align:center}
+/* trava */
+#trava{text-align:center;padding-top:10px}
+#trava .cad{font-size:44px;margin:10px 0}
+.pontos{display:flex;justify-content:center;gap:14px;margin:18px 0}.pontos i{width:16px;height:16px;border-radius:50%;border:2px solid var(--anil)}.pontos i.on{background:var(--anil)}
+.teclado{display:grid;grid-template-columns:repeat(3,72px);gap:14px;justify-content:center}
+.teclado button{width:72px;height:72px;border-radius:50%;border:none;background:var(--card);font-size:26px;font-weight:600;cursor:pointer}
+.teclado button:active{background:#e0e4ff}
+.erro{color:var(--alerta);min-height:24px;font-weight:600}
+nav.baixo{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom);z-index:10;border-top:1px solid var(--linha)}
+nav.baixo a{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;font-weight:600;color:var(--mudo);text-decoration:none;padding:8px 0;min-height:58px}
+nav.baixo a span{font-size:20px}
+nav.baixo a[aria-current=page]{color:var(--anil)}
+body.trancado nav.baixo,body.trancado .topo button{display:none}
+#brinde{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:var(--txt);color:#fff;padding:10px 18px;border-radius:999px;opacity:0;transition:.25s;pointer-events:none;z-index:30;max-width:90vw;font-size:14.5px}
+#brinde.on{opacity:1}
+:focus-visible{outline:3px solid var(--anil);outline-offset:3px}
+[hidden]{display:none!important}
 </style>
 </head>
-<body class="tema-g5">
-<div class="app">
-<header class="top">
-<div class="brand">
- <img class="app-logo" src="../assets/logos/g5-96.png" alt="Logo G5">
- <div>
-  <h1>EDA</h1>
-  <div class="sub" id="dispNick">Crie seu perfil</div>
- </div>
- <span class="badge-pill" id="dispStreak">0 dias</span>
-</div>
-<div class="progress-bar"><i id="levelProgress" style="width:0%"></i></div>
-</header>
-
+<body class="trancado">
+<header class="topo"><img src="../assets/logos/g5-96.png" alt=""><div class="quem">Espaço seguro<b id="apelido">EDA</b></div><button id="trancar" aria-label="Trancar diário">🔒</button></header>
+<p class="sos">Em crise? Ligue <a href="tel:188">CVV 188</a> (24h, gratuito) · emergência <a href="tel:192">192</a></p>
 <main>
-<!-- TELA: Boas-vindas -->
-<section class="screen active" id="screenWelcome">
-<div class="page-title">Bem-vindos ao EDA</div>
-<div id="noProfile">
- <div class="card">
-  <div class="emoji-big">🤝</div>
-   <div class="card-title" style="text-align:center;font-size:20px">Endividados Anônimos</div>
-   <div class="card-sub text-center mb-12">Um espaço de acolhimento para pessoas que perdem o controle dos gastos — o que a medicina chama de <strong>Compra Compulsiva (CBSD)</strong>.</div>
-   <div class="alert-box info mb-12">
-    <strong>Como funciona?</strong><br>
-    <span style="font-size:12px">A compra compulsiva é um transtorno reconhecido de controle de impulsos — não é falta de caráter nem de educação financeira. O EDA oferece apoio entre pares, inspirado nos grupos AA. Você escolhe um apelido, registra seus episódios e encontra pessoas que entendem o que você está passando. Não é terapia nem tratamento médico.</span>
-   </div>
-  <div class="input-group">
-   <label>SEU APELIDO (escolha um nome qualquer)</label>
-   <input class="form-input" id="inputNick" placeholder="Ex.: Marquinhos, Luz, Esperanza" maxlength="20">
-  </div>
-  <button class="btn btn-primary" id="btnCreateProfile">Entrar no EDA</button>
- </div>
- <div class="alert-box warn mt-12">
-  <strong>⚠️ Não é tratamento médico</strong><br>
-  <span style="font-size:12px">O EDA é apoio entre pares. Se você estiver em crise, procure o <strong>CVV 188</strong>, <strong>CAPS</strong> ou <strong>UBS</strong> mais próxima.</span>
- </div>
-</div>
-<div id="hasProfile" style="display:none">
- <div class="emoji-big">🤝</div>
- <div class="card-title text-center" style="font-size:18px" id="welcomeMsg">Bem-vindo de volta!</div>
- <div class="card-sub text-center mb-12">Você está no espaço seguro do EDA — apoio entre pares para compra compulsiva (CBSD) e dívidas. O que gostaria de fazer hoje?</div>
- <button class="btn btn-primary" onclick="showScreen('Checkin')">Fazer Check-in ✅</button>
- <button class="btn btn-ghost mt-8" onclick="showScreen('Roda')">Roda de Apoio 💬</button>
- <button class="btn btn-ghost mt-8" onclick="showScreen('Ajuda')">Preciso de Ajuda 🆘</button>
- <button class="btn btn-ghost mt-8" onclick="showScreen('Respirar')">Respirar 🧘</button>
-</div>
-</section>
+  <section class="tela" id="trava">
+    <div class="cad">🔐</div>
+    <h2 id="tr-tit">Seu diário é só seu</h2>
+    <p class="sub" id="tr-sub">Crie um PIN de 4 dígitos. O conteúdo é cifrado no aparelho — nem nós conseguimos ler.</p>
+    <button class="btn sec peq" id="demo">Experimentar com dados de exemplo (PIN 1234)</button>
+    <div class="pontos" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <p class="erro" id="tr-erro" role="alert"></p>
+    <div class="teclado" role="group" aria-label="Teclado do PIN">
+      <button data-d="1">1</button><button data-d="2">2</button><button data-d="3">3</button><button data-d="4">4</button><button data-d="5">5</button><button data-d="6">6</button><button data-d="7">7</button><button data-d="8">8</button><button data-d="9">9</button><span></span><button data-d="0">0</button><button data-d="x" aria-label="Apagar">⌫</button>
+    </div>
+    <p class="sub" style="margin-top:16px;font-size:13px">Esqueceu o PIN? Por segurança, não há recuperação: apague os dados em Ajustes do navegador.</p>
+  </section>
 
-<!-- TELA: Check-in -->
-<section class="screen" id="screenCheckin">
-<div class="page-title">Check-in de Hoje</div>
-<div class="card">
- <div class="card-title">Episódio de compra compulsiva hoje?</div>
- <div class="card-sub mb-12">Responda com sinceridade — nada aqui é julgado.</div>
- <div class="humor-grid" id="humorGrid">
-  <button class="humor-btn" data-humor="resisti" onclick="selectHumor('resisti')">
-   <span class="emo">🏆</span>
-   <span>Resisti</span>
-  </button>
-  <button class="humor-btn" data-humor="quase" onclick="selectHumor('quase')">
-   <span class="emo">😬</span>
-   <span>Quase comprei</span>
-  </button>
-  <button class="humor-btn" data-humor="comprei" onclick="selectHumor('comprei')">
-   <span class="emo">😔</span>
-   <span>Comprei por impulso</span>
-  </button>
-  <button class="humor-btn" data-humor="dificeis" onclick="selectHumor('dificeis')">
-   <span class="emo">😢</span>
-   <span>Difícil hoje</span>
-  </button>
- </div>
- <div class="input-group">
-  <label>O QUE DISPAROU O IMPULSO? (opcional)</label>
-  <input class="form-input" id="inputGatilho" placeholder="Ex.: Vi uma promoção no app, stress no trabalho, recebi uma notificação..." maxlength="100">
- </div>
- <div class="input-group">
-  <label>NÍVEL DE DÍVIDA HOJE (1 = nenhuma, 5 = muito alta)</label>
-  <div class="humor-grid" style="grid-template-columns:1fr 1fr 1fr 1fr 1fr">
-   <button class="humor-btn" onclick="selectNota(1)">1</button>
-   <button class="humor-btn" onclick="selectNota(2)">2</button>
-   <button class="humor-btn" onclick="selectNota(3)">3</button>
-   <button class="humor-btn" onclick="selectNota(4)">4</button>
-   <button class="humor-btn" onclick="selectNota(5)">5</button>
-  </div>
-  <div class="flex-between text-muted mt-8">
-   <span>Nenhuma</span><span>Muito alta</span>
-  </div>
- </div>
- <button class="btn btn-success" id="btnSaveCheckin" onclick="saveCheckin()">Salvar Check-in ✅</button>
-</div>
-<div class="card mt-12">
- <div class="card-title">Histórico de Check-ins</div>
- <div id="checkinHistory"></div>
-</div>
-</section>
+  <section class="tela" id="t-hoje">
+    <h2 id="saud">Como você está hoje?</h2><p class="sub">Um check-in leva menos de um minuto.</p>
+    <div class="card"><h3>Humor</h3><div class="humores" id="humor" role="group" aria-label="Humor de 1 a 5"></div></div>
+    <div class="card"><h3>Hoje, sobre compras…</h3><div class="opcoes" id="episodio" role="group" aria-label="Episódio de compra"></div></div>
+    <div class="card"><h3>Como está a sua dívida? <span id="div-rot" style="float:right;color:var(--anil)"></span></h3><input type="range" id="divida" min="1" max="5" value="3" aria-label="Nível de preocupação com dívidas, de 1 a 5"></div>
+    <div class="card"><h3>Quer anotar algo? <small style="color:var(--mudo);font-weight:400">(opcional, cifrado)</small></h3><textarea id="nota" placeholder="O que despertou a vontade? Como você lidou?"></textarea></div>
+    <button class="btn" id="salvar-ci" style="width:100%">Salvar check-in</button>
+    <div id="retorno"></div>
+  </section>
 
-<!-- TELA: Roda de Apoio -->
-<section class="screen" id="screenRoda">
-<div class="page-title">Roda de Apoio</div>
-<div class="alert-box ok mb-12">
- <strong>💬 O que é dito aqui fica aqui.</strong><br>
- <span style="font-size:12px">Este é um espaço seguro. Respeite o silêncio de cada um e não julgue. Sem nomes, sem exposição.</span>
-</div>
-<div class="card">
- <div class="card-title">Mensagens da Roda</div>
- <div id="messagesList"></div>
-</div>
-<div class="card mt-12">
- <div class="input-group">
-  <label>SUA MENSAGEM (opcional)</label>
-  <textarea class="form-textarea" id="inputMessage" placeholder="Compartilhe algo, se quiser... ou apenas leia o que outros escreveram." rows="3" maxlength="300"></textarea>
- </div>
- <button class="btn btn-primary" id="btnSendMessage" onclick="sendMessage()">Enviar para a Roda ✉️</button>
-</div>
-</section>
+  <section class="tela" id="t-historico">
+    <h2>Seu caminho</h2><p class="sub">Progresso não é linha reta.</p>
+    <div class="kpis"><div><b id="k-seq">0</b><span>dias seguidos sem episódio</span></div><div><b id="k-res">0</b><span>vontades resistidas (30d)</span></div><div><b id="k-hum">–</b><span>humor médio</span></div></div>
+    <div class="card" style="margin-top:14px"><h3>Últimos 14 dias</h3><svg id="graf" viewBox="0 0 320 120" style="width:100%" aria-label="Humor dos últimos 14 dias com marcações de episódio"></svg>
+      <p style="font-size:12px;color:var(--mudo)">● humor · ▲ vermelho = compra realizada · ◆ verde = vontade resistida</p></div>
+    <div class="card"><h3>Registros</h3><div id="lista"></div></div>
+  </section>
 
-<!-- TELA: Ajuda -->
-<section class="screen" id="screenAjuda">
-<div class="page-title">Preciso de Ajuda</div>
-<div class="card">
- <div class="emoji-big">🆘</div>
- <div class="card-title text-center" style="font-size:18px">Você não está sozinho(a)</div>
- <div class="card-sub text-center mb-12">Esses serviços estão disponíveis 24 horas para ouvir você.</div>
-</div>
-<div class="card emergency">
- <div class="card-title" style="color:#991b1b">Emergência — Crise aguda</div>
- <div class="flex-between mt-8">
-  <span style="font-size:15px;font-weight:600">CVV — Centro de Valorização da Vida</span>
-  <span style="font-size:18px;font-weight:900;color:#991b1b">188</span>
- </div>
- <div class="text-muted mt-4" style="font-size:12px">Ligação e chat 24h. Gratuito e sigiloso.</div>
- <button class="btn btn-danger mt-8" onclick="window.open('tel:188')">Ligar agora 📞</button>
-</div>
-<div class="card mt-12">
- <div class="card-title">UBS — Unidade Básica de Saúde</div>
- <div class="card-sub mb-8">Busque a UBS mais próxima da sua casa. O acolhimento inicial é feito sem custo.</div>
- <button class="btn btn-ghost" onclick="toast('Procure a UBS mais próxima de você!')">Encontrar UBS 🏥</button>
-</div>
-<div class="card mt-12">
- <div class="card-title">CAPS — Centro de Atenção Psicossocial</div>
- <div class="card-sub mb-8">Para acompanhamento de saúde mental. Encaminhamento via UBS ou direto.</div>
- <button class="btn btn-ghost" onclick="toast('Procure o CAPS mais próximo!')">Encontrar CAPS 🧠</button>
-</div>
-<div class="card mt-12">
- <div class="card-title">Aplicativo de Crédito Consciente</div>
- <div class="card-sub mb-8">Para apoio com organização de dívidas e renegociação.</div>
- <button class="btn btn-ghost" onclick="toast('Procure o programa Desenrola Brasil ou a biblioteca local!')">Saber mais 💡</button>
-</div>
-</section>
+  <section class="tela" id="t-roda">
+    <h2>Roda de apoio</h2><p class="sub">Só apelidos. Sem valores, ofertas ou links. Mensagens com sinais de risco vão para um moderador.</p>
+    <div class="card" id="posts"></div>
+    <div class="card"><textarea id="msg" placeholder="Compartilhe como foi seu dia…" aria-label="Mensagem para a roda"></textarea><div id="moder"></div><div class="fila"><button class="btn" id="enviar">Enviar para a roda</button></div></div>
+    <p class="sub" style="font-size:12.5px">Nesta versão as mensagens dos outros participantes são de exemplo e as suas ficam só no aparelho (simulado).</p>
+  </section>
 
-<!-- TELA: Respirar -->
-<section class="screen" id="screenRespirar">
-<div class="page-title">Respirar</div>
-<div class="card">
- <div class="card-title text-center">Técnica 4-7-8</div>
- <div class="card-sub text-center mb-12">Uma respiração que acalma o sistema nervoso. Repita 3 a 4 ciclos.</div>
- <div style="text-align:center">
-  <div class="breathing-circle" id="breathCircle">
-   <div class="inner" id="breathText">Toque para começar</div>
-  </div>
-  <button class="btn btn-primary mt-12" id="btnBreath" onclick="startBreathing()">Iniciar Ciclo 🟢</button>
-  <button class="btn btn-ghost mt-8" onclick="stopBreathing()">Parar ⏹</button>
- </div>
- <div class="card-sub mt-12" style="font-size:12px;line-height:1.6">
-  <strong>Como funciona:</strong><br>
-  1. <strong>Inspire</strong> pelo nariz por <strong>4 segundos</strong><br>
-  2. <strong>Segure</strong> a respiração por <strong>7 segundos</strong><br>
-  3. <strong>Expire</strong> pela boca por <strong>8 segundos</strong><br>
-  4. Repita 3 a 4 vezes.
- </div>
-</div>
-</section>
+  <section class="tela" id="t-respirar">
+    <h2>Respira comigo</h2><p class="sub">Respiração quadrada: 4 segundos em cada fase. Ótima antes de abrir um app de compras.</p>
+    <div class="bolha" id="bolha" aria-live="polite">Pronto?</div>
+    <p style="text-align:center;color:var(--mudo)" id="ciclos">0 ciclos</p>
+    <div class="fila"><button class="btn" id="resp-ini">Começar</button><button class="btn sec" id="resp-fim">Parar</button></div>
+  </section>
 
-<!-- TELA: Perfil -->
-<section class="screen" id="screenProfile">
-<div class="page-title">Meu Perfil</div>
-<div class="card" style="margin-bottom:12px">
-  <div class="card-title">📋 Sobre o Trabalho Acadêmico</div>
-  <p style="font-size:13px;color:#6366f1;margin-bottom:12px;line-height:1.6">
-    O <strong>EDA — Endividados Anônimos</strong> faz parte da pesquisa de <strong>Customer Discovery</strong> da disciplina de Projeto Inovador (3º Semestre · Unifacc).
-    Os alunos foram a um shopping ouvir pessoas reais sobre gastos por impulso, dívidas e apoio entre pares.
-  </p>
-  <button class="btn btn-primary btn-sm" id="btnSobreTrabalho" onclick="abrirSobreTrabalho()">
-    Ver contexto, formulário e referencial
-  </button>
-</div>
-<div class="card">
-  <div class="card-title">Meu Apelido</div>
- <div id="profileNick"></div>
-</div>
-<div class="card mt-12">
- <div class="card-title">Estatísticas</div>
- <div id="profileStats"></div>
-</div>
-<div class="card mt-12">
- <div class="alert-box info mb-8">
-  <strong>💡 O que é o EDA?</strong><br>
-  <span style="font-size:12px">O EDA é um espaço de apoio entre pares para pessoas com <strong>Compra Compulsiva (CBSD)</strong> — um transtorno reconhecido de controle de impulsos. A relação entre CBSD e inadimplência é o foco central: a pessoa não entra em dívida por falta de conhecimento, mas por incapacidade de inibir o impulso no momento. O EDA não é tratamento médico nem terapia — é acolhimento entre pessoas que vivem o mesmo ciclo.</span>
- </div>
-</div>
-<div class="card mt-12">
- <button class="btn btn-ghost" id="btnExportEDA" style="margin-bottom:8px">Exportar Dados 📤</button>
- <button class="btn btn-danger" id="btnResetEDA">Apagar Todos os Dados 🗑️</button>
-</div>
-</section>
+  <section class="tela" id="t-ajuda">
+    <h2>Ajuda de verdade</h2><p class="sub">O EDA é apoio complementar — não substitui tratamento. Se a vontade de comprar está fora de controle, procure um profissional.</p>
+    <div class="card">
+      <a class="contato" href="tel:188"><span class="n">188</span><span><b>CVV — Centro de Valorização da Vida</b><br><small>Apoio emocional 24h, ligação gratuita · também por chat em cvv.org.br</small></span></a>
+      <a class="contato" href="tel:192"><span class="n">192</span><span><b>SAMU</b><br><small>Emergências médicas</small></span></a>
+      <div class="contato"><span class="n">🏥</span><span><b>CAPS — Centro de Atenção Psicossocial</b><br><small>Atendimento em saúde mental pelo SUS, sem precisar de encaminhamento</small></span></div>
+      <div class="contato"><span class="n">🩺</span><span><b>UBS do seu bairro</b><br><small>Porta de entrada do SUS; pode encaminhar para psicologia</small></span></div>
+    </div>
+    <div class="card"><h3>Sobre dívidas</h3><p style="font-size:15px">A Lei do Superendividamento (Lei 14.181/2021) permite pedir repactuação das dívidas. Procure o Procon ou a Defensoria Pública.</p></div>
+    <div class="card"><h3>Ajustes</h3><div class="fila" style="margin-top:0"><button class="btn sec peq" id="trocar-pin">Trocar PIN</button><button class="btn sec peq" id="exportar">Exportar (cifrado)</button><button class="btn sec peq" id="zerar">Apagar tudo</button></div>
+      <p class="sub" style="font-size:12px;margin:10px 0 0">EDA · Grupo 5 · 3SemVG · UNIFACC-MT</p></div>
+  </section>
 </main>
+<nav class="baixo" aria-label="Seções"><a href="#/hoje"><span>🌤️</span>Hoje</a><a href="#/historico"><span>📈</span>Caminho</a><a href="#/roda"><span>🤝</span>Roda</a><a href="#/respirar"><span>🫧</span>Respirar</a><a href="#/ajuda"><span>💗</span>Ajuda</a></nav>
+<div id="brinde" role="status" aria-live="polite"></div>
 
-<nav class="nav-bottom" id="bottomNav" style="display:none">
-<button class="nav-item active" data-screen="Welcome">
- <span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="13" r="10"/><path d="M9 13l3 3 5-5"/></svg></span><span>Início</span>
-</button>
-<button class="nav-item" data-screen="Checkin">
- <span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3c-5.5 0-10 4.5-10 10 0 4 2.5 7.5 6 9v2a1 1 0 001 1h6a1 1 0 001-1v-2c3.5-1.5 6-5 6-9 0-5.5-4.5-10-10-10z"/><path d="M9 9l8 8"/></svg></span><span>Check-in</span>
-</button>
-<button class="nav-item" data-screen="Roda">
- <span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="13" r="10"/><circle cx="13" cy="13" r="4"/><path d="M13 3v4M13 19v4M3 13h4M19 13h4"/></svg></span><span>Roda</span>
-</button>
-<button class="nav-item" data-screen="Ajuda">
- <span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 21C13 21 4 14 4 8.5a4.5 4.5 0 018.5-3.5C13 5 13 21 13 21z"/></svg></span><span>Ajuda</span>
-</button>
-<button class="nav-item" data-screen="Profile">
- <span class="nav-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="10" r="5"/><path d="M4 22c0-5 4-9 9-9s9 4 9 9"/></svg></span><span>Perfil</span>
-</button>
-</nav>
-</div>
-
-<div class="toast-container" id="toastContainer"></div>
-
-<div class="modal-overlay" id="modalSobre" style="display:none">
-  <div class="modal-box" style="max-height:85dvh;overflow-y:auto;padding:20px;border-radius:24px">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-      <div style="font-size:16px;font-weight:700;color:#1e2235">Sobre o Trabalho</div>
-      <button onclick="fecharSobreTrabalho()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#6366f1">✕</button>
-    </div>
-    <div style="font-size:13px;line-height:1.7;color:#1e2235">
-      <div style="background:#eef2ff;border-radius:16px;padding:14px;margin-bottom:14px;border-left:4px solid #4f5bd5">
-        <strong style="color:#4f5bd5">💙 Contexto do Projeto</strong><br>
-        O <strong>EDA — Endividados Anônimos</strong> nasceu da defesa de projeto inovador sobre <strong>CBSD (Compulsive Buying-Shopping Disorder)</strong> e sua relação com a inadimplência. A tese central: a pessoa não entra em dívida por falta de educação financeira, mas por <strong>incapacidade de inibir o impulso no momento da compra</strong> — o que a medicina chama de transtorno de controle de impulsos. O EDA testa se um espaço de acolhimento entre pares pode quebrar esse ciclo. A pesquisa de campo aconteceu no shopping com formulário de 20 perguntas sobre episódios de compra impulsiva, nível de dívidas, vergonha/ocultação e tentativas de parar.
-      </div>
-      <div style="background:#f0fdf4;border-radius:16px;padding:14px;margin-bottom:14px;border-left:4px solid #22c55e">
-        <strong style="color:#22c55e">📊 Resultado do Formulário (Customer Discovery)</strong><br>
-        <span style="font-size:12px">A pesquisa de campo testou 4 dimensões: (1) frequência e intensidade dos episódios de compra impulsiva, (2) nível de dívidas/cheque especial, (3) vergonha/ocultação de gastos, (4) tentativas anteriores de parar. As perguntas usam escala 1–5 sem valores de renda. Os códigos G5-<nnn> correlacionam cada resposta com o áudio gravado no WhatsApp — o que permite cruzar dado quantitativo com o relato qualitativo da pessoa.</span>
-      </div>
-      <div style="background:#fffbeb;border-radius:16px;padding:14px;margin-bottom:14px;border-left:4px solid #f59e0b">
-        <strong style="color:#f59e0b">📚 Referencial Teórico</strong><br>
-        <span style="font-size:12px">O trabalho tem base em 14 artigos peer-reviewed (2021–2026), centrados em CBSD e inadimplência: Müller et al. (2021) — critérios diagnósticos consensus de CBSD por 138 experts; Grant & Chamberlain (2024) — CBSD como transtorno com base neuropsiquiátrica; Maraz et al. (2022) — prevalência de 4,9% da população adulta; ten Have et al. (2021) — relação bidirecional dívida↔saúde mental; Bu et al. (2021) — treinamento de auto-regulação reduz borrowing mais que literacy sozinha; Moon et al. (2024) — dívida médica bloqueia acesso a tratamento de saúde mental. O arcabouço: CBSD como transtorno de controle de impulsos, modelo AA adaptado, ciclo dívida↔saúde mental.</span>
-      </div>
-      <div style="background:#eef2ff;border-radius:16px;padding:14px;border-left:4px solid #6366f1">
-        <strong style="color:#6366f1">🎯 Hipótese de Campo</strong><br>
-        <span style="font-size:12px">A hipótese testada é que <strong>CBSD e inadimplência estão diretamente conectados</strong>: a pessoa não entra em crise financeira por desconhecimento, mas por incapacidade de inibir o impulso no momento. O formulário mede se quem tem mais episódios de compra impulsiva também tem mais nível de dívidas e mais vergonha/ocultação. Se a correlação se confirmar, o EDA justifica-se como ambiente de treino de autocontrole — não como programa de educação financeira.</span>
-      </div>
-    </div>
-    <button class="btn btn-ghost btn-sm" onclick="fecharSobreTrabalho()" style="margin-top:14px;width:100%;border-color:#4f5bd5;color:#4f5bd5">Fechar</button>
-  </div>
-</div>
 <script>
-function abrirSobreTrabalho(){document.getElementById('modalSobre').style.display='flex';document.body.style.overflow='hidden'}
-function fecharSobreTrabalho(){document.getElementById('modalSobre').style.display='none';document.body.style.overflow=''}
-document.getElementById('modalSobre').onclick=function(e){if(e.target===this)fecharSobreTrabalho()};
-</script>
+/* ============================================================================
+   Construção do EDA: cofre cifrado. O diário inteiro é um objeto JSON cifrado com
+   AES-GCM (Web Crypto); a chave vem do PIN por PBKDF2 (150 mil iterações, sal
+   aleatório). No localStorage só existe {sal, iv, cifra}. A chave vive só na
+   memória enquanto o diário está aberto; trancar ou recarregar a descarta.
+   ============================================================================ */
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+let tb; const brinde = m => { const e = $('#brinde'); e.textContent = m; e.classList.add('on'); clearTimeout(tb); tb = setTimeout(() => e.classList.remove('on'), 2400); };
+const COFRE = 'eda:cofre';
+const b64 = u => btoa(String.fromCharCode(...new Uint8Array(u))), deb64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
 
-<script src="../assets/kit/kit.js" type="module"></script>
-<script type="module">
-import { uid } from '../assets/kit/kit.js';
-
-const NS = 'eda';
-function _k(k) { return NS + ':' + k; }
-const s = {
-  get(k, f) { try { const v = localStorage.getItem(_k(k)); return v == null ? f : JSON.parse(v); } catch { return f; } },
-  set(k, v) { try { localStorage.setItem(_k(k), JSON.stringify(v)); return true; } catch { return false; } }
-};
-
-let state = s.get('state', { nick: null, checkins: [], messages: [], streak: 0, lastCheckin: null });
-let selectedHumor = null;
-let selectedNota = null;
-let breathingTimer = null;
-let breathPhase = 0;
-
-function toast(msg) {
-  const c = document.getElementById('toastContainer');
-  const el = document.createElement('div');
-  el.className = 'toast';
-  el.textContent = msg;
-  c.appendChild(el);
-  setTimeout(() => el.remove(), 2800);
+/* ---------- cripto ---------- */
+async function derivar(pin, sal) {
+  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pin), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey({ name: 'PBKDF2', salt: sal, iterations: 150000, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']);
 }
-
-function showScreen(name) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById('screen' + name).classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.screen === name));
-  if (name === 'Roda') renderMessages();
-  if (name === 'Checkin') renderCheckinHistory();
-  if (name === 'Profile') renderProfile();
+let chave = null, sal = null, D = null;
+async function gravar() {
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const cifra = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, chave, new TextEncoder().encode(JSON.stringify(D)));
+  localStorage.setItem(COFRE, JSON.stringify({ v: 1, sal: b64(sal), iv: b64(iv), cifra: b64(cifra) }));
 }
+async function abrir(pin) {
+  const c = JSON.parse(localStorage.getItem(COFRE)); sal = deb64(c.sal);
+  const k = await derivar(pin, sal);
+  const txt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: deb64(c.iv) }, k, deb64(c.cifra)); // lança erro se o PIN estiver errado
+  chave = k; D = JSON.parse(new TextDecoder().decode(txt));
+}
+async function criar(pin, dados) { sal = crypto.getRandomValues(new Uint8Array(16)); chave = await derivar(pin, sal); D = dados; await gravar(); }
+function trancar() { chave = null; D = null; sal = null; pinBuf = ''; modo = localStorage.getItem(COFRE) ? 'abrir' : 'criar'; document.body.classList.add('trancado'); rota(); }
 
-function save() { s.set('state', state); }
+/* ---------- dados ---------- */
+const ANIMAIS = ['Girassol', 'Ipê', 'Tuiuiú', 'Arara', 'Capivara', 'Lobo-guará', 'Pequi', 'Buriti', 'Tucano', 'Onça'];
+const novoApelido = () => ANIMAIS[Math.floor(Math.random() * ANIMAIS.length)] + '-' + Math.floor(10 + Math.random() * 89);
+const vazio = () => ({ apelido: novoApelido(), checkins: [], posts: [], forca: {}, respiros: 0 });
+const HUMOR = ['😣', '😟', '😐', '🙂', '😊'];
+const EPIS = { nenhum: ['Sem vontade de comprar', '🌿'], resistido: ['Tive vontade e resisti', '🛡️'], quase: ['Quase comprei', '⚠️'], realizado: ['Comprei por impulso', '🛍️'] };
+const DIV = ['tranquila', 'sob controle', 'me preocupa', 'pesada', 'sufocante'];
+const RODA_EXEMPLO = [
+  { de: 'Arara-41', t: 'Hoje passei na frente da loja e lembrei do exercício de respiração. Funcionou. Um dia de cada vez.', h: 5 },
+  { de: 'Pequi-17', t: 'Recaí ontem. Tô com vergonha, mas vim contar aqui porque escondi de todo mundo por muito tempo.', h: 3 },
+  { de: 'Tuiuiú-88', t: 'Pequi, também já passei por isso. Recaída não apaga o caminho. Força pra você 🤝', h: 1 },
+];
+function exemplo() { const d = vazio(); d.apelido = 'Ipê-23'; const eps = ['nenhum', 'nenhum', 'resistido', 'quase', 'nenhum', 'realizado', 'resistido', 'nenhum', 'nenhum', 'resistido', 'nenhum', 'nenhum'];
+  eps.forEach((e, i) => { const q = new Date(); q.setDate(q.getDate() - (eps.length - i)); d.checkins.push({ q: q.toISOString(), humor: e === 'realizado' ? 1 : e === 'quase' ? 2 : 3 + (i % 3 === 0), ep: e, div: e === 'realizado' ? 4 : 3, nota: e === 'realizado' ? 'Promoção no app, comprei sem pensar. Anotei para conversar na roda.' : '' }); });
+  d.respiros = 6; return d; }
 
-function render() {
-  const hasNick = !!state.nick;
-  document.getElementById('noProfile').style.display = hasNick ? 'none' : 'block';
-  document.getElementById('hasProfile').style.display = hasNick ? 'block' : 'none';
-  document.getElementById('bottomNav').style.display = hasNick ? 'flex' : 'none';
-  if (hasNick) {
-    document.getElementById('dispNick').textContent = state.nick;
-    document.getElementById('welcomeMsg').textContent = 'Bem-vindo de volta, ' + state.nick + '!';
-    const streak = calcStreak();
-    document.getElementById('dispStreak').textContent = streak + ' dia' + (streak !== 1 ? 's' : '');
+/* ---------- teclado do PIN ---------- */
+let pinBuf = '', modo = localStorage.getItem(COFRE) ? 'abrir' : 'criar', pinNovo = '', tentativas = 0, espera = 0;
+function desenharTrava() {
+  $$('.pontos i').forEach((i, k) => i.classList.toggle('on', k < pinBuf.length));
+  const t = { criar: ['Seu diário é só seu', 'Crie um PIN de 4 dígitos. O conteúdo é cifrado no aparelho — nem nós conseguimos ler.'], confirmar: ['Confirme o PIN', 'Digite o mesmo PIN mais uma vez.'], abrir: ['Bem-vindo de volta', 'Digite seu PIN para abrir o diário.'] }[modo];
+  $('#tr-tit').textContent = t[0]; $('#tr-sub').textContent = t[1]; $('#demo').hidden = modo === 'abrir';
+}
+async function tecla(d) {
+  if (Date.now() < espera) return;
+  if (d === 'x') { pinBuf = pinBuf.slice(0, -1); return desenharTrava(); }
+  if (pinBuf.length >= 4) return; pinBuf += d; desenharTrava(); if (pinBuf.length < 4) return;
+  const pin = pinBuf; pinBuf = ''; $('#tr-erro').textContent = '';
+  if (modo === 'criar') { pinNovo = pin; modo = 'confirmar'; return desenharTrava(); }
+  if (modo === 'confirmar') { if (pin !== pinNovo) { modo = 'criar'; $('#tr-erro').textContent = 'Os PINs não conferem. Tente de novo.'; return desenharTrava(); } $('#tr-erro').textContent = 'Cifrando…'; await criar(pin, vazio()); return destrancar(); }
+  try { $('#tr-erro').textContent = 'Abrindo…'; await abrir(pin); tentativas = 0; destrancar(); }
+  catch (e) { tentativas++; desenharTrava(); if (tentativas >= 5) { espera = Date.now() + 30000; tentativas = 0; $('#tr-erro').textContent = 'Muitas tentativas. Aguarde 30 segundos.'; } else $('#tr-erro').textContent = 'PIN incorreto.'; }
+}
+function destrancar() { $('#tr-erro').textContent = ''; document.body.classList.remove('trancado'); $('#apelido').textContent = D.apelido; if (!location.hash || location.hash === '#/trava') location.hash = '#/hoje'; else rota(); }
+
+/* ---------- telas ---------- */
+let ci = { humor: 0, ep: null };
+function telaHoje() {
+  const h = new Date().getHours(); $('#saud').textContent = (h < 12 ? 'Bom dia' : h < 18 ? 'Boa tarde' : 'Boa noite') + ', como você está?';
+  $('#humor').innerHTML = HUMOR.map((e, i) => `<button data-humor="${i + 1}" aria-pressed="${ci.humor === i + 1}" aria-label="Humor ${i + 1} de 5">${e}</button>`).join('');
+  $('#episodio').innerHTML = Object.entries(EPIS).map(([k, [t, e]]) => `<button data-ep="${k}" aria-pressed="${ci.ep === k}">${e} ${t}</button>`).join('');
+  $('#div-rot').textContent = DIV[$('#divida').value - 1];
+}
+function telaHistorico() {
+  const c = [...D.checkins].sort((a, b) => a.q.localeCompare(b.q)), trinta = c.filter(x => Date.now() - new Date(x.q) < 30 * 864e5);
+  let seq = 0; for (let i = c.length - 1; i >= 0 && c[i].ep !== 'realizado'; i--) seq++;
+  $('#k-seq').textContent = seq; $('#k-res').textContent = trinta.filter(x => x.ep === 'resistido').length;
+  $('#k-hum').textContent = trinta.length ? HUMOR[Math.round(trinta.reduce((a, x) => a + x.humor, 0) / trinta.length) - 1] : '–';
+  const ult = c.slice(-14), X = i => 20 + 290 * i / Math.max(1, ult.length - 1), Y = h => 100 - (h - 1) * 20;
+  $('#graf').innerHTML = [1, 3, 5].map(h => `<line x1="20" x2="310" y1="${Y(h)}" y2="${Y(h)}" stroke="#dfe2f3"/><text x="0" y="${Y(h) + 5}" font-size="12">${HUMOR[h - 1]}</text>`).join('') +
+    (ult.length > 1 ? `<polyline points="${ult.map((x, i) => X(i) + ',' + Y(x.humor)).join(' ')}" fill="none" stroke="#4f5bd5" stroke-width="2.5" stroke-linejoin="round"/>` : '') +
+    ult.map((x, i) => `<circle cx="${X(i)}" cy="${Y(x.humor)}" r="4" fill="#4f5bd5"/>` + (x.ep === 'realizado' ? `<path d="M${X(i)} 106l5 9h-10z" fill="#e11d48"/>` : x.ep === 'resistido' ? `<path d="M${X(i)} 105l5 5-5 5-5-5z" fill="#10b981"/>` : '')).join('');
+  $('#lista').innerHTML = [...c].reverse().slice(0, 20).map(x => `<div class="dia"><span class="e">${HUMOR[x.humor - 1]}</span><div><b>${EPIS[x.ep][1]} ${EPIS[x.ep][0]}</b><br><small>${new Date(x.q).toLocaleDateString('pt-BR', { weekday: 'short', day: '2-digit', month: '2-digit' })} · dívida ${DIV[x.div - 1]}</small>${x.nota ? `<br><small style="font-style:italic">“${esc(x.nota)}”</small>` : ''}</div></div>`).join('') || '<p class="sub">Nenhum check-in ainda.</p>';
+}
+function telaRoda() {
+  const todos = RODA_EXEMPLO.map((p, i) => ({ ...p, id: 'x' + i, q: new Date(Date.now() - p.h * 36e5).toISOString() })).concat(D.posts).sort((a, b) => a.q.localeCompare(b.q));
+  $('#posts').innerHTML = todos.map(p => `<div class="post ${p.meu ? 'meu' : ''}"><div class="de">${esc(p.de)}${p.meu ? ' (você)' : ''}${p.revisao ? ' · aguardando moderador' : ''}</div><div>${esc(p.t)}</div>
+    ${p.meu ? '' : `<button class="forca" data-forca="${p.id}">🤝 força ${D.forca[p.id] ? '· enviada' : ''}</button>`}</div>`).join('');
+}
+const RISCO = /(suic[ií]d|me matar|tirar (a )?minha vida|acabar com tudo|n[aã]o aguento mais|quero morrer|sumir de vez)/i;
+const OFERTA = /(r\$\s*\d|\d+\s*reais|promo[cç][aã]o|cupom|desconto|https?:\/\/|www\.|\bpix\b|link na bio|compre|vendo )/i;
+
+/* respiração */
+let resp = null, fase = 0;
+function passoResp() { const f = [['Inspire', 1], ['Segure', 1], ['Solte', .6], ['Segure', .6]][fase % 4]; $('#bolha').textContent = f[0]; $('#bolha').style.transform = `scale(${f[1]})`; if (fase % 4 === 3) { D.respiros++; gravar(); $('#ciclos').textContent = D.respiros + ' ciclos no total'; } fase++; }
+
+/* ---------- eventos ---------- */
+document.addEventListener('click', async e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.d) return tecla(b.dataset.d);
+  if (b.id === 'demo') { $('#tr-erro').textContent = 'Cifrando os dados de exemplo…'; await criar('1234', exemplo()); return destrancar(); }
+  if (!D) return;
+  if (b.dataset.humor) { ci.humor = +b.dataset.humor; telaHoje(); }
+  else if (b.dataset.ep) { ci.ep = b.dataset.ep; telaHoje(); }
+  else if (b.id === 'salvar-ci') {
+    if (!ci.humor || !ci.ep) return brinde('Escolha o humor e a situação de hoje.');
+    D.checkins.push({ q: new Date().toISOString(), humor: ci.humor, ep: ci.ep, div: +$('#divida').value, nota: $('#nota').value.trim() }); await gravar();
+    const msg = ci.ep === 'realizado' ? (ci.humor <= 2 ? '<div class="aviso risco">Obrigado por registrar, mesmo num dia difícil. Isso já é coragem. Se estiver pesado, a <a href="#/roda">roda</a> e o <a href="tel:188">CVV 188</a> estão aqui.</div>' : '<div class="aviso info">Registrado sem julgamento. Amanhã é outro dia — que tal um <a href="#/respirar">exercício de respiração</a> agora?</div>')
+      : ci.ep === 'resistido' ? '<div class="aviso info">🛡️ Você resistiu! Isso fortalece o hábito. Anotado.</div>' : '<div class="aviso info">Check-in salvo e cifrado. Até amanhã. 🌤️</div>';
+    $('#retorno').innerHTML = msg; ci = { humor: 0, ep: null }; $('#nota').value = ''; telaHoje();
   }
-}
-
-function calcStreak() {
-  if (!state.lastCheckin) return 0;
-  const now = new Date();
-  const last = new Date(state.lastCheckin);
-  const diff = Math.floor((now - last) / 86400000);
-  return diff <= 1 ? (state.streak || 0) : 0;
-}
-
-function selectHumor(h) {
-  selectedHumor = h;
-  document.querySelectorAll('.humor-btn').forEach(b => b.classList.remove('selected'));
-  document.querySelector('[data-humor="' + h + '"]').classList.add('selected');
-}
-
-function selectNota(n) {
-  selectedNota = n;
-  document.querySelectorAll('.humor-btn').forEach(b => b.classList.remove('selected'));
-}
-
-function saveCheckin() {
-  if (!selectedHumor && !selectedNota) { toast('Escolha pelo menos um emoji ou uma nota!'); return; }
-  const checkin = {
-    id: uid(),
-    humor: selectedHumor,
-    nota: selectedNota,
-    gatilho: document.getElementById('inputGatilho').value.trim(),
-    ts: new Date().toISOString()
-  };
-  state.checkins.push(checkin);
-  const now = new Date();
-  const last = state.lastCheckin ? new Date(state.lastCheckin) : null;
-  if (last) {
-    const diff = Math.floor((now - last) / 86400000);
-    if (diff <= 1) state.streak = (state.streak || 0) + 1;
-    else state.streak = 1;
-  } else { state.streak = 1; }
-  state.lastCheckin = now.toISOString();
-  save();
-  selectedHumor = null;
-  selectedNota = null;
-  document.getElementById('inputGatilho').value = '';
-  document.querySelectorAll('.humor-btn').forEach(b => b.classList.remove('selected'));
-  toast('Check-in salvo! Cuide-se hoje. 💜');
-  renderCheckinHistory();
-}
-
-function renderCheckinHistory() {
-  const el = document.getElementById('checkinHistory');
-  if (!state.checkins.length) {
-    el.innerHTML = '<div class="text-muted" style="font-size:13px">Nenhum check-in ainda. Este é um bom momento para o primeiro!</div>';
-    return;
+  else if (b.dataset.forca) { D.forca[b.dataset.forca] = true; await gravar(); telaRoda(); brinde('Força enviada 🤝'); }
+  else if (b.id === 'enviar') {
+    const t = $('#msg').value.trim(); if (!t) return;
+    if (OFERTA.test(t)) { $('#moder').innerHTML = '<div class="aviso bloq">Mensagens com valores, ofertas, cupons ou links não são permitidas na roda — elas podem despertar a vontade de comprar em outras pessoas.</div>'; return; }
+    const risco = RISCO.test(t);
+    D.posts.push({ id: 'p' + Date.now(), de: D.apelido, t, q: new Date().toISOString(), meu: true, revisao: risco }); await gravar(); $('#msg').value = '';
+    $('#moder').innerHTML = risco ? '<div class="aviso risco">Percebemos que você pode estar passando por um momento muito difícil. Sua mensagem foi para um moderador treinado. Agora mesmo, ligue <a href="tel:188"><b>CVV 188</b></a> — é gratuito e 24h.</div>' : '';
+    telaRoda(); if (!risco) brinde('Mensagem enviada (simulado).');
   }
-  const humorEmo = { otimo: '😄', ok: '🙂', receio: '😟', difícil: '😢' };
-  el.innerHTML = state.checkins.slice(-7).reverse().map(c => {
-    const d = new Date(c.ts);
-    const emo = humorEmo[c.humor] || '📝';
-    return `<div class="msg-item">
-     <div class="avatar">${emo}</div>
-     <div class="bubble">
-      <div class="name">${state.nick} · Nota ${c.nota || '?'}/5</div>
-      ${c.gatilho ? '<div class="text" style="font-size:13px;color:var(--texto)">' + c.gatilho + '</div>' : ''}
-      <div class="time">${d.toLocaleDateString('pt-BR')} ${d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}</div>
-     </div>
-    </div>`;
-  }).join('');
+  else if (b.id === 'resp-ini') { if (resp) return; fase = 0; passoResp(); resp = setInterval(passoResp, 4000); }
+  else if (b.id === 'resp-fim') { clearInterval(resp); resp = null; $('#bolha').textContent = 'Pronto?'; $('#bolha').style.transform = 'scale(.6)'; }
+  else if (b.id === 'trancar') { trancar(); brinde('Diário trancado.'); }
+  else if (b.id === 'trocar-pin') { const p = prompt('Novo PIN (4 dígitos):'); if (!/^\d{4}$/.test(p || '')) return brinde('O PIN deve ter 4 dígitos.'); const dados = D; await criar(p, dados); brinde('PIN trocado e dados cifrados de novo.'); }
+  else if (b.id === 'exportar') { Object.assign(document.createElement('a'), { href: URL.createObjectURL(new Blob([localStorage.getItem(COFRE)], { type: 'application/json' })), download: 'eda-cofre-cifrado.json' }).click(); brinde('Backup cifrado baixado. Só abre com o seu PIN.'); }
+  else if (b.id === 'zerar') { if (confirm('Apagar o diário para sempre? Não há como recuperar.')) { localStorage.removeItem(COFRE); trancar(); } }
+});
+$('#divida').addEventListener('input', () => $('#div-rot').textContent = DIV[$('#divida').value - 1]);
+addEventListener('keydown', e => { if (D || !/^[0-9]$|^Backspace$/.test(e.key)) return; tecla(e.key === 'Backspace' ? 'x' : e.key); });
+
+/* ---------- rotas ---------- */
+window.__rotas = ['#/hoje', '#/historico', '#/roda', '#/respirar', '#/ajuda'];
+const TELAS = { hoje: telaHoje, historico: telaHistorico, roda: telaRoda, respirar: () => { $('#ciclos').textContent = D.respiros + ' ciclos no total'; }, ajuda: () => {} };
+function rota() {
+  const n = (location.hash.match(/^#\/(\w+)/) || [])[1];
+  const nome = !D ? (n === 'ajuda' ? 'ajuda' : 'trava') : TELAS[n] ? n : 'hoje';
+  $$('.tela').forEach(t => t.classList.toggle('on', t.id === (nome === 'trava' ? 'trava' : 't-' + nome)));
+  $$('nav.baixo a').forEach(a => a.getAttribute('href') === '#/' + nome ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+  if (nome === 'trava') desenharTrava(); else if (D) TELAS[nome]();
+  if (nome !== 'respirar' && resp) { clearInterval(resp); resp = null; }
+  scrollTo(0, 0);
 }
-
-function sendMessage() {
-  const text = document.getElementById('inputMessage').value.trim();
-  if (!text) { toast('Digite uma mensagem primeiro!'); return; }
-  const msg = { id: uid(), nick: state.nick || 'Anônimo', text, ts: new Date().toISOString() };
-  state.messages.push(msg);
-  save();
-  document.getElementById('inputMessage').value = '';
-  toast('Mensagem enviada para a roda! 💜');
-  renderMessages();
-}
-
-function renderMessages() {
-  const el = document.getElementById('messagesList');
-  if (!state.messages.length) {
-    el.innerHTML = '<div class="text-muted" style="font-size:13px">A roda está silenciosa. Seja o primeiro a compartilhar algo. 💜</div>';
-    return;
-  }
-  const randomColors = ['#4f5bd5','#7c3aed','#16a34a','#d97706','#dc2626','#0891b2'];
-  el.innerHTML = state.messages.slice(-20).reverse().map((m, i) => {
-    const d = new Date(m.ts);
-    const color = randomColors[m.id.charCodeAt(0) % randomColors.length];
-    return `<div class="msg-item">
-     <div class="avatar" style="background:${color}">${m.nick.charAt(0).toUpperCase()}</div>
-     <div class="bubble">
-      <div class="name">${m.nick}</div>
-      <div class="text">${m.text}</div>
-      <div class="time">${d.toLocaleDateString('pt-BR')} ${d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}</div>
-     </div>
-    </div>`;
-  }).join('');
-}
-
-function renderProfile() {
-  document.getElementById('profileNick').innerHTML = `<div class="flex-between" style="padding:8px 0">
-   <span style="font-size:15px;font-weight:600">${state.nick || 'Anônimo'}</span>
-   <span class="badge">${calcStreak()} dias de streak</span>
-  </div>`;
-  document.getElementById('profileStats').innerHTML = `<div class="grid-2">
-   <div class="kpi-big"><div class="num" style="font-size:32px">${state.checkins.length}</div><div class="label">check-ins</div></div>
-   <div class="kpi-big"><div class="num" style="font-size:32px">${state.messages.length}</div><div class="label">mensagens</div></div>
-  </div>`;
-}
-
-// Breathing exercise
-function startBreathing() {
-  if (breathingTimer) return;
-  const circle = document.getElementById('breathCircle');
-  const text = document.getElementById('breathText');
-  let phase = 0; // 0=inhale, 1=hold, 2=exhale
-  let count = 4;
-  breathPhase = 0;
-
-  function tick() {
-    if (phase === 0) {
-      circle.style.transform = 'scale(1.3)';
-      text.textContent = 'Inspire 4s';
-      count--;
-      if (count === 0) { phase = 1; count = 7; }
-    } else if (phase === 1) {
-      text.textContent = 'Segure 7s';
-      count--;
-      if (count === 0) { phase = 2; count = 8; }
-    } else {
-      circle.style.transform = 'scale(1)';
-      text.textContent = 'Expire 8s';
-      count--;
-      if (count === 0) {
-        count = 4; phase = 0;
-        toast('Ciclo completo! Como você se sente? 💜');
-        stopBreathing();
-        return;
-      }
-    }
-    breathingTimer = setTimeout(tick, 1000);
-  }
-  tick();
-}
-
-function stopBreathing() {
-  if (breathingTimer) { clearTimeout(breathingTimer); breathingTimer = null; }
-  document.getElementById('breathCircle').style.transform = 'scale(1)';
-  document.getElementById('breathText').textContent = 'Toque para começar';
-}
-
-// Actions
-document.getElementById('btnCreateProfile').onclick = () => {
-  const nick = document.getElementById('inputNick').value.trim();
-  if (!nick) { toast('Escolha um apelido para entrar!'); return; }
-  state.nick = nick;
-  save();
-  toast('Bem-vindo(a), ' + nick + '! 💜');
-  render();
-};
-
-document.getElementById('btnExportEDA').onclick = () => {
-  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
-  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-  a.download = 'eda_dados.json'; a.click();
-  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-};
-
-document.getElementById('btnResetEDA').onclick = () => {
-  if (confirm('Tem certeza? Isso apaga todos os seus dados do EDA permanentemente.')) {
-    localStorage.clear();
-    state = { nick: null, checkins: [], messages: [], streak: 0, lastCheckin: null };
-    toast('Dados apagados.');
-    render();
-  }
-};
-
-document.querySelectorAll('.nav-item').forEach(n => { n.onclick = () => showScreen(n.dataset.screen); });
-
-render();
-
-// Register SW
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
-}
+addEventListener('hashchange', rota); rota();
+if (!crypto.subtle) $('#tr-erro').textContent = 'Este navegador não oferece criptografia. Abra pelo endereço https.';
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('sw.js').catch(() => {});
 </script>
 </body>
 </html>
