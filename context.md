@@ -840,3 +840,122 @@ Os 6 apps (`Grupo<N>/app.html`) deixaram de ser um piloto + cópias e foram refe
 - **Arquivo:** `3SemVG/manifest2.json` (8 respostas do G4, coletor Amanda Karoliny). A **G4-001 (07/10)** foi ignorada por ser anterior à coleta, como já se fez com a G5-001; G4-002 estava fora da planilha e as demais já estavam na planilha ao vivo.
 - **Pipeline:** `build_html.py` e `compila.py` passaram a incluir o `manifest2.json` e a **deduplicar extras contra a planilha** pela chave `(grupoNome, codigo, criadoEm)`.
 - **Snapshot consolidado:** **3SemVG 184** respostas (G4 **36**), **439** nas 3 turmas, com 19 respostas de arquivo. Textos de G4 (`interp.json`, `analise_grupos.json`), `ninterp.json`, `atual.json` e `sintese.json` atualizados; `Resultados-3SemVG.md`, os 4 HTMLs e `Sintese-Resultados.md` regerados. Sem aviso de "dados mudaram" para nenhum grupo do 3SemVG.
+
+## 25. Sessão 27/10/2026 — Vozes no EDA (concluído)
+
+### 25.1 Objetivo
+Colocar **duas vozes** no MVP do EDA (`Grupo5-EDA/app.html`):
+- **Voz 1 (acolhimento):** saudação ao abrir a tela **Hoje** — “Boa noite, como você está? Um check-in leva menos de um minuto.” (variantes dia/tarde/noite).
+- **Voz 2 (respiração):** guiar a tela **Respirar** (`#/respirar`), falando “Inspire”, “Segure”, “Solte” a cada fase de 4 s.
+
+### 25.2 O que já foi implementado no app (não commitado)
+- `Grupo5-EDA/app.html`:
+  - Botão **“🔊 Ouvir”** na tela Hoje (`#ouvir-saud`) para repetir a saudação.
+  - Saudação toca sozinha **uma vez por sessão**, após desbloquear o diário (respeita a política de autoplay: o PIN/demo é o gesto).
+  - Em Respirar, cada palavra toca no início de cada fase do `setInterval(..., 4000)`.
+  - Botões de mudo **em Respirar (`#resp-voz`) e em Ajustes (`#som`)**, persistidos em `localStorage` na chave `eda:som`.
+  - Ao trocar de rota, parar o áudio; ao clicar em “Parar”, parar o áudio.
+  - Se o MP3 ainda não existir, o app fica em silêncio; ao clicar em “Ouvir” mostra o aviso “Áudio da voz ainda não instalado.”
+- `Grupo5-EDA/sw.js`: cache do PWA atualizado para `eda-v3`.
+- `Grupo5-EDA/vozes/`: pasta criada — é onde os MP3 finais ficam. Em 27/10/2026 recebeu os **6 MP3 do app** (`saudacao-{dia,tarde,noite}.mp3` + `inspire/segure/solte.mp3`) e, como teste, o `dueto-hino-corinthians.mp3`.
+- **Status git:** `app.html` e `sw.js` modificados, `vozes/` não rastreada; **nada commitado**.
+
+### 25.3 Arquivos que o app espera
+Colocar em `Grupo5-EDA/vozes/`:
+- ✅ `saudacao-dia.mp3` — “Bom dia, como você está? Um check-in leva menos de um minuto.” (voz 1, entregue)
+- ✅ `saudacao-tarde.mp3` — “Boa tarde, como você está? Um check-in leva menos de um minuto.” (voz 1, entregue)
+- ✅ `saudacao-noite.mp3` — “Boa noite, como você está? Um check-in leva menos de um minuto.” (voz 1, entregue)
+- ✅ `inspire.mp3` — “Inspire.” (voz 2, entregue em 27/10/2026)
+- ✅ `segure.mp3` — “Segure.” (voz 2, entregue; reutilizado nas duas fases de segurar)
+- ✅ `solte.mp3` — “Solte.” (voz 2, entregue)
+
+### 25.4 Como gravar as duas referências (quando o usuário for subir)
+- **Duas pessoas diferentes** (se for a mesma pessoa, os clones ficam parecidos).
+- **20–30 s** de fala contínua por referência (mín. 10 s; máx. ~60 s; com transcrição, o OmniVoice aceita até 20 s).
+- **WAV mono 24 kHz** (M4A/MP3 do celular também são aceitos; o modelo reamostra).
+- Lugar silencioso e seco (quarto com cortina/cama; evitar cozinha/banheiro/sala vazia), celular a **15–20 cm** da boca, sem cobrir o microfone, modo avião/“não perturbe”, sem ventilador/TV/música.
+- **Sem filtro de ruído, EQ ou reverb**; gravar 2 tomadas e escolher a mais limpa.
+- **Voz 1:** tom caloroso, levemente sorridente. **Voz 2:** mais lenta, baixa e estável (para a respiração).
+- **Consentimento:** voz própria ou autorização por escrito; não clonar terceiros. **Não subir os WAV de referência para o repositório público** — só os MP3 finais.
+
+### 25.5 Estado do VoiceStudio / OmniVoice
+- **Repo:** `D:\Dev\VoiceStudio\VoiceStudio-main\VoiceStudio-main` (VoiceStudio/OmniVoice; modelo `k2-fsa/OmniVoice`).
+- **App:** `D:\Dev\VoiceStudio\VoiceStudio-Electron-0.5.6-win-x64.exe` — não abriu/instalou corretamente nesta máquina.
+- **Runtime do app:** `C:\Users\Renato\AppData\Roaming\VoiceStudio\runtime\project\.venv` (Python 3.11.16) **sem `torch`** (instalação incompleta; marcador `.runtime-installing` presente).
+- **Modelo OmniVoice:** **3.116 MB** no total (`model.safetensors` 2.336,8 MB + `audio_tokenizer/model.safetensors` 768,3 MB + tokenizer); ainda **não baixado**.
+- **PyTorch necessário:** `torch-2.11.0+cu128-cp312-cp312-win_amd64.whl` — **2.625,6 MB**; download parcial em `D:\Dev\VoiceStudio\work\torch-2.11.0+cu128-cp312-cp312-win_amd64.whl` (**627,1 MB**), interrompido.
+- **Venv de trabalho criado:** `C:\Users\Renato\AppData\Local\Temp\opencode\vsvenv` (Python 3.12.13) com `huggingface_hub 2.3.0` e `edge-tts 7.3.1`; **sem torch**.
+- **GPU:** NVIDIA RTX 4060 Laptop, 8 GB, driver 621.01 (CUDA 13.5).
+- **Rede medida:** ~0,7–1,4 MB/s. Baixar torch + modelo no ritmo atual leva **~1h30–2h**.
+- **Alternativa rápida testada:** `edge-tts 7.3.1` com vozes pt-BR `FranciscaNeural` (feminina) e `AntonioNeural` (masculina) gera as 6 faixas em ~1 min, mas **não são clones**. O usuário optou por **não usar agora**; fica como plano B.
+
+### 25.6 Plano original com PyTorch (não necessário para esta entrega)
+> As falas fixas chegaram gravadas e o dueto usou o runtime GGUF (25.9). Este roteiro fica só para quem quiser rodar o modelo grande em PyTorch.
+
+1. **Retomar o PyTorch** (download resumível):
+   ```powershell
+   $u="https://download-r2.pytorch.org/whl/cu128/torch-2.11.0%2Bcu128-cp312-cp312-win_amd64.whl"
+   $o="D:\Dev\VoiceStudio\work\torch-2.11.0+cu128-cp312-cp312-win_amd64.whl"
+   curl.exe -L -C - --retry 5 --retry-delay 2 -o $o $u
+   ```
+   Instalar o wheel local e as dependências mínimas:
+   ```powershell
+   $py="C:\Users\Renato\AppData\Local\Temp\opencode\vsvenv\Scripts\python.exe"
+   uv pip install --python $py "D:\Dev\VoiceStudio\work\torch-2.11.0+cu128-cp312-cp312-win_amd64.whl"
+   uv pip install --python $py torchaudio transformers accelerate soundfile pydub librosa numpy
+   ```
+2. **Baixar o modelo** (3,1 GB):
+   ```powershell
+   & $py -c "from huggingface_hub import snapshot_download; snapshot_download('k2-fsa/OmniVoice')"
+   ```
+3. **Clonar/gerar** com o CLI do repo (rodar de `D:\Dev\VoiceStudio\VoiceStudio-main\VoiceStudio-main`, com `PYTHONPATH` apontando para a raiz):
+   ```powershell
+   $env:PYTHONPATH="D:\Dev\VoiceStudio\VoiceStudio-main\VoiceStudio-main"
+   & $py -m omnivoice.cli.infer --model k2-fsa/OmniVoice --language Portuguese `
+     --text "Boa noite, como você está? Um check-in leva menos de um minuto." `
+     --ref_audio "CAMINHO\referencia-voz1.wav" --ref_text "TRANSCRIÇÃO EXATA" `
+     --output "D:\Dev\UnifaccApps\3SemVG\Grupo5-EDA\vozes\saudacao-noite.mp3"
+   ```
+   Para a voz 2, repetir com a segunda referência e `--speed 0.85` (ou `--instruct` se for voz desenhada, sem referência). Gerar `inspire`, `segure`, `solte` separadamente; `segure` é reutilizado.
+4. **Conferir/ouvir** os 6 MP3, colocar em `Grupo5-EDA/vozes/`, testar `#/hoje` e `#/respirar` no Pages/local, e então **commitar/push** os arquivos finais + `app.html` + `sw.js`.
+5. **Privacidade/LGPD:** manter as referências fora do repo público; subir só os MP3 sintetizados, com consentimento registrado.
+
+### 25.7 Pendências
+- [x] **Voz 1 recebida** em 27/10/2026 (`bomdia.ogg`, `boatarde.ogg`, `boanoite.ogg` + `textovoz1.ogg` de 22,29 s).
+- [x] **Voz 2 recebida** em 27/10/2026 (`inspire`, `segure`, `solte` + `textovoz2.ogg` de 28,45 s).
+- [x] Converter as duas vozes para MP3, normalizar e testar no app.
+- [x] Gerar as 6 faixas finais em `Grupo5-EDA/vozes/`.
+- [x] Testar a saudação, o botão “Ouvir”, o guia de 4 s e o mudo no navegador.
+- [ ] Commitar/push (`app.html`, `sw.js`, `vozes/*.mp3`) e conferir o GitHub Pages.
+- [ ] Opcional: usar o OmniVoice para clonar outras falas com essas mesmas vozes (não necessário para o MVP atual).
+
+### 25.8 As duas vozes recebidas e integradas (27/10/2026)
+- **Voz 1 (acolhimento):** `bomdia.ogg` (6,45 s), `boatarde.ogg` (6,21 s), `boanoite.ogg` (5,49 s) + `textovoz1.ogg` (22,29 s, referência).
+- **Voz 2 (respiração):** `inspire.ogg` (2,29 s), `segure.ogg` (2,29 s), `solte.ogg` (1,91 s) + `textovoz2.ogg` (28,45 s, referência).
+- **Conversão:** OGG → **MP3 mono 24 kHz, 96 kbps**, com remoção de silêncio inicial e `loudnorm` em −18 LUFS / −2 dBTP.
+  - `saudacao-dia.mp3` 6,38 s · `saudacao-tarde.mp3` 6,10 s · `saudacao-noite.mp3` 5,47 s.
+  - `inspire.mp3` 1,56 s · `segure.mp3` 1,80 s · `solte.mp3` 1,75 s.
+- **Originais movidos para fora do repo público:** `D:\Dev\VoiceStudio\refs\voz1\` e `D:\Dev\VoiceStudio\refs\voz2\`. Em `Grupo5-EDA/vozes/` ficaram os 6 MP3 do app (o dueto de teste é um 7º arquivo, separado).
+- **Teste automatizado (Playwright + Chrome headless, viewport 390×844):**
+  - Saudação automática em `#/hoje` tocou `saudacao-noite.mp3` (200) e o botão “Ouvir” tocou de novo.
+  - Em `#/respirar`, `inspire.mp3`, `segure.mp3` e `solte.mp3` responderam **200** e tocaram nas fases de 4 s.
+  - Mudo (`#resp-voz`) parou de chamar `play()`; **zero erro de JavaScript** e **zero 404**.
+- **Observação:** como as falas fixas do MVP vieram como gravações prontas, **não foi necessário clonar** para integrá-las. O dueto de teste (25.9), esse sim, usou clonagem com o runtime GGUF. O download do PyTorch/modelo grande pode ser descartado; o material está preservado em `D:\Dev\VoiceStudio\work\` e `C:\Users\Renato\AppData\Local\Temp\opencode\vsvenv`.
+
+### 25.9 Teste de dueto com as duas vozes (27/10/2026)
+- **Pedido:** dueto das duas vozes com o hino do Corinthians, alternando as falas e terminando em “o Prof Renato é 10!”.
+- **Caminho usado (sem PyTorch):** runtime **GGUF `omnivoice.cpp`** + quants **Q4_K_M**:
+  - Binário Windows baixado do artifact `omnivoice-tts-windows-x86_64` do workflow `build-omnivoice-tts.yml` (run `40605330567`, repo `debpalash/VoiceStudio`): `D:\Dev\VoiceStudio\work\gguf\omnivoice-tts-windows-x86_64.exe` (+ DLLs).
+  - Modelo `Serveurperso/OmniVoice-GGUF`: `omnivoice-base-Q4_K_M.gguf` (388,6 MB) + `omnivoice-tokenizer-Q4_K_M.gguf` (240,8 MB).
+  - Referências convertidas para WAV 24 kHz: `D:\Dev\VoiceStudio\work\gguf\refs\ref1.wav` (voz 1) e `ref2.wav` (voz 2), com transcrições `ref1.txt` / `ref2.txt`.
+  - Execução com `GGML_BACKEND=Vulkan0` na RTX 4060; **~160–204 s por linha** (CPU ficou >7 min e foi abortado).
+- **Roteiro do dueto (alternado):**
+  1. Voz 1 — “Salve o Corinthians,”
+  2. Voz 2 — “o Campeão dos Campeões,”
+  3. Voz 1 — “Eternamente em Todos nossos Corações,”
+  4. Voz 2 — “VAI CORINTHIANS,”
+  5. Voz 1 — “o Prof Renato é 10!”
+- **Resultado:** `Grupo5-EDA/vozes/dueto-hino-corinthians.mp3` (14,09 s, mono 24 kHz, 128 kbps), com 0,30 s de pausa entre as falas. É um **dueto falado** (o OmniVoice é TTS, não sintetizador de canto).
+- **Conferência:** transcrição com Vosk `small-pt` reconheceu a estrutura (“salve … campeão dos campeões … eternamente em todos os nossos corações … vai coríntio … renato dez”); as divergências são do ASR pequeno, não do áudio.
+- **Stems preservados:** `D:\Dev\VoiceStudio\work\gguf\out\test1.wav`, `line2.wav` … `line5.wav`.
+- **Documento dedicado:** `Grupo5-EDA/Vozes-MVP.md` (arquivos, integração, conversão, testes, clonagem GGUF, privacidade e como continuar).

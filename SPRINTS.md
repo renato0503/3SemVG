@@ -369,3 +369,19 @@ Status:      ⏳ / 🔄 / ✅ / ⛔
   - Snapshot consolidado: **184 respostas no 3SemVG (G4 36)** e **439 nas 3 turmas**; textos de G4 e síntese atualizados; HTMLs e `Sintese-Resultados.md` regerados.
 - **Verificação:** painel de 3 turmas e do 3SemVG com 0 px de overflow, 0 erro de JS e sem avisos de "dados mudaram".
 - **Status:** ✅ concluída (27/10/2026).
+
+## Registro — Vozes do EDA (Track V)
+
+### Sprint V1 — Duas vozes no MVP do EDA 🔄
+- **Data do registro:** 27/10/2026.
+- **Objetivo:** saudação falada na tela Hoje e guia falado na tela Respirar, com duas vozes distintas (clonadas no VoiceStudio/OmniVoice).
+- **Entregue no app (não commitado):** `Grupo5-EDA/app.html` com saudação automática (uma vez por sessão), botão “Ouvir”, guia por fase de 4 s e mudo persistido (`eda:som`); `sw.js` em `eda-v3`; pasta `Grupo5-EDA/vozes/`.
+- **Arquivos finais:** `saudacao-{dia,tarde,noite}.mp3`, `inspire.mp3`, `segure.mp3`, `solte.mp3`.
+- **Voz 1 entregue (27/10/2026):** `bomdia.ogg` (6,45 s), `boatarde.ogg` (6,21 s), `boanoite.ogg` (5,49 s) → `saudacao-{dia,tarde,noite}.mp3` (mono 24 kHz, 96 kbps, −18 LUFS). Originais em `D:\Dev\VoiceStudio\refs\voz1\`.
+- **Voz 2 entregue (27/10/2026):** `inspire.ogg`, `segure.ogg`, `solte.ogg` → `inspire.mp3` (1,56 s), `segure.mp3` (1,80 s), `solte.mp3` (1,75 s). Originais em `D:\Dev\VoiceStudio\refs\voz2\`.
+- **Teste (Playwright + Chrome headless, 390×844):** saudação automática e botão “Ouvir” tocaram `saudacao-noite.mp3` (200); a guia de 4 s tocou `inspire`, `segure` e `solte` (200); mudo parou o áudio; **zero erro de JS e zero 404**.
+- **Sem clonagem no MVP:** as falas fixas vieram como gravações prontas, então o OmniVoice/PyTorch não foi necessário para integrá-las (download parcial preservado em `D:\Dev\VoiceStudio\work\`).
+- **Teste extra — dueto do hino (27/10/2026):** runtime GGUF `omnivoice.cpp` (artifact Windows do run `40605330567`) + quants Q4_K_M, rodando na RTX 4060 via Vulkan; 5 falas alternadas entre as duas vozes, concatenadas em `Grupo5-EDA/vozes/dueto-hino-corinthians.mp3` (14,09 s). É dueto falado, não canto. Stems em `D:\Dev\VoiceStudio\work\gguf\out\`.
+- **Documento dedicado:** `Grupo5-EDA/Vozes-MVP.md`.
+- **Detalhes:** `context.md`, seção 25.
+- **Status:** ✅ concluída no app (falta só commit/push e conferir o GitHub Pages).

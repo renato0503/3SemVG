@@ -1,4 +1,4 @@
-const CACHE = 'eda-v2';
+const CACHE = 'eda-v3';
 const PRE = ['./', './index.html', './app.html', './manifest.json', '../assets/logos/g5-192.png'];
 
 self.addEventListener('install', e => {

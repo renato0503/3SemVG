@@ -128,3 +128,11 @@ Formulário único em **3 camadas** + **código de correlação**:
 
 - Apresentação: `../Parte 1/Slides-Shopping.html` · `../Parte 1/Slides-Shopping.pdf`
 - Caderno completo: `../Parte 1/caderno-shopping.html` · `../Parte 1/caderno-shopping.pdf`
+
+---
+
+## Vozes do MVP
+
+- `Vozes-MVP.md` — registro das duas vozes, arquivos finais, conversão, integração no `app.html`, testes e dueto de teste.
+- Áudios finais: `vozes/` (`saudacao-{dia,tarde,noite}.mp3`, `inspire.mp3`, `segure.mp3`, `solte.mp3`).
+- Teste extra: `vozes/dueto-hino-corinthians.mp3` (não usado pelo app).

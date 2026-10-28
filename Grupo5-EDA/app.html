@@ -40,6 +40,7 @@ textarea{min-height:80px;resize:vertical}
 .btn{min-height:50px;border:none;border-radius:999px;background:var(--anil);color:#fff;font-weight:700;padding:0 22px;cursor:pointer}
 .btn.sec{background:var(--card);color:var(--anil2);border:2px solid var(--linha)}.btn.peq{min-height:40px;font-size:14px;padding:0 14px}
 .fila{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.fila>*{flex:1 1 auto}
+.voz-btn{border:none;background:none;color:var(--anil2);font-weight:700;font-size:13.5px;cursor:pointer;min-height:36px;padding:0 4px;vertical-align:middle}
 .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.kpis div{background:var(--card);border-radius:20px;padding:12px;text-align:center}.kpis b{display:block;font-family:Lora;font-size:26px;color:var(--anil)}.kpis span{font-size:12px;color:var(--mudo)}
 .dia{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--linha)}.dia:last-child{border:none}
 .dia .e{font-size:26px}.dia small{color:var(--mudo)}
@@ -89,7 +90,7 @@ body.trancado nav.baixo,body.trancado .topo button{display:none}
   </section>
 
   <section class="tela" id="t-hoje">
-    <h2 id="saud">Como você está hoje?</h2><p class="sub">Um check-in leva menos de um minuto.</p>
+    <h2 id="saud">Como você está hoje?</h2><p class="sub">Um check-in leva menos de um minuto. <button class="voz-btn" id="ouvir-saud" aria-label="Ouvir a saudação">🔊 Ouvir</button></p>
     <div class="card"><h3>Humor</h3><div class="humores" id="humor" role="group" aria-label="Humor de 1 a 5"></div></div>
     <div class="card"><h3>Hoje, sobre compras…</h3><div class="opcoes" id="episodio" role="group" aria-label="Episódio de compra"></div></div>
     <div class="card"><h3>Como está a sua dívida? <span id="div-rot" style="float:right;color:var(--anil)"></span></h3><input type="range" id="divida" min="1" max="5" value="3" aria-label="Nível de preocupação com dívidas, de 1 a 5"></div>
@@ -117,7 +118,7 @@ body.trancado nav.baixo,body.trancado .topo button{display:none}
     <h2>Respira comigo</h2><p class="sub">Respiração quadrada: 4 segundos em cada fase. Ótima antes de abrir um app de compras.</p>
     <div class="bolha" id="bolha" aria-live="polite">Pronto?</div>
     <p style="text-align:center;color:var(--mudo)" id="ciclos">0 ciclos</p>
-    <div class="fila"><button class="btn" id="resp-ini">Começar</button><button class="btn sec" id="resp-fim">Parar</button></div>
+    <div class="fila"><button class="btn" id="resp-ini">Começar</button><button class="btn sec" id="resp-fim">Parar</button><button class="btn sec peq" id="resp-voz" aria-pressed="true">🔊 Voz</button></div>
   </section>
 
   <section class="tela" id="t-ajuda">
@@ -129,7 +130,7 @@ body.trancado nav.baixo,body.trancado .topo button{display:none}
       <div class="contato"><span class="n">🩺</span><span><b>UBS do seu bairro</b><br><small>Porta de entrada do SUS; pode encaminhar para psicologia</small></span></div>
     </div>
     <div class="card"><h3>Sobre dívidas</h3><p style="font-size:15px">A Lei do Superendividamento (Lei 14.181/2021) permite pedir repactuação das dívidas. Procure o Procon ou a Defensoria Pública.</p></div>
-    <div class="card"><h3>Ajustes</h3><div class="fila" style="margin-top:0"><button class="btn sec peq" id="trocar-pin">Trocar PIN</button><button class="btn sec peq" id="exportar">Exportar (cifrado)</button><button class="btn sec peq" id="zerar">Apagar tudo</button></div>
+    <div class="card"><h3>Ajustes</h3><div class="fila" style="margin-top:0"><button class="btn sec peq" id="som" aria-pressed="true">🔊 Voz ligada</button><button class="btn sec peq" id="trocar-pin">Trocar PIN</button><button class="btn sec peq" id="exportar">Exportar (cifrado)</button><button class="btn sec peq" id="zerar">Apagar tudo</button></div>
       <p class="sub" style="font-size:12px;margin:10px 0 0">EDA · Grupo 5 · 3SemVG · UNIFACC-MT</p></div>
   </section>
 </main>
@@ -167,7 +168,7 @@ async function abrir(pin) {
   chave = k; D = JSON.parse(new TextDecoder().decode(txt));
 }
 async function criar(pin, dados) { sal = crypto.getRandomValues(new Uint8Array(16)); chave = await derivar(pin, sal); D = dados; await gravar(); }
-function trancar() { chave = null; D = null; sal = null; pinBuf = ''; modo = localStorage.getItem(COFRE) ? 'abrir' : 'criar'; document.body.classList.add('trancado'); rota(); }
+function trancar() { chave = null; D = null; sal = null; pinBuf = ''; modo = localStorage.getItem(COFRE) ? 'abrir' : 'criar'; pararVozes(); falouSaud = false; clearTimeout(saudTimer); document.body.classList.add('trancado'); rota(); }
 
 /* ---------- dados ---------- */
 const ANIMAIS = ['Girassol', 'Ipê', 'Tuiuiú', 'Arara', 'Capivara', 'Lobo-guará', 'Pequi', 'Buriti', 'Tucano', 'Onça'];
@@ -176,6 +177,24 @@ const vazio = () => ({ apelido: novoApelido(), checkins: [], posts: [], forca: {
 const HUMOR = ['😣', '😟', '😐', '🙂', '😊'];
 const EPIS = { nenhum: ['Sem vontade de comprar', '🌿'], resistido: ['Tive vontade e resisti', '🛡️'], quase: ['Quase comprei', '⚠️'], realizado: ['Comprei por impulso', '🛍️'] };
 const DIV = ['tranquila', 'sob controle', 'me preocupa', 'pesada', 'sufocante'];
+const VOZ_SAUD = ['vozes/saudacao-dia.mp3', 'vozes/saudacao-tarde.mp3', 'vozes/saudacao-noite.mp3'];
+const VOZ_RESP = ['vozes/inspire.mp3', 'vozes/segure.mp3', 'vozes/solte.mp3', 'vozes/segure.mp3'];
+let som = localStorage.getItem('eda:som') !== 'off', falouSaud = false, vozAvisada = false, saudTimer = null;
+const audios = new Map();
+function audioDe(src) { let a = audios.get(src); if (!a) { a = new Audio(src); a.preload = 'auto'; audios.set(src, a); } return a; }
+function tocar(src, aviso = false) {
+  if (!som || !src) return;
+  const a = audioDe(src);
+  try { a.currentTime = 0; const p = a.play(); if (p && p.catch) p.catch(() => { if (aviso && !vozAvisada) { vozAvisada = true; brinde('Áudio da voz ainda não instalado.'); } }); }
+  catch { if (aviso && !vozAvisada) { vozAvisada = true; brinde('Áudio da voz ainda não instalado.'); } }
+}
+function pararVozes() { audios.forEach(a => { a.pause(); a.currentTime = 0; }); }
+function tocarSaudacao(aviso = false) { const h = new Date().getHours(); tocar(VOZ_SAUD[h < 12 ? 0 : h < 18 ? 1 : 2], aviso); }
+function atualizarSom() {
+  const t = som ? '🔊 Voz ligada' : '🔇 Voz desligada';
+  if ($('#som')) { $('#som').textContent = t; $('#som').setAttribute('aria-pressed', String(som)); }
+  if ($('#resp-voz')) { $('#resp-voz').textContent = som ? '🔊 Voz' : '🔇 Voz'; $('#resp-voz').setAttribute('aria-pressed', String(som)); }
+}
 const RODA_EXEMPLO = [
   { de: 'Arara-41', t: 'Hoje passei na frente da loja e lembrei do exercício de respiração. Funcionou. Um dia de cada vez.', h: 5 },
   { de: 'Pequi-17', t: 'Recaí ontem. Tô com vergonha, mas vim contar aqui porque escondi de todo mundo por muito tempo.', h: 3 },
@@ -233,7 +252,7 @@ const OFERTA = /(r\$\s*\d|\d+\s*reais|promo[cç][aã]o|cupom|desconto|https?:\/\
 
 /* respiração */
 let resp = null, fase = 0;
-function passoResp() { const f = [['Inspire', 1], ['Segure', 1], ['Solte', .6], ['Segure', .6]][fase % 4]; $('#bolha').textContent = f[0]; $('#bolha').style.transform = `scale(${f[1]})`; if (fase % 4 === 3) { D.respiros++; gravar(); $('#ciclos').textContent = D.respiros + ' ciclos no total'; } fase++; }
+function passoResp() { const f = [['Inspire', 1], ['Segure', 1], ['Solte', .6], ['Segure', .6]][fase % 4]; $('#bolha').textContent = f[0]; $('#bolha').style.transform = `scale(${f[1]})`; tocar(VOZ_RESP[fase % 4]); if (fase % 4 === 3) { D.respiros++; gravar(); $('#ciclos').textContent = D.respiros + ' ciclos no total'; } fase++; }
 
 /* ---------- eventos ---------- */
 document.addEventListener('click', async e => {
@@ -259,8 +278,10 @@ document.addEventListener('click', async e => {
     $('#moder').innerHTML = risco ? '<div class="aviso risco">Percebemos que você pode estar passando por um momento muito difícil. Sua mensagem foi para um moderador treinado. Agora mesmo, ligue <a href="tel:188"><b>CVV 188</b></a> — é gratuito e 24h.</div>' : '';
     telaRoda(); if (!risco) brinde('Mensagem enviada (simulado).');
   }
-  else if (b.id === 'resp-ini') { if (resp) return; fase = 0; passoResp(); resp = setInterval(passoResp, 4000); }
-  else if (b.id === 'resp-fim') { clearInterval(resp); resp = null; $('#bolha').textContent = 'Pronto?'; $('#bolha').style.transform = 'scale(.6)'; }
+  else if (b.id === 'ouvir-saud') tocarSaudacao(true);
+  else if (b.id === 'som' || b.id === 'resp-voz') { som = !som; localStorage.setItem('eda:som', som ? 'on' : 'off'); if (!som) pararVozes(); atualizarSom(); brinde(som ? 'Voz ligada.' : 'Voz desligada.'); }
+  else if (b.id === 'resp-ini') { if (resp) return; fase = 0; pararVozes(); passoResp(); resp = setInterval(passoResp, 4000); }
+  else if (b.id === 'resp-fim') { clearInterval(resp); resp = null; pararVozes(); $('#bolha').textContent = 'Pronto?'; $('#bolha').style.transform = 'scale(.6)'; }
   else if (b.id === 'trancar') { trancar(); brinde('Diário trancado.'); }
   else if (b.id === 'trocar-pin') { const p = prompt('Novo PIN (4 dígitos):'); if (!/^\d{4}$/.test(p || '')) return brinde('O PIN deve ter 4 dígitos.'); const dados = D; await criar(p, dados); brinde('PIN trocado e dados cifrados de novo.'); }
   else if (b.id === 'exportar') { Object.assign(document.createElement('a'), { href: URL.createObjectURL(new Blob([localStorage.getItem(COFRE)], { type: 'application/json' })), download: 'eda-cofre-cifrado.json' }).click(); brinde('Backup cifrado baixado. Só abre com o seu PIN.'); }
@@ -278,9 +299,11 @@ function rota() {
   $$('.tela').forEach(t => t.classList.toggle('on', t.id === (nome === 'trava' ? 'trava' : 't-' + nome)));
   $$('nav.baixo a').forEach(a => a.getAttribute('href') === '#/' + nome ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
   if (nome === 'trava') desenharTrava(); else if (D) TELAS[nome]();
-  if (nome !== 'respirar' && resp) { clearInterval(resp); resp = null; }
+  if (nome !== 'respirar') { if (resp) { clearInterval(resp); resp = null; } pararVozes(); }
+  if (nome === 'hoje' && D && !falouSaud) { falouSaud = true; clearTimeout(saudTimer); saudTimer = setTimeout(() => { if (!location.hash || location.hash === '#/hoje') tocarSaudacao(); }, 600); }
   scrollTo(0, 0);
 }
+atualizarSom();
 addEventListener('hashchange', rota); rota();
 if (!crypto.subtle) $('#tr-erro').textContent = 'Este navegador não oferece criptografia. Abra pelo endereço https.';
 if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('sw.js').catch(() => {});
