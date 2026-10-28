@@ -384,4 +384,5 @@ Status:      ⏳ / 🔄 / ✅ / ⛔
 - **Teste extra — dueto do hino (27/10/2026):** runtime GGUF `omnivoice.cpp` (artifact Windows do run `40605330567`) + quants Q4_K_M, rodando na RTX 4060 via Vulkan; 5 falas alternadas entre as duas vozes, concatenadas em `Grupo5-EDA/vozes/dueto-hino-corinthians.mp3` (14,09 s). É dueto falado, não canto. Stems em `D:\Dev\VoiceStudio\work\gguf\out\`.
 - **Documento dedicado:** `Grupo5-EDA/Vozes-MVP.md`.
 - **Detalhes:** `context.md`, seção 25.
-- **Status:** ✅ concluída no app (falta só commit/push e conferir o GitHub Pages).
+- **Publicação:** commit `32b9425` em `origin/main`; Pages build `built`; teste na URL pública com áudios 206 e zero erro de JS.
+- **Status:** ✅ concluída e publicada (27/10/2026).

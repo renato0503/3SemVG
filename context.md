@@ -858,7 +858,7 @@ Colocar **duas vozes** no MVP do EDA (`Grupo5-EDA/app.html`):
   - Se o MP3 ainda não existir, o app fica em silêncio; ao clicar em “Ouvir” mostra o aviso “Áudio da voz ainda não instalado.”
 - `Grupo5-EDA/sw.js`: cache do PWA atualizado para `eda-v3`.
 - `Grupo5-EDA/vozes/`: pasta criada — é onde os MP3 finais ficam. Em 27/10/2026 recebeu os **6 MP3 do app** (`saudacao-{dia,tarde,noite}.mp3` + `inspire/segure/solte.mp3`) e, como teste, o `dueto-hino-corinthians.mp3`.
-- **Status git:** `app.html` e `sw.js` modificados, `vozes/` não rastreada; **nada commitado**.
+- **Status git:** `app.html`, `sw.js`, `README.md`, `Vozes-MVP.md`, `vozes/`, `context.md` e `SPRINTS.md` commitados e publicados no commit **`32b9425`** (push em `origin/main` em 27/10/2026).
 
 ### 25.3 Arquivos que o app espera
 Colocar em `Grupo5-EDA/vozes/`:
@@ -926,7 +926,7 @@ Colocar em `Grupo5-EDA/vozes/`:
 - [x] Converter as duas vozes para MP3, normalizar e testar no app.
 - [x] Gerar as 6 faixas finais em `Grupo5-EDA/vozes/`.
 - [x] Testar a saudação, o botão “Ouvir”, o guia de 4 s e o mudo no navegador.
-- [ ] Commitar/push (`app.html`, `sw.js`, `vozes/*.mp3`) e conferir o GitHub Pages.
+- [x] Commitar/push (`app.html`, `sw.js`, `vozes/*.mp3`) e conferir o GitHub Pages — commit **`32b9425`**, build `built`; áudios no ar com HTTP 200/206.
 - [ ] Opcional: usar o OmniVoice para clonar outras falas com essas mesmas vozes (não necessário para o MVP atual).
 
 ### 25.8 As duas vozes recebidas e integradas (27/10/2026)
@@ -959,3 +959,5 @@ Colocar em `Grupo5-EDA/vozes/`:
 - **Conferência:** transcrição com Vosk `small-pt` reconheceu a estrutura (“salve … campeão dos campeões … eternamente em todos os nossos corações … vai coríntio … renato dez”); as divergências são do ASR pequeno, não do áudio.
 - **Stems preservados:** `D:\Dev\VoiceStudio\work\gguf\out\test1.wav`, `line2.wav` … `line5.wav`.
 - **Documento dedicado:** `Grupo5-EDA/Vozes-MVP.md` (arquivos, integração, conversão, testes, clonagem GGUF, privacidade e como continuar).
+- **Publicação:** commit **`32b9425`** em `origin/main`; GitHub Pages build **`built`**. Teste na URL pública: saudação e as três fases da respiração tocaram (HTTP **206** para os MP3), **zero erro de JavaScript**.
+- **URL do app:** https://renato0503.github.io/3SemVG/Grupo5-EDA/app.html

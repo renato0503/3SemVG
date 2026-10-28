@@ -1,8 +1,9 @@
 # Vozes do MVP — EDA (Grupo 5)
 
 **Data:** 27/10/2026
-**Status:** duas vozes integradas e testadas no app; falta commit/push.
+**Status:** duas vozes integradas, testadas e publicadas no GitHub Pages (commit `32b9425`).
 **App:** `app.html` · **Áudios:** `vozes/`
+**URL:** https://renato0503.github.io/3SemVG/Grupo5-EDA/app.html
 
 ---
 
@@ -174,7 +175,7 @@ $env:GGML_BACKEND="Vulkan0"
 
 ## 9. Pendências
 
-- [ ] Commitar/push e conferir o GitHub Pages.
+- [x] Commitar/push e conferir o GitHub Pages — commit `32b9425`, build `built`, áudios 200/206.
 - [ ] Testar em aparelho real (Chrome Android e Safari iOS).
 - [ ] Ouvir o dueto e aprovar as duas vozes clonadas.
 - [ ] Decidir se `dueto-hino-corinthians.mp3` fica no repositório público ou só no material interno.
