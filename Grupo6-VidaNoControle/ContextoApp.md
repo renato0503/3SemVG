@@ -67,7 +67,7 @@ Ganha um salário mínimo e gasta boa parte com delivery de comida. Nunca olhou 
 
 **Entrada rápida e sem friction.** O usuário abre o app e registra, de forma simples, o que entrou (renda, benefício, outra fonte) e o que saiu (gasto essencial do mês). Não precisa ser preciso ao centavo — o objetivo é ter uma visão geral. O app mostra um gráfico simples: quando o dinheiro entrou, quando saiu, se está no azul ou no vermelho.
 
-**Leitura do cupom fiscal.** Sempre que voltar do supermercado, o usuário abre o app e cola o texto do cupom fiscal (ou fotografa, se o OCR funcionar). O app lê os itens, mostra o total e — se houver cupom anterior do mesmo supermercado — compara o valor total. Se o preço subiu ou se algum item foi cobrado diferente do anunciado, o app alerta.
+**Leitura do cupom fiscal.** Sempre que voltar do supermercado, o usuário abre o app, fotografa o cupom (OCR no próprio aparelho) ou cola o texto da NFC-e. O app lê os itens, mostra o total e — se houver cupom anterior do mesmo supermercado — compara o valor total. Se o preço subiu ou se algum item foi cobrado diferente do anunciado, o app alerta.
 
 **Comparação de preços local.** O app mantém um banco de dados de preços de supermarkets de Várzea Grande (atualizado pelos próprios usuários e pelo supermercado sponsor). Antes de ir ao mercado, o usuário consulta qual supermercado tem o menor preço na lista de compras semanal. A listinha pode ser compartilhada entre membros da família.
 
@@ -82,7 +82,7 @@ Ganha um salário mínimo e gasta boa parte com delivery de comida. Nunca olhou 
 | Capacidade | MVP | v1 | v2 |
 | --- | --- | --- | --- |
 | Registro de receitas/despesas | Entrada manual simples | Entrada por categoria + repetição automática | Integração com Pix/bancos (com permissão) |
-| Leitor de cupom fiscal | Colar texto do cupom | OCR por câmera (NFC-e) | Parser inteligente que identifica itens e preços |
+| Leitor de cupom fiscal | Colar texto ou fotografar o cupom (OCR no aparelho) | Leitura de QR/NFC-e direto da SEFAZ | Parser inteligente que identifica itens e preços |
 | Comparador de preços | Cadastro manual de preços por usuário | Banco de dados de preços local (atualização colaborativa) | IA que atualiza preços via API do supermercado |
 | Meta de reserva | Meta manual + progresso | Sugestão automática baseada na renda | Ligação com conta digital / cofrinho real |
 | Ofertas do sponsor | Lista de ofertas manual | Atualização automática via integração | Ofertas personalizadas por perfil de compra |

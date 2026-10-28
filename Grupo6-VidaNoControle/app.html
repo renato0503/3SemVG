@@ -42,6 +42,10 @@ main{max-width:560px;margin:0 auto;padding:6px 14px}
 .fila{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.fila>*{flex:1 1 auto}
 .in{width:100%;min-height:44px;border:1.5px solid var(--tinta);background:#fff;padding:6px 8px;font-size:15px}
 textarea.in{min-height:150px;font-size:12.5px}
+.foto{display:block;width:100%;max-height:300px;object-fit:contain;background:#000;border:1.5px solid var(--tinta);margin:8px 0}
+.ocr-area{margin:8px 0}
+.ocr-area .barra{margin:6px 0}
+.ocr-area .aviso{margin:6px 0}
 label{display:block;font-size:12px;color:var(--mudo);margin:8px 0 2px;text-transform:uppercase}
 .seg{display:flex;border:1.5px solid var(--tinta)}.seg button{flex:1;min-height:42px;border:none;background:transparent;cursor:pointer;font-weight:700}.seg button[aria-pressed=true]{background:var(--tinta);color:var(--papel)}
 .item-lista{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px dotted var(--pontil)}
@@ -49,6 +53,7 @@ label{display:block;font-size:12px;color:var(--mudo);margin:8px 0 2px;text-trans
 .item-lista.ok span{text-decoration:line-through;color:var(--mudo)}
 .rank{display:grid;grid-template-columns:22px 1fr auto;gap:6px;padding:4px 0;font-size:14px}.rank .p{font-weight:700}
 .rank.top .p{color:var(--verde)}
+.mapa{font-size:10px;color:var(--lar);text-decoration:none;border-bottom:1px dotted;white-space:nowrap}
 .patro{border:2px solid var(--tinta);padding:12px;margin:10px 0;position:relative}
 .patro .tag{position:absolute;top:-10px;left:10px;background:var(--lar);color:#fff;font-size:10.5px;font-weight:700;padding:1px 6px;letter-spacing:.08em}
 .aviso{font-size:12px;color:var(--mudo);border:1px dashed var(--mudo);padding:8px;margin:8px 0}
@@ -80,10 +85,19 @@ nav.baixo a[aria-current=page]{color:#fff;box-shadow:inset 0 3px 0 var(--lar)}
   </section>
 
   <section class="tela" id="t-cupom">
-    <div class="cupom"><div class="cab"><b>LER CUPOM FISCAL</b><small>cole o texto da NFC-e (consulta da SEFAZ ou cupom impresso)</small></div>
-      <textarea class="in" id="nfce" aria-label="Texto do cupom fiscal"></textarea>
-      <div class="fila"><button class="btn sec" id="exemplo-nfce">Colar exemplo</button><button class="btn" id="ler">Ler cupom</button></div>
-      <p class="aviso">Sem leitura de câmera (OCR) nesta versão. O texto é interpretado no aparelho.</p></div>
+    <div class="cupom"><div class="cab"><b>LER CUPOM FISCAL</b><small>fotografe o cupom ou cole o texto da NFC-e</small></div>
+      <div class="fila" style="margin-top:0"><button class="btn" id="foto-cupom">Tirar foto do cupom</button><button class="btn sec" id="exemplo-nfce">Colar exemplo</button></div>
+      <input type="file" id="arquivo-cupom" accept="image/*" capture="environment" hidden>
+      <div class="ocr-area" id="ocr-area" hidden>
+        <img class="foto" id="ocr-foto" alt="Foto do cupom fiscal">
+        <div class="barra"><i id="ocr-barra" style="width:0%"></i></div>
+        <p class="aviso" id="ocr-status" role="status" aria-live="polite"></p>
+        <div class="fila"><button class="btn sec peq" id="ocr-cancelar">Remover foto</button><button class="btn peq" id="ocr-reler">Ler de novo</button></div>
+      </div>
+      <label for="nfce">Texto reconhecido (confira antes de lançar)</label>
+      <textarea class="in" id="nfce" aria-label="Texto do cupom fiscal" placeholder="Fotografe o cupom ou cole aqui o texto da NFC-e"></textarea>
+      <div class="fila"><button class="btn" id="ler">Ler cupom</button></div>
+      <p class="aviso">O OCR roda no seu aparelho (Tesseract.js) e não envia a foto para nenhum servidor. Na primeira leitura ele baixa o modelo de português (~6 MB).</p></div>
     <div class="cupom" id="lido" hidden></div>
   </section>
 
@@ -96,11 +110,11 @@ nav.baixo a[aria-current=page]{color:#fff;box-shadow:inset 0 3px 0 var(--lar)}
   </section>
 
   <section class="tela" id="t-comparar">
-    <div class="cupom"><div class="cab"><b>ONDE ESTÁ MAIS BARATO</b><small>mercados próximos · preços SIMULADOS</small></div>
+    <div class="cupom"><div class="cab"><b>ONDE ESTÁ MAIS BARATO</b><small>mercados reais de Várzea Grande · preços SIMULADOS</small></div>
       <div id="cesta"></div><div class="pont"></div>
       <label for="cmp-prod">Ranking por produto</label><select class="in" id="cmp-prod"></select>
       <div id="ranking" style="margin-top:6px"></div>
-      <p class="aviso">Na versão real, os preços viriam de cupons compartilhados pelos usuários de forma agregada e anônima. “Você pagou” vem dos seus cupons lidos.</p></div>
+      <p class="aviso">Os mercados são reais (Comper, Paulista, Serve Mais, Castelo, BigLar e Pardal), mas os preços são simulados para demonstrar o comparador. Na versão real, viriam de cupons compartilhados de forma agregada e anônima. “Você pagou” vem dos seus cupons lidos.</p></div>
   </section>
 
   <section class="tela" id="t-ofertas">
@@ -132,13 +146,22 @@ let tb; const brinde = m => { const e = $('#brinde'); e.textContent = m; e.class
 
 const CATS = { d: ['Mercado', 'Moradia', 'Transporte', 'Saúde', 'Educação', 'Lazer', 'Contas', 'Outros'], r: ['Salário', 'Extra', 'Benefício', 'Outros'] };
 const PRODUTOS = [['arroz', 'Arroz 5 kg', /arroz/i, 26], ['feijao', 'Feijão 1 kg', /feij/i, 8.5], ['oleo', 'Óleo de soja 900 ml', /oleo|óleo/i, 7.2], ['cafe', 'Café 500 g', /caf[eé]/i, 19], ['leite', 'Leite 1 L', /leite/i, 5.4], ['acucar', 'Açúcar 2 kg', /a[cç][uú]car/i, 9.8], ['frango', 'Frango (kg)', /frango/i, 13.5], ['ovos', 'Ovos (dúzia)', /ovo/i, 11], ['pao', 'Pão francês (kg)', /p[aã]o/i, 16], ['sabao', 'Sabão em pó 1 kg', /sab[aã]o/i, 14]];
-const MERCADOS = [['Atacadão do Bairro', .93], ['Mercado Esquina', 1.06], ['Super Preço Bom', .98], ['Rede Família', 1.02]];
+// mercados reais de Várzea Grande/Cuiabá (links enviados pelo grupo); preços continuam SIMULADOS
+const MERCADOS = [
+  { nome: 'Comper Supermercados', fator: .93, url: 'https://share.google/eoqllZoRJo1XcWFc0' },
+  { nome: 'Paulista Supermercado · Jardim Glória II', fator: 1.06, url: 'https://share.google/xiMr8vust6prBheuY' },
+  { nome: 'Rede Serve Mais · Ipase', fator: .98, url: 'https://share.google/6X7jGavUEbwYNVhMJ' },
+  { nome: 'Padaria e Mercado Castelo', fator: 1.02, url: 'https://maps.app.goo.gl/oB6kRYJkLMP8FUgz5' },
+  { nome: 'BigLar', fator: .96, url: 'https://maps.app.goo.gl/3uYWcejLnetqKSFR6' },
+  { nome: 'Mercado Pardal', fator: 1.04, url: 'https://maps.app.goo.gl/yKsJyHfxKxNn3jCp6' }
+];
 // preço simulado e estável por mercado/produto
-const preco = (pi, mi) => { const h = Math.sin((pi + 1) * 12.9898 + (mi + 1) * 78.233) * 43758.5453; return +(PRODUTOS[pi][3] * MERCADOS[mi][1] * (0.94 + (h - Math.floor(h)) * .12)).toFixed(2); };
-const OFERTAS = [{ m: 'Atacadão do Bairro', t: 'Leve 3 pacotes de café e pague 2', cat: 'cafe' }, { m: 'Rede Família', t: 'Frango congelado com 15% de desconto às quartas', cat: 'frango' }, { m: 'Farmácia Parceira', t: 'Genéricos com 20% no app', cat: null }];
-const EXEMPLO_NFCE = `SUPER PRECO BOM LTDA
-CNPJ: 12.345.678/0001-90
-AV. COUTO MAGALHAES, 1500 - VARZEA GRANDE - MT
+const preco = (pi, mi) => { const h = Math.sin((pi + 1) * 12.9898 + (mi + 1) * 78.233) * 43758.5453; return +(PRODUTOS[pi][3] * MERCADOS[mi].fator * (0.94 + (h - Math.floor(h)) * .12)).toFixed(2); };
+const OFERTAS = [{ m: 'Comper Supermercados', t: 'Leve 3 pacotes de café e pague 2 (oferta simulada)', cat: 'cafe' }, { m: 'BigLar', t: 'Frango congelado com 15% de desconto às quartas (oferta simulada)', cat: 'frango' }, { m: 'Rede Serve Mais · Ipase', t: '5% de desconto em produtos de limpeza (oferta simulada)', cat: 'sabao' }];
+const EXEMPLO_NFCE = `COMPER SUPERMERCADOS LTDA
+*** CUPOM DE EXEMPLO ***
+CNPJ: 00.000.000/0001-00
+AV. EXEMPLO, 1500 - VARZEA GRANDE - MT
 Documento Auxiliar da Nota Fiscal de Consumidor Eletrônica
 ARROZ TIPO 1 5KG (Código: 7891234500011) Qtde.:1 UN: UN Vl. Unit.: 25,49 Vl. Total 25,49
 FEIJAO CARIOCA 1KG (Código: 7891234500028) Qtde.:2 UN: UN Vl. Unit.: 8,29 Vl. Total 16,58
@@ -160,25 +183,155 @@ const salvar = () => localStorage.setItem(CH, JSON.stringify(S)); salvar();
 const doMes = () => { const k = new Date().toISOString().slice(0, 7); return S.lanc.filter(l => l.q.slice(0, 7) === k); };
 
 /* ---------- intérprete de NFC-e ---------- */
+const valor = s => {
+  s = String(s || '').replace(/[^\d.,-]/g, '');
+  if (s.includes(',')) return parseFloat(s.replace(/\./g, '').replace(',', '.')) || 0;
+  const p = s.split('.');
+  if (p.length === 2 && p[1].length <= 2) return parseFloat(s) || 0;
+  return parseFloat(s.replace(/\./g, '')) || 0;
+};
+const qtd = s => { s = String(s || '').replace(/[^\d.,]/g, ''); return parseFloat(s.includes(',') ? s.replace(/\./g, '').replace(',', '.') : s) || 0; };
+const limparNome = s => String(s || '').replace(/^\d{1,3}\s+\d{4,14}\s+/, '').replace(/\s*\(?\s*c[óo]d(?:igo)?\.?\s*:.*$/i, '').replace(/[|¦]/g, ' ').replace(/\s+/g, ' ').trim();
+const ehRuido = l => /^\s*(total|subtotal|valor|troco|desconto|acrescimo|imposto|tributo|qtd|quantidade|itens|cnpj|cpf|data|hora|emiss|protocolo|chave|cartao|dinheiro|pix|credito|debito|bandeira|autoriz|consumidor|obrigado|volte|cupom|nfc-?e|danfe|sefaz|documento)\b/i.test(l);
 function interpretar(txt) {
-  const linhas = txt.split(/\r?\n/).map(l => l.trim()).filter(Boolean), itens = [];
-  const reSefaz = /^(.+?)\s*\(C[óo]digo:\s*\w+\)\s*Qtde\.?:\s*([\d.,]+)\s*UN:\s*(\w+)\s*Vl\.?\s*Unit\.?:\s*([\d.,]+)\s*Vl\.?\s*Total\s*([\d.,]+)/i;
-  const reImpresso = /^\d{1,3}\s+\d{4,14}\s+(.+?)\s+([\d.,]+)\s*(UN|KG|L|CX|PC)\s*[xX*]\s*([\d.,]+)\s+([\d.,]+)$/i;
-  let loja = '', cnpj = '', total = 0, data = null;
-  linhas.forEach((l, i) => {
+  const brutas = txt.split(/\r?\n/).map(l => l.replace(/[|¦]/g, ' ').replace(/[ \t]+/g, ' ').trim()).filter(l => l && !/^[-=_.*]{3,}$/.test(l));
+  // desembrulha linhas que o OCR quebrou no meio de um item ("Vl. Unit.:" + "25,49 Vl. Total 25,49")
+  const desembrulhadas = [];
+  for (let i = 0; i < brutas.length; i++) {
+    let l = brutas[i];
+    while (i + 1 < brutas.length && /(?:[:]|unit\.?|total|qtde\.?)\s*$/i.test(l) && /^[\d.,]/.test(brutas[i + 1])) l += ' ' + brutas[++i];
+    desembrulhadas.push(l);
+  }
+  // junta produto quebrado em duas linhas: "ARROZ TIPO 1" + "1 UN 25,49 25,49"
+  const linhas = [];
+  for (let i = 0; i < desembrulhadas.length; i++) {
+    const l = desembrulhadas[i], nx = desembrulhadas[i + 1] || '';
+    if (l.length >= 3 && /[A-Za-zÀ-ÿ]/.test(l) && !/\d+[.,]\d{2}/.test(l) && /^[\d.,]+\s*(UN|KG|L|CX|PC|FD|PT|G|ML)\b/i.test(nx)) {
+      linhas.push(l + ' ' + nx); i++;
+    } else linhas.push(l);
+  }
+  const itens = [];
+  const reSefaz = /^(.+?)\s*\(?\s*c[óo]d(?:igo)?\.?\s*:?\s*[\w.-]+\s*\)?\s*qtde\.?\s*:?\s*([\d.,]+)\s*(?:un\.?\s*:?\s*(\w+))?\s*vl\.?\s*unit\.?\s*:?\s*([\d.,]+)\s*vl\.?\s*total\s*:?\s*([\d.,]+)/i;
+  const reImpresso = /^(?:\d{1,3}\s+)?(?:\d{4,14}\s+)?(.+?)\s+([\d.,]+)\s*(UN|KG|L|CX|PC|FD|PT|G|ML)\s*(?:[xX*]\s*)?([\d.,]+)\s+([\d.,]+)\s*$/i;
+  const reSimples = /^(?:\d{1,3}\s+)?(?:\d{4,14}\s+)?(.{3,}?)\s+([\d.,]{3,})\s*$/i;
+  let loja = '', cnpj = '', totalPagar = 0, totalGeral = 0, data = null;
+  const ruidoLoja = /^(cnpj|cpf|documento|danfe|nfc-?e|cupom|sefaz|endere|av\.|rua|rod\.|telefone|site|www|chave|protocolo|emiss|\*+)/i;
+  linhas.forEach(l => {
     let m;
-    if ((m = l.match(reSefaz))) itens.push({ nome: m[1], qt: num(m[2]), un: m[3], unit: num(m[4]), tot: num(m[5]) });
-    else if ((m = l.match(reImpresso))) itens.push({ nome: m[1], qt: num(m[2]), un: m[3], unit: num(m[4]), tot: num(m[5]) });
-    else if ((m = l.match(/CNPJ:?\s*([\d./-]{14,18})/i))) cnpj = m[1];
-    else if ((m = l.match(/Valor\s+(a\s+pagar|total)\s*R\$:?\s*([\d.,]+)/i))) total = num(m[2]);
-    else if ((m = l.match(/(\d{2})\/(\d{2})\/(\d{4})/))) data = new Date(+m[3], +m[2] - 1, +m[1]);
-    if (i === 0 && !/cnpj|documento/i.test(l)) loja = l;
+    if ((m = l.match(reSefaz))) itens.push({ nome: limparNome(m[1]), qt: qtd(m[2]), un: (m[3] || 'UN').toUpperCase(), unit: valor(m[4]), tot: valor(m[5]) });
+    else if ((m = l.match(reImpresso))) itens.push({ nome: limparNome(m[1]), qt: qtd(m[2]), un: m[3].toUpperCase(), unit: valor(m[4]), tot: valor(m[5]) });
+    else if ((m = l.match(reSimples)) && !ehRuido(l)) {
+      const nome = limparNome(m[1]), v = valor(m[2]);
+      if (/[A-Za-zÀ-ÿ]{3}/.test(nome) && !/^[\d.,]/.test(nome) && v > .4 && v < 10000) itens.push({ nome, qt: 1, un: 'UN', unit: v, tot: v });
+    }
+    if ((m = l.match(/cnpj[^\d]{0,12}([\d./-]{14,18})/i))) cnpj = m[1];
+    let mt;
+    if ((mt = l.match(/valor\s*(?:a\s*pagar|pago)[^\d]{0,15}([\d.,]+)/i))) totalPagar = valor(mt[1]);
+    else if ((mt = l.match(/(?:valor\s*total|total\s*(?:r\$|:)?)[^\d]{0,12}([\d.,]+)/i)) && !/itens|qtd|quantidade/i.test(l)) totalGeral = valor(mt[1]);
+    if (/emiss|data/i.test(l) && (mt = l.match(/(\d{2})[\/.-](\d{2})[\/.-](\d{4})/))) data = new Date(+mt[3], +mt[2] - 1, +mt[1]);
+    if (!data && (mt = l.match(/(\d{2})[\/.-](\d{2})[\/.-](\d{4})/))) data = new Date(+mt[3], +mt[2] - 1, +mt[1]);
+    if (!loja && /[A-Za-zÀ-ÿ]{3}/.test(l) && !ruidoLoja.test(l) && !/^\d/.test(l)) loja = l;
   });
   itens.forEach(it => { const k = PRODUTOS.findIndex(p => p[2].test(it.nome)); it.prod = k >= 0 ? PRODUTOS[k][0] : null; });
   const soma = +itens.reduce((a, x) => a + x.tot, 0).toFixed(2);
-  return { loja: loja || 'Estabelecimento', cnpj, itens, total: total || soma, soma, data: data || new Date() };
+  return { loja: loja || 'Estabelecimento', cnpj, itens, total: totalPagar || totalGeral || soma, soma, data: data || new Date() };
 }
 let ultimoLido = null;
+function processarCupom(t) {
+  const txt = String(t || '').trim();
+  if (!txt) { $('#lido').hidden = true; return brinde('COLE O TEXTO DO CUPOM'); }
+  ultimoLido = interpretar(txt);
+  if (!ultimoLido.itens.length) { $('#lido').hidden = true; return brinde('NENHUM ITEM RECONHECIDO'); }
+  mostrarLido(ultimoLido);
+}
+
+/* ---------- OCR do cupom (Tesseract.js, roda no aparelho) ---------- */
+const OCR_URL = 'https://cdn.jsdelivr.net/npm/tesseract.js@7.0.0/dist/tesseract.min.js';
+let ocrWorkerP = null, ocrProgresso = null, ocrArquivo = null, ocrUrl = null;
+function setOcr(msg, pct) {
+  const el = $('#ocr-status');
+  if (el) { el.textContent = msg || ''; el.hidden = !msg; }
+  if (pct != null) $('#ocr-barra').style.width = Math.max(0, Math.min(100, pct)) + '%';
+}
+function carregarTesseract() {
+  return new Promise((ok, err) => {
+    if (window.Tesseract) return ok();
+    const s = document.createElement('script');
+    s.src = OCR_URL; s.async = true;
+    s.onload = () => window.Tesseract ? ok() : err(new Error('OCR indisponível.'));
+    s.onerror = () => err(new Error('Não consegui baixar o OCR. Verifique a internet e tente de novo.'));
+    document.head.appendChild(s);
+  });
+}
+async function obterOcr() {
+  if (!ocrWorkerP) ocrWorkerP = (async () => {
+    await carregarTesseract();
+    const w = await Tesseract.createWorker('por', 1, {
+      workerPath: 'https://cdn.jsdelivr.net/npm/tesseract.js@7.0.0/dist/worker.min.js',
+      corePath: 'https://cdn.jsdelivr.net/npm/tesseract.js-core@7.0.0',
+      langPath: 'https://tessdata.projectnaptha.com/4.0.0',
+      logger: m => { if (m.status === 'recognizing text' && ocrProgresso) ocrProgresso(m.progress); },
+      errorHandler: e => console.warn('OCR:', e)
+    });
+    try { await w.setParameters({ preserve_interword_spaces: '1' }); } catch (e) {}
+    return w;
+  })().catch(e => { ocrWorkerP = null; throw e; });
+  return ocrWorkerP;
+}
+function prepararImagem(file) {
+  return new Promise((ok, err) => {
+    const url = URL.createObjectURL(file), img = new Image();
+    img.onload = () => {
+      try {
+        const lado = Math.max(img.naturalWidth, img.naturalHeight) || 1;
+        const escala = Math.min(3, Math.max(1, 2400 / lado));
+        const c = document.createElement('canvas');
+        c.width = Math.max(1, Math.round(img.naturalWidth * escala));
+        c.height = Math.max(1, Math.round(img.naturalHeight * escala));
+        const ctx = c.getContext('2d', { willReadFrequently: true });
+        ctx.drawImage(img, 0, 0, c.width, c.height);
+        const d = ctx.getImageData(0, 0, c.width, c.height), px = d.data;
+        for (let i = 0; i < px.length; i += 4) {
+          let g = .299 * px[i] + .587 * px[i + 1] + .114 * px[i + 2];
+          g = (g - 128) * 1.35 + 128;
+          px[i] = px[i + 1] = px[i + 2] = g < 0 ? 0 : g > 255 ? 255 : g;
+        }
+        ctx.putImageData(d, 0, 0);
+        URL.revokeObjectURL(url); ok(c);
+      } catch (e) { URL.revokeObjectURL(url); err(e); }
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); err(new Error('Não consegui abrir a imagem.')); };
+    img.src = url;
+  });
+}
+async function lerFoto(file) {
+  if (!file || !/^image\//.test(file.type || '')) return brinde('ESCOLHA UMA FOTO');
+  if (ocrUrl) URL.revokeObjectURL(ocrUrl);
+  ocrUrl = URL.createObjectURL(file);
+  $('#ocr-area').hidden = false;
+  $('#ocr-foto').src = ocrUrl;
+  $('#lido').hidden = true;
+  setOcr('Preparando a foto...', 4);
+  try {
+    const canvas = await prepararImagem(file);
+    setOcr('Carregando o OCR (na primeira vez baixa ~6 MB)...', 12);
+    const w = await obterOcr();
+    setOcr('Lendo o cupom...', 15);
+    ocrProgresso = p => setOcr(`Lendo o cupom... ${Math.round(p * 100)}%`, 15 + p * 80);
+    const { data: { text } } = await w.recognize(canvas);
+    ocrProgresso = null;
+    const limpo = String(text || '').replace(/\u0000/g, '').replace(/[ \t]+\n/g, '\n').trim();
+    if (!limpo) throw new Error('Não encontrei texto na foto. Tente de novo com mais luz e o cupom reto.');
+    $('#nfce').value = limpo;
+    setOcr('Foto lida. Confira o texto e os itens abaixo.', 100);
+    processarCupom(limpo);
+  } catch (e) {
+    ocrProgresso = null;
+    console.warn('OCR falhou:', e);
+    setOcr((e && e.message) ? e.message : 'Não deu para ler a foto. Cole o texto manualmente.', 0);
+    brinde('OCR NÃO CONCLUÍDO');
+  }
+}
 
 /* ---------- telas ---------- */
 function telaExtrato() {
@@ -207,12 +360,13 @@ function telaLista() {
 }
 function telaComparar() {
   const itens = S.lista.filter(i => !i.ok).map(i => PRODUTOS.findIndex(p => p[0] === i.p)).filter(k => k >= 0);
-  const cestas = MERCADOS.map((m, mi) => [m[0], itens.reduce((a, k) => a + preco(k, mi), 0)]).sort((a, b) => a[1] - b[1]);
-  $('#cesta').innerHTML = `<label>Sua lista (${itens.length} itens) em cada mercado</label>` + cestas.map(([n, v], i) => `<div class="rank ${i === 0 ? 'top' : ''}"><span>${i + 1}º</span><span>${esc(n)}</span><span class="p">${R$(v)}</span></div>`).join('') +
+  const cestas = MERCADOS.map((m, mi) => [m, itens.reduce((a, k) => a + preco(k, mi), 0)]).sort((a, b) => a[1] - b[1]);
+  const linkMapa = m => `<a class="mapa" href="${m.url}" target="_blank" rel="noopener">mapa</a>`;
+  $('#cesta').innerHTML = `<label>Sua lista (${itens.length} itens) em cada mercado</label>` + cestas.map(([m, v], i) => `<div class="rank ${i === 0 ? 'top' : ''}"><span>${i + 1}º</span><span>${esc(m.nome)} ${linkMapa(m)}</span><span class="p">${R$(v)}</span></div>`).join('') +
     (itens.length && cestas.length > 1 ? `<p style="font-size:13px;margin-top:4px">Economia comprando no 1º: <b class="pos">${R$(cestas.at(-1)[1] - cestas[0][1])}</b></p>` : '');
   if (!$('#cmp-prod').options.length) $('#cmp-prod').innerHTML = PRODUTOS.map((p, i) => `<option value="${i}">${p[1]}</option>`).join('');
-  const k = +$('#cmp-prod').value || 0, rk = MERCADOS.map((m, mi) => [m[0], preco(k, mi)]).sort((a, b) => a[1] - b[1]), pg = S.pagou[PRODUTOS[k][0]];
-  $('#ranking').innerHTML = rk.map(([n, v], i) => `<div class="rank ${i === 0 ? 'top' : ''}"><span>${i + 1}º</span><span>${esc(n)}</span><span class="p">${R$(v)}</span></div>`).join('') + (pg ? `<div class="rank"><span>★</span><span>Você pagou (seu cupom)</span><span class="p">${R$(pg)}</span></div>` : '');
+  const k = +$('#cmp-prod').value || 0, rk = MERCADOS.map((m, mi) => [m, preco(k, mi)]).sort((a, b) => a[1] - b[1]), pg = S.pagou[PRODUTOS[k][0]];
+  $('#ranking').innerHTML = rk.map(([m, v], i) => `<div class="rank ${i === 0 ? 'top' : ''}"><span>${i + 1}º</span><span>${esc(m.nome)} ${linkMapa(m)}</span><span class="p">${R$(v)}</span></div>`).join('') + (pg ? `<div class="rank"><span>★</span><span>Você pagou (seu cupom)</span><span class="p">${R$(pg)}</span></div>` : '');
 }
 function telaOfertas() {
   const hist = new Set(Object.keys(S.pagou).concat(S.lista.map(i => i.p)));
@@ -228,8 +382,11 @@ document.addEventListener('click', e => {
   if (b.dataset.tipo) { S.tipo = b.dataset.tipo; salvar(); telaExtrato(); }
   else if (b.id === 'lancar') { const d = $('#l-desc').value.trim(), v = num($('#l-valor').value); if (!d || !v) return brinde('DESCRIÇÃO E VALOR'); S.lanc.push({ id: 'l' + Date.now(), t: S.tipo, desc: d, cat: $('#l-cat').value, v, q: new Date().toISOString() }); $('#l-desc').value = $('#l-valor').value = ''; salvar(); telaExtrato(); brinde('LANÇADO ✓'); }
   else if (b.dataset.rem) { S.lanc = S.lanc.filter(l => l.id !== b.dataset.rem); salvar(); telaExtrato(); }
-  else if (b.id === 'exemplo-nfce') $('#nfce').value = EXEMPLO_NFCE;
-  else if (b.id === 'ler') { const t = $('#nfce').value.trim(); if (!t) return brinde('COLE O TEXTO DO CUPOM'); ultimoLido = interpretar(t); if (!ultimoLido.itens.length) { $('#lido').hidden = true; return brinde('NENHUM ITEM RECONHECIDO'); } mostrarLido(ultimoLido); }
+  else if (b.id === 'foto-cupom') $('#arquivo-cupom').click();
+  else if (b.id === 'exemplo-nfce') { $('#nfce').value = EXEMPLO_NFCE; processarCupom(EXEMPLO_NFCE); }
+  else if (b.id === 'ler') processarCupom($('#nfce').value);
+  else if (b.id === 'ocr-cancelar') { if (ocrUrl) URL.revokeObjectURL(ocrUrl); ocrUrl = null; ocrArquivo = null; $('#ocr-area').hidden = true; $('#ocr-foto').removeAttribute('src'); setOcr('', 0); }
+  else if (b.id === 'ocr-reler') { if (!ocrArquivo) return brinde('TIRE UMA FOTO PRIMEIRO'); lerFoto(ocrArquivo); }
   else if (b.id === 'lancar-cupom') { const r = ultimoLido; S.lanc.push({ id: 'l' + Date.now(), t: 'd', desc: r.loja.slice(0, 28), cat: 'Mercado', v: r.total, q: r.data.toISOString() });
     r.itens.forEach(i => { if (i.prod) S.pagou[i.prod] = i.unit; }); S.cupons.push({ loja: r.loja, total: r.total, q: r.data.toISOString(), n: r.itens.length });
     S.lista.forEach(l => { if (r.itens.some(i => i.prod === l.p)) l.ok = true; }); salvar(); brinde('CUPOM LANÇADO · LISTA ATUALIZADA'); location.hash = '#/extrato'; }
@@ -244,6 +401,7 @@ document.addEventListener('change', e => {
   if (e.target.dataset.li != null) { S.lista[+e.target.dataset.li].ok = e.target.checked; salvar(); telaLista(); }
   else if (e.target.id === 'cmp-prod') telaComparar();
   else if (e.target.id === 'personalizar') { S.personalizar = e.target.checked; salvar(); telaOfertas(); }
+  else if (e.target.id === 'arquivo-cupom') { const f = e.target.files && e.target.files[0]; e.target.value = ''; if (f) { ocrArquivo = f; lerFoto(f); } }
 });
 $('#li-novo').addEventListener('keydown', e => { if (e.key === 'Enter') $('#li-add').click(); });
 

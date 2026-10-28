@@ -1,4 +1,4 @@
-const CACHE = 'vidanocontrole-v2';
+const CACHE = 'vidanocontrole-v3';
 const PRE = ['./', './index.html', './app.html', './manifest.json', '../assets/logos/g6-192.png'];
 
 self.addEventListener('install', e => {

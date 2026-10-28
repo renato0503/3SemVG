@@ -1,4 +1,4 @@
-# Context — Projeto Customer Discovery (3SemVG / Unifacc)
+﻿# Context — Projeto Customer Discovery (3SemVG / Unifacc)
 
 Registro do que foi pedido e feito neste projeto, para continuar depois.
 **Pasta raiz:** `D:\Dev\UnifaccApps\3SemVG`
@@ -692,7 +692,7 @@ suspeitos cada, além do G6 com 14/14 fabricados) quando o usuário pediu pra re
 ## 20. Sessão 23/09/2026 — correção do curso, nomes completos e CONFACC 2026
 
 ### 20.1 Correção importante
-- **O curso desta turma é Ciências Contábeis (FACC-MT)**, disciplina *Educação Financeira Aplicada na Gestão Pessoal e Empresarial*, turma 2220252-N (lista de chamada de 22/09/2026). Este `context.md`, as Partes 1–3 e o site dizem "Tecnologia e Inovação · 3º Semestre" — **está errado**; corrigir nos materiais (pendente, aguardando ok do professor).
+- **O curso desta turma é Ciências Sociais Aplicadas (FACC-MT)**, disciplina *Educação Financeira Aplicada na Gestão Pessoal e Empresarial*, turma 2220252-N (lista de chamada de 22/09/2026). Este `context.md`, as Partes 1–3 e o site dizem "Tecnologia e Inovação · 3º Semestre" — **está errado**; corrigir nos materiais (pendente, aguardando ok do professor).
 
 ### 20.2 Nomes completos (chamada de 22/09/2026)
 | Grupo | Integrantes |
@@ -709,6 +709,134 @@ suspeitos cada, além do G6 com 14/14 fabricados) quando o usuário pediu pra re
 - As referências dos resumos usam **só DOIs que existem nos brutos da API** (`_pesquisa/saidas`). As citações inventadas da seção 19.3 continuam **nos `Pesquisa-Dados.md` desta pasta** (2 no G1, 2 no G2, 2 no G3, 2 no G4, 2 no G5 e as 14 do G6) — a correção desses arquivos segue pendente (plano na seção 19.3).
 
 ### 20.4 Próximos passos
-1. Corrigir o rótulo do curso (Ciências Contábeis) em context, Partes, landings e hub.
+1. Corrigir o rótulo do curso (Ciências Sociais Aplicadas) em context, Partes, landings e hub.
 3. Corrigir os `Pesquisa-Dados.md` com citações inventadas (seção 19.3).
 3. Kit CONFACC: orientador de todos os trabalhos é Renato de Oliveira Rosa (decisão de 25/09/2026).
+
+---
+
+## 21. Sessão 25/09/2026 — MVPs reconstruídos, landings e figuras do CONFACC
+
+### 21.1 MVPs reconstruídos (design e arquitetura próprios)
+Os 6 apps (`Grupo<N>/app.html`) deixaram de ser um piloto + cópias e foram refeitos, cada um com identidade e arquitetura próprias; cada grupo ganhou uma **landing** (`Grupo<N>/index.html`) no estilo do próprio app, com o app ao vivo no mockup.
+
+| Grupo | App | Arquitetura / destaque |
+|---|---|---|
+| G1 | Dinheiro na Mão | motor de calendário com `<template>` + View Transitions; Price/SAC |
+| G2 | LifePath | baralho de decisões (swipe/pointer) + simulação anual em canvas |
+| G3 | Quita.AI | jogo em pixel com `requestAnimationFrame` (pausa de 10 s, mapa de fases) |
+| G4 | SuaCasaSuaVida | MCDA com pesos, radar SVG, Price/SAC (estilo revista) |
+| G5 | EDA | diário cifrado com Web Crypto (PBKDF2 + AES-GCM), roda moderada |
+| G6 | Vida no Controle | intérprete de texto de NFC-e, lista, comparador, patrocínio rotulado |
+
+- `sw.js` **rede-primeiro v2** nos 6; hub atualizado com as landings; `_gerador/testar_apps.py` e `_gerador/prints.py` passaram a usar `_ferramentas/smoke.py`.
+- Publicado no repo: commit **`655833d`** em https://github.com/renato0503/3SemVG.
+
+### 21.2 CONFACC — Figura 1
+- O `build.py` do kit (`D:\Dev\UnifaccApps\Confacc2026\`) foi ajustado para capturar os apps por **`window.__rotas`** (os apps novos não usam mais `data-aba`) e o `preparo` foi protegido por `try/except`.
+- Preparos atualizados: **Quita.AI** (clicar “família de exemplo”) e **EDA** (clicar os dados de exemplo — o app é trancado por PIN 1234).
+- As 6 figuras do 3SemVG (`Gx-Nome-figura1-mvp.png`, 3 telas) foram regeradas; `py build.py` → OK (17 trabalhos).
+
+### 21.3 Continua pendente
+- Corrigir o **rótulo do curso** (Ciências Sociais Aplicadas) em context/Partes/landings/hub.
+- Corrigir os `Pesquisa-Dados.md` com **citações inventadas** (seção 19.3; os resumos do kit já usam só DOIs verificados).
+- **Coleta no shopping**, tabulação quanti/quali e sprints 3–5 (itens de longo prazo).
+
+---
+
+## 22. Sessão 06/10/2026 — Termo de Consentimento (TCLE)
+
+- **Termo_Consentimento_3SemVG.pdf** criado na raiz da pasta, no mesmo padrão visual do TCLE do AdmCBA (Termo_Consentimento_AdmCBA.pdf), gerado via ReportLab.
+- 2 páginas, A4, com: cabeçalho UNIFACC + Curso/Turma, bloco de metadados (Professor, Disciplina, Curso/Turma, Local, Período), 4 blocos laterais (O que é / Como funciona · Riscos e Benefícios / Seus Direitos), contato, Declaração de Ciência e área de assinatura.
+- Cita explicitamente os 6 apps do projeto (Dinheiro na Mão, LifePath, Quita.AI, SuaCasaSuaVida, EDA, Vida no Controle) e a disciplina "Educação Financeira Aplicada na Gestão Pessoal e Empresarial".
+- LGPD (Lei 13.709/2018) e e-mail renato.rosa@unifacc.edu.br mencionados no documento.
+- Script: C:\Users\Renato\AppData\Local\Temp\opencode\gerar_tcle.py (reaproveitável — gera também o do 8AdmVG).
+- Pendente: gerar variantes _imprimir.pdf e _leve.pdf (caso o professor queira, igual ao AdmCBA tem).
+
+
+### 22.1 Ajustes finais no TCLE (06/10/2026)
+- Removida a seção "Declaração de ciência" e a área de assinatura (o termo é só informativo, **somente entregue**, sem coleta de assinatura no shopping).
+- Local corrigido: **Região do Aeroporto de Cuiabá - MT** (sem "shopping center").
+- Curso/turma corrigidos: **Ciências Sociais Aplicadas - 2220252-N** · **Período: 3º Semestre de Ciências Sociais Aplicadas**.
+- Script: C:\Users\Renato\AppData\Local\Temp\opencode\gerar_tcle.py.
+- Refeito para caber em **1 página A4** com margens/entrelinhas maiores (versão "somente entregue").
+- Texto sem adjetivações, sem travessão e com conectivos após o ponto final (Assim, Dessa forma, Por isso, Além disso, Ainda, Por fim).
+
+
+### 22.2 App de coleta replicado do AdmCBA (06/10/2026)
+- `App/index.html` (e cópia idêntica em `coleta/index.html`) refeito a partir do `AdmCBA/App/index.html`, que é o modelo aprovado. O AdmCBA não foi alterado.
+- Fluxo: grupo → **Quem está coletando? (aluno)** → perfil por observação → 20 perguntas (escala 1–5 com rótulos intermediários e **confirmação em cada resposta**) → e-mail opcional → código `G<n>-<nnn>`.
+- Mantidos da turma: as 20 perguntas, triagem e nota de campo de cada grupo. Acrescentados: `alunos[]` (nomes completos) e cores por grupo; Sabrina (G5) fora da lista, retirada em 25/09.
+- Lista de grupos da home agora vem de `GRUPOS` (antes era fixa de 1 a 6 no modelo, o que quebrava com 6 grupos).
+- Sincronização: usa a **mesma planilha Google do AdmCBA** (`DEFAULT_SHEET_URL`, mesma estrutura de colunas). Atenção: os códigos `G<n>-<nnn>` se repetem entre turmas; separar pela coluna `grupoNome`.
+- Chaves de `localStorage` próprias: `cd3semvg_*`. READMEs de `App/` e `coleta/` atualizados.
+- Teste automatizado (Playwright): fluxo completo em todos os 6 grupos, sem erro.
+- Publicado em **repositório próprio da turma** (`renato0503/3SemVG`, commit `07648b7`): https://renato0503.github.io/3SemVG/coleta/ (no ar e conferido).
+- Pendente: confirmar nome do curso do 3SemVG (TCLE diz Ciências Sociais Aplicadas; memória/context antigo diz Ciências Contábeis).
+- Pendente: conferir o sobrenome do Denner (G5), registrado como "Denner Silva Port".
+
+## 23. Sessão 20/10/2026 — Resultados da coleta, análise por grupo e publicação
+
+### 23.1 Fonte dos dados e regras de tratamento
+- **Planilha de respostas (banco único das 3 turmas):** `1hdR-swgduz5jqhra3OqUNp109xQbrMP42CC_evDXupM`, aba **Respostas** (gid 2144392800), compartilhada como "qualquer pessoa com o link". Colunas: `recebidoEm, codigo, aluno, grupo, grupoNome, criadoEm, faixaEtaria, sexo, classe, raca, orgao, Q1..Q20, email_contato`.
+- **Não há coluna de turma.** A turma se deduz por `grupoNome` (nomes únicos entre turmas; na planilha o G5 do 8AdmVG aparece como "CasaHumanizada"). Os códigos `G<n>-<nnn>` **se repetem** (contador local em cada celular), então a chave de unicidade usada é (grupoNome, codigo, criadoEm); 3 duplicatas exatas foram removidas.
+- **A triagem de cada grupo (ex.: situação acadêmica, quem cuida das contas, convivência no EDA) NÃO chega à planilha**: o Apps Script só tem a coluna `orgao` (usada pelo Fila Cidadã). Está nos celulares/CSV exportado. Correção pendente: coluna genérica de triagem (e coluna `turma`) no Apps Script.
+- **Respostas de arquivo (celular que não sincronizou), somadas ao HTML e fora da planilha:** `coleta-3semvg.json` (8 respostas, G4 SuaCasaSuaVida, atribuídas a Julimary da Silva Amorim) e `cassia_coleta-3semvg.json` (4 respostas de 20 e 21/10, G5 EDA, Cássia Virgínia Aparecida da Silva Nobrega). A G5-001 desse arquivo, de 07/10 (antes da coleta), foi **ignorada** por parecer teste; incluir se for válida (lista `ARQUIVOS` em `_ferramentas/resultados-coleta/build_html.py`). Se o celular sincronizar depois, a deduplicação remove a cópia.
+- **Metas por grupo (linhas no gráfico):** 15 (meta inicial), **30 (mínimo total)** e **35 (margem de segurança)**.
+
+### 23.2 Painel de resultados (HTML) e publicação
+- **Link da turma (GitHub Pages, repositório próprio):** https://renato0503.github.io/3SemVG/resultados/
+- Arquivos: `resultados/index.html` (só esta turma) e, na raiz de `D:\Dev\UnifaccApps`, `Resultados-Coleta.html` (3 turmas) e `Sintese-Resultados.md` (texto completo das análises).
+- Conteúdo: síntese da turma, respostas por grupo, perfil observado, 20 perguntas em barras divergentes (polo A à esquerda, polo B à direita, 3 ao centro), análise estatística, interpretação e **hipótese × resultado × literatura** por grupo.
+- **Botão "Atualizar agora":** lê a planilha ao vivo e recalcula tudo no navegador. Em `https://` usa `fetch`; aberto como arquivo local (`file://`) usa JSONP do Google (`gviz`). Alternativa: `python atualizar-resultados.py` (raiz) regrava a cópia embutida nos 4 HTMLs.
+- **Privacidade:** o HTML não traz e-mails (coluna `email_contato` removida antes de embutir); traz o nome dos alunos coletores por grupo.
+- **Gerador e fontes:** `_ferramentas/resultados-coleta/` (README com o fluxo para regerar).
+
+### 23.3 Método estatístico
+- Escala 1–5 entre dois polos (1 = polo A, 5 = polo B); **o sentido de cada pergunta varia**, e média baixa pode significar pouco problema (erro corrigido no EDA, ver 3SemVG).
+- Por pergunta: média, DP, %1–2, %4–5, **IC95% por bootstrap** e **teste de permutação (inversão de sinais) contra o ponto neutro 3**, com **correção de Holm** nas 20 perguntas do grupo. "Interesse/utilidade médio" = média por respondente dos itens que começam com Utilidade ou Interesse.
+- Amostra de conveniência com 10 a 33 respostas por grupo: leitura exploratória, sem generalização. Efeito de teto e concordância automática reduzem o valor dos itens de utilidade; pesam mais os itens de comportamento e de dor.
+
+### 23.4 Literatura: verificação dos DOIs
+- Todos os DOIs dos `Pesquisa-Dados.md` (213 únicos) foram conferidos na API da Crossref (existência e título); só os verificados são citados nas análises.
+- **AdmCBA e 8AdmVG:** todas as referências existem e os títulos batem.
+- **3SemVG:** 24 referências **não se confirmam** (DOIs inexistentes, de outros artigos ou com autores genéricos como "Doe; Lee", "Smith; Jones", "fake"): Dinheiro na Mão 2 (Chong et al.; Fonseca e Matray; e Kaiser et al. com autoria errada, DOI real), LifePath 2, Quita.AI 2, SuaCasaSuaVida 2, EDA 2 (um DOI aponta para "Issue Information"), **Vida no Controle 14 (todas)**. Para o Vida no Controle e para a parte de carreira do LifePath usei artigos achados por busca na Crossref. **Pendente: avisar os grupos para corrigir os arquivos `Pesquisa-Dados.md`.**
+- As notas de paralelo só afirmam o que título e resumo sustentam; resumos vêm dos arquivos dos grupos. Gelper et al. (2026) está só como leitura sugerida (sem resumo na API).
+
+### 23.5 Situação dos grupos (leitura de 20/10/2026, 170 respostas válidas)
+| Grupo | Projeto | n | Veredito (hipótese de campo) |
+|---|---|---|---|
+| G1 | Dinheiro na Mão | 27 | Não sustentada nesta amostra; lacuna de orientação confirmada |
+| G2 | LifePath | 29 | Parcialmente sustentada |
+| G3 | Quita.AI | 25 | Não sustentada na parte do jogo em família; incentivos aceitos |
+| G4 | SuaCasaSuaVida | 29 | Sustentada quanto à demanda por ferramentas; a premissa de desconhecimento só em parte |
+| G5 | Endividados Anônimos (EDA) | 33 | Não sustentada nesta amostra |
+| G6 | Vida no Controle | 27 | Parcialmente sustentada |
+
+### 23.6 Pendências
+- Sincronizar os celulares da **Julimary** (G4) e da **Cássia** (G5): tocar em Exportar dados → Sincronizar pendentes agora (ou manter os JSON como fonte).
+- **Beatriz Cristina Ferreira da Silva (G4 SuaCasaSuaVida) está sem os certificados de submissão e de apresentação** (informado pelo professor em 20/10/2026; detalhe do que fazer ficou em aberto).
+- Avisar os grupos sobre as 24 referências não confirmadas (principalmente Vida no Controle).
+- EDA: testar a ideia com público que declara dívidas; a amostra geral não validou a dor.
+- Os textos (`interp.json`, `analise_grupos.json`, `sintese.json`) citam números de uma data; **reler e atualizar quando o n mudar** (a página avisa).
+- Recrutar mais respostas nos grupos abaixo de 30 (mínimo total) e de 35 (margem de segurança).
+- Corrigir o Apps Script: coluna genérica de triagem e coluna `turma`; reimplantar.
+- Commit/push pendentes (não foram feitos de propósito): `context.md`, `Termo_Consentimento_*.pdf` e a pasta local `Resultados/` (Resultados-*.md e estatisticas-por-pergunta.csv, versão descritiva inicial).
+- **Sprint R1 (painel 100% mobile): ✅ concluída em 20/10/2026** (tabelas em cartões, toque no lugar de tooltip, seções recolhíveis; zero rolagem horizontal em 320–430 px). Pendente só o teste em aparelho real (Chrome Android e Safari iOS). Detalhes em `SPRINTS.md` (Track R).
+
+### 23.7 Correção importante: leitura do EDA
+- Em versão anterior desta análise, o EDA foi lido de forma invertida ("impacto emocional forte"). O correto: nas perguntas "Nada ↔ Muito" e "Nunca ↔ Sempre", **média baixa = pouco problema**. A amostra (n = 33) relata pouco impacto (família 1,58; solidão 1,61; vergonha 1,64; ajuda buscada 1,45) e a **hipótese (impulso leva a dívida, vergonha e ocultação) não se sustenta**: correlações de Spearman entre o índice de impulso (Q1, Q2, Q4) e atraso, vergonha, ocultação e busca de ajuda ficaram entre −0,14 e +0,19, sem significância (só uso de crédito, ρ = 0,33, p = 0,06). Coerente com a prevalência de ~5% de compra compulsiva em adultos da comunidade (Grant et al., 2024).
+
+## 24. Sessão 27/10/2026 — OCR no cupom, mercados reais e manifest2
+
+### 24.1 Vida no Controle (G6)
+- **OCR por foto no `app.html`:** leitura com **Tesseract.js v7** (idioma `por`, `tesseract.js-core@7.0.0`) rodando no aparelho, com prévia da foto, barra de progresso e preenchimento automático do parser; o texto reconhecido continua editável e há fallback para colar a NFC-e.
+- **Parser de NFC-e reescrito:** tolera linhas quebradas pelo OCR (ex.: `Vl. Unit.:` + valor na linha seguinte), valores com ponto ou vírgula, itens sem `Código`, unidades variadas e linhas de total; itens sem parência são descartados.
+- **Mercados fictícios trocados pelos reais** informados pelo grupo: Comper Supermercados, Paulista Supermercado · Jardim Glória II, Rede Serve Mais · Ipase, Padaria e Mercado Castelo, BigLar e Mercado Pardal. Cada um tem link **mapa**; os preços continuam **simulados** e rotulados como tal.
+- `sw.js` → cache **v3**; landing atualizada (OCR ✓); `ContextoApp.md` atualizado.
+- **Teste:** cupom sintético com 5 itens e total R$ 108,40 foi fotografado e lido corretamente; `_ferramentas/smoke.py` → 5 rotas, 0 px de overflow, 0 erro de JS.
+
+### 24.2 Resultados — `manifest2.json`
+- **Arquivo:** `3SemVG/manifest2.json` (8 respostas do G4, coletor Amanda Karoliny). A **G4-001 (07/10)** foi ignorada por ser anterior à coleta, como já se fez com a G5-001; G4-002 estava fora da planilha e as demais já estavam na planilha ao vivo.
+- **Pipeline:** `build_html.py` e `compila.py` passaram a incluir o `manifest2.json` e a **deduplicar extras contra a planilha** pela chave `(grupoNome, codigo, criadoEm)`.
+- **Snapshot consolidado:** **3SemVG 184** respostas (G4 **36**), **439** nas 3 turmas, com 19 respostas de arquivo. Textos de G4 (`interp.json`, `analise_grupos.json`), `ninterp.json`, `atual.json` e `sintese.json` atualizados; `Resultados-3SemVG.md`, os 4 HTMLs e `Sintese-Resultados.md` regerados. Sem aviso de "dados mudaram" para nenhum grupo do 3SemVG.
